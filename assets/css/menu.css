@@ -1,0 +1,7 @@
+.toplevel_page_usercamp div.dashicons-admin-generic:before {
+	content: '';
+	background-repeat: no-repeat;
+	background-position: center;
+	color: #fff;
+	width: 100%;
+}
