@@ -236,6 +236,9 @@ function usercamp_wp_rule( $field ) {
 	$operators				= uc_get_comp_operators();
 	$rules 					= array();
 
+	// Sort by fields by label.
+	usort( $fields, function( $a, $b ) { return strcmp( $a['label'], $b['label'] ); } );
+
 	// Get array of rules.
 	preg_match_all("/\{(.*?)\}/", $field['value'], $matches );
 	if ( is_array( $matches[1] ) && ! empty( $matches[1] ) ) {
