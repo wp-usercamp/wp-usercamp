@@ -160,11 +160,11 @@ class UC_Meta_Box_Field_Data {
 
 		// Private field with no view options.
 		if ( $props['is_private'] && ! $props['can_view'] ) {
-			$props['can_view'] = array( 'none' );
+			$props['can_view'] = array( '_none' );
 		}
 
 		// None can view but user specified other options/roles.
-		if ( is_array( $props['can_view'] ) && ( $key = array_search( 'none', $props['can_view'] ) ) !== false && count( $props['can_view'] ) > 1 ) {
+		if ( is_array( $props['can_view'] ) && ( $key = array_search( '_none', $props['can_view'] ) ) !== false && count( $props['can_view'] ) > 1 ) {
 			unset( $props['can_view'][ $key ] );
 		}
 

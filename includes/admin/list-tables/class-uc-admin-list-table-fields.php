@@ -176,7 +176,7 @@ class UC_Admin_List_Table_Fields extends UC_Admin_List_Table {
 	 */
 	protected function render_can_view_column() {
 		if ( $this->object->can_view ) {
-			$can_view = array_merge( array( 'none' => __( 'No one', 'usercamp' ), 'owner' => __( 'Owner', 'usercamp' ) ), usercamp_get_roles() );
+			$can_view = array_merge( array( '_none' => __( 'No one', 'usercamp' ), 'owner' => __( 'Owner', 'usercamp' ) ), usercamp_get_roles() );
 			foreach( $this->object->can_view as $value ) {
 				echo '<span class="uc-tag">' . esc_html__( $can_view[ $value ] ) . '</span>';
 			}

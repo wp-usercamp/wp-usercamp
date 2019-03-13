@@ -163,7 +163,7 @@ function usercamp_get_default_fields() {
 			'type'			=> 'password',
 			'icon'			=> 'lock',
 			'is_private'	=> 1,
-			'can_view'		=> array( 'none' ),
+			'can_view'		=> array( '_none' ),
 		),
 	) );
 }

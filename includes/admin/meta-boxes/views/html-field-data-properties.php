@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'id'          		=> 'can_view',
 				'value'       		=> $the_field->can_view,
 				'label'       		=> __( 'Who can view?', 'usercamp' ),
-				'options'     		=> array_merge( array( 'none' => __( 'No one', 'usercamp' ), 'owner' => __( 'Owner', 'usercamp' ) ), usercamp_get_roles() ),
+				'options'     		=> array_merge( array( '_none' => __( 'No one', 'usercamp' ), 'owner' => __( 'Owner', 'usercamp' ) ), usercamp_get_roles() ),
 				'placeholder'		=> __( 'Everyone', 'usercamp' ),
 				'description' 		=> __( 'Who can view this custom field.', 'usercamp' ),
 				'desc_tip'			=> true,
