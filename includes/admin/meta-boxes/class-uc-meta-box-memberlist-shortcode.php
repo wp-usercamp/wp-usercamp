@@ -21,16 +21,7 @@ class UC_Meta_Box_Memberlist_Shortcode {
 		$thepostid      = $post->ID;
 		$the_memberlist = $thepostid ? new UC_Memberlist( $thepostid ) : new UC_Memberlist();
 
-		wp_nonce_field( 'usercamp_save_data', 'usercamp_meta_nonce' );
-
 		include 'views/html-memberlist-shortcode.php';
-	}
-
-	/**
-	 * Save meta box data.
-	 */
-	public static function save( $post_id, $post ) {
-
 	}
 
 }

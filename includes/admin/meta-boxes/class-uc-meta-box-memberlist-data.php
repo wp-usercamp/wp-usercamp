@@ -81,6 +81,7 @@ class UC_Meta_Box_Memberlist_Data {
 
 		$the_memberlist = new UC_Memberlist( $post_id );
 
+		$props['roles']					= isset( $_POST['roles'] ) ? uc_clean( wp_unslash( $_POST['roles'] ) ) : '';
 		$props['login_required']		= ! empty( $_POST['login_required'] );
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
 		$props['per_page']				= isset( $_POST['per_page'] ) ? absint( wp_unslash( $_POST['per_page'] ) ) : '';

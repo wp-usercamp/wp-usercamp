@@ -53,6 +53,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</div>
 
+	<div class="options_group">
+		<?php
+		usercamp_wp_select(
+			array(
+				'id'          		=> 'roles',
+				'value'       		=> $the_memberlist->roles,
+				'label'       		=> __( 'Who to show in this list?', 'usercamp' ),
+				'options'     		=> array_merge( array( '_all' => __( 'Everyone excluding admins', 'usercamp' ) ), usercamp_get_roles() ),
+				'placeholder'		=> __( 'Everyone', 'usercamp' ),
+				'description' 		=> __( 'This controls which user groups can be shown in this specific list.', 'usercamp' ),
+				'desc_tip'			=> true,
+				'custom_attributes' => array( 'multiple' => 'multiple' ),
+			)
+		);
+		?>
+	</div>
+
 	<?php do_action( 'usercamp_memberlist_data_general_panel' ); ?>
 
 </div>

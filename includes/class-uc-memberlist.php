@@ -29,6 +29,7 @@ class UC_Memberlist extends UC_Abstract_Post {
 		'per_row',
 		'login_required',
 		'use_ajax',
+		'roles',
 	);
 
 }

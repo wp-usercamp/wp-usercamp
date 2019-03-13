@@ -80,6 +80,7 @@ class UC_Admin_List_Table_Memberlists extends UC_Admin_List_Table {
 		$show_columns               = array();
 		$show_columns['cb']         = $columns['cb'];
 		$show_columns['name']  		= __( 'Name', 'usercamp' );
+		$show_columns['show_users'] = __( 'Who to show in this list?', 'usercamp' );
 		$show_columns['shortcode']	= __( 'Shortcode', 'usercamp' );
 		$show_columns['uc_date']  	= __( 'Date Added', 'usercamp' );
 
@@ -118,6 +119,20 @@ class UC_Admin_List_Table_Memberlists extends UC_Admin_List_Table {
 			<div class="hidden" id="usercamp_inline_' . absint( $this->object->id ) . '">
 			</div>
 		';
+	}
+
+	/**
+	 * Render columm: show_users.
+	 */
+	protected function render_show_users_column() {
+		if ( $this->object->roles ) {
+			$roles = array_merge( array( '_all' => __( 'Everyone excluding admins', 'usercamp' ) ), usercamp_get_roles() );
+			foreach( $this->object->roles as $value ) {
+				echo '<span class="uc-tag">' . esc_html__( $roles[ $value ] ) . '</span>';
+			}
+		} else {
+			echo '<span class="uc-tag">' . esc_html__( 'Everyone', 'usercamp' ) . '</span>';
+		}
 	}
 
 	/**
