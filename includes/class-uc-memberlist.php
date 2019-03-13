@@ -25,7 +25,10 @@ class UC_Memberlist extends UC_Abstract_Post {
 	 * Meta keys.
 	 */
 	public $internal_meta_keys = array(
-
+		'per_page',
+		'per_row',
+		'login_required',
+		'use_ajax',
 	);
 
 }

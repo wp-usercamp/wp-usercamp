@@ -17,10 +17,23 @@ function usercamp_wp_switch( $field ) {
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'checkbox';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : 'toggle_wrap';
-	$field['value']         = isset( $field['value'] ) ? (bool) $field['value'] : get_post_meta( $thepostid, $field['id'], true );
+	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['cbvalue']       = isset( $field['cbvalue'] ) ? $field['cbvalue'] : 'yes';
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
 	$field['desc_tip']      = isset( $field['desc_tip'] ) ? $field['desc_tip'] : false;
+
+	switch( $field['value'] ) :
+		case 'yes' :
+			$field['state'] = 1;
+			break;
+		case 'no' :
+			$field['state'] = 0;
+			break;
+		default :
+			$field['value'] = (bool) $field['value'];
+			$field['state'] = (bool) $field['value'];
+			break;
+	endswitch;
 
 	// Custom attribute handling
 	$custom_attributes = array();
@@ -36,7 +49,7 @@ function usercamp_wp_switch( $field ) {
 		<label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label>';
 
 	echo '<input type="checkbox" class="' . esc_attr( $field['class'] ) . '" style="' . esc_attr( $field['style'] ) . '" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['cbvalue'] ) . '" ' . checked( $field['value'], $field['cbvalue'], false ) . '  ' . implode( ' ', $custom_attributes ) . '/> ';
-	echo '<div class="uc-toggle" data-toggle-on="' . $field['value'] . '"></div>';
+	echo '<div class="uc-toggle" data-toggle-on="' . $field['state'] . '"></div>';
 
 	if ( ! empty( $field['description'] ) && false === $field['desc_tip'] ) {
 		echo '<span class="description">' . wp_kses_post( $field['description'] ) . '</span>';

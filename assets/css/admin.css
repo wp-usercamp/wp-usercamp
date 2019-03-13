@@ -270,6 +270,7 @@ ul.uc-tabs li a svg {
 }
 
 .usercamp_options_panel .options_group input[type=text],
+.usercamp_options_panel .options_group input[type=number],
 .usercamp_options_panel .options_group textarea {
 	float: left;
 	width: 300px;
@@ -278,6 +279,17 @@ ul.uc-tabs li a svg {
 	padding: 6px 10px;
 	margin: 0;
 	border-radius: 3px;
+}
+
+.usercamp_options_panel .options_group input[type=number] {
+	width: 60px;
+	padding: 6px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 .usercamp_options_panel .options_group textarea {
@@ -312,6 +324,7 @@ ul.uc-tabs li a svg {
 	display: block;
 	width: 16px;
 	height: 16px;
+	color: #bbb;
 }
 
 /* Builder styles */

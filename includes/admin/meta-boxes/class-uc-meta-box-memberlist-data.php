@@ -77,7 +77,16 @@ class UC_Meta_Box_Memberlist_Data {
 	 */
 	public static function save( $post_id, $post ) {
 		global $the_memberlist;
+		$props = array();
 
+		$the_memberlist = new UC_Memberlist( $post_id );
+
+		$props['login_required']		= ! empty( $_POST['login_required'] );
+		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
+		$props['per_page']				= isset( $_POST['per_page'] ) ? absint( wp_unslash( $_POST['per_page'] ) ) : '';
+		$props['per_row']				= isset( $_POST['per_row'] ) ? absint( wp_unslash( $_POST['per_row'] ) ) : '';
+
+		$the_memberlist->save( $props );
 	}
 
 }
