@@ -84,6 +84,7 @@ class UC_Meta_Box_Memberlist_Data {
 		$props['roles']					= isset( $_POST['roles'] ) ? uc_clean( wp_unslash( $_POST['roles'] ) ) : '';
 		$props['login_required']		= ! empty( $_POST['login_required'] );
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
+		$props['rules']					= wp_kses_post( wp_unslash( $_POST['rules'] ) );
 		$props['per_page']				= isset( $_POST['per_page'] ) ? absint( wp_unslash( $_POST['per_page'] ) ) : '';
 		$props['per_row']				= isset( $_POST['per_row'] ) ? absint( wp_unslash( $_POST['per_row'] ) ) : '';
 

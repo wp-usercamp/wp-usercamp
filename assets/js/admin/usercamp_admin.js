@@ -552,7 +552,7 @@ jQuery( function ( $ ) {
 
 		} )
 
-		// Add rule.
+		// New rule.
 		.on( 'click', '.uc-rule .uc-tag-icon', function( e ) {
 			var el = $( this ).parents( '.uc-rule' );
 			el.find( '.uc-rule-new' ).show().animate( { 'padding-top' : '15px', 'opacity' : 1 }, 250 );
@@ -560,7 +560,36 @@ jQuery( function ( $ ) {
 
 		// Cancel rule.
 		.on( 'click', '.rule_actions a.remove', function( e ) {
-			var el = $( this ).parents( '.uc-rule' );
+			var el 		= $( this ).parents( '.uc-rule' ),
+				item 	= $( this ).parents( '.uc-rule-item' ),
+				txt		= el.find( 'textarea' );
+
+			el.find( '.uc-rule-new' ).css( { 'padding-top' : 0, 'opacity' : 0, 'display' : 'none' } );
+
+			if ( item.length ) {
+				var pattern = item.attr( 'data-pattern' );
+				txt.val( txt.val().replace( '{' + pattern + '}', '' ) );
+				item.remove();
+			}
+		} )
+
+		// Add rule.
+		.on( 'click', '.rule_actions a.add', function( e ) {
+			var el = $( this ).parents( '.uc-rule' ),
+				key = el.find( '#rule_key' ).val(),
+				exp = el.find( '#rule_exp' ).val(),
+				val = el.find( '#rule_val' ).val();
+
+			if ( ! val ) {
+				$( '#rule_val' ).focus().change();
+				return false;
+			}
+
+			var rule = '{' + encodeURIComponent(key) + '|' + encodeURIComponent(exp) + '|' + encodeURIComponent(val) + '}';
+			var txt = el.find( 'textarea' );
+			txt.val( txt.val() + rule );
+
+			el.find( '#rule_val' ).val( '' );
 			el.find( '.uc-rule-new' ).css( { 'padding-top' : 0, 'opacity' : 0, 'display' : 'none' } );
 		} );
 

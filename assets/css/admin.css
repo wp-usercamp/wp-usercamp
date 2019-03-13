@@ -352,7 +352,11 @@ input[type=number]::-webkit-inner-spin-button {
 	opacity: 0;
 }
 
-.usercamp_options_panel .options_group .uc-rule-list {
+.usercamp_options_panel .options_group .uc-rule-item {
+	width: 100%;
+}
+
+.usercamp_options_panel .options_group .uc-rule-item:last-child {
 	padding: 0 0 15px 0;
 }
 

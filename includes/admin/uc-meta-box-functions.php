@@ -232,6 +232,25 @@ function usercamp_wp_rule( $field ) {
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
 	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
+	$fields					= (array) get_option( 'usercamp_fields' );
+	$operators				= uc_get_comp_operators();
+	$rules 					= array();
+
+	// Get array of rules.
+	preg_match_all("/\{(.*?)\}/", $field['value'], $matches );
+	if ( is_array( $matches[1] ) && ! empty( $matches[1] ) ) {
+		foreach( $matches[1] as $match ) {
+			$data = explode( '|', $match );
+			if ( ! array_key_exists( $data[0], $fields ) )
+				continue;
+			$rules[] = array(
+				'key'		=> $fields[$data[0]]['label'],
+				'operator'	=> $operators[$data[1]],
+				'value'		=> urldecode( $data[2] ),
+				'match'		=> $match,
+			);
+		}
+	}
 	?>
 
 	<fieldset class="form-field <?php echo esc_attr( $field['id'] ); ?>_field <?php echo esc_attr( $field['wrapper_class'] ); ?>" data-type="rule">
@@ -239,36 +258,38 @@ function usercamp_wp_rule( $field ) {
 		<div class="uc-rule">
 
 			<div class="uc-rule-list">
-				<div class="uc-rule-item">
+				<?php foreach( (array) $rules as $rule ) { ?>
+				<div class="uc-rule-item" data-pattern="<?php echo esc_attr( $rule['match'] ); ?>">
 					<span class="rule_info">
-						<strong>Age</strong> more than <strong>21 years</strong>
+						<strong><?php echo esc_html( $rule['key'] ); ?></strong> <?php echo esc_html( $rule['operator'] ); ?> <strong><?php echo esc_html( $rule['value'] ); ?></strong>
 					</span>
 					<span class="rule_actions">
 						<a href="#" class="edit"><i data-feather="edit-2"></i></a>
 						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
 					</span>
 				</div>
+				<?php } ?>
 			</div><div class="uc-clear"></div>
 
 			<span class="uc-tag-icon"><i data-feather="plus"></i><?php echo __( 'New rule', 'usercamp' ); ?></span><div class="uc-clear"></div>
 
 			<div class="uc-rule-new">
 				<span class="rule_key">
-					<select class="uc-select">
-						<?php foreach( (array) get_option( 'usercamp_fields' ) as $key => $data ) { ?>
+					<select class="uc-select" name="rule_key" id="rule_key">
+						<?php foreach( $fields as $key => $data ) { ?>
 						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $data['label'] ); ?></option>
 						<?php } ?>
 					</select>
 				</span>
 				<span class="rule_exp">
-					<select class="uc-select">
-						<?php foreach( uc_get_comp_operators() as $key => $name ) { ?>
+					<select class="uc-select" name="rule_exp" id="rule_exp">
+						<?php foreach( $operators as $key => $name ) { ?>
 						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $name ); ?></option>
 						<?php } ?>
 					</select>
 				</span>
 				<span class="rule_val">
-					<input type="text" value="" />
+					<input type="text" value="" name="rule_val" id="rule_val" />
 				</span>
 				<span class="rule_actions">
 					<a href="#" class="add"><i data-feather="plus-circle"></i></a>
@@ -276,7 +297,10 @@ function usercamp_wp_rule( $field ) {
 				</span>
 			</div><div class="uc-clear"></div>
 
-			<textarea class="<?php echo esc_attr( $field['class'] ); ?> hidden" style="<?php echo esc_attr( $field['style'] ); ?>" id="<?php echo esc_attr( $field['id'] ); ?>" name="<?php echo esc_attr( $field['name'] ); ?>"><?php echo esc_textarea( $field['value'] ); ?></textarea>
+			<textarea 	class="<?php echo esc_attr( $field['class'] ); ?> hidden" 
+						style="<?php echo esc_attr( $field['style'] ); ?>" 
+						id="<?php echo esc_attr( $field['id'] ); ?>" 
+						name="<?php echo esc_attr( $field['name'] ); ?>"><?php echo esc_textarea( $field['value'] ); ?></textarea>
 
 		</div>
 	</fieldset>
@@ -297,7 +321,7 @@ function uc_get_comp_operators() {
 		'in'		=> __( 'in', 'usercamp' ),
 		'before'	=> __( 'before', 'usercamp' ),
 		'after'		=> __( 'after', 'usercamp' ),
-		'contain'	=> __( 'contains', 'usercamp' ),
+		'contains'	=> __( 'contains', 'usercamp' ),
 	);
 
 	return apply_filters( 'uc_get_comp_operators', $array );
