@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'id'          		=> 'per_page',
 				'value'       		=> $the_memberlist->per_page,
 				'type'				=> 'number',
-				'label'       		=> __( 'Number of members per page', 'usercamp' ),
-				'description'		=> __( 'How many members should be displayed per page.', 'usercamp' ),
+				'label'       		=> __( 'Number of users per page', 'usercamp' ),
+				'description'		=> __( 'How many users should be displayed per page.', 'usercamp' ),
 				'desc_tip'			=> true,
 			)
 		);
@@ -34,8 +34,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'id'          		=> 'per_row',
 				'value'       		=> $the_memberlist->per_row,
 				'type'				=> 'number',
-				'label'       		=> __( 'Number of members per row', 'usercamp' ),
-				'description'		=> __( 'How many members should be displayed per each row.', 'usercamp' ),
+				'label'       		=> __( 'Number of users per row', 'usercamp' ),
+				'description'		=> __( 'How many users should be displayed per each row.', 'usercamp' ),
 				'desc_tip'			=> true,
 			)
 		);
@@ -65,6 +65,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'description' 		=> __( 'This controls which user groups can be shown in this specific list.', 'usercamp' ),
 				'desc_tip'			=> true,
 				'custom_attributes' => array( 'multiple' => 'multiple' ),
+			)
+		);
+
+		usercamp_wp_rule(
+			array(
+				'id'          		=> 'rules',
+				'value'       		=> $the_memberlist->rules,
+				'label'       		=> __( 'Only show users with specific metadata', 'usercamp' ),
 			)
 		);
 		?>

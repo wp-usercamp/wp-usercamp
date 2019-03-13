@@ -491,7 +491,7 @@ jQuery( function ( $ ) {
 		} )
 
 		// No links here.
-		.on( 'click', ".uc-bld-topbar a[href=#], .uc-bld-row a[href=#], .uc-bld-new a[href=#], .modal a[href=#], a[class^='duplicate_'].disabled", function( e ) {
+		.on( 'click', ".usercamp_options_panel a[href=#], .uc-bld-topbar a[href=#], .uc-bld-row a[href=#], .uc-bld-new a[href=#], .modal a[href=#], a[class^='duplicate_'].disabled", function(e) {
 			e.preventDefault();
 		} )
 
@@ -550,6 +550,18 @@ jQuery( function ( $ ) {
 
 			$.post( ajaxurl, data, function(response) { location.reload(); } );
 
+		} )
+
+		// Add rule.
+		.on( 'click', '.uc-rule .uc-tag-icon', function( e ) {
+			var el = $( this ).parents( '.uc-rule' );
+			el.find( '.uc-rule-new' ).show().animate( { 'padding-top' : '15px', 'opacity' : 1 }, 250 );
+		} )
+
+		// Cancel rule.
+		.on( 'click', '.rule_actions a.remove', function( e ) {
+			var el = $( this ).parents( '.uc-rule' );
+			el.find( '.uc-rule-new' ).css( { 'padding-top' : 0, 'opacity' : 0, 'display' : 'none' } );
 		} );
 
 } );

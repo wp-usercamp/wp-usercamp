@@ -257,7 +257,8 @@ ul.uc-tabs li a svg {
 	width: 180px;
 	font-weight: normal;
 	display: inline-block;
-	margin: 0 20px 6px 0;
+	line-height: 20px;
+	margin: 2px 20px 8px 0;
 }
 
 .usercamp_options_panel .options_group input[type=checkbox] {
@@ -325,6 +326,84 @@ input[type=number]::-webkit-inner-spin-button {
 	width: 16px;
 	height: 16px;
 	color: #bbb;
+}
+
+/* Custom rules */
+.usercamp_options_panel .options_group .uc-rule span.uc-tag-icon {
+	cursor: pointer;
+}
+
+.usercamp_options_panel .options_group .uc-rule,
+.usercamp_options_panel .options_group .uc-rule-new,
+.usercamp_options_panel .options_group .uc-rule-list,
+.usercamp_options_panel .options_group .uc-rule-item,
+.usercamp_options_panel .options_group .rule_info,
+.usercamp_options_panel .options_group .rule_key,
+.usercamp_options_panel .options_group .rule_exp,
+.usercamp_options_panel .options_group .rule_val,
+.usercamp_options_panel .options_group .rule_actions {
+	float: left;
+	width: auto;
+}
+
+.usercamp_options_panel .options_group .uc-rule-new {
+	display: none;
+	padding-top: 0;
+	opacity: 0;
+}
+
+.usercamp_options_panel .options_group .uc-rule-list {
+	padding: 0 0 15px 0;
+}
+
+.usercamp_options_panel .options_group .rule_info {
+	height: 30px;
+	line-height: 30px;
+	padding: 0 15px 0 0;
+}
+
+.usercamp_options_panel .options_group .rule_val input[type=text] {
+	width: 200px;
+	margin-right: 10px;
+}
+
+.usercamp_options_panel .options_group .rule_exp .selectize-control {
+	width: 100px;
+	margin-right: 10px;
+}
+
+.usercamp_options_panel .options_group .rule_key .selectize-control {
+	width: 150px;
+	margin-right: 10px;
+}
+
+.usercamp_options_panel .options_group .rule_actions,
+.usercamp_options_panel .options_group .rule_actions a {
+	float: left;
+	display: block;
+}
+
+.usercamp_options_panel .options_group .rule_actions a {
+	width: 30px;
+	height: 30px;
+	line-height: 36px;
+	border-radius: 3px;
+	text-align: center;
+	color: #666;
+	opacity: 0.8;
+}
+
+.usercamp_options_panel .options_group .rule_actions a.remove {
+	color: #ef6e6e;
+}
+
+.usercamp_options_panel .options_group .rule_actions a:hover {
+	opacity: 1;
+}
+
+.usercamp_options_panel .options_group .rule_actions svg {
+	width: 16px;
+	height: 16px;
 }
 
 /* Builder styles */

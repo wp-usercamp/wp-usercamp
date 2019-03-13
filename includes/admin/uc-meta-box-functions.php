@@ -221,6 +221,89 @@ function usercamp_wp_textarea( $field ) {
 }
 
 /**
+ * Output a rule input box.
+ */
+function usercamp_wp_rule( $field ) {
+	global $thepostid, $post;
+
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'short';
+	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
+	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
+	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
+	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
+	?>
+
+	<fieldset class="form-field <?php echo esc_attr( $field['id'] ); ?>_field <?php echo esc_attr( $field['wrapper_class'] ); ?>" data-type="rule">
+		<label for="<?php echo esc_attr( $field['id'] ); ?>"><?php echo wp_kses_post( $field['label'] ); ?></label>
+		<div class="uc-rule">
+
+			<div class="uc-rule-list">
+				<div class="uc-rule-item">
+					<span class="rule_info">
+						<strong>Age</strong> more than <strong>21 years</strong>
+					</span>
+					<span class="rule_actions">
+						<a href="#" class="edit"><i data-feather="edit-2"></i></a>
+						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
+					</span>
+				</div>
+			</div><div class="uc-clear"></div>
+
+			<span class="uc-tag-icon"><i data-feather="plus"></i><?php echo __( 'New rule', 'usercamp' ); ?></span><div class="uc-clear"></div>
+
+			<div class="uc-rule-new">
+				<span class="rule_key">
+					<select class="uc-select">
+						<?php foreach( (array) get_option( 'usercamp_fields' ) as $key => $data ) { ?>
+						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $data['label'] ); ?></option>
+						<?php } ?>
+					</select>
+				</span>
+				<span class="rule_exp">
+					<select class="uc-select">
+						<?php foreach( uc_get_comp_operators() as $key => $name ) { ?>
+						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $name ); ?></option>
+						<?php } ?>
+					</select>
+				</span>
+				<span class="rule_val">
+					<input type="text" value="" />
+				</span>
+				<span class="rule_actions">
+					<a href="#" class="add"><i data-feather="plus-circle"></i></a>
+					<a href="#" class="remove"><i data-feather="trash-2"></i></a>
+				</span>
+			</div><div class="uc-clear"></div>
+
+			<textarea class="<?php echo esc_attr( $field['class'] ); ?> hidden" style="<?php echo esc_attr( $field['style'] ); ?>" id="<?php echo esc_attr( $field['id'] ); ?>" name="<?php echo esc_attr( $field['name'] ); ?>"><?php echo esc_textarea( $field['value'] ); ?></textarea>
+
+		</div>
+	</fieldset>
+
+	<?php
+}
+
+/**
+ * Get comparison operators.
+ */
+function uc_get_comp_operators() {
+
+	$array = array(
+		'eq'		=> __( 'equals', 'usercamp' ),
+		'gt'		=> __( 'more than', 'usercamp' ),
+		'lt'		=> __( 'less than', 'usercamp' ),
+		'between'	=> __( 'between', 'usercamp' ),
+		'in'		=> __( 'in', 'usercamp' ),
+		'before'	=> __( 'before', 'usercamp' ),
+		'after'		=> __( 'after', 'usercamp' ),
+		'contain'	=> __( 'contains', 'usercamp' ),
+	);
+
+	return apply_filters( 'uc_get_comp_operators', $array );
+}
+
+/**
  * Output drag-n-drop tool bar.
  */
 function uc_dragdrop_topbar() {
