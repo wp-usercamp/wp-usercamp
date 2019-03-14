@@ -534,7 +534,7 @@ jQuery( function ( $ ) {
 
 			$.post( ajaxurl, { action: 'usercamp_create_' + type, security: nonce }, function(response) {
 				el.html( usercamp_admin.states.done_redirect );
-				setTimeout( function() { location.reload(); }, 3000 );
+				location.reload();
 			} );
 
 		} )
