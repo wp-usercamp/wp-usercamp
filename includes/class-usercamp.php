@@ -44,6 +44,8 @@ final class UserCamp {
 	 */
 	private function init_hooks() {
 		register_activation_hook( UC_PLUGIN_FILE, array( 'UC_Install', 'install' ) );
+		add_action( 'init', array( $this, 'init' ), 0 );
+		add_action( 'init', array( 'UC_Shortcodes', 'init' ) );
 	}
 
 	/**
@@ -96,6 +98,7 @@ final class UserCamp {
 		include_once UC_ABSPATH . 'includes/class-uc-ajax.php';
 		include_once UC_ABSPATH . 'includes/class-uc-post-types.php';
 		include_once UC_ABSPATH . 'includes/class-uc-install.php';
+		include_once UC_ABSPATH . 'includes/class-uc-shortcodes.php';
 
 		/**
 		 * Data stores
