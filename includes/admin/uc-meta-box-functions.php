@@ -255,7 +255,6 @@ function usercamp_wp_rule( $field ) {
 	// Sort by fields by label.
 	usort( $fields, function( $a, $b ) { return strcmp( $a['label'], $b['label'] ); } );
 	?>
-
 	<fieldset class="form-field <?php echo esc_attr( $field['id'] ); ?>_field <?php echo esc_attr( $field['wrapper_class'] ); ?>" data-type="rule">
 		<label for="<?php echo esc_attr( $field['id'] ); ?>"><?php echo wp_kses_post( $field['label'] ); ?></label>
 		<div class="uc-rule">
@@ -266,7 +265,6 @@ function usercamp_wp_rule( $field ) {
 						<strong>{key}</strong> {operator} {value}
 					</span>
 					<span class="rule_actions">
-						<a href="#" class="edit"><i data-feather="edit-2"></i></a>
 						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
 					</span>
 				</div>
@@ -276,7 +274,6 @@ function usercamp_wp_rule( $field ) {
 						<strong><?php echo esc_html( $rule['key'] ); ?></strong> <?php echo esc_html( $rule['operator'] ); ?> <?php echo esc_html( $rule['value'] ); ?>
 					</span>
 					<span class="rule_actions">
-						<a href="#" class="edit"><i data-feather="edit-2"></i></a>
 						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
 					</span>
 				</div>
@@ -304,7 +301,7 @@ function usercamp_wp_rule( $field ) {
 					<input type="text" value="" name="rule_val" id="rule_val" />
 				</span>
 				<span class="rule_actions">
-					<a href="#" class="add"><i data-feather="plus-circle"></i></a>
+					<a href="#" class="add"><i data-feather="plus"></i></a>
 					<a href="#" class="remove"><i data-feather="trash-2"></i></a>
 				</span>
 			</div><div class="uc-clear"></div>
@@ -316,7 +313,6 @@ function usercamp_wp_rule( $field ) {
 
 		</div>
 	</fieldset>
-
 	<?php
 }
 

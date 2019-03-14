@@ -353,17 +353,27 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .usercamp_options_panel .options_group .uc-rule-item {
-	width: 100%;
+	border-radius: 999px;
+	padding: 0 8px 0 12px;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+	color: #888;
+	background: #f9f9f9;
+	font-size: 12px;
+	cursor: default;
+	margin: 0 8px 8px 0;
 }
 
-.usercamp_options_panel .options_group .uc-rule-item:last-child {
-	padding: 0 0 15px 0;
+.usercamp_options_panel .options_group .uc-rule-item::after {
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
 }
 
 .usercamp_options_panel .options_group .rule_info {
 	height: 30px;
 	line-height: 30px;
-	padding: 0 15px 0 0;
 }
 
 .usercamp_options_panel .options_group .rule_val input[type=text] {
