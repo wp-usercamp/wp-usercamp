@@ -49,3 +49,22 @@ function usercamp_add_title_option() {
 		);
 	}
 }
+
+/**
+ * Get comparison operators.
+ */
+function uc_get_comp_operators() {
+
+	$array = array(
+		'eq'		=> __( 'equals', 'usercamp' ),
+		'gt'		=> __( 'more than', 'usercamp' ),
+		'lt'		=> __( 'less than', 'usercamp' ),
+		'between'	=> __( 'between', 'usercamp' ),
+		'in'		=> __( 'in', 'usercamp' ),
+		'before'	=> __( 'before', 'usercamp' ),
+		'after'		=> __( 'after', 'usercamp' ),
+		'contains'	=> __( 'contains', 'usercamp' ),
+	);
+
+	return apply_filters( 'uc_get_comp_operators', $array );
+}

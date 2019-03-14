@@ -568,7 +568,7 @@ jQuery( function ( $ ) {
 
 			if ( item.length ) {
 				var pattern = item.attr( 'data-pattern' );
-				txt.val( txt.val().replace( '{' + pattern + '}', '' ) );
+				txt.val( txt.val().replace( pattern, '' ) );
 				item.remove();
 			}
 		} )
@@ -578,19 +578,25 @@ jQuery( function ( $ ) {
 			var el = $( this ).parents( '.uc-rule' ),
 				key = el.find( '#rule_key' ).val(),
 				exp = el.find( '#rule_exp' ).val(),
-				val = el.find( '#rule_val' ).val();
+				val = el.find( '#rule_val' ).val(),
+				txt = el.find( 'textarea' ),
+				pattern = '{' + encodeURIComponent(key) + '|' + encodeURIComponent(exp) + '|' + encodeURIComponent(val) + '}';
 
 			if ( ! val ) {
 				$( '#rule_val' ).focus().change();
 				return false;
 			}
 
-			var rule = '{' + encodeURIComponent(key) + '|' + encodeURIComponent(exp) + '|' + encodeURIComponent(val) + '}';
-			var txt = el.find( 'textarea' );
-			txt.val( txt.val() + rule );
+			txt.val( txt.val() + pattern );
 
 			el.find( '#rule_val' ).val( '' );
 			el.find( '.uc-rule-new' ).css( { 'padding-top' : 0, 'opacity' : 0, 'display' : 'none' } );
+
+			var $newitem = $( '.uc-rule-item:hidden' ).clone().appendTo( '.uc-rule-list' ).fadeIn( 'fast' ).removeClass( 'hidden' );
+			$newitem.html( $newitem.html().replace( '{key}', $( '#rule_key option:selected' ).text() ) );
+			$newitem.html( $newitem.html().replace( '{operator}',  $( '#rule_exp option:selected' ).text() ) );
+			$newitem.html( $newitem.html().replace( '{value}', val ) );
+			$newitem.attr( 'data-pattern', pattern );
 		} );
 
 } );

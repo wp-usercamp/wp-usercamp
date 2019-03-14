@@ -236,24 +236,24 @@ function usercamp_wp_rule( $field ) {
 	$operators				= uc_get_comp_operators();
 	$rules 					= array();
 
-	// Sort by fields by label.
-	usort( $fields, function( $a, $b ) { return strcmp( $a['label'], $b['label'] ); } );
-
 	// Get array of rules.
 	preg_match_all("/\{(.*?)\}/", $field['value'], $matches );
 	if ( is_array( $matches[1] ) && ! empty( $matches[1] ) ) {
-		foreach( $matches[1] as $match ) {
-			$data = explode( '|', $match );
+		foreach( $matches[1] as $pattern ) {
+			$data = explode( '|', $pattern );
 			if ( ! array_key_exists( $data[0], $fields ) )
 				continue;
 			$rules[] = array(
 				'key'		=> $fields[$data[0]]['label'],
 				'operator'	=> $operators[$data[1]],
 				'value'		=> urldecode( $data[2] ),
-				'match'		=> $match,
+				'pattern'	=> $pattern,
 			);
 		}
 	}
+
+	// Sort by fields by label.
+	usort( $fields, function( $a, $b ) { return strcmp( $a['label'], $b['label'] ); } );
 	?>
 
 	<fieldset class="form-field <?php echo esc_attr( $field['id'] ); ?>_field <?php echo esc_attr( $field['wrapper_class'] ); ?>" data-type="rule">
@@ -261,10 +261,19 @@ function usercamp_wp_rule( $field ) {
 		<div class="uc-rule">
 
 			<div class="uc-rule-list">
-				<?php foreach( (array) $rules as $rule ) { ?>
-				<div class="uc-rule-item" data-pattern="<?php echo esc_attr( $rule['match'] ); ?>">
+				<div class="uc-rule-item hidden" data-pattern="{pattern}">
 					<span class="rule_info">
-						<strong><?php echo esc_html( $rule['key'] ); ?></strong> <?php echo esc_html( $rule['operator'] ); ?> <strong><?php echo esc_html( $rule['value'] ); ?></strong>
+						<strong>{key}</strong> {operator} {value}
+					</span>
+					<span class="rule_actions">
+						<a href="#" class="edit"><i data-feather="edit-2"></i></a>
+						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
+					</span>
+				</div>
+				<?php foreach( (array) $rules as $rule ) { ?>
+				<div class="uc-rule-item" data-pattern="{<?php echo esc_attr( $rule['pattern'] ); ?>}">
+					<span class="rule_info">
+						<strong><?php echo esc_html( $rule['key'] ); ?></strong> <?php echo esc_html( $rule['operator'] ); ?> <?php echo esc_html( $rule['value'] ); ?>
 					</span>
 					<span class="rule_actions">
 						<a href="#" class="edit"><i data-feather="edit-2"></i></a>
@@ -280,7 +289,7 @@ function usercamp_wp_rule( $field ) {
 				<span class="rule_key">
 					<select class="uc-select" name="rule_key" id="rule_key">
 						<?php foreach( $fields as $key => $data ) { ?>
-						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $data['label'] ); ?></option>
+						<option value="<?php echo esc_attr( $data['key'] ); ?>"><?php echo esc_html( $data['label'] ); ?></option>
 						<?php } ?>
 					</select>
 				</span>
@@ -309,25 +318,6 @@ function usercamp_wp_rule( $field ) {
 	</fieldset>
 
 	<?php
-}
-
-/**
- * Get comparison operators.
- */
-function uc_get_comp_operators() {
-
-	$array = array(
-		'eq'		=> __( 'equals', 'usercamp' ),
-		'gt'		=> __( 'more than', 'usercamp' ),
-		'lt'		=> __( 'less than', 'usercamp' ),
-		'between'	=> __( 'between', 'usercamp' ),
-		'in'		=> __( 'in', 'usercamp' ),
-		'before'	=> __( 'before', 'usercamp' ),
-		'after'		=> __( 'after', 'usercamp' ),
-		'contains'	=> __( 'contains', 'usercamp' ),
-	);
-
-	return apply_filters( 'uc_get_comp_operators', $array );
 }
 
 /**
