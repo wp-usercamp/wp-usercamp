@@ -359,7 +359,6 @@ input[type=number]::-webkit-inner-spin-button {
 	color: #888;
 	background: #f9f9f9;
 	font-size: 12px;
-	cursor: default;
 	margin: 0 8px 8px 0;
 }
 

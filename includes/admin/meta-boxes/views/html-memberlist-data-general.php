@@ -78,6 +78,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</div>
 
+	<div class="options_group">
+		<?php
+		usercamp_wp_switch(
+			array(
+				'id'        		=> 'search',
+				'label'				=> __( 'Enable search', 'usercamp' ),
+				'value'				=> $the_memberlist->search,
+				'cbvalue'			=> 1,
+				'description'		=> __( 'If enabled, a search box will allow users to search other users.', 'usercamp' ),
+				'desc_tip'			=> true,
+			)
+		);
+
+		usercamp_wp_switch(
+			array(
+				'id'        		=> 'guest_search',
+				'label'				=> __( 'Guests can search?', 'usercamp' ),
+				'value'				=> $the_memberlist->guest_search,
+				'cbvalue'			=> 1,
+				'description'		=> __( 'If enabled, non-logged in users will be able to search users.', 'usercamp' ),
+				'desc_tip'			=> true,
+				'wrapper_class'		=> 'show_if_search_eq_yes hidden',
+			)
+		);
+		?>
+	</div>
+
 	<?php do_action( 'usercamp_memberlist_data_general_panel' ); ?>
 
 </div>

@@ -31,6 +31,8 @@ class UC_Memberlist extends UC_Abstract_Post {
 		'use_ajax',
 		'roles',
 		'rules',
+		'search',
+		'guest_search',
 	);
 
 }
