@@ -1,6 +1,6 @@
 <?php
 /**
- * Usercamp Message Functions
+ * Message Functions
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

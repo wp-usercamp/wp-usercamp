@@ -23,16 +23,17 @@ class UC_Shortcode_Form {
 	 * Output the shortcode.
 	 */
 	public static function output( $atts ) {
+		global $the_form;
 
-		$form = new UC_Form( $atts['id'] );
+		$the_form = new UC_Form( $atts['id'] );
 
 		// Check that form is there.
-		if ( ! array_key_exists( $form->type, usercamp_get_form_types() ) ) {
+		if ( ! array_key_exists( $the_form->type, usercamp_get_form_types() ) ) {
 			return;
 		}
 
 		// Load proper class.
-		$classname = 'UC_Shortcode_Form_' . ucfirst( $form->type );
+		$classname = 'UC_Shortcode_Form_' . ucfirst( $the_form->type );
 		if ( class_exists( $classname ) ) {
 			$classname::output( $atts );
 		}

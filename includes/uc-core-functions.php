@@ -103,6 +103,8 @@ function uc_array_insert_after( $key, array &$array, $new_key, $new_value ) {
  * Get template part.
  */
 function uc_get_template_part( $slug, $name = '' ) {
+	global $the_form;
+
 	$template = '';
 
 	// Look in yourtheme/slug-name.php and yourtheme/usercamp/slug-name.php.
@@ -132,8 +134,10 @@ function uc_get_template_part( $slug, $name = '' ) {
  * Get other templates (e.g. product attributes) passing attributes and including the file.
  */
 function uc_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+	global $the_form;
+
 	if ( ! empty( $args ) && is_array( $args ) ) {
-		extract( $args ); // @codingStandardsIgnoreLine
+		extract( $args );
 	}
 
 	$located = uc_locate_template( $template_name, $template_path, $default_path );
@@ -157,6 +161,8 @@ function uc_get_template( $template_name, $args = array(), $template_path = '', 
  * Like uc_get_template, but returns the HTML instead of outputting.
  */
 function uc_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+	global $the_form;
+
 	ob_start();
 	uc_get_template( $template_name, $args, $template_path, $default_path );
 	return ob_get_clean();
@@ -165,6 +171,8 @@ function uc_get_template_html( $template_name, $args = array(), $template_path =
  * Locate a template and return the path for inclusion.
  */
 function uc_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+	global $the_form;
+
 	if ( ! $template_path ) {
 		$template_path = uc()->template_path();
 	}
