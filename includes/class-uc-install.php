@@ -187,15 +187,16 @@ class UC_Install {
 			self::remove_roles();
 
 			// Delete options.
-			$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'usercamp\_%';" );
-			$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'widget\_usercamp\_%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'usercamp\_%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'widget\_usercamp\_%';" );
 
 			// Delete usermeta.
-			$wpdb->query( "DELETE FROM $wpdb->usermeta WHERE meta_key LIKE 'usercamp\_%';" );
-			$wpdb->query( "DELETE FROM $wpdb->usermeta WHERE meta_key LIKE '%_uc_%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'usercamp\_%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE '%_uc_%';" );
 
 			// Delete posts.
 			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'uc_form', 'uc_field', 'uc_role', 'uc_memberlist' );" );
+			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type = 'revision' AND post_status = 'inherit' AND post_content LIKE '[usercamp_form id=%';" );
 			$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
 
 			// Remove directories and files.

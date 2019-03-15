@@ -28,12 +28,14 @@ class UC_Shortcode_Form {
 
 		// Check that form is there.
 		if ( ! array_key_exists( $form->type, usercamp_get_form_types() ) ) {
-			return '';
+			return;
 		}
 
-		// Load correct class.
+		// Load proper class.
 		$classname = 'UC_Shortcode_Form_' . ucfirst( $form->type );
-		return $classname::output( $atts );
+		if ( class_exists( $classname ) ) {
+			$classname::output( $atts );
+		}
 	}
 
 }

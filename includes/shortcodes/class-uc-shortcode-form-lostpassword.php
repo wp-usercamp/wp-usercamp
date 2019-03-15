@@ -1,6 +1,6 @@
 <?php
 /**
- * Reset Password
+ * Lost Password
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Shortcode_Form_Resetpass Class.
+ * UC_Shortcode_Form_Lostpassword Class.
  */
-class UC_Shortcode_Form_Resetpass {
+class UC_Shortcode_Form_Lostpassword {
 
 	/**
 	 * Output the shortcode.

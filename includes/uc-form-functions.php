@@ -28,8 +28,8 @@ function usercamp_get_form_types() {
 			'label'		=> __( 'Account', 'usercamp' ),
 			'icon'		=> 'settings',
 		),
-		'resetpass'		=>	array(
-			'label'		=> __( 'Password Reset', 'usercamp' ),
+		'lostpassword'	=>	array(
+			'label'		=> __( 'Lost Password', 'usercamp' ),
 			'icon'		=> 'key',
 		),
 	) );
@@ -84,8 +84,8 @@ function usercamp_get_default_forms() {
 				3		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
 			),
 		),
-		'resetpass'		=> array(
-			'title'		=> __( 'Password Recovery Form', 'usercamp' ),
+		'lostpassword'	=> array(
+			'title'		=> __( 'Lost Password Form', 'usercamp' ),
 			'fields'	=> array(
 				0		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
 			),

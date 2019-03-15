@@ -81,6 +81,9 @@ abstract class UC_Abstract_Post {
 
 		// Get post data.
 		$data = get_post( $this->id );
+		if ( ! isset( $data->post_name ) ) {
+			return;
+		}
 
 		$this->post_title 	= $data->post_title;
 		$this->post_name 	= $data->post_name;
