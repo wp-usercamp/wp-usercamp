@@ -41,16 +41,18 @@ function uc_form_loop_column( $args = array() ) {
 function uc_get_field( $array ) {
 	global $the_form;
 
-	$field = $array['data'];
-	$field['classes'] = array();
+	$field 					= $array['data'];
+	$field['label_class'] 	= array();
+	$field['input_class'] 	= array();
 
-	// Get field value from submitted request.
+	// Force value if in $_REQUEST.
 	$field['value'] = $the_form->is_request && isset( $_REQUEST[ $field['key'] ] ) ? $_REQUEST[ $field['key'] ] : '';
 
 	// Add error class.
 	if ( ! empty( $the_form->error_fields ) ) {
 		if ( in_array( $field['key'], $the_form->error_fields ) ) {
-			$field['classes'][] = 'uc-error';
+			$field['label_class'][] = 'uc-error';
+			$field['input_class'][] = 'uc-error';
 		}
 	}
 

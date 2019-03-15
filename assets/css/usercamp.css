@@ -40,8 +40,8 @@
 .usercamp-error {
 	padding: 12px;
 	border-radius: 3px;
-	background: rgba(255, 83, 83, 0.05);
-	border: 1px solid rgba(255, 83, 83, 0.1);
+	background: rgba(187, 0, 0, 0.05);
+	border: 1px solid rgba(187, 0, 0, 0.1);
 	margin: 0 0 20px 0;
 }
 
@@ -156,6 +156,10 @@ a.usercamp-button.disabled {
 	line-height: 1.4em;
 }
 
+.usercamp-label label.uc-error {
+	color: rgba(187, 0, 0);
+}
+
 .usercamp-input input[type=text] {
 	width: 100%;
 	box-sizing: border-box;
@@ -180,5 +184,7 @@ a.usercamp-button.disabled {
 }
 
 .usercamp-input input[type=text].uc-error {
-	border: 1px solid rgba(255, 83, 83, 0.8);
+	border: 1px solid rgba(187, 0, 0, 0.8) !important;
+	background: rgba(187, 0, 0, 0.04) !important;
+	color: rgba(187, 0, 0) !important;
 }
