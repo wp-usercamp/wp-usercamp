@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 
 	<div class="usercamp-input">
-		<input type="text" name="<?php echo $field['key']; ?>" id="<?php echo $field['key']; ?>" /> 
+		<input type="text" name="<?php echo $field['key']; ?>" id="<?php echo $field['key']; ?>" value="<?php echo esc_attr( $field['value'] ); ?>" class="<?php echo esc_attr( implode( ' ', $field['classes'] ) ); ?>" /> 
 	</div>
 
 </fieldset>

@@ -19,18 +19,22 @@ class UC_Shortcode_Form_Lostpassword {
 		global $the_form;
 
 		if ( isset( $_REQUEST['user_email'] ) && wp_verify_nonce( $_REQUEST['usercamp-lost-password-nonce'], 'usercamp-lost-password' ) ) {
+			$the_form->is_request = true;
 
 			$email = empty( $_REQUEST['user_email'] ) ? '' : uc_clean( wp_unslash( $_REQUEST['user_email'] ) );
 
 			if ( ! $email ) {
+				$the_form->error( 'user_email' );
 				uc_add_notice( __( 'Please type your email.', 'usercamp' ), 'error' );
 			}
 
 			if ( ! is_email( $email ) ) {
+				$the_form->error( 'user_email' );
 				uc_add_notice( __( 'Invalid email format.', 'usercamp' ), 'error' );
 			}
 
 			if ( uc_notice_count( 'error' ) == 0 ) {
+				$the_form->is_request = false;
 				uc_add_notice( __( 'Instructions to reset your password will be sent to you shortly. Please check your email.', 'usercamp' ), 'success' );
 				self::password_reset( $email );
 			}

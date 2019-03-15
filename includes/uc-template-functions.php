@@ -39,5 +39,20 @@ function uc_form_loop_column( $args = array() ) {
  * Prepares custom field data.
  */
 function uc_get_field( $array ) {
-	return apply_filters( 'uc_get_field', $array['data'] );
+	global $the_form;
+
+	$field = $array['data'];
+	$field['classes'] = array();
+
+	// Get field value from submitted request.
+	$field['value'] = $the_form->is_request && isset( $_REQUEST[ $field['key'] ] ) ? $_REQUEST[ $field['key'] ] : '';
+
+	// Add error class.
+	if ( ! empty( $the_form->error_fields ) ) {
+		if ( in_array( $field['key'], $the_form->error_fields ) ) {
+			$field['classes'][] = 'uc-error';
+		}
+	}
+
+	return apply_filters( 'uc_get_field', $field );
 }

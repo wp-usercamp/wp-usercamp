@@ -25,6 +25,16 @@ abstract class UC_Abstract_Post {
 	);
 
 	/**
+	 * Is this a request?
+	 */
+	public $is_request = false;
+
+	/**
+	 * Array containing wrong fields.
+	 */
+	public $error_fields = array();
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct( $post_id = '' ) {
@@ -237,6 +247,15 @@ abstract class UC_Abstract_Post {
 			$new->add_new( $slug, $title, $wp_roles->roles[$this->post_name]['capabilities'] );
 		}
 
+	}
+
+	/**
+	 * Sets fields to have error.
+	 */
+	public function error( $field ) {
+		if ( ! in_array( $field, $this->error_fields ) ) {
+			$this->error_fields[] = $field;
+		}
 	}
 
 }
