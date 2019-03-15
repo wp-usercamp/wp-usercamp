@@ -1,15 +1,180 @@
+/* Core */
 .usercamp,
 .usercamp * {
 	padding: 0;
 	margin: 0;
 	border: 0;
+	outline: 0 !important;
 	line-height: 1;
 	width: auto;
 	height: auto;
 	float: none;
+	color: #666;
+}
+
+.usercamp input[type=text],
+.usercamp input[type=text]:hover,
+.usercamp input[type=text]:focus {
+	color: #666;
 }
 
 .usercamp {
 	padding: 30px 0;
 	font-size: 1em;
+}
+
+.usercamp-lostpassword {
+	margin: 0 auto;
+	max-width: 450px;
+}
+
+/* Elements */
+.usercamp-text {
+	line-height: 1.6em;
+	padding: 0 0 15px 0;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+/* Message box */
+.usercamp-message,
+.usercamp-error {
+	padding: 12px;
+	border-radius: 3px;
+	background: rgba(255, 83, 83, 0.05);
+	border: 1px solid rgba(255, 83, 83, 0.10);
+	margin: 0 0 20px 0;
+}
+
+.usercamp-error li {
+	margin: 0 0 0 40px;
+	color: #999;
+	font-size: 0.9em;
+	line-height: 1.4em;
+	padding: 3px 0;
+	list-style-type: disc;
+}
+
+.usercamp-error li.usercamp-error-header {
+	list-style-type: none;
+	font-weight: bold;
+	color: #777;
+}
+
+.usercamp-message {
+	padding: 15px;
+	background: #fff;
+	border: 1px solid rgba(60, 118, 61, 0.25);
+	font-size: 0.9em;
+	line-height: 1.4em;
+}
+
+/* Buttons */
+.usercamp-buttons {
+	padding: 15px 0 0 0;
+}
+
+.usercamp-buttons::after {
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.usercamp-buttons a.usercamp-button {
+	float: left;
+	width: 48%;
+}
+
+.usercamp-buttons a.usercamp-button:first-child {
+	margin-right: 4%;
+}
+
+a.usercamp-button {
+	display: inline-block;
+	text-align: center;
+	padding: 0.675em 0;
+	text-decoration: none !important;
+	transition: none;
+	border-radius: 3px;
+	box-sizing: border-box;
+	font-weight: 600;
+}
+
+a.usercamp-button.main {
+	background: rgb(91, 157, 217);
+	color: #fff !important;
+	border: 1px solid rgb(91, 157, 217);
+}
+
+a.usercamp-button.main:hover {
+	background: rgb(66, 133, 193);
+	border: 1px solid rgb(66, 133, 193);
+}
+
+a.usercamp-button.main:focus,
+a.usercamp-button.main:active {
+	background: rgb(0, 115, 187);
+	border: 1px solid rgb(0, 115, 187);
+}
+
+a.usercamp-button.alt {
+	background: #fff !important;
+	color: #888;
+	border: 1px solid #eee;
+}
+
+a.usercamp-button.alt:hover {
+	color: #777;
+	border: 1px solid #ddd;
+}
+
+a.usercamp-button.alt:focus,
+a.usercamp-button.alt:active {
+	color: #666;
+	border: 1px solid #ccc;
+}
+
+a.usercamp-button.disabled {
+	opacity: 0.3;
+	cursor: default;
+}
+
+/* Fields */
+.usercamp-field {
+	padding: 5px 0;
+	margin: 9px 0;
+}
+
+.usercamp-label {
+	margin: 0 0 8px 0;
+}
+
+.usercamp-label label {
+	cursor: pointer;
+	font-weight: 600;
+	line-height: 1.4em;
+}
+
+.usercamp-input input[type=text] {
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 14px;
+	line-height: 16px;
+	padding: 8px 10px;
+	margin: 0;
+	border-radius: 3px;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.05) !important;
+	transition: 50ms border-color ease-in-out;
+	border: 1px solid #eee;
+}
+
+.usercamp-input input[type=text]:hover {
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+	border: 1px solid #eee;
+}
+
+.usercamp-input input[type=text]:focus {
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+	border: 1px solid #ddd;
 }

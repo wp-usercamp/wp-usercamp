@@ -34,3 +34,10 @@ function uc_form_loop_end() {
 function uc_form_loop_column( $args = array() ) {
 	uc_get_template( 'loop/loop-column.php', $args );
 }
+
+/**
+ * Prepares custom field data.
+ */
+function uc_get_field( $array ) {
+	return apply_filters( 'uc_get_field', $array['data'] );
+}

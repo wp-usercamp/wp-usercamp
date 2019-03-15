@@ -44,6 +44,7 @@ final class UserCamp {
 	 */
 	private function init_hooks() {
 		register_activation_hook( UC_PLUGIN_FILE, array( 'UC_Install', 'install' ) );
+		add_action( 'after_setup_theme', array( $this, 'include_template_functions' ), 11 );
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'UC_Shortcodes', 'init' ) );
 	}
@@ -125,8 +126,14 @@ final class UserCamp {
 	 */
 	public function frontend_includes() {
 		include_once UC_ABSPATH . 'includes/uc-notice-functions.php';
-		include_once UC_ABSPATH . 'includes/uc-template-functions.php';
 		include_once UC_ABSPATH . 'includes/class-uc-frontend-scripts.php';
+	}
+
+	/**
+	 * Function used to Init Template Functions - This makes them pluggable by plugins and themes.
+	 */
+	public function include_template_functions() {
+		include_once UC_ABSPATH . 'includes/uc-template-functions.php';
 	}
 
 	/**
