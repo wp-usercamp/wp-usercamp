@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Shortcode my account class.
+ * UC_Shortcode_Form Class.
  */
 class UC_Shortcode_Form {
 
@@ -31,14 +31,9 @@ class UC_Shortcode_Form {
 			return '';
 		}
 
-		self::{$form->type}( $atts );
-	}
-
-	/**
-	 * Register.
-	 */
-	public static function register( $atts ) {
-
+		// Load correct class.
+		$classname = 'UC_Shortcode_Form_' . ucfirst( $form->type );
+		return $classname::output( $atts );
 	}
 
 }

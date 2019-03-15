@@ -41,7 +41,7 @@ class UC_Admin_Assets {
 			wp_enqueue_style( 'usercamp_admin_styles' );
 		}
 
-	}
+	}	
 
 	/**
 	 * Enqueue scripts.
@@ -58,8 +58,8 @@ class UC_Admin_Assets {
 		wp_register_script( 'jquery-tiptip', uc()->plugin_url() . '/assets/js/jquery-tiptip/jquery-tiptip.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-toggles', uc()->plugin_url() . '/assets/js/jquery-toggles/jquery-toggles.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-modal', uc()->plugin_url() . '/assets/js/jquery-modal/jquery-modal.js', array( 'jquery' ), UC_VERSION, true );
-		wp_register_script( 'feather-icons', uc()->plugin_url() . '/assets/js/feather-icons/feather-icons.js', array( 'jquery' ), UC_VERSION, true );
-		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-helper', 'jquery-selectize', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal', 'feather-icons' ), UC_VERSION, true );
+		wp_register_script( 'jquery-feather', uc()->plugin_url() . '/assets/js/jquery-feather/jquery-feather.js', array( 'jquery' ), UC_VERSION, true );
+		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-helper', 'jquery-selectize', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal', 'jquery-feather' ), UC_VERSION, true );
 
 		// Usercamp admin pages.
 		if ( in_array( $screen_id, uc_get_screen_ids() ) ) {
