@@ -19,7 +19,7 @@ jQuery( function( $ ) {
 		.on( 'submit', '.usercamp form', function(e) {
 			var t = $( this );
 
-			if ( t.attr( 'data-ajax' ) != 'true' ) {
+			if ( t.attr( 'data-ajax' ) != 'yes' ) {
 				return true;
 			}
 			e.preventDefault();

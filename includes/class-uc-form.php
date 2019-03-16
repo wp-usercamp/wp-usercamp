@@ -29,6 +29,7 @@ class UC_Form extends UC_Abstract_Post {
 		'fields',
 		'row_count',
 		'cols',
+		'use_ajax',
 	);
 
 	/**

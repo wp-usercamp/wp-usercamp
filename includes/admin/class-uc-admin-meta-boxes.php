@@ -30,6 +30,9 @@ class UC_Admin_Meta_Boxes {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ), 1, 2 );
 
+		// Save Form Meta Boxes.
+		add_action( 'uc_form_process_metadata', 'UC_Meta_Box_Form_Data::save', 10, 2 );
+
 		// Save Custom Field Meta Boxes.
 		add_action( 'uc_field_process_metadata', 'UC_Meta_Box_Field_Data::save', 10, 2 );
 
@@ -62,6 +65,7 @@ class UC_Admin_Meta_Boxes {
 
 		// Forms.
 		add_meta_box( 'usercamp-form-builder', __( 'Form Builder', 'usercamp' ), 'UC_Meta_Box_Form_Builder::output', 'uc_form', 'normal', 'high' );
+		add_meta_box( 'usercamp-form-data', __( 'Form Settings', 'usercamp' ), 'UC_Meta_Box_Form_Data::output', 'uc_form', 'normal', 'high' );
 		add_meta_box( 'usercamp-form-shortcode', __( 'Shortcode', 'usercamp' ), 'UC_Meta_Box_Form_Shortcode::output', 'uc_form', 'side', 'default' );
 
 		// Custom fields.
