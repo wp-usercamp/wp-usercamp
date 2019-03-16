@@ -50,11 +50,9 @@ function uc_get_field( $array ) {
 	$field['value'] = $the_form->is_request && isset( $_REQUEST[ $field['key'] ] ) ? $_REQUEST[ $field['key'] ] : '';
 
 	// Add error class.
-	if ( ! empty( $the_form->error_fields ) ) {
-		if ( in_array( $field['key'], $the_form->error_fields ) ) {
-			$field['label_class'][] = 'uc-error';
-			$field['input_class'][] = 'uc-error';
-		}
+	if ( $the_form->has_error( $field['key'] ) ) {
+		$field['label_class'][] = 'uc-error';
+		$field['input_class'][] = 'uc-error';
 	}
 
 	// Add to field wrap.

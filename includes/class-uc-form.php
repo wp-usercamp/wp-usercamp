@@ -58,12 +58,39 @@ class UC_Form extends UC_Abstract_Post {
 	}
 
 	/**
+	 * Check if form has errors.
+	 */
+	public function got_errors() {
+		return ! empty( $this->error_fields );
+	}
+
+	/**
 	 * Sets fields to have error.
 	 */
 	public function error( $field ) {
 		if ( ! in_array( $field, $this->error_fields ) ) {
 			$this->error_fields[] = $field;
 		}
+	}
+
+	/**
+	 * Check if key is an error.
+	 */
+	public function has_error( $key ) {
+		return in_array( $key, $this->error_fields );
+	}
+
+	/**
+	 * Get error fields.
+	 */
+	public function get_error_fields() {
+		$error_fields = null;
+		if ( ! empty( $this->error_fields ) ) {
+			foreach( $this->error_fields as $field ) {
+				$error_fields[] = '.' . $field . '_field';
+			}
+		}
+		return $error_fields;
 	}
 
 	/**

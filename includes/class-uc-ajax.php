@@ -64,15 +64,7 @@ class UC_AJAX {
 
 		$html = uc_print_notices( true );
 
-		if ( ! empty( $the_form->error_fields ) ) {
-			foreach( $the_form->error_fields as $field ) {
-				$error_fields[] = '.' . $field . '_field';
-			}
-		} else {
-			$error_fields = null;
-		}
-
-		wp_send_json( array( 'html' => $html, 'error_fields' => $error_fields ) );
+		wp_send_json( array( 'html' => $html, 'error_fields' => $the_form->get_error_fields() ) );
 	}
 
 	/**
