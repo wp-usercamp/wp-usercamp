@@ -32,6 +32,16 @@ class UC_Form extends UC_Abstract_Post {
 	);
 
 	/**
+	 * Does the form have fields?
+	 */
+	public function has_fields() {
+		if ( ! empty( $this->fields ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Get fields per specific row.
 	 */
 	public function fields_in( $row = 0, $col = 0 ) {

@@ -44,6 +44,7 @@ function uc_get_field( $array ) {
 	$field 					= $array['data'];
 	$field['label_class'] 	= array();
 	$field['input_class'] 	= array();
+	$field['field_class']	= array();
 
 	// Force value if in $_REQUEST.
 	$field['value'] = $the_form->is_request && isset( $_REQUEST[ $field['key'] ] ) ? $_REQUEST[ $field['key'] ] : '';
@@ -55,6 +56,9 @@ function uc_get_field( $array ) {
 			$field['input_class'][] = 'uc-error';
 		}
 	}
+
+	// Add to field wrap.
+	$field['field_class'][] = $field['key'] . '_field';
 
 	return apply_filters( 'uc_get_field', $field );
 }

@@ -27,7 +27,15 @@ jQuery( function( $ ) {
 			$.post( usercamp_params.ajaxurl, t.serialize() + '&action=usercamp_send_form&id=' + t.attr( 'data-id' ), function(response) {
 				t.find( '.usercamp-button.main' ).removeClass( 'disabled' );
 				t.find( '.usercamp-error, .usercamp-message, .usercamp-info' ).remove();
+				t.find( '.uc-error' ).removeClass( 'uc-error' );
 				t.prepend( response.html );
+				if ( response.error_fields ) {
+					$.each( response.error_fields, function( i, e ) {
+						t.find(e).find( 'label, input' ).addClass( 'uc-error' );
+					} );
+				} else {
+					t.find( ':input:not([type=hidden])' ).val( '' );
+				}
 			} );
 
 		} );

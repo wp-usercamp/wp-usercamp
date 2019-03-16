@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( $the_form->row_count <= 0 ) {
+if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 	return;
 }
 
