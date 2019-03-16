@@ -62,9 +62,7 @@ class UC_AJAX {
 
 		endswitch;
 
-		$html = uc_print_notices( true );
-
-		wp_send_json( array( 'html' => $html, 'error_fields' => $the_form->get_error_fields() ) );
+		wp_send_json( array( 'html' => uc_print_notices( true ), 'error_fields' => $the_form->get_error_fields() ) );
 	}
 
 	/**
