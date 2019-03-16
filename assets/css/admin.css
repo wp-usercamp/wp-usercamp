@@ -160,11 +160,12 @@ span.duplicate a.disabled {
 
 /* Options panel */
 #usercamp-form-data .inside,
+#usercamp-form-builder .inside,
+#usercamp-form-instances .inside,
 #usercamp-field-data .inside,
 #usercamp-role-data .inside,
-#usercamp-memberlist-data .inside,
-#usercamp-form-builder .inside,
-#usercamp-form-instances .inside {
+#usercamp-role-caps .inside,
+#usercamp-memberlist-data .inside {
 	margin: 0;
 	padding: 0;
 }
@@ -172,6 +173,7 @@ span.duplicate a.disabled {
 #usercamp-form-data .panel-wrap,
 #usercamp-field-data .panel-wrap,
 #usercamp-role-data .panel-wrap,
+#usercamp-role-caps .panel-wrap,
 #usercamp-memberlist-data .panel-wrap,
 .panel-wrap {
     background: #fff;

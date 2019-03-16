@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="forms_role_data" class="panel usercamp_options_panel">
+<div id="access_role_caps" class="panel usercamp_options_panel">
 
 	<div class="options_group">
 		<?php
-		$opts = array( 'publish_uc_forms', 'edit_uc_forms', 'delete_uc_forms' );
+		$opts = array( 'uc_log_in' );
 		foreach( $opts as $opt ) {
 			usercamp_wp_switch(
 				array(
@@ -22,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</div>
 
-	<?php do_action( 'usercamp_role_data_forms_panel' ); ?>
+	<?php do_action( 'usercamp_role_caps_access_panel' ); ?>
 
 </div>

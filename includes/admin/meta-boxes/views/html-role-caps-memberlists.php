@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="memberlists_role_data" class="panel usercamp_options_panel">
+<div id="memberlists_role_caps" class="panel usercamp_options_panel">
 
 	<div class="options_group">
 		<?php
@@ -22,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</div>
 
-	<?php do_action( 'usercamp_role_data_memberlists_panel' ); ?>
+	<?php do_action( 'usercamp_role_caps_memberlists_panel' ); ?>
 
 </div>

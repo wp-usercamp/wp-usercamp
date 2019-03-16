@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			array(
 				'id'        		=> 'use_ajax',
 				'label'				=> __( 'Show results with ajax', 'usercamp' ),
-				'value'				=> $the_memberlist->use_ajax ? $the_memberlist->use_ajax : 'yes',
+				'value'				=> $the_memberlist->use_ajax,
 				'description'		=> __( 'If enabled, new results will be displayed without refreshing the page.', 'usercamp' ),
 				'desc_tip'			=> true,
 			)

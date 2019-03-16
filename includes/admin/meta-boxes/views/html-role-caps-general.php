@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="admin_role_data" class="panel usercamp_options_panel">
+<div id="general_role_caps" class="panel usercamp_options_panel">
 
 	<div class="options_group">
 		<?php
-		$opts = array( 'uc_edit_users', 'uc_delete_users', 'uc_alter_users' );
+		$opts = array( 'uc_edit_profile' );
 		foreach( $opts as $opt ) {
 			usercamp_wp_switch(
 				array(
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="options_group">
 		<?php
-		$opts = array( 'uc_access_wpadmin' );
+		$opts = array( 'uc_view_profiles', 'uc_view_memberlist', 'uc_search_memberlist' );
 		foreach( $opts as $opt ) {
 			usercamp_wp_switch(
 				array(
@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="options_group">
 		<?php
-		$opts = array( 'uc_settings', 'uc_addons', 'manage_usercamp' );
+		$opts = array( 'uc_view_private', 'uc_view_private_data' );
 		foreach( $opts as $opt ) {
 			usercamp_wp_switch(
 				array(
@@ -54,6 +54,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</div>
 
-	<?php do_action( 'usercamp_role_data_admin_panel' ); ?>
+	<?php do_action( 'usercamp_role_caps_general_panel' ); ?>
 
 </div>

@@ -38,6 +38,7 @@ class UC_Admin_Meta_Boxes {
 
 		// Save User Role Meta Boxes.
 		add_action( 'uc_role_process_metadata', 'UC_Meta_Box_Role_Data::save', 10, 2 );
+		add_action( 'uc_role_process_metadata', 'UC_Meta_Box_Role_Caps::save', 10, 2 );
 
 		// Save Member List Meta Boxes.
 		add_action( 'uc_memberlist_process_metadata', 'UC_Meta_Box_Memberlist_Data::save', 10, 2 );
@@ -66,18 +67,19 @@ class UC_Admin_Meta_Boxes {
 		// Forms.
 		add_meta_box( 'usercamp-form-data', __( 'Form Settings', 'usercamp' ), 'UC_Meta_Box_Form_Data::output', 'uc_form', 'normal', 'high' );
 		add_meta_box( 'usercamp-form-builder', __( 'Form Builder', 'usercamp' ), 'UC_Meta_Box_Form_Builder::output', 'uc_form', 'normal', 'default' );
-		add_meta_box( 'usercamp-form-shortcode', __( 'Shortcode', 'usercamp' ), 'UC_Meta_Box_Form_Shortcode::output', 'uc_form', 'side', 'default' );
-		add_meta_box( 'usercamp-form-instances', __( 'Pages', 'usercamp' ), 'UC_Meta_Box_Form_Instances::output', 'uc_form', 'side', 'default' );
+		add_meta_box( 'usercamp-form-shortcode', __( 'Form Shortcode', 'usercamp' ), 'UC_Meta_Box_Form_Shortcode::output', 'uc_form', 'side', 'default' );
+		add_meta_box( 'usercamp-form-instances', __( 'Form Pages', 'usercamp' ), 'UC_Meta_Box_Form_Instances::output', 'uc_form', 'side', 'default' );
 
 		// Custom fields.
 		add_meta_box( 'usercamp-field-data', __( 'Custom Field Settings', 'usercamp' ), 'UC_Meta_Box_Field_Data::output', 'uc_field', 'normal', 'high' );
 
 		// User roles.
-		add_meta_box( 'usercamp-role-data', __( 'Edit Role Permissions', 'usercamp' ), 'UC_Meta_Box_Role_Data::output', 'uc_role', 'normal', 'high' );
+		add_meta_box( 'usercamp-role-data', __( 'User Role Settings', 'usercamp' ), 'UC_Meta_Box_Role_Data::output', 'uc_role', 'normal', 'high' );
+		add_meta_box( 'usercamp-role-caps', __( 'User Role Capabilities', 'usercamp' ), 'UC_Meta_Box_Role_Caps::output', 'uc_role', 'normal', 'default' );
 
 		// Member Lists.
 		add_meta_box( 'usercamp-memberlist-data', __( 'Member List Settings', 'usercamp' ), 'UC_Meta_Box_Memberlist_Data::output', 'uc_memberlist', 'normal', 'high' );
-		add_meta_box( 'usercamp-memberlist-shortcode', __( 'Shortcode', 'usercamp' ), 'UC_Meta_Box_Memberlist_Shortcode::output', 'uc_memberlist', 'side', 'default' );
+		add_meta_box( 'usercamp-memberlist-shortcode', __( 'Member List Shortcode', 'usercamp' ), 'UC_Meta_Box_Memberlist_Shortcode::output', 'uc_memberlist', 'side', 'default' );
 	}
 
 	/**

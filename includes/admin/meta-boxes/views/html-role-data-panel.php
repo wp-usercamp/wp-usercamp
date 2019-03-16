@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<a href="#<?php echo esc_attr( $tab['target'] ); ?>"><i data-feather="<?php echo esc_html( $tab['icon'] ); ?>"></i><span><?php echo esc_html( $tab['label'] ); ?></span></a>
 			</li>
 		<?php endforeach; ?>
-		<?php do_action( 'usercamp_role_write_panel_tabs' ); ?>
+		<?php do_action( 'usercamp_role_write_data_tabs' ); ?>
 	</ul>
 
 	<?php

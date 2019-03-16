@@ -8,8 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="options_group">
 		<?php
-		do_action( 'usercamp_before_general_field_options' );
-
 		usercamp_wp_text_input(
 			array(
 				'id'          		=> 'key',
@@ -149,8 +147,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'wrapper_class' 	=> 'show_if_type_eq_file hidden',
 			)
 		);
-
-		do_action( 'usercamp_after_general_field_options' );
 		?>
 	</div>
 
