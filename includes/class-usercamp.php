@@ -125,7 +125,6 @@ final class UserCamp {
 	 * Include required frontend files.
 	 */
 	public function frontend_includes() {
-		include_once UC_ABSPATH . 'includes/uc-notice-functions.php';
 		include_once UC_ABSPATH . 'includes/class-uc-frontend-scripts.php';
 	}
 
@@ -134,6 +133,7 @@ final class UserCamp {
 	 */
 	public function include_template_functions() {
 		include_once UC_ABSPATH . 'includes/uc-template-functions.php';
+		include_once UC_ABSPATH . 'includes/uc-notice-functions.php';
 	}
 
 	/**

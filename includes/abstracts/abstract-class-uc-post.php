@@ -249,13 +249,4 @@ abstract class UC_Abstract_Post {
 
 	}
 
-	/**
-	 * Sets fields to have error.
-	 */
-	public function error( $field ) {
-		if ( ! in_array( $field, $this->error_fields ) ) {
-			$this->error_fields[] = $field;
-		}
-	}
-
 }

@@ -17,13 +17,13 @@ if ( $the_form->row_count <= 0 ) {
 
 	<?php uc_print_notices(); ?>
 
-	<div class="usercamp-text"><?php _e( 'Please write your email in the box below and we’ll send you a link to the password reset page.', 'usercamp' ); ?></div>
+	<div class="usercamp-text"><?php echo esc_html( $atts[ 'top_note' ] ); ?></div>
 
 	<?php uc_form_loop_edit(); ?>
 
 	<div class="usercamp-buttons">
-		<a href="#" class="usercamp-button main"><?php _e( 'Retrieve Password', 'usercamp' ); ?></a>
-		<a href="#" class="usercamp-button alt"><?php _e( 'Wait, I remember!', 'usercamp' ); ?></a>
+		<a href="#" class="usercamp-button main"><?php echo esc_html( $atts[ 'retrieve_password' ] ); ?></a>
+		<a href="#" class="usercamp-button alt"><?php echo esc_html( $atts[ 'log_in' ] ); ?></a>
 	</div>
 
 	<?php wp_nonce_field( 'usercamp-lost-password', 'usercamp-lost-password-nonce' ); ?>

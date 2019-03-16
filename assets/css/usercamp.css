@@ -31,7 +31,7 @@
 /* Elements */
 .usercamp-text {
 	line-height: 1.6em;
-	padding: 0 0 15px 0;
+	padding: 0 0 20px 0;
 	color: rgba(0, 0, 0, 0.4);
 }
 
@@ -47,7 +47,6 @@
 
 .usercamp-error li {
 	margin: 0 0 0 40px;
-	color: #999;
 	font-size: 0.9em;
 	line-height: 1.4em;
 	padding: 3px 0;
@@ -57,7 +56,6 @@
 .usercamp-error li.usercamp-error-header {
 	list-style-type: none;
 	font-weight: bold;
-	color: #777;
 }
 
 .usercamp-message {
@@ -70,7 +68,7 @@
 
 /* Buttons */
 .usercamp-buttons {
-	padding: 15px 0 0 0;
+	padding: 20px 0 0 0;
 }
 
 .usercamp-buttons::after {
@@ -142,8 +140,7 @@ a.usercamp-button.disabled {
 
 /* Fields */
 .usercamp-field {
-	padding: 5px 0;
-	margin: 9px 0;
+	padding: 0 0 20px 0;
 }
 
 .usercamp-label {
