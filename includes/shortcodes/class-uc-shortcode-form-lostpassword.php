@@ -39,6 +39,8 @@ class UC_Shortcode_Form_Lostpassword {
 				uc_add_notice( __( 'Invalid email format.', 'usercamp' ), 'error' );
 			}
 
+			$the_form->validate();
+
 			// Fired before the actual password reset email and notice.
 			do_action( 'usercamp_pre_password_reset' );
 

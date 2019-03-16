@@ -56,4 +56,38 @@ class UC_Form extends UC_Abstract_Post {
 		}
 	}
 
+	/**
+	 * Validation of user input.
+	 */
+	public function validate() {
+		if ( empty( $this->fields ) ) {
+			return;
+		}
+		foreach( $this->fields as $key => $array ) {
+			$data = $array['data'];
+			$validate = 'validate_' . $data['type'];
+			if ( method_exists( $this, $validate ) ) {
+				$this->{$validate}( $data );
+			} else {
+				$this->validate_input( $data );
+			}
+		}
+	}
+
+	/**
+	 * Default validation.
+	 */
+	public function validate_input( $data ) {
+		extract( $data );
+
+		$value = ! isset( $_REQUEST[ $key ] ) ? '' : uc_clean( wp_unslash( $_REQUEST[ $key ] ) );
+
+		// Check if required.
+		if ( ! $value && (bool) $is_required == 1 ) {
+			$this->error( $key );
+			uc_add_notice( sprintf( __( '%s is required.', 'usercamp' ), $label ), 'error' );
+		}
+
+	}
+
 }

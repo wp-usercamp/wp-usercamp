@@ -25,7 +25,7 @@ jQuery( function ( $ ) {
 			$( '.uc-bld-col .uc-bld-elem:visible' ).each( function() {
 				var thisdata = {};
 				$.each( $( this ).data(), function( k, v ) {
-					if ( typeof v === 'string' ) {
+					if ( typeof v === 'string' || typeof v === 'number' ) {
 						thisdata[ k ] = v;
 					}
 				} );
@@ -155,7 +155,7 @@ jQuery( function ( $ ) {
 			var $e = $( '.uc-bld-elem.hidden:first' ).clone().appendTo( this.active );
 			$e.html( $e.html().replace( /{label}/i, el.html() ) );
 			$e.html( $e.html().replace( /{key}/i, el.attr( 'data-key' ) ) );
-			$e.html( $e.html().replace( /{icon}/i, el.attr( 'data-icon' ) ? el.attr( 'data-icon' ) : '<i data-feather="'+ el.attr( 'data-noicon' ) +'"></i>' ) );
+			$e.html( $e.html().replace( /{icon}/i, el.attr( 'data-icon' ) ? '<i data-feather="' + el.attr( 'data-icon' ) + '"></i>' : '<i data-feather="' + el.attr( 'data-noicon' ) + '"></i>' ) );
 			$.each( el.data(), function (name, value) { $e.attr( 'data-'+name, value ); } );
 			$e.show().removeClass( 'hidden' );
 			this.sortables();

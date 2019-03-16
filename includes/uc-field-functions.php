@@ -184,6 +184,7 @@ function usercamp_create_default_fields() {
 					'type'			=> isset( $data['type'] ) ? $data['type'] : '',
 					'is_private'	=> isset( $data['is_private'] ) ? $data['is_private'] : '',
 					'is_readonly'	=> isset( $data['is_readonly'] ) ? $data['is_readonly'] : '',
+					'is_required'	=> isset( $data['is_required'] ) ? $data['is_required'] : '',
 					'can_view'		=> isset( $data['can_view'] ) ? $data['can_view'] : '',
 					'icon'			=> isset( $data['icon'] ) ? $data['icon'] : '',
 			) );
