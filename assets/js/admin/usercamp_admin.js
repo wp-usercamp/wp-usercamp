@@ -461,7 +461,7 @@ jQuery( function ( $ ) {
 		// New field.
 		.on( 'click', '.new_field', function() {
 			uc_builder.field_type = $( this ).attr( 'data-type' );
-			$( '#type' )[0].selectize.setValue( uc_builder.field_type, true );
+			$( '.modal #type' )[0].selectize.setValue( uc_builder.field_type, true );
 		} )
 
 		// After field modal is open.

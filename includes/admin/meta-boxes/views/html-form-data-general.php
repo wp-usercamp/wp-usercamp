@@ -8,6 +8,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="options_group">
 		<?php
+		usercamp_wp_select(
+			array(
+				'id'          		=> '_type',
+				'value'       		=> $the_form->type,
+				'label'       		=> __( 'Form type', 'usercamp' ),
+				'options'     		=> array_combine( array_keys( usercamp_get_form_types() ), array_column( usercamp_get_form_types(), 'label' ) ),
+				'description' 		=> __( 'Choose a type for this form.', 'usercamp' ),
+				'desc_tip'			=> true,
+			)
+		);
+
 		usercamp_wp_switch(
 			array(
 				'id'        		=> 'use_ajax',

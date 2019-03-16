@@ -64,8 +64,8 @@ class UC_Admin_Meta_Boxes {
 		$screen_id = $screen ? $screen->id : '';
 
 		// Forms.
-		add_meta_box( 'usercamp-form-builder', __( 'Form Builder', 'usercamp' ), 'UC_Meta_Box_Form_Builder::output', 'uc_form', 'normal', 'high' );
 		add_meta_box( 'usercamp-form-data', __( 'Form Settings', 'usercamp' ), 'UC_Meta_Box_Form_Data::output', 'uc_form', 'normal', 'high' );
+		add_meta_box( 'usercamp-form-builder', __( 'Form Builder', 'usercamp' ), 'UC_Meta_Box_Form_Builder::output', 'uc_form', 'normal', 'default' );
 		add_meta_box( 'usercamp-form-shortcode', __( 'Shortcode', 'usercamp' ), 'UC_Meta_Box_Form_Shortcode::output', 'uc_form', 'side', 'default' );
 
 		// Custom fields.

@@ -81,6 +81,7 @@ class UC_Meta_Box_Form_Data {
 
 		$the_form = new UC_Form( $post_id );
 
+		$props['type']         			= isset( $_POST['_type'] ) ? uc_clean( wp_unslash( $_POST['_type'] ) ) : '';
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
 
 		$the_form->save( $props );
