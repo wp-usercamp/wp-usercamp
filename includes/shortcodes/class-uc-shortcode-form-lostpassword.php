@@ -70,10 +70,15 @@ class UC_Shortcode_Form_Lostpassword {
 	 * Start password reset process.
 	 */
 	public static function password_reset( $email ) {
+		global $the_form;
 
 		if ( ! email_exists( $email ) ) {
 			return;
 		}
+
+		// Send email notification.
+		uc()->mailer();
+		do_action( 'usercamp_reset_password_notification', $email );
 
 	}
 

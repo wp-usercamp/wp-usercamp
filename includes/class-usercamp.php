@@ -29,6 +29,15 @@ final class UserCamp {
 	}
 
 	/**
+	 * Auto-load in-accessible properties on demand.
+	 */
+	public function __get( $key ) {
+		if ( in_array( $key, array( 'mailer' ), true ) ) {
+			return $this->$key();
+		}
+	}
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -194,6 +203,13 @@ final class UserCamp {
 	 */
 	public function ajax_url() {
 		return admin_url( 'admin-ajax.php', 'relative' );
+	}
+
+	/**
+	 * Email Class.
+	 */
+	public function mailer() {
+		return UC_Emails::instance();
 	}
 
 }
