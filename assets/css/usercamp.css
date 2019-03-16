@@ -37,17 +37,32 @@
 
 /* Message box */
 .usercamp-message,
-.usercamp-error {
+.usercamp-error,
+.usercamp-info {
 	padding: 12px;
 	border-radius: 3px;
 	background: rgba(187, 0, 0, 0.05);
 	border: 1px solid rgba(187, 0, 0, 0.1);
 	margin: 0 0 20px 0;
+	font-size: 0.9em;
+}
+
+.usercamp-message,
+.usercamp-info {
+	padding: 15px;
+	background: #fff;
+	border: 1px solid rgba(60, 118, 61, 0.25);
+	line-height: 1.4em;
+}
+
+.usercamp-info {
+	background: #fcfcfc;
+	border: 1px solid #ececec;
+	color: #999;
 }
 
 .usercamp-error li {
 	margin: 0 0 0 40px;
-	font-size: 0.9em;
 	line-height: 1.4em;
 	padding: 3px 0;
 	list-style-type: disc;
@@ -56,14 +71,6 @@
 .usercamp-error li.usercamp-error-header {
 	list-style-type: none;
 	font-weight: bold;
-}
-
-.usercamp-message {
-	padding: 15px;
-	background: #fff;
-	border: 1px solid rgba(60, 118, 61, 0.25);
-	font-size: 0.9em;
-	line-height: 1.4em;
 }
 
 /* Buttons */

@@ -36,6 +36,10 @@ jQuery( function( $ ) {
 				} else {
 					t.find( ':input:not([type=hidden])' ).val( '' );
 				}
+			} ).fail( function(xhr, status, error) {
+				t.find( '.usercamp-button.main' ).removeClass( 'disabled' );
+				t.find( '.usercamp-error, .usercamp-message, .usercamp-info' ).remove();
+				t.prepend( '<div class="usercamp-info">' + error + '</div>' );
 			} );
 
 		} );
