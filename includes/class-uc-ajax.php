@@ -25,6 +25,7 @@ class UC_AJAX {
 	public static function add_ajax_events() {
 		// usercamp_EVENT => nopriv.
 		$ajax_events = array(
+			'send_form'					=> true,
 			'save_form'					=> false,
 			'add_field'					=> false,
 			'create_forms'				=> false,
@@ -47,6 +48,26 @@ class UC_AJAX {
 	}
 
 	/**
+	 * Send a form.
+	 */
+	public static function send_form() {
+
+		$the_form = new UC_Form( absint( $_REQUEST['id'] ) );
+
+		switch( $the_form->type ) :
+
+			case 'lostpassword' :
+				UC_Shortcode_Form_Lostpassword::verify( $the_form );
+				break;
+
+		endswitch;
+
+		$html = uc_print_notices( true );
+
+		wp_send_json( array( 'html' => $html ) );
+	}
+
+	/**
 	 * Save a form.
 	 */
 	public static function save_form() {
@@ -57,8 +78,8 @@ class UC_AJAX {
 			wp_die( -1 );
 		}
 
-		$form = new UC_Form( $_POST['id'] );
-		$form->save( array(
+		$the_form = new UC_Form( absint( $_POST['id'] ) );
+		$the_form->save( array(
 			'fields'	=> isset( $_POST['fields'] ) ? uc_clean( $_POST[ 'fields'] ) : '',
 			'row_count'	=> absint( $_POST['row_count'] ),
 			'cols'		=> uc_clean( $_POST['cols'] ),

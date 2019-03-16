@@ -13,7 +13,7 @@ if ( $the_form->row_count <= 0 ) {
 
 ?>
 
-<form class="usercamp-lostpassword" action="" method="post" accept-charset="utf-8">
+<form class="usercamp-lostpassword" action="" method="post" accept-charset="utf-8" data-ajax="true" data-id="<?php echo absint( $the_form->id ); ?>">
 
 	<?php uc_print_notices(); ?>
 
