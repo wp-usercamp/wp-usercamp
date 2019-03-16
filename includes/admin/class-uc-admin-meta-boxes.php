@@ -67,6 +67,7 @@ class UC_Admin_Meta_Boxes {
 		add_meta_box( 'usercamp-form-data', __( 'Form Settings', 'usercamp' ), 'UC_Meta_Box_Form_Data::output', 'uc_form', 'normal', 'high' );
 		add_meta_box( 'usercamp-form-builder', __( 'Form Builder', 'usercamp' ), 'UC_Meta_Box_Form_Builder::output', 'uc_form', 'normal', 'default' );
 		add_meta_box( 'usercamp-form-shortcode', __( 'Shortcode', 'usercamp' ), 'UC_Meta_Box_Form_Shortcode::output', 'uc_form', 'side', 'default' );
+		add_meta_box( 'usercamp-form-instances', __( 'Pages', 'usercamp' ), 'UC_Meta_Box_Form_Instances::output', 'uc_form', 'side', 'default' );
 
 		// Custom fields.
 		add_meta_box( 'usercamp-field-data', __( 'Custom Field Settings', 'usercamp' ), 'UC_Meta_Box_Field_Data::output', 'uc_field', 'normal', 'high' );

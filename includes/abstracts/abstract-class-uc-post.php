@@ -50,6 +50,23 @@ abstract class UC_Abstract_Post {
 	}
 
 	/**
+	 * Get shortcode instances.
+	 */
+	public function get_instances() {
+		global $wpdb;
+
+		$shortcode = '[' . str_replace( 'uc_', 'usercamp_', $this->post_type ) . ' id=' . $this->id;
+
+		$results = $wpdb->get_results( "SELECT ID, post_title 
+			FROM {$wpdb->posts} WHERE 
+			post_content LIKE '%{$shortcode}%' AND 
+			post_status = 'publish'", 
+			ARRAY_A );
+
+		return (array) $results;
+	}
+
+	/**
 	 * Get shortcode.
 	 */
 	public function get_shortcode() {

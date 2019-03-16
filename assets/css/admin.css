@@ -66,6 +66,16 @@ body.post-type-uc_field .column-options {
 	cursor: default;
 }
 
+a.uc-tag-icon {
+	cursor: pointer;
+	text-decoration: none;
+	margin: 0 0 0 5px;
+}
+
+a.uc-tag-icon:hover {
+	color: #666;
+}
+
 .uc-tag:hover,
 .uc-tag-icon:hover {
 	background: #e5e5e5;
@@ -134,12 +144,27 @@ span.duplicate a.disabled {
 	display: none;
 }
 
+.uc_list {
+	margin-top: 0;
+}
+
+.uc_list li {
+	border-bottom: 1px solid #eee;
+	padding: 12px;
+	color: #999;
+}
+
+.uc_list li a {
+	text-decoration: none;
+}
+
 /* Options panel */
 #usercamp-form-data .inside,
 #usercamp-field-data .inside,
 #usercamp-role-data .inside,
 #usercamp-memberlist-data .inside,
-#usercamp-form-builder .inside {
+#usercamp-form-builder .inside,
+#usercamp-form-instances .inside {
 	margin: 0;
 	padding: 0;
 }
