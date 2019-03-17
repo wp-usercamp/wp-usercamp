@@ -28,6 +28,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'desc_tip'			=> true,
 			)
 		);
+
+		usercamp_wp_select(
+			array(
+				'id'          		=> 'icons',
+				'value'       		=> $the_form->icons,
+				'label'       		=> __( 'Show field icons', 'usercamp' ),
+				'options'     		=> array(
+					'hide'		=> __( 'Do not show field icons', 'usercamp' ),
+					'label'		=> __( 'Beside field label', 'usercamp' ),
+					'inside'	=> __( 'Inside field (where possible)', 'usercamp' ),
+				),
+				'description' 		=> __( 'If enabled, field icons will be displayed in the form.', 'usercamp' ),
+				'desc_tip'			=> true,
+			)
+		);
 		?>
 	</div>
 

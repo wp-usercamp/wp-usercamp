@@ -30,6 +30,7 @@ class UC_Form extends UC_Abstract_Post {
 		'row_count',
 		'cols',
 		'use_ajax',
+		'icons',
 	);
 
 	/**

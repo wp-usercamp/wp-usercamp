@@ -29,6 +29,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'desc_tip'			=> true,
 			)
 		);
+
+		usercamp_wp_text_input(
+			array(
+				'id'          		=> 'icon',
+				'value'       		=> $the_field->icon,
+				'label'       		=> __( 'Icon', 'usercamp' ),
+				'description' 		=> __( 'For full list of icons please check <a href="https://feathericons.com/">https://feathericons.com</a>', 'usercamp' ),
+			)
+		);
+
+		usercamp_wp_text_input(
+			array(
+				'id'          		=> 'placeholder',
+				'value'       		=> $the_field->placeholder,
+				'label'       		=> __( 'Placeholder', 'usercamp' ),
+				'description' 		=> __( 'When applicable, this text will appear in case the user does not give any input.', 'usercamp' ),
+			)
+		);
+
+		usercamp_wp_textarea(
+			array(
+				'id'          		=> 'help',
+				'value'       		=> $the_field->help,
+				'label'       		=> __( 'Help / Instructions', 'usercamp' ),
+				'rows'				=> 3,
+				'description'		=> __( 'This appears below the field. Use this If you want to instruct the user how to fill the field.', 'usercamp' ),
+			)
+		);
 		?>
 	</div>
 

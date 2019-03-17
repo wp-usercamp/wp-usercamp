@@ -77,12 +77,10 @@
 	border: 0;
 	outline: 0 !important;
 	line-height: 1;
-	width: auto;
-	height: auto;
 	float: none;
-	color: #666;
 }
 
+.usercamp,
 .usercamp input[type=text],
 .usercamp input[type=text]:hover,
 .usercamp input[type=text]:focus,
@@ -231,6 +229,20 @@ a.usercamp-button.disabled {
 	margin: 0 0 8px 0;
 }
 
+.usercamp-label.has-icon {
+	position: relative;
+	padding-left: 25px;
+}
+
+.usercamp-label .uc-icon svg {
+	position: absolute;
+	left: 0;
+	color: #999;
+	top: 2px;
+	width: 18px;
+	height: 18px;
+}
+
 .usercamp-label label {
 	cursor: pointer;
 	font-weight: 600;
@@ -243,6 +255,21 @@ a.usercamp-button.disabled {
 
 .usercamp-input {
 	position: relative;
+}
+
+.usercamp-input .uc-icon svg {
+	position: absolute;
+	left: 12px;
+	color: #bbb;
+	top: 8px;
+	width: 18px;
+	height: 18px;
+}
+
+.usercamp-input.has-icon input[type=text],
+.usercamp-input.has-icon input[type=password],
+.usercamp-input.has-icon textarea {
+	padding-left: 36px;
 }
 
 .usercamp-input input[type=text],
@@ -301,7 +328,7 @@ a.usercamp-button.disabled {
 
 .uc-pw-visible svg {
 	position: relative;
-	top: 7px;
-	width: 20px;
-	height: 20px;
+	top: 8px;
+	width: 18px;
+	height: 18px;
 }

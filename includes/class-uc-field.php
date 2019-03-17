@@ -31,6 +31,8 @@ class UC_Field extends UC_Abstract_Post {
 		'label',
 		'edit_label',
 		'view_label',
+		'placeholder',
+		'help',
 		'can_view',
 		'is_readonly',
 		'is_private',
