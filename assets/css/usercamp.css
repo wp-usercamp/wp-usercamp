@@ -283,20 +283,14 @@ a.usercamp-button.disabled {
 	margin: 0;
 	border-radius: 3px;
 	box-shadow: 0 1px 2px rgba(0,0,0,.05) inset !important;
-	transition: 50ms border-color ease-in-out;
-	border: 1px solid #eee;
-}
-
-.usercamp-input input[type=text]:hover,
-.usercamp-input input[type=password]:hover,
-.usercamp-input textarea:hover {
-	border: 1px solid #eee;
+	transition: 150ms border-color ease-in-out;
+	border: 1px solid #eee !important;
 }
 
 .usercamp-input input[type=text]:focus,
 .usercamp-input input[type=password]:focus,
 .usercamp-input textarea:focus {
-	border: 1px solid #ddd;
+	border: 1px solid #bbb !important;
 }
 
 .usercamp-input input[type=text].uc-error,
