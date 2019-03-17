@@ -6,7 +6,8 @@ jQuery( function( $ ) {
 			'attribute': 'data-tip',
 			'fadeIn': 150,
 			'fadeOut': 150,
-			'delay': 300
+			'delay': 300,
+			defaultPosition: 'top'
 		} );
 	}).trigger( 'uc-init-tooltips' );
 
