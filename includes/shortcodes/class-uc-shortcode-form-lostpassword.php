@@ -37,7 +37,7 @@ class UC_Shortcode_Form_Lostpassword {
 		if ( $object ) {
 			$the_form = $object;
 		}
-		if ( isset( $_REQUEST['user_email'] ) && wp_verify_nonce( $_REQUEST['usercamp-lost-password-nonce'], 'usercamp-lost-password' ) ) {
+		if ( isset( $_REQUEST['user_email'] ) && wp_verify_nonce( $_REQUEST['usercamp-lostpassword-nonce'], 'usercamp-lostpassword' ) ) {
 			$the_form->is_request = true;
 
 			$email = empty( $_REQUEST['user_email'] ) ? '' : uc_clean( wp_unslash( $_REQUEST['user_email'] ) );

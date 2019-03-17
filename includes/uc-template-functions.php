@@ -41,10 +41,12 @@ function uc_form_loop_column( $args = array() ) {
 function uc_get_field( $array ) {
 	global $the_form;
 
+	$mode					= $the_form->type;
 	$field 					= $array['data'];
 	$field['label_class'] 	= array();
 	$field['input_class'] 	= array();
 	$field['field_class']	= array();
+	$field['attributes']	= array();
 
 	// Force value if in $_REQUEST.
 	$field['value'] = $the_form->is_request && isset( $_REQUEST[ $field['key'] ] ) ? $_REQUEST[ $field['key'] ] : '';
@@ -58,5 +60,13 @@ function uc_get_field( $array ) {
 	// Add to field wrap.
 	$field['field_class'][] = $field['key'] . '_field';
 
-	return apply_filters( 'uc_get_field', $field );
+	if ( $mode == 'register' && $field['key'] == 'user_login' ) {
+		$field['attributes'][] = 'autocomplete=off';
+	}
+
+	if ( $mode == 'register' && $field['type'] == 'password' ) {
+		$field['attributes'][] = 'autocomplete=new-password';
+	}
+
+	return apply_filters( 'uc_get_field', $field, $the_form );
 }

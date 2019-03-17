@@ -17,7 +17,9 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 
 	<?php uc_print_notices(); ?>
 
+	<?php if ( $atts['top_note'] ) : ?>
 	<div class="usercamp-text"><?php echo esc_html( $atts[ 'top_note' ] ); ?></div>
+	<?php endif; ?>
 
 	<?php uc_form_loop_edit(); ?>
 
@@ -26,6 +28,6 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 		<a href="#" class="usercamp-button alt"><?php echo esc_html( $atts[ 'log_in' ] ); ?></a>
 	</div>
 
-	<?php wp_nonce_field( 'usercamp-lost-password', 'usercamp-lost-password-nonce' ); ?>
+	<?php wp_nonce_field( 'usercamp-lostpassword', 'usercamp-lostpassword-nonce' ); ?>
 
 </form>

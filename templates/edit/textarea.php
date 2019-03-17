@@ -1,6 +1,6 @@
 <?php
 /**
- * Text field
+ * Textarea field
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,14 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="usercamp-input">
 
-		<input 
-				type="text" 
+		<textarea 
 				name="<?php echo $field['key']; ?>" 
 				id="<?php echo $field['key']; ?>" 
-				value="<?php echo esc_attr( $field['value'] ); ?>" 
 				class="<?php echo esc_attr( implode( ' ', $field['input_class'] ) ); ?>" 
-				<?php echo esc_attr( implode( ' ', $field['attributes'] ) ); ?> 
-		/> 
+				cols="20" 
+				rows="5" 
+				<?php echo esc_attr( implode( ' ', $field['attributes'] ) ); ?>
+		><?php echo esc_textarea( $field['value'] ); ?></textarea>
 
 	</div>
 

@@ -120,9 +120,19 @@ class UC_Frontend_Scripts {
 	 */
 	private static function register_scripts() {
 		$register_scripts = array(
-			'usercamp'                	=> array(
-				'src'     => self::get_asset_url( 'assets/js/frontend/usercamp.js' ),
+			'jquery-tiptip'					=> array(
+				'src'     => self::get_asset_url( 'assets/js/jquery-tiptip/jquery-tiptip.js' ),
 				'deps'    => array( 'jquery' ),
+				'version' => UC_VERSION,
+			),
+			'jquery-feather'				=> array(
+				'src'     => self::get_asset_url( 'assets/js/jquery-feather/jquery-feather.js' ),
+				'deps'    => array( 'jquery' ),
+				'version' => UC_VERSION,
+			),
+			'usercamp'						=> array(
+				'src'     => self::get_asset_url( 'assets/js/frontend/usercamp.js' ),
+				'deps'    => array( 'jquery', 'jquery-tiptip', 'jquery-feather' ),
 				'version' => UC_VERSION,
 			),
 		);
@@ -136,12 +146,7 @@ class UC_Frontend_Scripts {
 	 */
 	private static function register_styles() {
 		$register_styles = array(
-			'photoswipe'  				=> array(
-				'src'     => self::get_asset_url( 'assets/css/test.css' ),
-				'deps'    => array(),
-				'version' => UC_VERSION,
-				'has_rtl' => false,
-			),
+
 		);
 		foreach ( $register_styles as $name => $props ) {
 			self::register_style( $name, $props['src'], $props['deps'], $props['version'], 'all', $props['has_rtl'] );

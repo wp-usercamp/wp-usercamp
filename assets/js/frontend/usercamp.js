@@ -1,11 +1,32 @@
 jQuery( function( $ ) {
 
+	// Tooltips
+	$( document.body ).on( 'uc-init-tooltips', function() {
+		$( '.usercamp-help-tip, .tips' ).tipTip( {
+			'attribute': 'data-tip',
+			'fadeIn': 150,
+			'fadeOut': 150,
+			'delay': 300
+		} );
+	}).trigger( 'uc-init-tooltips' );
+
 	// Body events
 	$( document.body )
 
 		// No href
 		.on( 'click', '.usercamp a[href=#]', function(e) {
 			e.preventDefault();
+		} )
+
+		.on( 'click', '.uc-pw-visible', function(e) {
+			c = $( this );
+			if ( c.hasClass( 'is-hidden' ) ) {
+				c.addClass( 'is-visible' ).removeClass( 'is-hidden' ).attr( 'data-tip', c.attr( 'data-hide') ).html( '<i data-feather=eye></i>' ).parents( '.usercamp-field' ).find( 'input[type=password]' ).attr( 'type', 'text' ).focus();
+			} else {
+				c.addClass( 'is-hidden' ).removeClass( 'is-visible' ).attr( 'data-tip', c.attr( 'data-show') ).html( '<i data-feather=eye-off></i>' ).parents( '.usercamp-field' ).find( 'input[type=text]' ).attr( 'type', 'password' ).focus();
+			}
+			$( document.body ).trigger( 'uc-init-tooltips' );
+			feather.replace();
 		} )
 
 		// Send form
@@ -15,7 +36,7 @@ jQuery( function( $ ) {
 			f.parents( 'form' ).submit();
 		} )
 
-		// Send form
+		// Submit form
 		.on( 'submit', '.usercamp form', function(e) {
 			var t = $( this );
 
@@ -45,3 +66,10 @@ jQuery( function( $ ) {
 		} );
 
 });
+
+// This runs after everyhing is loaded.
+jQuery( window ).load( function() {
+
+	feather.replace();
+
+} );
