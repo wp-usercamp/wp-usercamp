@@ -119,10 +119,8 @@
 	margin: 0 0 1em 0;
 	font-weight: 600;
 	text-align: center;
-}
-
-.usercamp-message {
-
+	padding-bottom: 1em;
+	border-bottom: 1px solid #eee;
 }
 
 .usercamp-error {
@@ -131,11 +129,6 @@
 
 .usercamp-info {
 	color: #999;
-}
-
-ul.usercamp-error {
-	padding-bottom: 1em;
-	border-bottom: 1px solid #eee;
 }
 
 ul.usercamp-error li {

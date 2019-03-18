@@ -17,6 +17,7 @@ class UC_Form_Handler {
 	 */
 	public static function init() {
 		add_action( 'template_redirect', array( __CLASS__, 'user_login' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'user_password_reset' ) );
 	}
 
 	/**
@@ -28,6 +29,17 @@ class UC_Form_Handler {
 		}
 
 		UC_Shortcode_Form_Login::verify( new UC_Form( absint( $_REQUEST[ '_login_id' ] ) ) );
+	}
+
+	/**
+	 * User password reset.
+	 */
+	public static function user_password_reset() {
+		if ( ! isset( $_REQUEST['usercamp-lostpassword-nonce'] ) || ! wp_verify_nonce( $_REQUEST['usercamp-lostpassword-nonce'], 'usercamp-lostpassword' ) ) {
+			return;
+		}
+
+		UC_Shortcode_Form_Lostpassword::verify( new UC_Form( absint( $_REQUEST[ '_lostpassword_id' ] ) ) );
 	}
 
 }
