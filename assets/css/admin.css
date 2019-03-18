@@ -311,7 +311,6 @@ ul.uc-tabs li a svg {
 
 .usercamp_options_panel .options_group input[type=number] {
 	width: 60px;
-	padding: 6px;
 }
 
 input[type=number]::-webkit-inner-spin-button {

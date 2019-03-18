@@ -18,8 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php uc_get_template( 'field/icon.php', array( 'field' => $field ) ); ?>
 
 		<textarea 
-				name="<?php echo $field['key']; ?>" 
-				id="<?php echo $field['key']; ?>" 
+				name="<?php echo esc_attr( $field['key'] ); ?>" 
+				id="<?php echo esc_attr( $field['key'] ); ?>" 
 				class="<?php echo esc_attr( implode( ' ', $field['input_class'] ) ); ?>" 
 				cols="20" 
 				rows="5" 

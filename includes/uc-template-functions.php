@@ -50,9 +50,14 @@ function uc_get_inline_styles() {
 	global $the_form;
 	$inline = array();
 
-	// Add font-size to wrapper.
+	// Add font-size.
 	if ( $the_form->font_size ) {
-		$inline[] = 'font-size: ' . $the_form->font_size;
+		$inline[] = 'font-size: ' . esc_attr( $the_form->font_size );
+	}
+
+	// Add max-width.
+	if ( $the_form->max_width ) {
+		$inline[] = 'max-width: ' . esc_attr( $the_form->max_width );
 	}
 
 	return apply_filters( 'uc_get_inline_styles', $inline, $the_form );
@@ -63,7 +68,7 @@ function uc_get_inline_styles() {
  */
 function uc_print_inline_styles() {
 	if ( ! empty( $inline = uc_get_inline_styles() ) ) {
-		echo 'style="' . implode( ';', $inline ) . '"';
+		echo 'style="' . implode( ';', $inline ) . ';"';
 	}
 }
 
@@ -85,16 +90,25 @@ function uc_get_field( $array ) {
 	// Get user input as value when submitting the form.
 	$field['value'] = ( $the_form->is_request && isset( $_REQUEST[ $field['key'] ] ) ) ? $_REQUEST[ $field['key'] ] : '';
 
-	// Add error class where needed.
+	// Get default icon.
+	if ( empty( $field['icon'] ) ) {
+		$field['icon'] = uc_get_field_type( $field['type'], 'icon' );
+	}
+
+	// Classes.
+	$field['field_class'][] = $field['key'] . '_field';
 	if ( $the_form->has_error( $field['key'] ) ) {
 		$field['label_class'][] = 'uc-error';
 		$field['input_class'][] = 'uc-error';
 	}
+	if ( $the_form->icons == 'label' ) {
+		$field['title_class'][] = 'has-icon';
+	}
+	if ( $the_form->icons == 'inside' ) {
+		$field['control_class'][] = 'has-icon';
+	}
 
-	// Add field key as a class by default.
-	$field['field_class'][] = $field['key'] . '_field';
-
-	// Forced attributes for register.
+	// Field attributes.
 	if ( $mode == 'register' ) {
 		if ( $field['key'] == 'user_login' ) {
 			$field['attributes'][] = 'autocomplete=off';
@@ -103,21 +117,13 @@ function uc_get_field( $array ) {
 			$field['attributes'][] = 'autocomplete=new-password';
 		}
 	}
-
-	// Get default icon.
-	if ( empty( $field['icon'] ) ) {
-		$field['icon'] = uc_get_field_type( $field['type'], 'icon' );
+	if ( ! empty( $field['placeholder'] ) ) {
+		$field['attributes'][] = 'placeholder=' . $field['placeholder'];
 	}
 
-	// Add icon class to title.
-	if ( $the_form->icons == 'label' ) {
-		$field['title_class'][] = 'has-icon';
-	}
-
-	// Add icon class to element.
-	if ( $the_form->icons == 'inside' ) {
-		$field['control_class'][] = 'has-icon';
-	}
-
+	/**
+	 * Return the complete field and its attributes.
+	 */
 	return apply_filters( 'uc_get_field', $field, $the_form );
+
 }

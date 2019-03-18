@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="roles_role_caps" class="panel usercamp_options_panel">
+<div id="roles_role_caps" class="panel usercamp_options_panel hidden">
 
 	<div class="options_group">
 		<?php

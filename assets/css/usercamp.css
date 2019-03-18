@@ -99,7 +99,6 @@
 
 .usercamp form {
 	margin: 0 auto;
-	max-width: 450px;
 	padding: 1.475em 0;
 }
 
@@ -231,7 +230,7 @@ a.usercamp-button.disabled {
 
 .usercamp-label.has-icon {
 	position: relative;
-	padding-left: 25px;
+	padding-left: 2.5em;
 }
 
 .usercamp-label label {
@@ -300,15 +299,7 @@ a.usercamp-button.disabled {
 }
 
 /* Password visibility and icons */
-.usercamp-label .uc-icon svg {
-	position: absolute;
-	left: 0;
-	color: #999;
-	top: 2px;
-	width: 1em;
-	height: 1em;
-}
-
+.usercamp-label .uc-icon,
 .usercamp-input .uc-icon,
 .uc-pw-visible {
 	position: absolute;
@@ -320,6 +311,7 @@ a.usercamp-button.disabled {
 	text-align: center;
 }
 
+.usercamp-label .uc-icon svg,
 .usercamp-input .uc-icon svg,
 .uc-pw-visible svg {
 	display: block;

@@ -124,17 +124,21 @@ class UC_AJAX {
 		}
 
 		// No errors? Setup all props now.
+		//$props['key']         			= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
 		$props['type']         			= isset( $_POST['type'] ) ? uc_clean( wp_unslash( $_POST['type'] ) ) : '';
 		$props['can_view']				= isset( $_POST['can_view'] ) ? uc_clean( wp_unslash( $_POST['can_view'] ) ) : '';
-		$props['icon']					= isset( $_POST['icon'] ) ? uc_clean( wp_unslash( $_POST['icon'] ) ) : '';
 		$props['is_private']			= ! empty( $_POST['is_private'] );
 		$props['is_readonly']			= ! empty( $_POST['is_readonly'] );
 		$props['is_required']			= ! empty( $_POST['is_required'] );
 		$props['is_crop']				= ! empty( $_POST['is_crop'] );
 		$props['vertical_crop']			= ! empty( $_POST['vertical_crop'] );
+		//$props['label']					= uc_clean( wp_unslash( $_POST['post_title'] ) );
 		$props['edit_label']			= uc_clean( wp_unslash( $_POST['edit_label'] ) );
 		$props['view_label']			= uc_clean( wp_unslash( $_POST['view_label'] ) );
+		$props['placeholder']			= uc_clean( wp_unslash( $_POST['placeholder'] ) );
+		$props['icon']					= uc_clean( wp_unslash( $_POST['icon'] ) );
 		$props['crop_ratio']			= uc_clean( wp_unslash( $_POST['crop_ratio'] ) );
+		$props['help']					= wp_kses_post( wp_unslash( $_POST['help'] ) );
 		$props['dropdown_options']		= wp_kses_post( wp_unslash( $_POST['dropdown_options'] ) );
 		$props['checkbox_options']		= wp_kses_post( wp_unslash( $_POST['checkbox_options'] ) );
 		$props['radio_options']			= wp_kses_post( wp_unslash( $_POST['radio_options'] ) );

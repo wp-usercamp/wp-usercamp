@@ -32,12 +32,19 @@ class UC_Meta_Box_Form_Data {
 	private static function get_tabs() {
 		$tabs = apply_filters(
 			'usercamp_form_data_tabs', array(
-				'general'        => array(
+				'general'			=> array(
 					'icon'	   => 'settings',
 					'label'    => __( 'General', 'usercamp' ),
 					'target'   => 'general_form_data',
 					'class'    => array(),
 					'priority' => 10,
+				),
+				'customize'			=> array(
+					'icon'	   => 'type',
+					'label'    => __( 'Customize', 'usercamp' ),
+					'target'   => 'customize_form_data',
+					'class'    => array(),
+					'priority' => 20,
 				),
 			)
 		);
@@ -70,6 +77,7 @@ class UC_Meta_Box_Form_Data {
 		global $post, $thepostid, $the_form;
 
 		include 'views/html-form-data-general.php';
+		include 'views/html-form-data-customize.php';
 	}
 
 	/**
@@ -85,6 +93,7 @@ class UC_Meta_Box_Form_Data {
 		$props['icons']         		= isset( $_POST['icons'] ) ? uc_clean( wp_unslash( $_POST['icons'] ) ) : '';
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
 		$props['font_size']				= uc_clean( wp_unslash( $_POST['font_size'] ) );
+		$props['max_width']				= uc_clean( wp_unslash( $_POST['max_width'] ) );
 
 		$the_form->save( $props );
 	}

@@ -69,6 +69,12 @@ jQuery( function( $ ) {
 			e.preventDefault();
 		} )
 
+		// Focus on field
+		.on( 'click', '.uc-icon', function(e) {
+			$( this ).parents( 'fieldset' ).find( 'input' ).focus();
+		} )
+
+		// Toggle password
 		.on( 'click', '.uc-pw-visible', function(e) {
 			usercamp.togglepw( $( this ) );
 		} )

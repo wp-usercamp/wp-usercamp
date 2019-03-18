@@ -8,6 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="options_group">
 		<?php
+		do_action( 'usercamp_before_general_field_options' );
+
 		usercamp_wp_text_input(
 			array(
 				'id'          		=> 'key',

@@ -156,7 +156,7 @@ jQuery( function ( $ ) {
 			$e.html( $e.html().replace( /{label}/i, el.html() ) );
 			$e.html( $e.html().replace( /{key}/i, el.attr( 'data-key' ) ) );
 			$e.html( $e.html().replace( /{icon}/i, el.attr( 'data-icon' ) ? '<i data-feather="' + el.attr( 'data-icon' ) + '"></i>' : '<i data-feather="' + el.attr( 'data-noicon' ) + '"></i>' ) );
-			$.each( el.data(), function (name, value) { $e.attr( 'data-'+name, value ); } );
+			$.each( el.data(), function (name, value) { $e.attr( 'data-' + name, value ); } );
 			$e.show().removeClass( 'hidden' );
 			this.sortables();
 			this.ready_save();
@@ -472,8 +472,8 @@ jQuery( function ( $ ) {
 
 		// Before field modal is open.
 		.on( $.modal.BEFORE_OPEN, '#uc-add-field', function(e, modal) {
-			$( 'span.error' ).remove();
-			$( ':input' ).removeClass( 'error' );
+			$( '.modal span.error' ).remove();
+			$( '.modal :input' ).removeClass( 'error' );
 		} )
 
 		// See more or less.

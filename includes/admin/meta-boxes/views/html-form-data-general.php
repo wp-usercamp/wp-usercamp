@@ -43,17 +43,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'desc_tip'			=> true,
 			)
 		);
-
-		usercamp_wp_text_input(
-			array(
-				'id'          		=> 'font_size',
-				'value'       		=> $the_form->font_size,
-				'label'       		=> __( 'Custom font size', 'usercamp' ),
-				'description' 		=> __( 'Leave blank to use theme default. If you specify a font-size here the form will use it as a base for all form elements.', 'usercamp' ),
-				'desc_tip'			=> true,
-				'style'				=> 'width: 60px;',
-			)
-		);
 		?>
 	</div>
 
