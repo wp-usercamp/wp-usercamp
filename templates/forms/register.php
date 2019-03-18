@@ -13,13 +13,13 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 
 ?>
 
-<form class="usercamp-register" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>">
+<form class="usercamp-register" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>" <?php uc_print_inline_styles(); ?>>
 
 	<?php uc_print_notices(); ?>
 
-	<?php if ( $atts['top_note'] ) : ?>
-	<div class="usercamp-text"><?php echo esc_html( $atts[ 'top_note' ] ); ?></div>
-	<?php endif; ?>
+	<?php do_action( 'usercamp_register_shortcode_start' ); ?>
+
+	<?php uc_form_loop_note( $atts ); ?>
 
 	<?php uc_form_loop_edit(); ?>
 
@@ -29,5 +29,7 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 	</div>
 
 	<?php wp_nonce_field( 'usercamp-register', 'usercamp-register-nonce' ); ?>
+
+	<?php do_action( 'usercamp_register_shortcode_end' ); ?>
 
 </form>

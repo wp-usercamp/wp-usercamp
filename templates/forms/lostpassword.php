@@ -17,9 +17,9 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 
 	<?php uc_print_notices(); ?>
 
-	<?php if ( $atts['top_note'] ) : ?>
-	<div class="usercamp-text"><?php echo esc_html( $atts[ 'top_note' ] ); ?></div>
-	<?php endif; ?>
+	<?php do_action( 'usercamp_lostpassword_shortcode_start' ); ?>
+
+	<?php uc_form_loop_note( $atts ); ?>
 
 	<?php uc_form_loop_edit(); ?>
 

@@ -36,6 +36,13 @@ function uc_form_loop_column( $args = array() ) {
 }
 
 /**
+ * Get form top note if available.
+ */
+function uc_form_loop_note( $args = array() ) {
+	uc_get_template( 'loop/loop-note.php', $args );
+}
+
+/**
  * Add the form ID as hidden input.
  */
 function usercamp_add_form_id() {
