@@ -93,6 +93,10 @@
 	color: #666;
 }
 
+.usercamp svg {
+	fill: transparent;
+}
+
 .usercamp {
 	font-size: 1em;
 }
@@ -106,7 +110,7 @@
 /* Elements */
 .usercamp-text {
 	line-height: 1.6em;
-	padding: 0 0 20px 0;
+	padding: 0 0 1em 0;
 	color: rgba(0, 0, 0, 0.4);
 }
 
@@ -114,43 +118,50 @@
 .usercamp-message,
 .usercamp-error,
 .usercamp-info {
-	padding: 12px;
-	border-radius: 3px;
-	background: rgba(187, 0, 0, 0.05);
-	border: 1px solid rgba(187, 0, 0, 0.1);
-	margin: 0 0 20px 0;
-	font-size: 0.9em;
+	font-size: 1.1em;
+	line-height: 1.6em;
+	margin: 0 0 1em 0;
+	font-weight: 700;
+	text-align: center;
 }
 
-.usercamp-message,
-.usercamp-info {
-	padding: 15px;
-	background: #fff;
-	border: 1px solid rgba(60, 118, 61, 0.25);
-	line-height: 1.4em;
+.usercamp-message {
+
+}
+
+.usercamp-error {
+	color: rgb(187, 0, 0);
 }
 
 .usercamp-info {
-	background: #fcfcfc;
-	border: 1px solid #ececec;
 	color: #999;
 }
 
-.usercamp-error li {
-	margin: 0 0 0 40px;
-	line-height: 1.4em;
-	padding: 3px 0;
-	list-style-type: disc;
+ul.usercamp-error {
+	padding-bottom: 1em;
+	border-bottom: 1px solid #eee;
 }
 
-.usercamp-error li.usercamp-error-header {
+ul.usercamp-error li {
+	margin: 0 0 0 40px;
+	padding: 3px 0;
+	list-style-type: disc;
+	line-height: 1.4em;
+	font-size: 0.9em;
+	text-align: left;
+	color: #999;
+	font-weight: 400;
+}
+
+ul.usercamp-error li.usercamp-error-header {
 	list-style-type: none;
-	font-weight: bold;
+	font-weight: 700;
+	color: rgb(187, 0, 0);
 }
 
 /* Buttons */
 .usercamp-buttons {
-	padding: 20px 0 0 0;
+	padding: 1em 0 0 0;
 }
 
 .usercamp-buttons::after {
@@ -222,25 +233,16 @@ a.usercamp-button.disabled {
 
 /* Fields */
 .usercamp-field {
-	padding: 0 0 20px 0;
+	padding: 0 0 1em 0;
 }
 
 .usercamp-label {
-	margin: 0 0 8px 0;
+	margin: 0 0 0.5em 0;
 }
 
 .usercamp-label.has-icon {
 	position: relative;
 	padding-left: 25px;
-}
-
-.usercamp-label .uc-icon svg {
-	position: absolute;
-	left: 0;
-	color: #999;
-	top: 2px;
-	width: 18px;
-	height: 18px;
 }
 
 .usercamp-label label {
@@ -257,19 +259,10 @@ a.usercamp-button.disabled {
 	position: relative;
 }
 
-.usercamp-input .uc-icon svg {
-	position: absolute;
-	left: 12px;
-	color: #bbb;
-	top: 8px;
-	width: 18px;
-	height: 18px;
-}
-
 .usercamp-input.has-icon input[type=text],
 .usercamp-input.has-icon input[type=password],
 .usercamp-input.has-icon textarea {
-	padding-left: 36px;
+	padding-left: 2.5em;
 }
 
 .usercamp-input input[type=text],
@@ -277,14 +270,16 @@ a.usercamp-button.disabled {
 .usercamp-input textarea {
 	width: 100%;
 	box-sizing: border-box;
-	font-size: 14px;
-	line-height: 16px;
 	padding: 8px 10px;
 	margin: 0;
 	border-radius: 3px;
-	box-shadow: 0 1px 2px rgba(0,0,0,.05) inset !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) inset !important;
 	transition: 150ms border-color ease-in-out;
 	border: 1px solid #eee !important;
+}
+
+.usercamp-input input[type=password] {
+	padding-right: 2.5em;
 }
 
 .usercamp-input input[type=text]:focus,
@@ -301,28 +296,40 @@ a.usercamp-button.disabled {
 	color: rgba(187, 0, 0) !important;
 }
 
-.usercamp-input input[type=text]:-internal-autofill-previewed,
-.usercamp-input input[type=text]:-internal-autofill-selected,
-.usercamp-input input[type=password]:-internal-autofill-previewed,
-.usercamp-input input[type=password]:-internal-autofill-selected {
-	box-shadow: 0 1px 2px rgba(0,0,0,.05) inset, 0 0 0 50px white inset !important;
-	-webkit-text-fill-color: #666 !important;
+/* Password visibility and icons */
+.usercamp-label .uc-icon svg {
+	position: absolute;
+	left: 0;
+	color: #999;
+	top: 2px;
+	width: 1em;
+	height: 1em;
 }
 
-/* Password visibility */
+.usercamp-input .uc-icon,
 .uc-pw-visible {
 	position: absolute;
 	top: 0;
-	right: 0;
+	left: 0;
 	cursor: pointer;
-	height: 34px;
-	width: 50px;
+	width: 2.5em;
+	height: 100%;
 	text-align: center;
 }
 
+.usercamp-input .uc-icon svg,
 .uc-pw-visible svg {
-	position: relative;
-	top: 8px;
-	width: 18px;
-	height: 18px;
+	display: block;
+	margin: auto;
+	width: 1em;
+	height: 100%;
+}
+
+.usercamp-input .uc-icon {
+	color: #bbb;
+}
+
+.uc-pw-visible {
+	left: auto;
+	right: 0;
 }

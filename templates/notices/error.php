@@ -13,15 +13,27 @@ if ( ! $messages ) {
 
 ?>
 
-<ul class="usercamp-error" role="alert">
-	<?php if ( count( $messages ) >= 2 ) : ?>
-	<li class="usercamp-error-header"><?php _e( 'Please correct the following errors:', 'usercamp' ); ?></li>
-	<?php endif; ?>
+<?php if ( count( $messages ) > 1 ) : ?>
+
+	<ul class="usercamp-error" role="alert">
+		<li class="usercamp-error-header"><?php _e( 'Please correct the following errors:', 'usercamp' ); ?></li>
+		<?php foreach ( $messages as $message ) : ?>
+			<li>
+				<?php
+					echo uc_kses_notice( $message );
+				?>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+
+<?php else : ?>
+
 	<?php foreach ( $messages as $message ) : ?>
-		<li>
+		<div class="usercamp-error" role="alert">
 			<?php
 				echo uc_kses_notice( $message );
 			?>
-		</li>
+		</div>
 	<?php endforeach; ?>
-</ul>
+
+<?php endif; ?>

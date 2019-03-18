@@ -35,7 +35,9 @@ class UC_Shortcode_Form {
 		// Load proper class.
 		$classname = 'UC_Shortcode_Form_' . ucfirst( $the_form->type );
 		if ( class_exists( $classname ) ) {
-			$classname::output( $atts );
+			if ( ! is_admin() ) {
+				return $classname::output( $atts );
+			}
 		}
 	}
 
