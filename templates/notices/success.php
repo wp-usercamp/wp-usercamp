@@ -13,6 +13,8 @@ if ( ! $messages ) {
 
 ?>
 
+<?php uc_checkmark(); ?>
+
 <?php foreach ( $messages as $message ) : ?>
 	<div class="usercamp-message" role="alert">
 		<?php

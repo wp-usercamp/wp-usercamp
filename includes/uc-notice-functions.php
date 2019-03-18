@@ -147,14 +147,5 @@ function uc_add_wp_error_notices( $errors ) {
  * Filters out the same tags as wp_kses_post, but allows tabindex for <a> element.
  */
 function uc_kses_notice( $message ) {
-	return wp_kses( $message,
-		array_replace_recursive(
-			wp_kses_allowed_html( 'post' ),
-			array(
-				'a' => array(
-					'tabindex' => true,
-				),
-			)
-		)
-	);
+	return html_entity_decode( $message );
 }
