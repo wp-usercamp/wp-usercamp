@@ -38,6 +38,7 @@ jQuery( function( $ ) {
 					if ( response.js_redirect ) {
 						window.location.href = response.js_redirect;
 					} else {
+						el.find( '.usercamp-button.main' ).removeClass( 'disabled' );
 						el.find( ':input:not([type=hidden])' ).val( '' );
 					}
 				}
