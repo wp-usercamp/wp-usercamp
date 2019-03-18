@@ -80,6 +80,21 @@
 	float: none;
 }
 
+.usercamp ::-webkit-input-placeholder {
+	color: #bbb;
+}
+.usercamp :-moz-placeholder {
+	color: #bbb;
+	opacity: 1;
+}
+.usercamp ::-moz-placeholder {
+	color: #bbb;
+	opacity: 1;
+}
+.usercamp :-ms-input-placeholder {
+	color: #bbb;
+}
+
 .usercamp,
 .usercamp input[type=text],
 .usercamp input[type=text]:hover,
