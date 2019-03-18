@@ -31,6 +31,7 @@ class UC_Form extends UC_Abstract_Post {
 		'cols',
 		'use_ajax',
 		'icons',
+		'font_size',
 	);
 
 	/**
@@ -62,7 +63,7 @@ class UC_Form extends UC_Abstract_Post {
 	/**
 	 * Check if form has errors.
 	 */
-	public function got_errors() {
+	public function has_errors() {
 		return ! empty( $this->error_fields );
 	}
 

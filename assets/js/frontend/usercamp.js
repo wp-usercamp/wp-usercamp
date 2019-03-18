@@ -20,27 +20,29 @@ jQuery( function( $ ) {
 		},
 
 		// Submit form.
-		sendform: function( el ) {
+		sendform: function( el, ev ) {
 			if ( el.attr( 'data-ajax' ) != 'yes' ) {
 				return true;
 			}
-			e.preventDefault();
-
+			ev.preventDefault();
+			el.find( '.usercamp-error, .usercamp-message, .usercamp-info' ).remove();
 			$.post( usercamp_params.ajaxurl, el.serialize() + '&action=usercamp_send_form&id=' + el.attr( 'data-id' ), function(response) {
-				el.find( '.usercamp-button.main' ).removeClass( 'disabled' );
-				el.find( '.usercamp-error, .usercamp-message, .usercamp-info' ).remove();
 				el.find( '.uc-error' ).removeClass( 'uc-error' );
 				el.prepend( response.html );
 				if ( response.error_fields ) {
+					el.find( '.usercamp-button.main' ).removeClass( 'disabled' );
 					$.each( response.error_fields, function( i, e ) {
 						el.find(e).find( 'label, input' ).addClass( 'uc-error' );
 					} );
 				} else {
-					el.find( ':input:not([type=hidden])' ).val( '' );
+					if ( response.js_redirect ) {
+						window.location.href = response.js_redirect;
+					} else {
+						el.find( ':input:not([type=hidden])' ).val( '' );
+					}
 				}
 			} ).fail( function(xhr, status, error) {
 				el.find( '.usercamp-button.main' ).removeClass( 'disabled' );
-				el.find( '.usercamp-error, .usercamp-message, .usercamp-info' ).remove();
 				el.prepend( '<div class="usercamp-info">' + error + '</div>' );
 			} );
 		},
@@ -77,7 +79,7 @@ jQuery( function( $ ) {
 
 		// Submit form
 		.on( 'submit', '.usercamp form', function(e) {
-			usercamp.sendform( $( this ) );
+			usercamp.sendform( $( this ), e );
 		} );
 
 });

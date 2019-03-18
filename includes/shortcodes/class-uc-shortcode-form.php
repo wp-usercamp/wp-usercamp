@@ -25,7 +25,10 @@ class UC_Shortcode_Form {
 	public static function output( $atts ) {
 		global $the_form;
 
-		$the_form = new UC_Form( $atts['id'] );
+		// New object instance.
+		if ( ! isset( $the_form->id ) || $the_form->id != $atts[ 'id' ] ) {
+			$the_form = new UC_Form( $atts[ 'id' ] );
+		}
 
 		// Check that form is there.
 		if ( ! array_key_exists( $the_form->type, usercamp_get_form_types() ) ) {
@@ -34,10 +37,8 @@ class UC_Shortcode_Form {
 
 		// Load proper class.
 		$classname = 'UC_Shortcode_Form_' . ucfirst( $the_form->type );
-		if ( class_exists( $classname ) ) {
-			if ( ! is_admin() ) {
-				return $classname::output( $atts );
-			}
+		if ( class_exists( $classname ) && ! is_admin() ) {
+			call_user_func( array( $classname, 'output' ), $atts );
 		}
 	}
 

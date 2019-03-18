@@ -54,15 +54,16 @@ class UC_AJAX {
 
 		$the_form = new UC_Form( absint( $_REQUEST['id'] ) );
 
-		switch( $the_form->type ) :
+		$classname = 'UC_Shortcode_Form_' . ucfirst( uc_clean( wp_unslash( $the_form->type ) ) );
+		call_user_func( array( $classname, 'verify' ), $the_form );
 
-			case 'lostpassword' :
-				UC_Shortcode_Form_Lostpassword::verify( $the_form );
-				break;
+		$response = array(
+			'html' 			=> uc_print_notices( true ),
+			'error_fields' 	=> $the_form->get_error_fields(),
+			'js_redirect'	=> $the_form->js_redirect,
+		);
 
-		endswitch;
-
-		wp_send_json( array( 'html' => uc_print_notices( true ), 'error_fields' => $the_form->get_error_fields() ) );
+		wp_send_json( $response );
 	}
 
 	/**

@@ -97,14 +97,10 @@
 	fill: transparent;
 }
 
-.usercamp {
-	font-size: 1em;
-}
-
 .usercamp form {
 	margin: 0 auto;
 	max-width: 450px;
-	padding: 30px 0;
+	padding: 1.475em 0;
 }
 
 /* Elements */
@@ -121,7 +117,7 @@
 	font-size: 1.1em;
 	line-height: 1.6em;
 	margin: 0 0 1em 0;
-	font-weight: 700;
+	font-weight: 600;
 	text-align: center;
 }
 
@@ -143,7 +139,7 @@ ul.usercamp-error {
 }
 
 ul.usercamp-error li {
-	margin: 0 0 0 40px;
+	margin: 0 0 0 1.675em;
 	padding: 3px 0;
 	list-style-type: disc;
 	line-height: 1.4em;
@@ -155,7 +151,7 @@ ul.usercamp-error li {
 
 ul.usercamp-error li.usercamp-error-header {
 	list-style-type: none;
-	font-weight: 700;
+	font-weight: 600;
 	color: rgb(187, 0, 0);
 }
 
@@ -288,12 +284,26 @@ a.usercamp-button.disabled {
 	border: 1px solid #bbb !important;
 }
 
+.usercamp-input input:-internal-autofill-previewed,
+.usercamp-input input:-internal-autofill-selected,
+.usercamp-input input:-internal-autofill-previewed:focus,
+.usercamp-input input:-internal-autofill-selected:focus {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) inset, 0 0 0 50px white inset !important;
+	-webkit-text-fill-color: #666 !important;
+}
+
 .usercamp-input input[type=text].uc-error,
 .usercamp-input input[type=password].uc-error,
 .usercamp-input textarea.uc-error {
 	border: 1px solid rgba(187, 0, 0, 0.8) !important;
 	background: rgba(187, 0, 0, 0.04) !important;
 	color: rgba(187, 0, 0) !important;
+}
+
+.usercamp-input input.uc-error:-internal-autofill-previewed,
+.usercamp-input input.uc-error:-internal-autofill-selected {
+	box-shadow: 0 0 0 50px white inset !important;
+	-webkit-text-fill-color: rgba(187, 0, 0) !important;
 }
 
 /* Password visibility and icons */
@@ -323,10 +333,6 @@ a.usercamp-button.disabled {
 	margin: auto;
 	width: 1em;
 	height: 100%;
-}
-
-.usercamp-input .uc-icon {
-	color: #bbb;
 }
 
 .uc-pw-visible {

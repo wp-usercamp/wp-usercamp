@@ -36,6 +36,38 @@ function uc_form_loop_column( $args = array() ) {
 }
 
 /**
+ * Add the form ID as hidden input.
+ */
+function usercamp_add_form_id() {
+	global $the_form;
+	echo '<input type="hidden" name="_' . esc_attr( $the_form->type ) . '_id" id="_' . esc_attr( $the_form->type ) . '_id" value="' . absint( $the_form->id ) . '" />';
+}
+
+/**
+ * Print inline style data.
+ */
+function uc_get_inline_styles() {
+	global $the_form;
+	$inline = array();
+
+	// Add font-size to wrapper.
+	if ( $the_form->font_size ) {
+		$inline[] = 'font-size: ' . $the_form->font_size;
+	}
+
+	return apply_filters( 'uc_get_inline_styles', $inline, $the_form );
+}
+
+/**
+ * Print inline style data.
+ */
+function uc_print_inline_styles() {
+	if ( ! empty( $inline = uc_get_inline_styles() ) ) {
+		echo 'style="' . implode( ';', $inline ) . '"';
+	}
+}
+
+/**
  * Prepares custom field data.
  */
 function uc_get_field( $array ) {

@@ -35,6 +35,11 @@ abstract class UC_Abstract_Post {
 	public $error_fields = array();
 
 	/**
+	 * JS redirection.
+	 */
+	public $js_redirect = '';
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct( $post_id = '' ) {

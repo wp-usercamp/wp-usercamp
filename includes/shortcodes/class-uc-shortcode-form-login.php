@@ -24,8 +24,6 @@ class UC_Shortcode_Form_Login {
 			'create_account'		=> __( 'Create Account?', 'usercamp' ),
 		), (array) $atts );
 
-		self::verify();
-
 		uc_get_template( 'forms/login.php', array( 'atts' => $atts ) );
 	}
 
@@ -34,71 +32,91 @@ class UC_Shortcode_Form_Login {
 	 */
 	public static function verify( $object = null ) {
 		global $the_form;
+
 		if ( $object ) {
 			$the_form = $object;
 		}
-		if ( isset( $_REQUEST['user_pass'] ) && wp_verify_nonce( $_REQUEST['usercamp-login-nonce'], 'usercamp-login' ) ) {
-			$the_form->is_request = true;
 
-			$user_login		= isset( $_REQUEST[ 'user_login'] ) ? 1 : 0;
-			$user_email		= isset( $_REQUEST[ 'user_email'] ) ? 1 : 0;
-			$user_pass 		= empty( $_REQUEST['user_pass'] ) ? '' : $_REQUEST['user_pass']; 
+		$the_form->is_request = true;
 
-			// Verify user input.
-			if ( ! $user_login && ! $user_email ) {
-				return;
-			}
-			if ( ! $user_pass ) {
-				$the_form->error( 'user_pass' );
-			}
-			if ( $user_login && ! sanitize_user( $_REQUEST[ 'user_login' ] ) ) {
-				$the_form->error( 'user_login' );
-			}
-			if ( $user_email && ! sanitize_user( $_REQUEST[ 'user_email' ] ) ) {
+		$user			= '';
+		$username		= '';
+		$user_field		= 'user_login';
+		$user_login		= isset( $_REQUEST[ 'user_login' ] ) ? 1 : 0;
+		$user_email		= isset( $_REQUEST[ 'user_email' ] ) ? 1 : 0;
+		$user_pass 		= isset( $_REQUEST[ 'user_pass' ]  ) ? 1 : 0;
+
+		if ( ! $user_pass ) {
+			return;
+		} else {
+			$password = $_REQUEST[ 'user_pass' ];
+		}
+
+		if ( $user_login ) {
+			$username = $_REQUEST[ 'user_login' ];
+		} else if ( $user_email ) {
+			$username = $_REQUEST[ 'user_email' ];
+			$user_field = 'email';
+		} else {
+			return;
+		}
+
+		if ( ! $username ) {
+			if ( $user_field == 'email' ) {
 				$the_form->error( 'user_email' );
-			}
-
-			if ( $the_form->got_errors() ) {
-				uc_add_notice( __( 'You provided missing details for authentication.', 'usercamp' ), 'error' );
-			}
-
-			// Get user_login.
-			if ( ! $user_login && $user_email ) {
-				if ( ! is_email( sanitize_email( $_REQUEST[ 'user_email' ] ) ) ) {
-					$user_login = sanitize_user( $_REQUEST[ 'user_email' ] );
-				} else {
-					$user = get_user_by( 'email', sanitize_email( $_REQUEST[ 'user_email' ] ) );
-					if ( isset( $user->user_login ) ) {
-						$user_login = $user->user_login;
-					}
-				}
-			} else if ( $user_login ) {
-				$user_login = sanitize_user( $_REQUEST[ 'user_login' ] );
-			}
-
-			// Get the user object.
-			if ( ! isset( $user ) ) {
-				$user = get_user_by( 'login', $user_login );
-			}
-
-			// Check password.
-			if ( ! isset( $user->user_login ) || ! $auth = wp_check_password( $user_pass, $user->user_pass, $user->ID ) ) {
-
-				uc_add_notice( __( 'Username or password is not correct.', 'usercamp' ), 'error' );
-
+				uc_add_notice( __( 'Please enter your email.', 'usercamp' ), 'error' );
 			} else {
+				$the_form->error( 'user_login' );
+				uc_add_notice( __( 'Please enter your username.', 'usercamp' ), 'error' );
+			}
+		} else {
+			if ( $user_field == 'email' && ! is_email( $username ) ) {
+				$the_form->error( 'user_email' );
+				uc_add_notice( __( 'Invalid email format.', 'usercamp' ), 'error' );
+			} else if ( $user_field == 'email' && is_email( $username ) ) {
+				$user = get_user_by( 'email', $username );
+			}
+		}
 
-				wp_set_current_user( $user->ID );
-				wp_set_auth_cookie( $user->ID, false );
+		if ( ! $password ) {
+			$the_form->error( 'user_pass' );
+			uc_add_notice( __( 'Please enter your password.', 'usercamp' ), 'error' );
+		}
 
-				do_action( 'wp_login', $user->user_login, $user );
+		if ( $the_form->has_errors() ) {
+			return;
+		}
 
-				$redirect_to = user_admin_url();
-				exit( wp_redirect( $redirect_to ) );
+		if ( ! isset( $user->user_login ) ) {
+			$user = get_user_by( 'login', $username );
+		}
 
+		// Check credentials.
+		if ( ! isset( $user->user_login ) || ! $auth = wp_check_password( $password, $user->user_pass, $user->ID ) ) {
+
+			$the_form->error( 'global' );
+			uc_add_notice( __( 'Username or password is not correct.', 'usercamp' ), 'error' );
+
+		} else {
+
+			if ( is_user_logged_in() ) {
+				wp_logout();
+			}
+
+			wp_set_current_user( $user->ID, $user->user_login );
+			wp_set_auth_cookie( $user->ID );
+
+			do_action( 'wp_login', $user->user_login, $user );
+			do_action( 'usercamp_login_success', $user->ID, $user );
+
+			if ( is_admin() && defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+				$the_form->js_redirect = admin_url();
+			} else {
+				exit( wp_safe_redirect( admin_url() ) );
 			}
 
 		}
+
 	}
 
 }

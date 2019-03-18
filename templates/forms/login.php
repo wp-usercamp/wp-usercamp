@@ -13,7 +13,7 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 
 ?>
 
-<form class="usercamp-login" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>">
+<form class="usercamp-login" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>" <?php uc_print_inline_styles(); ?>>
 
 	<?php uc_print_notices(); ?>
 
@@ -29,5 +29,7 @@ if ( $the_form->row_count <= 0 || ! $the_form->has_fields() ) {
 	</div>
 
 	<?php wp_nonce_field( 'usercamp-login', 'usercamp-login-nonce' ); ?>
+
+	<?php do_action( 'usercamp_login_shortcode_end' ); ?>
 
 </form>

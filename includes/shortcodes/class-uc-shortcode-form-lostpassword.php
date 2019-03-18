@@ -57,7 +57,7 @@ class UC_Shortcode_Form_Lostpassword {
 			// Fired before the actual password reset email and notice.
 			do_action( 'usercamp_pre_password_reset' );
 
-			if ( ! $the_form->got_errors() ) {
+			if ( ! $the_form->has_errors() ) {
 				$the_form->is_request = false;
 				uc_add_notice( __( 'Instructions to reset your password will be sent to you shortly. Please check your email.', 'usercamp' ), 'success' );
 				self::password_reset( $email );

@@ -137,6 +137,7 @@ final class UserCamp {
 		include_once UC_ABSPATH . 'includes/uc-notice-functions.php';
 		include_once UC_ABSPATH . 'includes/uc-template-hooks.php';
 		include_once UC_ABSPATH . 'includes/class-uc-frontend-scripts.php';
+		include_once UC_ABSPATH . 'includes/class-uc-form-handler.php';
 	}
 
 	/**
