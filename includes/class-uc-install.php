@@ -188,7 +188,7 @@ class UC_Install {
 			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'usercamp\_%';" );
 			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'widget\_usercamp\_%';" );
 			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'uc\_%';" );
-			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'widget\_uc\_%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '%_uc_%';" );
 
 			// Delete usermeta.
 			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'usercamp\_%';" );
