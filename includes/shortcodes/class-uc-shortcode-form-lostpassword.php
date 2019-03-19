@@ -37,6 +37,10 @@ class UC_Shortcode_Form_Lostpassword {
 			$the_form = $object;
 		}
 
+		if ( ! isset( $_REQUEST['user_email'] ) ) {
+			return;
+		}
+
 		$the_form->is_request = true;
 
 		$email = empty( $_REQUEST['user_email'] ) ? '' : uc_clean( wp_unslash( $_REQUEST['user_email'] ) );
