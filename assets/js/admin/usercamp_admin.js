@@ -12,6 +12,7 @@ jQuery( function ( $ ) {
 		new_row:		$( '.uc-bld-new' ),
 		active:			null,
 		autosave:		1,
+		active_field:	null,
 
 		// Get form data
 		getdata: function() {
@@ -317,7 +318,8 @@ jQuery( function ( $ ) {
 		},
 
 		// Clears modal settings.
-		clear_modal_settings: function( el, m ) {
+		clear_modal_settings: function( el ) {
+			var m = $( '#uc-add-field' );
 
 			// Change heading.
 			m.find( 'h3' ).html( usercamp_admin.modal.creating );
@@ -334,16 +336,17 @@ jQuery( function ( $ ) {
 
 			// Set the field type.
 			m.find( '#type' )[0].selectize.setValue( el.attr( 'data-type' ), true );	
-
 		},
 
 		// Edit field.
 		edit_field: function( el ) {
-			this.add_modal_settings( el, $( '#uc-add-field' ) );
+			this.active_field = el;
+			this.add_modal_settings( el );
 		},
 
 		// Add settings to field modal.
-		add_modal_settings: function( el, m ) {
+		add_modal_settings: function( el ) {
+			var m = $( '#uc-add-field' );
 
 			// Change heading.
 			m.find( 'h3' ).html( usercamp_admin.modal.editing.replace( '{field}', el.attr( 'data-label' ) ) );
@@ -361,13 +364,45 @@ jQuery( function ( $ ) {
 				if ( input.length ) {
 					var type = input.parents( 'fieldset' ).attr( 'data-type' );
 					if ( type == 'select' ) {
-						input[0].selectize.setValue( value, true );
+						if ( input.prop('multiple') ) {
+							alert( key );
+						} else {
+							input[0].selectize.setValue( value, true );
+						}
 					} else {
 						input.val( value );
 					}
 				}
 			} );
+		},
 
+		// Save field.
+		save_field: function( el ) {
+			this.save_modal_settings( el );
+			//this.sortables();
+			//this.ready_save();
+		},
+
+		// Save settings from field modal.
+		save_modal_settings: function( el ) {
+			var m = $( '#uc-add-field' );
+			$.each( usercamp_admin.fields, function( index, key ) {
+				var input = m.find( '#' + key );
+				var value = '';
+				if ( input.length ) {
+					var type = input.parents( 'fieldset' ).attr( 'data-type' );
+					if ( type == 'text' ) {
+						value = input.val();
+					}
+					if ( type == 'select' ) {
+						value = input.val();
+					}
+					if ( key == 'label' ) {
+						el.find( '.uc-bld-label' ).html( value );
+					}
+					el.attr( 'data-' + key, value );
+				}
+			} );
 		}
 
 	}
@@ -506,19 +541,24 @@ jQuery( function ( $ ) {
 			uc_builder.save();
 		} )
 
-		// Save field.
+		// Ajax save field.
 		.on( 'click', '.add_field:not(.disabled)', function() {
 			uc_builder.add_field( $( this ) );
 		} )
 
 		// New field.
 		.on( 'click', '.new_field', function() {
-			uc_builder.clear_modal_settings( $( this ), $( '#uc-add-field' ) );
+			uc_builder.clear_modal_settings( $( this ) );
 		} )
 
 		// Edit field.
 		.on( 'click', '.uc-edit-field', function() {
 			uc_builder.edit_field( $( this ).parents( '.uc-bld-elem' ) );
+		} )
+
+		// Save field.
+		.on( 'click', '.save_field', function() {
+			uc_builder.save_field( uc_builder.active_field );
 		} )
 
 		// Before field modal is open.

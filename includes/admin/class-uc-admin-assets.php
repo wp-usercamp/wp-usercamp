@@ -67,6 +67,7 @@ class UC_Admin_Assets {
 
 			$params = array(
 				'ajax_url'	=> admin_url( 'admin-ajax.php' ),
+				'fields'	=> uc_get_field_opts(),
 				'nonces'	=> array(
 					'save_form'				=> wp_create_nonce( 'usercamp-save-form' ),
 					'create_forms' 			=> wp_create_nonce( 'usercamp-create-forms' ),
