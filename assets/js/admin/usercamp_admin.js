@@ -584,6 +584,9 @@ jQuery( function ( $ ) {
 		.on( $.modal.BEFORE_OPEN, '#uc-add-field', function(e, modal) {
 			$( '.modal span.error' ).remove();
 			$( '.modal :input' ).removeClass( 'error' );
+			$( '.modal div.panel-wrap' ).each( function() {
+				$( this ).find( 'ul.uc-tabs li' ).eq( 0 ).find( 'a' ).click();
+			});
 		} )
 
 		// After field modal is open.

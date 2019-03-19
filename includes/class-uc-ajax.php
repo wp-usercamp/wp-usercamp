@@ -124,7 +124,7 @@ class UC_AJAX {
 		}
 
 		// No errors? Setup all props now.
-		//$props['key']         			= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
+		//$props['key']         		= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
 		$props['type']         			= isset( $_POST['type'] ) ? uc_clean( wp_unslash( $_POST['type'] ) ) : '';
 		$props['can_view']				= isset( $_POST['can_view'] ) ? uc_clean( wp_unslash( $_POST['can_view'] ) ) : '';
 		$props['is_private']			= ! empty( $_POST['is_private'] );
@@ -132,7 +132,7 @@ class UC_AJAX {
 		$props['is_required']			= ! empty( $_POST['is_required'] );
 		$props['is_crop']				= ! empty( $_POST['is_crop'] );
 		$props['vertical_crop']			= ! empty( $_POST['vertical_crop'] );
-		//$props['label']					= uc_clean( wp_unslash( $_POST['post_title'] ) );
+		//$props['label']				= uc_clean( wp_unslash( $_POST['post_title'] ) );
 		$props['edit_label']			= uc_clean( wp_unslash( $_POST['edit_label'] ) );
 		$props['view_label']			= uc_clean( wp_unslash( $_POST['view_label'] ) );
 		$props['placeholder']			= uc_clean( wp_unslash( $_POST['placeholder'] ) );
@@ -149,8 +149,8 @@ class UC_AJAX {
 		$props['display_hooks']			= wp_kses_post( wp_unslash( $_POST['filter_hooks'] ) );
 		$props['presave_hooks']			= wp_kses_post( wp_unslash( $_POST['presave_hooks'] ) );
 		$props['postsave_hooks']		= wp_kses_post( wp_unslash( $_POST['postsave_hooks'] ) );
-		$props['max_image_size']		= isset( $_POST['max_image_size'] ) ? absint( wp_unslash( $_POST['max_image_size'] ) ) : '';
-		$props['max_file_size']			= isset( $_POST['max_file_size'] ) ? absint( wp_unslash( $_POST['max_file_size'] ) ) : '';
+		$props['max_image_size']		= ! empty( $_POST['max_image_size'] ) ? absint( wp_unslash( $_POST['max_image_size'] ) ) : '';
+		$props['max_file_size']			= ! empty( $_POST['max_file_size'] ) ? absint( wp_unslash( $_POST['max_file_size'] ) ) : '';
 
 		// Add the field to database.
 		if ( empty( $errors ) ) {

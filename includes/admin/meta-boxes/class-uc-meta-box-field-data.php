@@ -130,8 +130,8 @@ class UC_Meta_Box_Field_Data {
 		$props['display_hooks']			= wp_kses_post( wp_unslash( $_POST['filter_hooks'] ) );
 		$props['presave_hooks']			= wp_kses_post( wp_unslash( $_POST['presave_hooks'] ) );
 		$props['postsave_hooks']		= wp_kses_post( wp_unslash( $_POST['postsave_hooks'] ) );
-		$props['max_image_size']		= isset( $_POST['max_image_size'] ) ? absint( wp_unslash( $_POST['max_image_size'] ) ) : '';
-		$props['max_file_size']			= isset( $_POST['max_file_size'] ) ? absint( wp_unslash( $_POST['max_file_size'] ) ) : '';
+		$props['max_image_size']		= ! empty( $_POST['max_image_size'] ) ? absint( wp_unslash( $_POST['max_image_size'] ) ) : '';
+		$props['max_file_size']			= ! empty( $_POST['max_file_size'] ) ? absint( wp_unslash( $_POST['max_file_size'] ) ) : '';
 
 		// No key was provided.
 		if ( ! $props['key'] ) {
@@ -146,28 +146,6 @@ class UC_Meta_Box_Field_Data {
 			} else {
 				$the_field->_delete();
 			}
-		}
-
-		// Invalid max file size.
-		if ( $props['max_image_size'] > uc_bytes_to_mb( wp_max_upload_size() ) || $props['max_file_size'] > uc_bytes_to_mb( wp_max_upload_size() ) ) {
-			UC_Admin_Meta_Boxes::add_error( sprintf( __( 'Your install only supports a <b>maximum upload size of (%dMB)</b>. Please contact your system administrator If you want to increase this limit.', 'usercamp' ), uc_bytes_to_mb( wp_max_upload_size() ) ) );
-			$props['max_image_size'] = 2;
-			$props['max_file_size'] = 2;
-		}
-
-		// Force private if user specified view options.
-		if ( $props['can_view'] ) {
-			$props['is_private'] = true;
-		}
-
-		// Private field with no view options.
-		if ( $props['is_private'] && ! $props['can_view'] ) {
-			$props['can_view'] = array( '_none' );
-		}
-
-		// None can view but user specified other options/roles.
-		if ( is_array( $props['can_view'] ) && ( $key = array_search( '_none', $props['can_view'] ) ) !== false && count( $props['can_view'] ) > 1 ) {
-			unset( $props['can_view'][ $key ] );
 		}
 
 		$the_field->save( $props );
