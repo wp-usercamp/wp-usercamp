@@ -124,7 +124,7 @@ function uc_get_field( $array ) {
 	}
 
 	// Classes.
-	$field['field_class'][] = $field['key'] . '_field';
+	$field['field_class'][] = esc_attr( $field['key'] ) . '_field';
 	if ( $the_form->has_error( $field['key'] ) ) {
 		$field['label_class'][] = 'uc-error';
 		$field['input_class'][] = 'uc-error';
@@ -151,7 +151,7 @@ function uc_get_field( $array ) {
 		}
 	}
 	if ( ! empty( $field['placeholder'] ) ) {
-		$field['attributes'][] = 'placeholder=' . $field['placeholder'];
+		$field['attributes'][] = 'placeholder="' . esc_attr( $field['placeholder'] ) . '"';
 	}
 
 	/**

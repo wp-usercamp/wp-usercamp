@@ -24,10 +24,10 @@ jQuery( function ( $ ) {
 			data['fields'] = [];
 			$( '.uc-bld-col .uc-bld-elem:visible' ).each( function() {
 				var thisdata = {};
-				$.each( $( this ).data(), function( k, v ) {
-					if ( typeof v === 'string' || typeof v === 'number' ) {
-						thisdata[ k ] = v;
-					}
+				var that = $( this );
+				$.each( usercamp_admin.fields, function( index, key ) {
+					var attribute = that.attr( 'data-' + key );
+					thisdata[ key ] = attribute;
 				} );
 				data.fields.push( {
 					'data'	 : thisdata,
@@ -332,7 +332,10 @@ jQuery( function ( $ ) {
 			m.find( '.button-secondary' ).attr( 'rel', 'modal:open' );
 
 			// Clear fields as much as we can.
-			m.find( 'input[type=text]' ).val( '' );
+			m.find( 'input[type=text], textarea' ).val( '' );
+			m.find( 'select' ).each( function() {
+				$( this )[0].selectize.setValue( '', true );
+			} );
 
 			// Set the field type.
 			m.find( '#type' )[0].selectize.setValue( el.attr( 'data-type' ), true );	
@@ -359,15 +362,23 @@ jQuery( function ( $ ) {
 			m.find( '.button-secondary' ).attr( 'rel', 'modal:close' );
 
 			// loop through each data attribute and set the option in field settings modal.
-			$.each( el.data(), function( key, value ) {
+			$.each( usercamp_admin.fields, function( index, key ) {
 				var input = m.find( '#' + key );
+				var value = el.attr( 'data-' + key );
 				if ( input.length ) {
 					var type = input.parents( 'fieldset' ).attr( 'data-type' );
 					if ( type == 'select' ) {
 						if ( input.prop('multiple') ) {
-							alert( key );
+							if ( value ) {
+								var array = value.split(',');
+								input[0].selectize.setValue( array, true );
+							}
 						} else {
 							input[0].selectize.setValue( value, true );
+						}
+					} else if ( type == 'switch' ) {
+						if ( value == 1 ) {
+							input.parents( 'fieldset' ).find( '.uc-toggle' ).toggles( true );	
 						}
 					} else {
 						input.val( value );
@@ -379,8 +390,8 @@ jQuery( function ( $ ) {
 		// Save field.
 		save_field: function( el ) {
 			this.save_modal_settings( el );
-			//this.sortables();
-			//this.ready_save();
+			this.sortables();
+			this.ready_save();
 		},
 
 		// Save settings from field modal.
@@ -391,14 +402,20 @@ jQuery( function ( $ ) {
 				var value = '';
 				if ( input.length ) {
 					var type = input.parents( 'fieldset' ).attr( 'data-type' );
-					if ( type == 'text' ) {
-						value = input.val();
-					}
-					if ( type == 'select' ) {
+					if ( type == 'switch' ) {
+						value = ( input.parents( 'fieldset' ).find( ':checkbox' ).is( ':checked' ) ) ? 1 : '';
+					} else {
 						value = input.val();
 					}
 					if ( key == 'label' ) {
 						el.find( '.uc-bld-label' ).html( value );
+					}
+					if ( key == 'icon' ) {
+						if ( value ) {
+							el.find( '.uc-bld-icon' ).html( '<i data-feather="' + value + '"></i>' );
+						} else {
+							el.find( '.uc-bld-icon' ).html( '<i data-feather="' + el.attr( 'data-noicon' ) + '"></i>' );
+						}
 					}
 					el.attr( 'data-' + key, value );
 				}
