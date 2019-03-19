@@ -12,7 +12,6 @@ jQuery( function ( $ ) {
 		new_row:		$( '.uc-bld-new' ),
 		active:			null,
 		autosave:		1,
-		field_type:		null,
 
 		// Get form data
 		getdata: function() {
@@ -315,6 +314,60 @@ jQuery( function ( $ ) {
 					}
 				}
 			} );
+		},
+
+		// Clears modal settings.
+		clear_modal_settings: function( el, m ) {
+
+			// Change heading.
+			m.find( 'h3' ).html( usercamp_admin.modal.creating );
+
+			// Unlock key.
+			m.find( '#key' ).removeAttr( 'disabled' );
+
+			// Change buttons.
+			m.find( '.button-primary' ).addClass( 'add_field' ).removeClass( 'save_field' ).html( usercamp_admin.modal.create_button );
+			m.find( '.button-secondary' ).attr( 'rel', 'modal:open' );
+
+			// Clear fields as much as we can.
+			m.find( 'input[type=text]' ).val( '' );
+
+			// Set the field type.
+			m.find( '#type' )[0].selectize.setValue( el.attr( 'data-type' ), true );	
+
+		},
+
+		// Edit field.
+		edit_field: function( el ) {
+			this.add_modal_settings( el, $( '#uc-add-field' ) );
+		},
+
+		// Add settings to field modal.
+		add_modal_settings: function( el, m ) {
+
+			// Change heading.
+			m.find( 'h3' ).html( usercamp_admin.modal.editing.replace( '{field}', el.attr( 'data-label' ) ) );
+
+			// Lock key.
+			m.find( '#key' ).attr( 'disabled', 'disabled' );
+
+			// Change buttons.
+			m.find( '.button-primary' ).removeClass( 'add_field' ).addClass( 'save_field' ).html( usercamp_admin.modal.save_button );
+			m.find( '.button-secondary' ).attr( 'rel', 'modal:close' );
+
+			// loop through each data attribute and set the option in field settings modal.
+			$.each( el.data(), function( key, value ) {
+				var input = m.find( '#' + key );
+				if ( input.length ) {
+					var type = input.parents( 'fieldset' ).attr( 'data-type' );
+					if ( type == 'select' ) {
+						input[0].selectize.setValue( value, true );
+					} else {
+						input.val( value );
+					}
+				}
+			} );
+
 		}
 
 	}
@@ -460,20 +513,24 @@ jQuery( function ( $ ) {
 
 		// New field.
 		.on( 'click', '.new_field', function() {
-			uc_builder.field_type = $( this ).attr( 'data-type' );
-			$( '.modal #type' )[0].selectize.setValue( uc_builder.field_type, true );
+			uc_builder.clear_modal_settings( $( this ), $( '#uc-add-field' ) );
 		} )
 
-		// After field modal is open.
-		.on( $.modal.OPEN, '#uc-add-field', function(e, modal) {
-			$( document.body ).trigger( 'uc-init-fields' );
-			modal.options.clickClose = false;
+		// Edit field.
+		.on( 'click', '.uc-edit-field', function() {
+			uc_builder.edit_field( $( this ).parents( '.uc-bld-elem' ) );
 		} )
 
 		// Before field modal is open.
 		.on( $.modal.BEFORE_OPEN, '#uc-add-field', function(e, modal) {
 			$( '.modal span.error' ).remove();
 			$( '.modal :input' ).removeClass( 'error' );
+		} )
+
+		// After field modal is open.
+		.on( $.modal.OPEN, '#uc-add-field', function(e, modal) {
+			$( document.body ).trigger( 'uc-init-fields' );
+			modal.options.clickClose = false;
 		} )
 
 		// See more or less.

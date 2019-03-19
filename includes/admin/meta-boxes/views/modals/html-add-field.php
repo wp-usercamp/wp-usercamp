@@ -1,6 +1,6 @@
 <?php
 /**
- * Modal: Create a custom field.
+ * Modal: Add a custom field.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="modal-footer">
 		<a href="#" class="button button-primary add_field"><?php _e( 'Create &rarr;', 'usercamp' ); ?></a>
-		<a href="#uc-add-element" class="button button-secondary" rel="modal:open"><?php _e( '&larr; Back', 'usercamp' ); ?></a>
+		<a href="#uc-add-element" class="button button-secondary" rel="modal:open"><?php _e( '&larr; Cancel', 'usercamp' ); ?></a>
 	</div>
 
 </div>

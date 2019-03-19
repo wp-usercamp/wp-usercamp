@@ -488,7 +488,7 @@ function uc_dragdrop_field_actions() {
 	global $the_form;
 	?>
 	<div class="uc-bld-right">
-		<span class="uc-bld-action"><a href="#" class="uc-edit-field"><i data-feather="edit-2"></i></a></span>
+		<span class="uc-bld-action"><a href="#uc-add-field" class="uc-edit-field" rel="modal:open"><i data-feather="edit-2"></i></a></span>
 		<span class="uc-bld-action"><a href="#" class="uc-duplicate-field"><i data-feather="copy"></i></a></span>
 		<span class="uc-bld-action"><a href="#" class="uc-delete-field"><i data-feather="trash-2"></i></a></span>
 	</div>

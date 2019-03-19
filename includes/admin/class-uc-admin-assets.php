@@ -89,6 +89,12 @@ class UC_Admin_Assets {
 					'unsaved_changes'		=> __( 'Your changes will not take effect until you press on <b>&rarr; Save changes</b> button.', 'usercamp' ),
 					'saved_changes'			=> esc_html__( 'Changes have been saved.', 'usercamp' ),
 				),
+				'modal'		=> array(
+					'creating'				=> esc_html__( 'Create a Custom Field', 'usercamp' ),
+					'editing'				=> esc_html__( 'Editing "{field}"', 'usercamp' ),
+					'save_button'			=> esc_html__( 'Save Field &rarr;', 'usercamp' ),
+					'create_button'			=> esc_html__( 'Create &rarr;', 'usercamp' ),
+				),
 			);
 
 			wp_localize_script( 'usercamp_admin', 'usercamp_admin', $params );
