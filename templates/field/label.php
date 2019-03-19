@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="usercamp-label <?php echo esc_attr( implode( ' ', $field['title_class'] ) ); ?>">
 
-	<?php if ( $the_form->icons == 'label' ) : ?>
+	<?php if ( in_array( 'has-icon', $field['title_class'] ) ) : ?>
 
 		<span class="uc-icon">
 			<i data-feather="<?php echo esc_attr( $field[ 'icon' ] ); ?>"></i>

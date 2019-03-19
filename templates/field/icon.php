@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<?php if ( $the_form->icons == 'inside' ) : ?>
+<?php if ( in_array( 'has-icon', $field['control_class'] ) ) : ?>
 
 	<span class="uc-icon">
 

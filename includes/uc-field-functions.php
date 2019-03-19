@@ -51,6 +51,7 @@ function usercamp_get_field_types() {
 		'toggle'		=>	array(
 			'label'		=> __( 'Toggle', 'usercamp' ),
 			'icon'		=> 'toggle-left',
+			'no_input'	=> 1,
 		),
 		'image'			=>	array(
 			'label'		=> __( 'Image Upload', 'usercamp' ),
@@ -92,7 +93,11 @@ function uc_get_field_type( $type, $return = false ) {
 		return $types[ $type ][ 'icon' ];
 	}
 
-	return '<span class="uc-tag-icon"><i data-feather="' . $types[ $type ][ 'icon' ] . '"></i>' . $types[ $type ][ 'label' ] . '</span>';
+	if ( $return == 'html' ) {
+		return '<span class="uc-tag-icon"><i data-feather="' . $types[ $type ][ 'icon' ] . '"></i>' . $types[ $type ][ 'label' ] . '</span>';
+	}
+
+	return $types[ $type ];
 }
 
 /**

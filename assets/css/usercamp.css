@@ -351,11 +351,11 @@ a.usercamp-button.disabled {
 
 .usercamp-label {
 	margin: 0 0 0.5em 0;
+	position: relative;
 }
 
 .usercamp-label.has-icon {
-	position: relative;
-	padding-left: 2.5em;
+	padding-left: 1.675em;
 }
 
 .usercamp-label label {
@@ -448,6 +448,10 @@ a.usercamp-button.disabled {
 	margin: auto;
 	width: 1em;
 	height: 100%;
+}
+
+.usercamp-label .uc-icon svg {
+	margin: 0;
 }
 
 .uc-pw-visible {

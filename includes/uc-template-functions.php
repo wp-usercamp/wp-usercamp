@@ -101,6 +101,8 @@ function uc_get_field( $array ) {
 
 	$mode					= $the_form->type;
 	$field 					= $array['data'];
+	$field_type				= uc_get_field_type( $field['type'] );
+	$field['no_input']		= 0;
 	$field['title_class'] 	= array();
 	$field['label_class'] 	= array();
 	$field['input_class'] 	= array();
@@ -113,7 +115,12 @@ function uc_get_field( $array ) {
 
 	// Get default icon.
 	if ( empty( $field['icon'] ) ) {
-		$field['icon'] = uc_get_field_type( $field['type'], 'icon' );
+		$field['icon'] = $field_type['icon'];
+	}
+
+	// For fields without input.
+	if ( ! empty( $field_type['no_input'] ) ) {
+		$field['no_input'] = 1;
 	}
 
 	// Classes.
@@ -122,7 +129,7 @@ function uc_get_field( $array ) {
 		$field['label_class'][] = 'uc-error';
 		$field['input_class'][] = 'uc-error';
 	}
-	if ( $the_form->icons == 'label' ) {
+	if ( $the_form->icons == 'label' || ( $the_form->icons == 'inside' && $field['no_input'] ) ) {
 		$field['title_class'][] = 'has-icon';
 	}
 	if ( $the_form->icons == 'inside' ) {
@@ -130,7 +137,7 @@ function uc_get_field( $array ) {
 	}
 
 	// Edit label.
-	if ( $field['edit_label'] ) {
+	if ( ! empty( $field['edit_label'] ) ) {
 		$field['label'] = $field['edit_label'];
 	}
 

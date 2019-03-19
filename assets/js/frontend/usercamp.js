@@ -85,7 +85,7 @@ jQuery( function( $ ) {
 
 		// Focus on field
 		.on( 'click', '.uc-icon', function(e) {
-			$( this ).parents( 'fieldset' ).find( 'input' ).focus();
+			$( this ).parents( 'fieldset' ).find( 'label' ).trigger( 'click' );
 		} )
 
 		// Listen to checkbox change.

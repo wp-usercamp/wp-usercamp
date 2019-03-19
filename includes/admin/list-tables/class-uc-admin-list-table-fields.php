@@ -139,7 +139,7 @@ class UC_Admin_List_Table_Fields extends UC_Admin_List_Table {
 	 */
 	protected function render_type_column() {
 		if ( $this->object->type ) {
-			echo uc_get_field_type( $this->object->type );
+			echo uc_get_field_type( $this->object->type, 'html' );
 		}
 	}
 
