@@ -30,6 +30,11 @@ abstract class UC_Abstract_Post {
 	public $is_request = false;
 
 	/**
+	 * Array containing post input.
+	 */
+	public $postdata = array();
+
+	/**
 	 * Array containing wrong fields.
 	 */
 	public $error_fields = array();

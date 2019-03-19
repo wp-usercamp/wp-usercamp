@@ -125,6 +125,11 @@ class UC_Frontend_Scripts {
 				'deps'    => array( 'jquery' ),
 				'version' => UC_VERSION,
 			),
+			'jquery-toggles'				=> array(
+				'src'     => self::get_asset_url( 'assets/js/jquery-toggles/jquery-toggles.js' ),
+				'deps'    => array( 'jquery' ),
+				'version' => UC_VERSION,
+			),
 			'jquery-feather'				=> array(
 				'src'     => self::get_asset_url( 'assets/js/jquery-feather/jquery-feather.js' ),
 				'deps'    => array( 'jquery' ),
@@ -132,7 +137,7 @@ class UC_Frontend_Scripts {
 			),
 			'usercamp'						=> array(
 				'src'     => self::get_asset_url( 'assets/js/frontend/usercamp.js' ),
-				'deps'    => array( 'jquery', 'jquery-tiptip', 'jquery-feather' ),
+				'deps'    => array( 'jquery', 'jquery-tiptip', 'jquery-toggles', 'jquery-feather' ),
 				'version' => UC_VERSION,
 			),
 		);

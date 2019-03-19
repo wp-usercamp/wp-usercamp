@@ -129,6 +129,18 @@ class UC_Form extends UC_Abstract_Post {
 			uc_add_notice( sprintf( __( '%s is required.', 'usercamp' ), $label ), 'error' );
 		}
 
+		$this->postdata[ $key ] = $value;
+	}
+
+	/**
+	 * Toggle validation.
+	 */
+	public function validate_toggle( $data ) {
+		extract( $data );
+
+		$value = isset( $_REQUEST[ $data['key'] ] );
+
+		$this->postdata[ $key ] = $value;
 	}
 
 }

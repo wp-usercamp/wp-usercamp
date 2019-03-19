@@ -61,6 +61,20 @@ jQuery( function( $ ) {
 		} );
 	}).trigger( 'uc-init-tooltips' );
 
+	// Toggles
+	$( document.body ).on( 'uc-init-toggles', function() {
+		$( '.uc-toggle' ).each( function() {
+			var cb = $( this ).parents( 'fieldset' ).find( 'input:checkbox' ).attr( 'id' );
+			$( this ).toggles( {
+				'text': {
+					on: '',
+					off: ''
+				},
+				'checkbox' : $( '#' + cb )
+			} );
+		} );
+	}).trigger( 'uc-init-toggles' );
+
 	// Body events
 	$( document.body )
 
@@ -72,6 +86,15 @@ jQuery( function( $ ) {
 		// Focus on field
 		.on( 'click', '.uc-icon', function(e) {
 			$( this ).parents( 'fieldset' ).find( 'input' ).focus();
+		} )
+
+		// Listen to checkbox change.
+		.on( 'change', '.usercamp-field input[type=checkbox]', function() {
+			if ( $(this).is( ':checked' ) ) {
+				$( this ).parents( 'fieldset' ).find( '.uc-toggle' ).toggles( true );
+			} else {
+				$( this ).parents( 'fieldset' ).find( '.uc-toggle' ).toggles( false );
+			}
 		} )
 
 		// Toggle password

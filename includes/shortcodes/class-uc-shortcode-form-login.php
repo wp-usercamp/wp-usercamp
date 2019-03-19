@@ -20,11 +20,11 @@ class UC_Shortcode_Form_Login {
 
 		$atts = array_merge( array(
 			'top_note'				=> '',
-			'log_in'				=> __( 'Log In', 'usercamp' ),
-			'create_account'		=> __( 'Create Account?', 'usercamp' ),
+			'first_button'			=> __( 'Log In', 'usercamp' ),
+			'second_button'			=> __( 'Create Account?', 'usercamp' ),
 		), (array) $atts );
 
-		uc_get_template( 'forms/login.php', array( 'atts' => $atts ) );
+		uc_get_template( 'forms/form.php', array( 'atts' => $atts ) );
 	}
 
 	/**

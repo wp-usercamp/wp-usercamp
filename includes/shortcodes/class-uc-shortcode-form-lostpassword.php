@@ -20,11 +20,11 @@ class UC_Shortcode_Form_Lostpassword {
 
 		$atts = array_merge( array(
 			'top_note'				=> __( 'Please write your email in the box below and we’ll send you a link to the password reset page.', 'usercamp' ),
-			'retrieve_password'		=> __( 'Retrieve Password', 'usercamp' ),
-			'log_in'				=> __( 'Wait, I remember!', 'usercamp' ),
+			'first_button'			=> __( 'Retrieve Password', 'usercamp' ),
+			'second_button'			=> __( 'Wait, I remember!', 'usercamp' ),
 		), (array) $atts );
 
-		uc_get_template( 'forms/lostpassword.php', array( 'atts' => $atts ) );
+		uc_get_template( 'forms/form.php', array( 'atts' => $atts ) );
 	}
 
 	/**

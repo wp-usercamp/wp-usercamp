@@ -69,6 +69,66 @@
 	width: 0;
 }
 
+/* jQuery toggles */
+.uc-toggle {
+	width: 2.4em;
+	height: 1.2em;
+}
+
+.toggle-slide {
+	overflow: hidden;
+	cursor: pointer;
+	user-select: none;
+	direction: ltr;
+	text-align: center;
+	border-radius: 3px;
+}
+
+div.disabled > .toggle-slide {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.toggle-slide .toggle-on,
+.toggle-slide .toggle-off,
+.toggle-slide .toggle-blob {
+	float: left;
+}
+
+.toggle-slide .toggle-blob {
+	position: relative;
+	z-index: 99;
+	background: #fff;
+	border: 1px solid #aaa;
+	cursor: grab;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+.toggle-on {
+	border-radius: 3px 0 0 3px;
+	background: rgb(91, 157, 217);
+}
+
+.toggle-off {
+	border-radius: 0 3px 3px 0;
+	background: #eee;
+}
+
+.toggle-on:after,
+.toggle-off:after {
+	background: rgb(0, 115, 187);
+	height: 50%;
+	content: '';
+	margin-top: -27%;
+	display: block;
+	border-radius: 3px;
+}
+
+.toggle-off:after {
+	background: #ddd;
+}
+
 /* Animated checkmark */
 .usercamp svg.checkmark {
 	width: 56px;
@@ -311,6 +371,11 @@ a.usercamp-button.disabled {
 
 .usercamp-input {
 	position: relative;
+}
+
+.usercamp-input input[type=checkbox] {
+	position: absolute;
+	left: -9999px;
 }
 
 .usercamp-input.has-icon input[type=text],
