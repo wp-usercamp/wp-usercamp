@@ -129,6 +129,11 @@ function uc_get_field( $array ) {
 		$field['control_class'][] = 'has-icon';
 	}
 
+	// Edit label.
+	if ( $field['edit_label'] ) {
+		$field['label'] = $field['edit_label'];
+	}
+
 	// Field attributes.
 	if ( $mode == 'register' ) {
 		if ( $field['key'] == 'user_login' ) {

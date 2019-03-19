@@ -19,6 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
-	<label for="<?php echo esc_attr( $field['key'] ); ?>" class="<?php echo esc_attr( implode( ' ', $field['label_class'] ) ); ?>"><?php echo wp_kses_post( $field['label'] ); ?></label>
+	<label for="<?php echo esc_attr( $field['key'] ); ?>" class="<?php echo esc_attr( implode( ' ', $field['label_class'] ) ); ?>">
+		<?php echo wp_kses_post( $field['label'] ); ?>
+	</label>
 
 </div>

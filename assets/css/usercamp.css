@@ -71,7 +71,7 @@
 
 /* jQuery toggles */
 .uc-toggle {
-	width: 2.4em;
+	width: 2.8em;
 	height: 1.2em;
 }
 
@@ -118,9 +118,8 @@ div.disabled > .toggle-slide {
 .toggle-on:after,
 .toggle-off:after {
 	background: rgb(0, 115, 187);
-	height: 50%;
+	height: 10%;
 	content: '';
-	margin-top: -27%;
 	display: block;
 	border-radius: 3px;
 }
