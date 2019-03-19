@@ -397,7 +397,7 @@ function uc_dragdrop_columns( $i ) {
 			<div class="uc-bld-elem" <?php echo uc_get_data_attributes( $r ); ?>>
 				<div class="uc-bld-left">
 					<span class="uc-bld-action"><a href="#" class="uc-move-field"><i data-feather="move"></i></a></span>
-					<span class="uc-bld-icon"><i data-feather="<?php echo ( $r['icon'] ) ? esc_attr( $r['icon'] ) : esc_attr( uc_get_field_type( $r['type'], 'icon' ) ); ?>"></i></span>
+					<span class="uc-bld-icon"><i data-feather="<?php echo ! empty( $r['icon'] ) ? esc_attr( $r['icon'] ) : esc_attr( uc_get_field_type( $r['type'], 'icon' ) ); ?>"></i></span>
 					<span class="uc-bld-label"><?php echo esc_html( $r['label'] ); ?></span>
 					<span class="uc-bld-helper"><?php echo esc_attr( $r['key'] ); ?></span>
 				</div>

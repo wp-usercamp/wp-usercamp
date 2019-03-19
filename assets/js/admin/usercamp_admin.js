@@ -27,7 +27,9 @@ jQuery( function ( $ ) {
 				var that = $( this );
 				$.each( usercamp_admin.fields, function( index, key ) {
 					var attribute = that.attr( 'data-' + key );
-					thisdata[ key ] = attribute;
+					if ( attribute ) {
+						thisdata[ key ] = attribute;
+					}
 				} );
 				data.fields.push( {
 					'data'	 : thisdata,
@@ -474,6 +476,22 @@ jQuery( function ( $ ) {
 		} );
 	}).trigger( 'uc-init-tooltips' );
 
+	// Selectize
+	$( document.body ).on( 'uc-init-selects', function() {
+		$( '.uc-select' ).selectize();
+		$( '.uc-select-multi' ).selectize( {
+			plugins: [ 'remove_button', 'drag_drop' ],
+			delimiter: ',',
+			persist: false,
+			create: function( input ) {
+				return {
+					value: input,
+					text: input
+				}
+			}
+		} );
+	} ).trigger( 'uc-init-selects' );
+
 	// Show additional title action if required
 	$( document.body ).on( 'uc-init-action-button', function() {
 		var el = $( '.uc-page-title-action' );
@@ -486,22 +504,6 @@ jQuery( function ( $ ) {
 		uc_builder.freshstart();
 		uc_builder.sortables();
 	}).trigger( 'uc-init-builder' );
-
-	// Init selectize
-	$( document.body ).on( 'uc-init-selects', function() {
-		$( '.uc-select' ).selectize();
-		$( '.uc-select-multi' ).selectize({
-			plugins: ['remove_button', 'drag_drop'],
-			delimiter: ',',
-			persist: false,
-			create: function(input) {
-				return {
-					value: input,
-					text: input
-				}
-			}
-		});
-	} ).trigger( 'uc-init-selects' );
 
 	// Document triggers.
 	$( document.body )
