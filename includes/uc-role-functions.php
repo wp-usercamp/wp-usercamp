@@ -258,16 +258,16 @@ function usercamp_create_default_roles() {
 	}
 
 	foreach( $wp_roles->roles as $key => $data ) {
-		$role = new UC_Role();
-		$role->set( 'post_title', array_key_exists( 'name', $data ) ? $data['name'] : '' );
-		$role->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
-		$role->set( 'meta_input', array(
+		$the_role = new UC_Role();
+		$the_role->set( 'post_title', array_key_exists( 'name', $data ) ? $data['name'] : '' );
+		$the_role->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
+		$the_role->set( 'meta_input', array(
 				'name'			=> $key,
 				'is_created'	=> 1,
 				'caps'			=> array_intersect_key( uc_get_cap_titles(), $data['capabilities'] ) + $data['capabilities'],
 		) );
-		$role->insert();
-		$role->save( $role->meta_input );
+		$the_role->insert();
+		$the_role->save( $the_role->meta_input );
 	}
 
 }

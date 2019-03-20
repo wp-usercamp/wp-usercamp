@@ -48,6 +48,7 @@ class UC_Install {
 		set_transient( 'uc_installing', 'yes', MINUTE_IN_SECONDS * 10 );
 		uc_maybe_define_constant( 'UC_INSTALLING', true );
 
+		self::remove_admin_notices();
 		self::create_roles();
 		self::create_files();
 		self::update_uc_version();
@@ -56,6 +57,14 @@ class UC_Install {
 
 		do_action( 'usercamp_flush_rewrite_rules' );
 		do_action( 'usercamp_installed' );
+	}
+
+	/**
+	 * Reset any notices added to admin.
+	 */
+	private static function remove_admin_notices() {
+		include_once dirname( __FILE__ ) . '/admin/class-uc-admin-notices.php';
+		UC_Admin_Notices::remove_all_notices();
 	}
 
 	/**

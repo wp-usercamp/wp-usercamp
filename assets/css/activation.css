@@ -1,0 +1,28 @@
+/* Usercamp activation styles */
+div.updated.usercamp-message {
+	border-color: rgba(91, 157, 217, 0.85);
+	position: relative;
+	padding-right: 100px;
+}
+
+.notice-dismiss.usercamp-message-close {
+	width: auto;
+	text-decoration: none;
+	padding: 5px 20px 5px 34px;
+	top: 50%;
+	right: 0;
+	height: 28px;
+	margin-top: -14px;
+	box-sizing: border-box;
+	color: #999;
+}
+
+.notice-dismiss.usercamp-message-close:before {
+	display: inline;
+	position: absolute;
+	left: 5px;
+	top: 0;
+	height: 28px;
+	width: 28px;
+	line-height: 28px;
+}

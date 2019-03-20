@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		usercamp_wp_switch(
 			array(
 				'id'        		=> 'use_ajax',
-				'label'				=> __( 'Use ajax for submitting', 'usercamp' ),
+				'label'				=> __( 'Use AJAX', 'usercamp' ),
 				'value'				=> $the_form->use_ajax,
-				'description'		=> __( 'If enabled, this form will be submitted / sent through ajax.', 'usercamp' ),
+				'description'		=> __( 'If enabled, this form will interact instantly without page refresh.', 'usercamp' ),
 				'desc_tip'			=> true,
 			)
 		);
@@ -35,9 +35,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'value'       		=> $the_form->icons,
 				'label'       		=> __( 'Show field icons', 'usercamp' ),
 				'options'     		=> array(
-					'hide'		=> __( 'Do not show field icons', 'usercamp' ),
+					'hide'		=> __( 'Do not show', 'usercamp' ),
 					'label'		=> __( 'Beside field label', 'usercamp' ),
-					'inside'	=> __( 'Inside field (where possible)', 'usercamp' ),
+					'inside'	=> __( 'Inside field (Which support text input)', 'usercamp' ),
 				),
 				'description' 		=> __( 'If enabled, field icons will be displayed in the form.', 'usercamp' ),
 				'desc_tip'			=> true,

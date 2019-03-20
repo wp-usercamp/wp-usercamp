@@ -101,7 +101,7 @@ class UC_AJAX {
 		$errors = array();
 		$props = array();
 
-		$field = new UC_Field();
+		$the_field = new UC_Field();
 
 		$props['label'] 				= isset( $_POST['label'] ) ? uc_clean( wp_unslash( $_POST['label'] ) ) : '';
 		$props['key']         			= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
@@ -114,7 +114,7 @@ class UC_AJAX {
 			$errors['key'] = __( 'You must provide a unique key for this custom field.', 'usercamp' );
 		}
 
-		if ( $field->exists( $props['key'] ) ) {
+		if ( $the_field->exists( $props['key'] ) ) {
 			$errors['key'] = __( 'The key provided is already in use. Please write a unique key.', 'usercamp' );
 		}
 
@@ -154,11 +154,11 @@ class UC_AJAX {
 
 		// Add the field to database.
 		if ( empty( $errors ) ) {
-			$field->set( 'post_title', $props['label'] );
-			$field->set( 'post_name', uc_clean( wp_unslash( $props['key'] ) ) );
-			$field->set( 'meta_input', $props );
-			$field->insert();
-			$field->save( $field->meta_input );
+			$the_field->set( 'post_title', $props['label'] );
+			$the_field->set( 'post_name', uc_clean( wp_unslash( $props['key'] ) ) );
+			$the_field->set( 'meta_input', $props );
+			$the_field->insert();
+			$the_field->save( $the_field->meta_input );
 		}
 
 		$html = '<a href="#" class="button button-secondary insert_field" ' . uc_get_data_attributes( $props ) . '>' . esc_html__( $props['label'] ) . '</a>';

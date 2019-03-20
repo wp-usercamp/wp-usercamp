@@ -25,17 +25,17 @@ function usercamp_create_default_memberlists() {
 
 	if ( ! empty( $memberlists = usercamp_get_default_memberlists() ) ) {
 		foreach( $memberlists as $key => $data ) {
-			$memberlist = new UC_Memberlist();
-			$memberlist->set( 'post_title', isset( $data['title'] ) ? uc_clean( $data['title'] ) : '' );
-			$memberlist->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
-			$memberlist->set( 'meta_input', array(
+			$the_memberlist = new UC_Memberlist();
+			$the_memberlist->set( 'post_title', isset( $data['title'] ) ? uc_clean( $data['title'] ) : '' );
+			$the_memberlist->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
+			$the_memberlist->set( 'meta_input', array(
 					'per_page'			=> 15,
 					'per_row'			=> 3,
 					'use_ajax'			=> 'yes',
 					'roles'				=> array( '_all' ),
 			) );
-			$memberlist->insert();
-			$memberlist->save( $memberlist->meta_input );
+			$the_memberlist->insert();
+			$the_memberlist->save( $the_memberlist->meta_input );
 		}
 	}
 

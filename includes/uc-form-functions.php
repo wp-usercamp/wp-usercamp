@@ -102,17 +102,17 @@ function usercamp_create_default_forms() {
 
 	if ( ! empty( $forms = usercamp_get_default_forms() ) ) {
 		foreach( $forms as $key => $data ) {
-			$form = new UC_Form();
-			$form->set( 'post_title', isset( $data['title'] ) ? uc_clean( $data['title'] ) : '' );
-			$form->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
-			$form->set( 'meta_input', array(
+			$the_form = new UC_Form();
+			$the_form->set( 'post_title', isset( $data['title'] ) ? uc_clean( $data['title'] ) : '' );
+			$the_form->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
+			$the_form->set( 'meta_input', array(
 					'type'		=> uc_clean( wp_unslash( $key ) ),
 					'fields'	=> isset( $data['fields'] ) ? uc_clean( $data['fields'] ) : '',
 					'row_count'	=> 1,
 					'cols'		=> array( 0 => array( 'count' => 0, 'layout' => 0 ), 1 => array( 'count' => 1, 'layout' => array( 0 => '100' ) ) ),
 			) );
-			$form->insert();
-			$form->save( $form->meta_input );
+			$the_form->insert();
+			$the_form->save( $the_form->meta_input );
 		}
 	}
 
