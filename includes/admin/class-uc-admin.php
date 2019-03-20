@@ -29,6 +29,15 @@ class UC_Admin {
 		include_once dirname( __FILE__ ) . '/class-uc-admin-menus.php';
 		include_once dirname( __FILE__ ) . '/class-uc-admin-notices.php';
 		include_once dirname( __FILE__ ) . '/class-uc-admin-assets.php';
+
+		// Setup/welcome
+		if ( ! empty( $_GET['page'] ) ) {
+			switch ( $_GET['page'] ) {
+				case 'uc-setup':
+					include_once dirname( __FILE__ ) . '/class-uc-admin-setup-wizard.php';
+					break;
+			}
+		}
 	}
 
 }
