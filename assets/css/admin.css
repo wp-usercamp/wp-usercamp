@@ -28,6 +28,26 @@
 	height: 64px;
 }
 
+.usercamp-BlankState .button-primary,
+a.button.uc-page-title-action {
+	background: rgb(91, 157, 217);
+	border-color: rgb(66, 133, 193);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 rgb(66, 133, 193);
+	color: #fff;
+	text-shadow: 0 -1px 1px rgb(66, 133, 193), 1px 0 1px rgb(66, 133, 193), 0 1px 1px rgb(66, 133, 193), -1px 0 1px rgb(66, 133, 193);
+}
+
+.usercamp-BlankState .button-primary:active,
+.usercamp-BlankState .button-primary:focus,
+.usercamp-BlankState .button-primary:hover,
+a.button.uc-page-title-action:active,
+a.button.uc-page-title-action:focus,
+a.button.uc-page-title-action:hover {
+	background: rgb(66, 133, 193);
+	border-color: rgb(66, 133, 193);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 rgb(66, 133, 193);
+}
+
 a.button.uc-page-title-action {
 	display: none;
 	position: relative;
@@ -37,8 +57,8 @@ a.button.uc-page-title-action {
 	padding: 4px 10px;
 	line-height: 17px;
 	font-weight: 600;
-	box-shadow: none;
 	transform: none !important;
+	box-shadow: none !important;
 }
 
 /* Table lists */
@@ -928,6 +948,7 @@ div.disabled > .toggle-slide {
 	text-align: right;
 	padding: 15px;
 }
+
 .modal-footer a.button-primary,
 .modal-footer a.button-secondary {
 	border-radius: 999px;
@@ -936,6 +957,22 @@ div.disabled > .toggle-slide {
 	padding: .075em 1em;
 	height: auto;
 	display: inline-block !important;
+}
+
+.modal .button-primary {
+	background: rgb(91, 157, 217);
+	border-color: rgb(66, 133, 193);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 rgb(66, 133, 193);
+	color: #fff;
+	text-shadow: 0 -1px 1px rgb(66, 133, 193), 1px 0 1px rgb(66, 133, 193), 0 1px 1px rgb(66, 133, 193), -1px 0 1px rgb(66, 133, 193);
+}
+
+.modal .button-primary:active,
+.modal .button-primary:focus,
+.modal .button-primary:hover {
+	background: rgb(66, 133, 193);
+	border-color: rgb(66, 133, 193);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 rgb(66, 133, 193);
 }
 
 /* Field Modal */

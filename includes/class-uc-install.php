@@ -51,6 +51,7 @@ class UC_Install {
 		self::remove_admin_notices();
 		self::create_roles();
 		self::create_files();
+		self::maybe_enable_setup_wizard();
 		self::update_uc_version();
 
 		delete_transient( 'uc_installing' );
@@ -65,6 +66,23 @@ class UC_Install {
 	private static function remove_admin_notices() {
 		include_once dirname( __FILE__ ) . '/admin/class-uc-admin-notices.php';
 		UC_Admin_Notices::remove_all_notices();
+	}
+
+	/**
+	 * See if we need the wizard or not.
+	 */
+	private static function maybe_enable_setup_wizard() {
+		if ( apply_filters( 'usercamp_enable_setup_wizard', self::is_new_install() ) ) {
+			UC_Admin_Notices::add_notice( 'install' );
+			set_transient( '_uc_activation_redirect', 1, 30 );
+		}
+	}
+
+	/**
+	 * Is this a brand new install?
+	 */
+	private static function is_new_install() {
+		return is_null( get_option( 'usercamp_version', null ) );
 	}
 
 	/**
@@ -202,6 +220,7 @@ class UC_Install {
 			// Delete usermeta.
 			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'usercamp\_%';" );
 			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE '%_uc_%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'uc\_%';" );
 
 			// Delete posts.
 			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'uc_form', 'uc_field', 'uc_role', 'uc_memberlist' );" );

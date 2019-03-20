@@ -139,7 +139,7 @@ div.disabled > .toggle-slide {
 	stroke-miterlimit: 10;
 	margin: 1em auto;
 	text-align: center;
-	box-shadow: inset 0px 0px 0px #6EE079;
+	box-shadow: inset 0px 0px 0px rgb(110, 224, 121);
 	animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
 }
 
@@ -148,7 +148,7 @@ div.disabled > .toggle-slide {
 	stroke-dashoffset: 166;
 	stroke-width: 2;
 	stroke-miterlimit: 10;
-	stroke: #6EE079;
+	stroke: rgb(110, 224, 121);
 	fill: none;
 	animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
@@ -175,7 +175,7 @@ div.disabled > .toggle-slide {
 }
 @keyframes fill {
 	100% {
-		box-shadow: inset 0px 0px 0px 30px #6EE079;
+		box-shadow: inset 0px 0px 0px 30px rgb(110, 224, 121);
 	}
 }
 
@@ -365,7 +365,7 @@ a.usercamp-button.disabled {
 }
 
 .usercamp-label label.uc-error {
-	color: rgba(187, 0, 0);
+	color: rgb(187, 0, 0);
 }
 
 .usercamp-input {
@@ -419,13 +419,13 @@ a.usercamp-button.disabled {
 .usercamp-input textarea.uc-error {
 	border: 1px solid rgba(187, 0, 0, 0.8) !important;
 	background: rgba(187, 0, 0, 0.04) !important;
-	color: rgba(187, 0, 0) !important;
+	color: rgb(187, 0, 0) !important;
 }
 
 .usercamp-input input.uc-error:-internal-autofill-previewed,
 .usercamp-input input.uc-error:-internal-autofill-selected {
 	box-shadow: 0 0 0 50px white inset !important;
-	-webkit-text-fill-color: rgba(187, 0, 0) !important;
+	-webkit-text-fill-color: rgb(187, 0, 0) !important;
 }
 
 /* Password visibility and icons */
