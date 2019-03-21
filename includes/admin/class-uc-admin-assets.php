@@ -87,7 +87,7 @@ class UC_Admin_Assets {
 					'ajax_error'			=> esc_html__( 'An error has occured.', 'usercamp' ),
 					'duplicating'			=> esc_html__( 'Duplicating...', 'usercamp' ),
 					'saving_changes'		=> esc_html__( 'Saving changes...', 'usercamp' ),
-					'unsaved_changes'		=> __( 'Your changes will not take effect until you press on <b>&rarr; Save changes</b> button.', 'usercamp' ),
+					'unsaved_changes'		=> __( 'Your changes will not take effect until you press on <b>Save changes &rarr;</b> button.', 'usercamp' ),
 					'saved_changes'			=> esc_html__( 'Changes have been saved.', 'usercamp' ),
 				),
 				'modal'		=> array(

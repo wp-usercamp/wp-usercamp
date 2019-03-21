@@ -130,7 +130,7 @@ abstract class UC_Abstract_Post {
 	 * Save.
 	 */
 	public function save( $props ) {
-		if ( ! $props ) {
+		if ( ! $props || $this->id <= 0 ) {
 			return;
 		}
 

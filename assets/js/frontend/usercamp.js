@@ -57,7 +57,7 @@ jQuery( function( $ ) {
 			'fadeIn': 150,
 			'fadeOut': 150,
 			'delay': 300,
-			defaultPosition: 'top'
+			'defaultPosition': 'top'
 		} );
 	}).trigger( 'uc-init-tooltips' );
 

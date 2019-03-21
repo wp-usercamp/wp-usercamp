@@ -1,0 +1,373 @@
+@charset "UTF-8";
+
+/* jQuery toggles */
+.uc-toggle {
+	display: inline-block;
+}
+
+.toggle-slide {
+	overflow: hidden;
+	cursor: pointer;
+	user-select: none;
+	direction: ltr;
+	text-align: center;
+	border-radius: 3px;
+}
+
+div.disabled > .toggle-slide {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.toggle-slide .toggle-on,
+.toggle-slide .toggle-off,
+.toggle-slide .toggle-blob {
+	float: left;
+}
+
+.toggle-slide .toggle-blob {
+	position: relative;
+	z-index: 99;
+	background: #fff;
+	border: 1px solid #aaa;
+	cursor: grab;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+.toggle-on,
+.toggle-off {
+	border-radius: 3px 0 0 3px;
+	background: rgb(91, 157, 217);
+	color: #fff;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.toggle-off {
+	background: #eee;
+	color: #999;
+}
+
+.toggle-on:after,
+.toggle-off:after {
+	background: rgb(0, 115, 187);
+	height: 50%;
+	content: '';
+	margin-top: -56%;
+	display: block;
+	border-radius: 3px;
+}
+
+.toggle-off:after {
+	background: #ddd;
+}
+
+/* jQuey tiptip */
+#tiptip_holder {
+	display: none;
+	z-index: 8675309;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+	margin-top: -7px;
+	margin-left: -6px;
+	border-top-color: #333;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -6px;
+	border-bottom-color: #333;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -5px;
+	border-right-color: #333;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -7px;
+	border-left-color: #333;
+}
+
+#tiptip_content {
+	color: #fff;
+	font-size: .7em;
+	max-width: 150px;
+	background: #333;
+	text-align: center;
+	border-radius: 3px;
+	padding: .6em 1em .67em 1em;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+#tiptip_content code {
+	padding: 1px;
+	background: #888;
+}
+
+#tiptip_arrow,
+#tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 6px;
+	height: 0;
+	width: 0;
+}
+
+.usercamp-help-tip {
+	width: 16px;
+	height: 16px;
+	cursor: help;
+	position: relative;
+	top: -3px;
+	left: 14px;
+}
+
+.usercamp-help-tip svg {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	color: #888;
+}
+
+/* Setup Wizard */
+body {
+	margin: 65px auto 24px;
+	box-shadow: none;
+	background: #f1f1f1;
+	padding: 0;
+}
+
+.uc-setup {
+	text-align: center;
+}
+
+.uc-setup .hidden {
+	display: none;
+}
+
+/* Logo */
+#uc-logo {
+	border: 0;
+	margin: 0 0 24px;
+	padding: 0;
+	text-align: center;
+	min-height: 60px;
+}
+
+#uc-logo img {
+	max-width: 30%;
+}
+
+/* Setup content */
+.uc-setup-content {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .13);
+	padding: 2em;
+	margin: 0 0 20px;
+	background: #fff;
+	overflow: hidden;
+	zoom: 1;
+	text-align: left;
+}
+
+.uc-setup-content p {
+	color: #999;
+}
+
+.uc-setup-content p:last-child {
+	margin-bottom: 0;
+}
+
+.uc-setup-content h1 {
+	font-size: 1.2em;
+	font-weight: 600;
+	border-color: #eee;
+	margin-top: 0;
+}
+
+.uc-setup-content h3 {
+	font-size: 0.95em;
+	font-weight: 700;
+}
+
+.uc-setup-content fieldset {
+	position: relative;
+	padding: 5px 0;
+	margin: 5px 0;
+}
+
+.uc-setup-content label {
+	display: inline-block;
+	width: 40%;
+	position: relative;
+	top: -6px;
+	font-size: 0.9em;
+	color: #666;
+}
+
+.uc-setup-content input[type=checkbox] {
+	position: absolute;
+	left: -9999px;
+}
+
+.uc-setup-content input[type=text] {
+	width: 40%;
+	font-size: 0.91em;
+	padding: 1px 10px;
+	margin: 0;
+	border-radius: 3px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	color: #666;
+	line-height: 1.9em;
+	height: auto;
+}
+
+.uc-setup-content span.description {
+	padding-left: 40%;
+	display: block;
+	font-size: 0.7em;
+	line-height: 1.6em;
+	color: #999;
+	margin-top: 5px;
+}
+
+/* Steps */
+.uc-setup-steps {
+	padding: 0 0 24px;
+	margin: 0;
+	list-style: none outside;
+	overflow: hidden;
+	color: #ccc;
+	width: 100%;
+	display: -webkit-inline-box;
+	display: inline-flex;
+}
+
+.uc-setup-steps li {
+	width: 100%;
+	float: left;
+	padding: 0 0 .8em;
+	margin: 0;
+	text-align: center;
+	position: relative;
+	border-bottom: 4px solid #ccc;
+	line-height: 1.4em;
+}
+
+.uc-setup-steps li a {
+	color: rgb(91, 157, 217);
+	text-decoration: none;
+	padding: 1.5em;
+	margin: -1.5em;
+	position: relative;
+	z-index: 1;
+	box-shadow: none;
+}
+
+.uc-setup-steps li a:focus,
+.uc-setup-steps li a:hover {
+	color: #111;
+}
+
+.uc-setup-steps li::before {
+	content: '';
+	border: 4px solid #ccc;
+	border-radius: 100%;
+	width: 4px;
+	height: 4px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -6px;
+	margin-bottom: -8px;
+	background: #fff;
+}
+
+.uc-setup-steps li.active {
+	border-color: rgb(91, 157, 217);
+	color: rgb(91, 157, 217);
+	font-weight: 600;
+}
+
+.uc-setup-steps li.active::before {
+	border-color: rgb(91, 157, 217);
+}
+
+.uc-setup-steps li.done {
+	border-color: rgb(91, 157, 217);
+	color: rgb(91, 157, 217);
+}
+
+.uc-setup-steps li.done::before {
+	border-color: rgb(91, 157, 217);
+	background: rgb(91, 157, 217);
+}
+
+/* Action buttons */
+.uc-setup .uc-setup-actions {
+    margin: 20px 0 0;
+    position: relative;
+}
+
+.uc-setup .uc-setup-actions .button {
+	font-size: 1em;
+	padding: .5em 1em;
+	line-height: 1em;
+	margin-right: .5em;
+	margin-bottom: 2px;
+	height: auto;
+	border-radius: 4px;
+}
+
+.uc-setup .uc-setup-actions .button-primary {
+	background: rgb(91, 157, 217);
+	border-color: rgb(66, 133, 193);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 rgb(66, 133, 193);
+	color: #fff;
+	text-shadow: 0 -1px 1px rgb(66, 133, 193), 1px 0 1px rgb(66, 133, 193), 0 1px 1px rgb(66, 133, 193), -1px 0 1px rgb(66, 133, 193);
+	margin: 0;
+	opacity: 1;
+}
+
+.uc-setup .uc-setup-actions .button-primary:active,
+.uc-setup .uc-setup-actions .button-primary:focus,
+.uc-setup .uc-setup-actions .button-primary:hover {
+	background: rgb(66, 133, 193);
+	border-color: rgb(66, 133, 193);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 0 rgb(66, 133, 193);
+}
+
+/* Footer links */
+.uc-setup-footer-links {
+	font-size: .85em;
+	color: #7b7b7b;
+	margin: 1.18em auto;
+	display: inline-block;
+	text-align: center;
+}

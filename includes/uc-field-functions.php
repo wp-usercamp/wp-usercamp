@@ -11,7 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Get supported field types.
  */
 function usercamp_get_field_types() {
-	return apply_filters( 'usercamp_get_field_types', array(
+
+	$array = array(
 		'text'			=>	array(
 			'label'		=> __( 'Text Input', 'usercamp' ),
 			'icon'		=> 'file-text',
@@ -73,7 +74,9 @@ function usercamp_get_field_types() {
 			'label'		=>	__( 'Dynamic', 'usercamp' ),
 			'icon'		=> 'code',
 		),
-	) );
+	);
+
+	return apply_filters( 'usercamp_get_field_types', $array );
 }
 
 /**
@@ -119,7 +122,7 @@ function usercamp_get_field( $key ) {
  * Get default fields.
  */
 function usercamp_get_default_fields() {
-	return apply_filters( 'usercamp_get_default_fields', array(
+	$array = array(
 		'user_login'		=>	array(
 			'label'			=> __( 'Username', 'usercamp' ),
 			'type'			=> 'text',
@@ -170,7 +173,9 @@ function usercamp_get_default_fields() {
 			'is_private'	=> 1,
 			'can_view'		=> array( '_none' ),
 		),
-	) );
+	);
+
+	return apply_filters( 'usercamp_get_default_fields', $array );
 }
 
 /**
