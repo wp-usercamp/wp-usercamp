@@ -206,6 +206,8 @@ class UC_Admin_Setup_Wizard {
 	 * Save initial step.
 	 */
 	public function uc_setup_initial_save() {
+
+		// Default content.
 		$defaults = array(
 			'_forms',
 			'_fields',
@@ -215,13 +217,35 @@ class UC_Admin_Setup_Wizard {
 
 		foreach( $defaults as $items ) {
 			if ( ! empty( $_POST[ $items ] ) ) {
-				//call_user_func( 'usercamp_create_default' . $items );
+				call_user_func( 'usercamp_create_default' . $items );
 			}
 		}
 
 		if ( ! empty( $_POST[ '_forms' ] ) && empty( $_POST[ '_fields' ] ) ) {
-			//call_user_func( 'usercamp_create_default_fields' );
+			call_user_func( 'usercamp_create_default_fields' );
 		}
+
+		// Setup pages.
+		if ( ! empty( $_POST[ '_profile' ] ) ) {
+			$pages[ 'profile' ] = array(
+				'name'    => _x( 'user', 'Page slug', 'usercamp' ),
+				'title'   => _x( 'User', 'Page title', 'usercamp' ),
+				'content' => '[usercamp_profile]',
+			);
+		}
+
+		if ( ! empty( $_POST[ '_account' ] ) ) {
+			$pages[ 'account' ] = array(
+				'name'    => _x( 'my-account', 'Page slug', 'usercamp' ),
+				'title'   => _x( 'My Account', 'Page title', 'usercamp' ),
+				'content' => '[usercamp_account]',
+			);
+		}
+
+		foreach ( ( array ) $pages as $key => $page ) {
+			uc_create_page( esc_sql( $page['name'] ), 'usercamp_' . $key . '_page_id', $page['title'], $page['content'], '' );
+		}
+
 	}
 
 }
