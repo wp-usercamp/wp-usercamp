@@ -12,7 +12,7 @@ if ( ! class_exists( 'UC_Admin_List_Table', false ) ) {
 }
 
 /**
- * UC_Admin_List_Table_Memberlists Class.
+ * UC_Admin_List_Table_Memberlists class.
  */
 class UC_Admin_List_Table_Memberlists extends UC_Admin_List_Table {
 

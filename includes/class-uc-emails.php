@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Emails Class.
+ * UC_Emails class.
  */
 class UC_Emails {
 

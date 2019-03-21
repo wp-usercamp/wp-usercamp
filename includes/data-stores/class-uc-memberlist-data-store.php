@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Memberlist_Data_Store Class.
+ * UC_Memberlist_Data_Store class.
  */
 class UC_Memberlist_Data_Store extends UC_Data_Store_WP {
 

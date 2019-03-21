@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Abstract_Post Class.
+ * UC_Abstract_Post class.
  */
 abstract class UC_Abstract_Post {
 

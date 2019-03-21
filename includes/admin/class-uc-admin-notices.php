@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Admin_Notices Class.
+ * UC_Admin_Notices class.
  */
 class UC_Admin_Notices {
 

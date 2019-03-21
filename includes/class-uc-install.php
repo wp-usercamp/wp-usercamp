@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Install Class.
+ * UC_Install class.
  */
 class UC_Install {
 

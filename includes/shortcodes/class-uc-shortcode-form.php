@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Shortcode_Form Class.
+ * UC_Shortcode_Form class.
  */
 class UC_Shortcode_Form {
 

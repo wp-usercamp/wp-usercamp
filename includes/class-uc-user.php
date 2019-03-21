@@ -1,6 +1,6 @@
 <?php
 /**
- * User Class.
+ * User class.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_User Class.
+ * UC_User class.
  */
 class UC_User {
 

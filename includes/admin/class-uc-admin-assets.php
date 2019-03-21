@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Admin_Assets Class.
+ * UC_Admin_Assets class.
  */
 class UC_Admin_Assets {
 
@@ -61,7 +61,7 @@ class UC_Admin_Assets {
 		wp_register_script( 'jquery-feather', uc()->plugin_url() . '/assets/js/jquery-feather/jquery-feather.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-helper', 'jquery-selectize', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal', 'jquery-feather' ), UC_VERSION, true );
 
-		// Usercamp admin pages.
+		// Admin pages.
 		if ( in_array( $screen_id, uc_get_screen_ids() ) ) {
 			wp_enqueue_script( 'usercamp_admin' );
 

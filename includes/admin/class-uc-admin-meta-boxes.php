@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Admin_Meta_Boxes Class.
+ * UC_Admin_Meta_Boxes class.
  */
 class UC_Admin_Meta_Boxes {
 

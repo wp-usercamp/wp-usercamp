@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Meta_Box_Role_Data Class.
+ * UC_Meta_Box_Role_Data class.
  */
 class UC_Meta_Box_Role_Data {
 

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main Class.
+ * Main class.
  */
 final class UserCamp {
 
@@ -208,7 +208,7 @@ final class UserCamp {
 	}
 
 	/**
-	 * Email Class.
+	 * Email class.
 	 */
 	public function mailer() {
 		return UC_Emails::instance();

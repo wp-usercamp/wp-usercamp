@@ -45,7 +45,7 @@ function uc_selected( $value, $options ) {
 }
 
 /**
- * Display a Usercamp help tip.
+ * Display a help tip.
  */
 function uc_help_tip( $tip, $allow_html = false ) {
 	if ( $allow_html ) {

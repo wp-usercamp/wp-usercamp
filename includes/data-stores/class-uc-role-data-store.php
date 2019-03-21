@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Role_Data_Store Class.
+ * UC_Role_Data_Store class.
  */
 class UC_Role_Data_Store extends UC_Data_Store_WP {
 

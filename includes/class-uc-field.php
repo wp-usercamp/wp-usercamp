@@ -12,7 +12,7 @@ if ( ! class_exists( 'UC_Abstract_Post', false ) ) {
 }
 
 /**
- * UC_Field Class.
+ * UC_Field class.
  */
 class UC_Field extends UC_Abstract_Post {
 

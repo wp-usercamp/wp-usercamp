@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Post_Types Class.
+ * UC_Post_Types class.
  */
 class UC_Post_Types {
 

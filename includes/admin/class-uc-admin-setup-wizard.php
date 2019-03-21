@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Admin_Setup_Wizard Class.
+ * UC_Admin_Setup_Wizard class.
  */
 class UC_Admin_Setup_Wizard {
 

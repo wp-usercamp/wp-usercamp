@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Frontend_Scripts Class.
+ * UC_Frontend_Scripts class.
  */
 class UC_Frontend_Scripts {
 

@@ -12,7 +12,7 @@ if ( ! class_exists( 'UC_Admin_List_Table', false ) ) {
 }
 
 /**
- * UC_Admin_List_Table_Fields Class.
+ * UC_Admin_List_Table_Fields class.
  */
 class UC_Admin_List_Table_Fields extends UC_Admin_List_Table {
 

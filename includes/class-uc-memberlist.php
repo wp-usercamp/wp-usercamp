@@ -12,7 +12,7 @@ if ( ! class_exists( 'UC_Abstract_Post', false ) ) {
 }
 
 /**
- * UC_Memberlist Class.
+ * UC_Memberlist class.
  */
 class UC_Memberlist extends UC_Abstract_Post {
 

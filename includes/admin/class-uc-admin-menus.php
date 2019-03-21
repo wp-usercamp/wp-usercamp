@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Admin_Menus Class.
+ * UC_Admin_Menus class.
  */
 class UC_Admin_Menus {
 
@@ -47,7 +47,7 @@ class UC_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function settings_menu() {
-		$settings_page = add_submenu_page( 'usercamp', __( 'Usercamp settings', 'usercamp' ), __( 'Settings', 'usercamp' ), 'uc_settings', 'uc-settings', array( $this, 'settings_page' ) );
+		$settings_page = add_submenu_page( 'usercamp', __( 'Settings', 'usercamp' ), __( 'Settings', 'usercamp' ), 'uc_settings', 'uc-settings', array( $this, 'settings_page' ) );
 		add_action( 'load-' . $settings_page, array( $this, 'settings_page_init' ) );
 	}
 
@@ -55,8 +55,8 @@ class UC_Admin_Menus {
 	 * Addons menu item.
 	 */
 	public function addons_menu() {
-		$menu_title = __( 'Add-ons', 'usercamp' );
-		add_submenu_page( 'usercamp', __( 'Usercamp add-ons', 'usercamp' ), $menu_title, 'uc_addons', 'uc-addons', array( $this, 'addons_page' ) );
+		$menu_title = __( 'Extensions', 'usercamp' );
+		add_submenu_page( 'usercamp', __( 'Extensions', 'usercamp' ), $menu_title, 'uc_addons', 'uc-addons', array( $this, 'addons_page' ) );
 	}
 
 	/**

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Admin_List_Table Class.
+ * UC_Admin_List_Table class.
  */
 abstract class UC_Admin_List_Table {
 

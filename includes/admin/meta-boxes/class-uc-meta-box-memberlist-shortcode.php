@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Meta_Box_Memberlist_Shortcode Class.
+ * UC_Meta_Box_Memberlist_Shortcode class.
  */
 class UC_Meta_Box_Memberlist_Shortcode {
 
