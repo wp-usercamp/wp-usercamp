@@ -47,7 +47,12 @@ class UC_Query {
 	public function init_query_vars() {
 		// Query vars to add to WP.
 		$this->query_vars = array(
-
+			// My Account actions.
+			'edit-account'				=> get_option( 'usercamp_myaccount_edit_account_endpoint', 'edit-account' ),
+			'edit-password'       		=> get_option( 'usercamp_myaccount_edit_password_endpoint', 'edit-password' ),
+			'privacy'              		=> get_option( 'usercamp_myaccount_privacy_endpoint', 'privacy' ),
+			'email-notifications'		=> get_option( 'usercamp_myaccount_email_notifications_endpoint', 'email-notifications' ),
+			'logout'					=> get_option( 'usercamp_myaccount_logout_endpoint', 'logout' ),
 		);
 	}
 
@@ -58,6 +63,18 @@ class UC_Query {
 		global $wp;
 
 		switch ( $endpoint ) {
+			case 'edit-acccount':
+				$title = __( 'Account', 'usercamp' );
+				break;
+			case 'edit-password':
+				$title = __( 'Password', 'usercamp' );
+				break;
+			case 'privacy':
+				$title = __( 'Privacy', 'usercamp' );
+				break;
+			case 'email-notifications':
+				$title = __( 'Email notifications', 'usercamp' );
+				break;
 			default:
 				$title = '';
 				break;

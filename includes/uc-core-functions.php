@@ -8,12 +8,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Include core functions (available in both admin and frontend).
+require UC_ABSPATH . 'includes/uc-conditional-functions.php';
 require UC_ABSPATH . 'includes/uc-formatting-functions.php';
 require UC_ABSPATH . 'includes/uc-file-functions.php';
 require UC_ABSPATH . 'includes/uc-form-functions.php';
 require UC_ABSPATH . 'includes/uc-field-functions.php';
 require UC_ABSPATH . 'includes/uc-role-functions.php';
 require UC_ABSPATH . 'includes/uc-memberlist-functions.php';
+require UC_ABSPATH . 'includes/uc-page-functions.php';
 
 /**
  * Return a list of plugin specific post types.
