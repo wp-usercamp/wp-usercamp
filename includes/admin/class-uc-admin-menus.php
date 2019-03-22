@@ -52,6 +52,38 @@ class UC_Admin_Menus {
 	}
 
 	/**
+	 * Loads gateways and shipping methods into memory for use within settings.
+	 */
+	public function settings_page_init() {
+		global $current_tab, $current_section;
+
+		// Include settings pages.
+		UC_Admin_Settings::get_settings_pages();
+
+		// Get current tab/section.
+		$current_tab     = empty( $_GET['tab'] ) ? 'general' : sanitize_title( wp_unslash( $_GET['tab'] ) );
+		$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( wp_unslash( $_REQUEST['section'] ) );
+
+		// Save settings if data has been posted.
+		if ( '' !== $current_section && apply_filters( "usercamp_save_settings_{$current_tab}_{$current_section}", ! empty( $_POST['save'] ) ) ) {
+			UC_Admin_Settings::save();
+		} elseif ( '' === $current_section && apply_filters( "usercamp_save_settings_{$current_tab}", ! empty( $_POST['save'] ) ) ) {
+			UC_Admin_Settings::save();
+		}
+
+		// Add any posted messages.
+		if ( ! empty( $_GET['uc_error'] ) ) {
+			UC_Admin_Settings::add_error( wp_kses_post( wp_unslash( $_GET['wc_error'] ) ) );
+		}
+
+		if ( ! empty( $_GET['uc_message'] ) ) {
+			UC_Admin_Settings::add_message( wp_kses_post( wp_unslash( $_GET['wc_message'] ) ) );
+		}
+
+		do_action( 'usercamp_settings_page_init' );
+	}
+
+	/**
 	 * Addons menu item.
 	 */
 	public function addons_menu() {
@@ -120,7 +152,7 @@ class UC_Admin_Menus {
 	 * Init the settings page.
 	 */
 	public function settings_page() {
-
+		UC_Admin_Settings::output();
 	}
 
 	/**
@@ -128,13 +160,6 @@ class UC_Admin_Menus {
 	 */
 	public function addons_page() {
 
-	}
-
-	/**
-	 * Loads gateways and shipping methods into memory for use within settings.
-	 */
-	public function settings_page_init() {
-		global $current_tab, $current_section;
 	}
 
 }
