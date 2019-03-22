@@ -23,7 +23,6 @@ function uc_page_endpoint_title( $title ) {
 
 	return $title;
 }
-add_filter( 'the_title', 'uc_page_endpoint_title' );
 
 /**
  * Retrieve page permalink.

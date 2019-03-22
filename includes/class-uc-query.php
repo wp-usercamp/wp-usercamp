@@ -46,14 +46,7 @@ class UC_Query {
 	 */
 	public function init_query_vars() {
 		// Query vars to add to WP.
-		$this->query_vars = array(
-			// My Account actions.
-			'edit-account'				=> get_option( 'usercamp_myaccount_edit_account_endpoint', 'edit-account' ),
-			'edit-password'       		=> get_option( 'usercamp_myaccount_edit_password_endpoint', 'edit-password' ),
-			'privacy'              		=> get_option( 'usercamp_myaccount_privacy_endpoint', 'privacy' ),
-			'email-notifications'		=> get_option( 'usercamp_myaccount_email_notifications_endpoint', 'email-notifications' ),
-			'logout'					=> get_option( 'usercamp_myaccount_logout_endpoint', 'logout' ),
-		);
+		$this->query_vars = array_merge( $this->query_vars, uc_get_account_endpoints() );
 	}
 
 	/**
@@ -63,7 +56,7 @@ class UC_Query {
 		global $wp;
 
 		switch ( $endpoint ) {
-			case 'edit-acccount':
+			case 'edit-account':
 				$title = __( 'Account', 'usercamp' );
 				break;
 			case 'edit-password':
@@ -74,6 +67,9 @@ class UC_Query {
 				break;
 			case 'email-notifications':
 				$title = __( 'Email notifications', 'usercamp' );
+				break;
+			case 'logout':
+				$title = __( 'Logout', 'usercamp' );
 				break;
 			default:
 				$title = '';

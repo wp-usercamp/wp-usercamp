@@ -227,9 +227,9 @@ class UC_Admin_Setup_Wizard {
 
 		// Setup pages.
 		if ( ! empty( $_POST[ '_profile' ] ) ) {
-			$pages[ 'myprofile' ] = array(
-				'name'    => _x( 'user', 'Page slug', 'usercamp' ),
-				'title'   => _x( 'User', 'Page title', 'usercamp' ),
+			$pages[ 'profile' ] = array(
+				'name'    => _x( 'profile', 'Page slug', 'usercamp' ),
+				'title'   => _x( 'Profile', 'Page title', 'usercamp' ),
 				'content' => '[usercamp_profile]',
 			);
 		}

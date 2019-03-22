@@ -21,7 +21,23 @@ class UC_User {
 	 * Construct.
 	 */
 	public function __construct( $user_id ) {
+		$this->init( $user_id );
+	}
 
+	/**
+	 * Init.
+	 */
+	public function init( $user_id ) {
+		$user = get_user_by( 'id', $user_id );
+
+		if ( ! isset( $user->ID ) ) {
+			return;
+		}
+		$this->user_id = $user->ID;
+
+		foreach( $user as $key => $value ) {
+			$this->{$key} = $value;
+		}
 	}
 
 }

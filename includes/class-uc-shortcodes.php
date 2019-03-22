@@ -17,7 +17,8 @@ class UC_Shortcodes {
 	 */
 	public static function init() {
 		$shortcodes = array(
-			'form'           => __CLASS__ . '::form',
+			'form'			=> __CLASS__ . '::form',
+			'account'		=> __CLASS__ . '::account',
 		);
 
 		foreach ( $shortcodes as $shortcode => $function ) {
@@ -50,7 +51,20 @@ class UC_Shortcodes {
 	 * Output form.
 	 */
 	public static function form( $atts ) {
+		if ( is_admin() ) {
+			return;
+		}
 		return self::shortcode_wrapper( array( 'UC_Shortcode_Form', 'output' ), $atts );
+	}
+
+	/**
+	 * My account page shortcode.
+	 */
+	public static function account( $atts ) {
+		if ( is_admin() ) {
+			return;
+		}
+		return self::shortcode_wrapper( array( 'UC_Shortcode_My_Account', 'output' ), $atts );
 	}
 
 }

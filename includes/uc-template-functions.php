@@ -27,7 +27,6 @@ function uc_template_redirect() {
 	}
 
 }
-add_action( 'template_redirect', 'uc_template_redirect' );
 
 /**
  * Get logout endpoint.
@@ -40,6 +39,39 @@ function uc_logout_url( $redirect = '' ) {
 	}
 
 	return wp_logout_url( $redirect );
+}
+
+/**
+ * My Account navigation template.
+ */
+function usercamp_account_navigation() {
+	uc_get_template( 'myaccount/navigation.php' );
+}
+
+/**
+ * My Account content output.
+ */
+function usercamp_account_content() {
+	global $wp;
+
+	if ( ! empty( $wp->query_vars ) ) {
+		foreach ( $wp->query_vars as $key => $value ) {
+			// Ignore pagename param.
+			if ( 'pagename' === $key ) {
+				continue;
+			}
+
+			if ( has_action( 'usercamp_account_' . $key . '_endpoint' ) ) {
+				do_action( 'usercamp_account_' . $key . '_endpoint', $value );
+				return;
+			}
+		}
+	}
+
+	// No endpoint found? Load the default account page.
+	uc_get_template( 'myaccount/edit-account.php', array(
+		'current_user' => uc_get_user( get_current_user_id() ),
+	) );
 }
 
 /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Generic form template.
+ * Form Template.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,9 +12,10 @@ if ( ! $the_form->has_fields() ) {
 }
 
 $type = esc_attr( $the_form->type );
+
 ?>
 
-<form class="usercamp-<?php echo $type; ?>" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>" <?php uc_print_inline_styles(); ?>>
+<form class="usercamp-form usercamp-<?php echo $type; ?>" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>" <?php uc_print_inline_styles(); ?>>
 
 	<?php uc_print_notices(); ?>
 

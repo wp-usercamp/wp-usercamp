@@ -8,6 +8,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Returns true when viewing an account page.
+ */
+function is_uc_account_page() {
+	$page_id = uc_get_page_id( 'myaccount' );
+
+	return ( $page_id && is_page( $page_id ) ) || uc_post_content_has_shortcode( 'usercamp_account' );
+}
+
+/**
+ * Checks whether the content passed contains a specific short code.
+ */
+function uc_post_content_has_shortcode( $tag = '' ) {
+	global $post;
+
+	return is_singular() && is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, $tag );
+}
+
+/**
  * Check if an endpoint is showing.
  */
 function is_uc_endpoint_url( $endpoint = false ) {
