@@ -222,9 +222,21 @@ div.disabled > .toggle-slide {
 	fill: transparent;
 }
 
-.usercamp form {
-	margin: 0 auto;
+.usercamp {
 	padding: 1.475em 0;
+}
+
+.usercamp::after {
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* Forms */
+.usercamp-form {
+	margin: 0 auto;
 }
 
 /* Elements */
@@ -457,4 +469,15 @@ a.usercamp-button.disabled {
 .uc-pw-visible {
 	left: auto;
 	right: 0;
+}
+
+/* Account */
+.usercamp-account-navigation {
+	float: left;
+	width: 30%;
+}
+
+.usercamp-account-content {
+	float: left;
+	width: 70%;
 }

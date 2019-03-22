@@ -65,7 +65,12 @@ function uc_get_account_menu_item_classes( $endpoint ) {
 	// Set current item class.
 	$current = isset( $wp->query_vars[ $endpoint ] );
 
-	if ( ! $current && $endpoint == 'edit-account' ) {
+	// Fallback to default content item.
+	if ( 'edit-account' === $endpoint && ( isset( $wp->query_vars['page'] ) || empty( $wp->query_vars ) ) ) {
+		$current = true;
+	}
+
+	if ( $current ) {
 		$classes[] = 'is-active';
 	}
 
