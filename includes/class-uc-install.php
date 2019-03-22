@@ -50,6 +50,7 @@ class UC_Install {
 
 		self::remove_admin_notices();
 		self::create_roles();
+		self::setup_environment();
 		self::create_files();
 		self::maybe_enable_setup_wizard();
 		self::update_uc_version();
@@ -66,6 +67,15 @@ class UC_Install {
 	private static function remove_admin_notices() {
 		include_once dirname( __FILE__ ) . '/admin/class-uc-admin-notices.php';
 		UC_Admin_Notices::remove_all_notices();
+	}
+
+	/**
+	 * Setup environment - post types, taxonomies, endpoints.
+	 */
+	private static function setup_environment() {
+		UC_Post_types::register_post_types();
+		uc()->query->init_query_vars();
+		uc()->query->add_endpoints();
 	}
 
 	/**

@@ -109,6 +109,7 @@ final class UserCamp {
 		include_once UC_ABSPATH . 'includes/class-uc-post-types.php';
 		include_once UC_ABSPATH . 'includes/class-uc-install.php';
 		include_once UC_ABSPATH . 'includes/class-uc-shortcodes.php';
+		include_once UC_ABSPATH . 'includes/class-uc-query.php';
 
 		/**
 		 * Data stores
@@ -128,6 +129,7 @@ final class UserCamp {
 			$this->frontend_includes();
 		}
 
+		$this->query = new UC_Query();
 	}
 
 	/**

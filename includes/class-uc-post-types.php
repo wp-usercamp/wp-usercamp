@@ -17,6 +17,8 @@ class UC_Post_Types {
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
+		add_action( 'usercamp_after_register_post_type', array( __CLASS__, 'maybe_flush_rewrite_rules' ) );
+		add_action( 'usercamp_flush_rewrite_rules', array( __CLASS__, 'flush_rewrite_rules' ) );
 	}
 
 	/**
@@ -193,7 +195,24 @@ class UC_Post_Types {
 			)
 		);
 
-		do_action( 'usercamp_after_register_post_types' );
+		do_action( 'usercamp_after_register_post_type' );
+	}
+
+	/**
+	 * Flush rules if the event is queued.
+	 */
+	public static function maybe_flush_rewrite_rules() {
+		if ( 'yes' === get_option( 'usercamp_queue_flush_rewrite_rules' ) ) {
+			update_option( 'usercamp_queue_flush_rewrite_rules', 'no' );
+			self::flush_rewrite_rules();
+		}
+	}
+
+	/**
+	 * Flush rewrite rules.
+	 */
+	public static function flush_rewrite_rules() {
+		flush_rewrite_rules();
 	}
 
 }
