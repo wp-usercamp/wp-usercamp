@@ -253,7 +253,7 @@ div.disabled > .toggle-slide {
 	font-size: 1.1em;
 	line-height: 1.6em;
 	margin: 0 0 1em 0;
-	font-weight: 600;
+	font-weight: 700;
 	text-align: center;
 	padding-bottom: 1em;
 	border-bottom: 1px solid #eee;
@@ -280,7 +280,7 @@ ul.usercamp-error li {
 
 ul.usercamp-error li.usercamp-error-header {
 	list-style-type: none;
-	font-weight: 600;
+	font-weight: 700;
 	color: rgb(187, 0, 0);
 }
 
@@ -314,7 +314,7 @@ a.usercamp-button {
 	transition: none;
 	border-radius: 3px;
 	box-sizing: border-box;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 a.usercamp-button.main {
@@ -372,7 +372,7 @@ a.usercamp-button.disabled {
 
 .usercamp-label label {
 	cursor: pointer;
-	font-weight: 600;
+	font-weight: 700;
 	line-height: 1.4em;
 }
 
@@ -471,13 +471,68 @@ a.usercamp-button.disabled {
 	right: 0;
 }
 
-/* Account */
-.usercamp-account-navigation {
+/* Nav */
+.usercamp-nav {
 	float: left;
 	width: 30%;
+	font-size: 0.85em;
 }
 
-.usercamp-account-content {
-	float: left;
-	width: 70%;
+.usercamp-nav li {
+	list-style-type: none;
+}
+
+.usercamp-nav li svg {
+	position: absolute;
+	right: 6px;
+	top: 50%;
+	width: 1.2em;
+	height: 1.2em;
+	margin-top: -.6em;
+}
+
+.usercamp-nav li:first-child a {
+	border-top: 1px solid rgba(91, 157, 217, 0.16);
+}
+
+.usercamp-nav li a {
+    position: relative;
+    display: block;
+    padding: 8px 1.6em 8px 12px;
+    color: rgb(102, 117, 127);
+	border: 1px solid rgba(91, 157, 217, 0.16);
+    border-top: 0;
+	text-decoration: none !important;
+	line-height: 1.4em;
+	position: relative;
+}
+
+.usercamp-nav li a:hover,
+.usercamp-nav li a:focus,
+.usercamp-nav li a:active {
+	color: rgb(91, 157, 217);
+	background: rgba(91, 157, 217, 0.03);
+	text-decoration: none !important;
+}
+
+.usercamp-nav li a:focus {
+	text-decoration: underline !important;
+	font-weight: 700;
+}
+
+.usercamp-nav li a:focus:hover {
+	text-decoration: none !important;
+}
+
+.usercamp-nav li.is-active a {
+	color: #444;
+	font-weight: 700;
+}
+
+.usercamp-nav li.is-active a:hover,
+.usercamp-nav li.is-active a:focus,
+.usercamp-nav li.is-active a:active {
+	color: rgb(91, 157, 217);
+	background: rgba(91, 157, 217, 0.03);
+	text-decoration: none !important;
 }

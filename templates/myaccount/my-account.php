@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 do_action( 'usercamp_account_navigation' ); ?>
 
-<div class="usercamp-account-content">
+<div class="usercamp-content usercamp-account-content">
 	<?php
 		/**
 		 * My Account content.

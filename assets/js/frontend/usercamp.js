@@ -59,7 +59,7 @@ jQuery( function( $ ) {
 			'delay': 300,
 			'defaultPosition': 'top'
 		} );
-	}).trigger( 'uc-init-tooltips' );
+	} ).trigger( 'uc-init-tooltips' );
 
 	// Toggles
 	$( document.body ).on( 'uc-init-toggles', function() {
@@ -73,7 +73,14 @@ jQuery( function( $ ) {
 				'checkbox' : $( '#' + cb )
 			} );
 		} );
-	}).trigger( 'uc-init-toggles' );
+	} ).trigger( 'uc-init-toggles' );
+
+	// Chevrons for list items.
+	$( document.body ).on( 'uc-init-chevron', function() {
+		$( '.usercamp-nav li a' ).each( function() {
+			$( this ).append( '<i data-feather=chevron-right />' );
+		} );
+	} ).trigger( 'uc-init-chevron' );
 
 	// Body events
 	$( document.body )

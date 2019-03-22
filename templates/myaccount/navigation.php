@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'usercamp_before_account_navigation' );
 ?>
 
-<nav class="usercamp-account-navigation">
+<nav class="usercamp-nav usercamp-account-navigation">
 	<ul>
 		<?php foreach ( uc_get_account_menu_items() as $endpoint => $label ) : ?>
 			<li class="<?php echo uc_get_account_menu_item_classes( $endpoint ); ?>">
