@@ -227,7 +227,7 @@ class UC_Admin_Setup_Wizard {
 
 		// Setup pages.
 		if ( ! empty( $_POST[ '_profile' ] ) ) {
-			$pages[ 'profile' ] = array(
+			$pages[ 'myprofile' ] = array(
 				'name'    => _x( 'user', 'Page slug', 'usercamp' ),
 				'title'   => _x( 'User', 'Page title', 'usercamp' ),
 				'content' => '[usercamp_profile]',
@@ -235,7 +235,7 @@ class UC_Admin_Setup_Wizard {
 		}
 
 		if ( ! empty( $_POST[ '_account' ] ) ) {
-			$pages[ 'account' ] = array(
+			$pages[ 'myaccount' ] = array(
 				'name'    => _x( 'my-account', 'Page slug', 'usercamp' ),
 				'title'   => _x( 'My Account', 'Page title', 'usercamp' ),
 				'content' => '[usercamp_account]',

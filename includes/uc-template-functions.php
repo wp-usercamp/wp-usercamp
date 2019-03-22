@@ -8,6 +8,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Handle redirects before content is output - hooked into template_redirect so is_page works.
+ */
+function uc_template_redirect() {
+	global $wp_query, $wp;
+
+	if ( isset( $wp->query_vars['logout'] ) ) {
+
+		// Logout.
+		wp_safe_redirect( str_replace( '&amp;', '&', wp_logout_url( uc_get_page_permalink( 'myaccount' ) ) ) );
+		exit;
+
+	} elseif ( isset( $wp->query_vars['logout'] ) && 'true' === $wp->query_vars['logout'] ) {
+		// Redirect to the correct logout endpoint.
+		wp_safe_redirect( esc_url_raw( uc_get_account_endpoint_url( 'logout' ) ) );
+		exit;
+
+	}
+
+}
+add_action( 'template_redirect', 'uc_template_redirect' );
+
+/**
+ * Get logout endpoint.
+ */
+function uc_logout_url( $redirect = '' ) {
+	$redirect = $redirect ? $redirect : uc_get_page_permalink( 'myaccount' );
+
+	if ( get_option( 'usercamp_myaccount_logout_endpoint' ) ) {
+		return wp_nonce_url( uc_get_endpoint_url( 'logout', '', $redirect ), 'logout' );
+	}
+
+	return wp_logout_url( $redirect );
+}
+
+/**
  * Get form loop editing part.
  */
 function uc_form_loop_edit() {
