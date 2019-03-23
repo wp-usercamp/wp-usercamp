@@ -24,7 +24,7 @@ class UC_Shortcode_Form_Register {
 			'second_button'			=> __( 'Got an account?', 'usercamp' ),
 		), (array) $atts );
 
-		uc_get_template( 'forms/form.php', array( 'atts' => $atts ) );
+		uc_get_template( 'form/form.php', array( 'atts' => $atts ) );
 	}
 
 	/**

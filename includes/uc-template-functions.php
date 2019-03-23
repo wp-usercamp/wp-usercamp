@@ -70,7 +70,7 @@ function usercamp_account_content() {
 
 	$has_form = uc_get_account_endpoint_form();
 	if ( $has_form ) {
-		uc_get_template( 'forms/form.php', array(
+		uc_get_template( 'form/form.php', array(
 			'atts'			=> array(),
 			'the_form'		=> uc_get_form( $has_form ),
 			'current_user' 	=> uc_get_user( get_current_user_id() ),

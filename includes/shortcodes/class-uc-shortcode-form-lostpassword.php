@@ -24,7 +24,7 @@ class UC_Shortcode_Form_Lostpassword {
 			'second_button'			=> __( 'Wait, I remember!', 'usercamp' ),
 		), (array) $atts );
 
-		uc_get_template( 'forms/form.php', array( 'atts' => $atts ) );
+		uc_get_template( 'form/form.php', array( 'atts' => $atts ) );
 	}
 
 	/**

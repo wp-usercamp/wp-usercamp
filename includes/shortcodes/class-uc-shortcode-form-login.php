@@ -24,7 +24,7 @@ class UC_Shortcode_Form_Login {
 			'second_button'			=> __( 'Create Account?', 'usercamp' ),
 		), (array) $atts );
 
-		uc_get_template( 'forms/form.php', array( 'atts' => $atts ) );
+		uc_get_template( 'form/form.php', array( 'atts' => $atts ) );
 	}
 
 	/**
