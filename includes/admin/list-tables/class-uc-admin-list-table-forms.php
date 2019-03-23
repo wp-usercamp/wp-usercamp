@@ -128,6 +128,11 @@ class UC_Admin_List_Table_Forms extends UC_Admin_List_Table {
 	protected function render_type_column() {
 		if ( $this->object->type ) {
 			echo uc_get_form_type( $this->object->type );
+			if ( $this->object->endpoint ) {
+				$endpoint = uc()->query->get_endpoint_title( $this->object->endpoint );
+				$endpoint = ! empty( $endpoint ) ? $endpoint : __( 'Unassigned', 'usercamp' );
+				echo '/ ' . $endpoint;
+			}
 		}
 	}
 

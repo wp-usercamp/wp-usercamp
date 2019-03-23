@@ -19,6 +19,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 			)
 		);
 
+		usercamp_wp_select(
+			array(
+				'id'          		=> 'endpoint',
+				'value'       		=> $the_form->endpoint,
+				'label'       		=> __( 'Form Endpoint', 'usercamp' ),
+				'options'     		=> array_diff_key( array_merge( array( 'unassigned' => __( 'Unassigned', 'usercamp' ) ), uc_get_account_menu_items() ), array_flip( array( 'logout' ) ) ),
+				'description' 		=> __( 'For example, account page has multiple endpoints. Each form can be linked to a specific endpoint.', 'usercamp' ),
+				'desc_tip'			=> true,
+				'wrapper_class' 	=> 'show_if__type_eq_account hidden',
+			)
+		);
+
 		usercamp_wp_switch(
 			array(
 				'id'        		=> 'use_ajax',

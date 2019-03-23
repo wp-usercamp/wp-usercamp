@@ -118,7 +118,7 @@ function usercamp_get_default_forms() {
 				0		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
 				1		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
 			),
-			'endpoint'	=> 'edit_account',
+			'endpoint'	=> 'edit-account',
 		)
 	);
 
@@ -130,7 +130,7 @@ function usercamp_get_default_forms() {
 			'fields'	=> array(
 				1		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
 			),
-			'endpoint'	=> 'edit_password',
+			'endpoint'	=> 'edit-password',
 		)
 	);
 
@@ -163,16 +163,16 @@ function usercamp_create_default_forms() {
 			$the_form->insert();
 			$the_form->save( $the_form->meta_input );
 
-			uc_save_default_form( $type, $the_form->id );
+			uc_create_default_form_once( $type, $the_form->id );
 		}
 	}
 
 }
 
 /**
- * Saves default form for a specific type as option.
+ * Create a default form once in the database.
  */
-function uc_save_default_form( $type = '', $id = '' ) {
+function uc_create_default_form_once( $type = '', $id = '' ) {
 	$form_option = 'usercamp_' . $type . '_form';
 	if ( ! get_option( $form_option ) ) {
 		update_option( $form_option, $id );

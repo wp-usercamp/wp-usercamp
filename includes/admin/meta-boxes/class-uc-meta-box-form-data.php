@@ -91,7 +91,12 @@ class UC_Meta_Box_Form_Data {
 
 		$props['type']         			= isset( $_POST['_type'] ) ? uc_clean( wp_unslash( $_POST['_type'] ) ) : '';
 		$props['icons']         		= isset( $_POST['icons'] ) ? uc_clean( wp_unslash( $_POST['icons'] ) ) : '';
+		$props['endpoint']         		= isset( $_POST['endpoint'] ) ? uc_clean( wp_unslash( $_POST['endpoint'] ) ) : '';
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
+
+		if ( $props['endpoint'] !== $the_form->endpoint ) {
+			delete_option( 'usercamp_account_' . uc_sanitize_key( $the_form->endpoint ) . '_form' );
+		}
 
 		$the_form->save( $props );
 	}
