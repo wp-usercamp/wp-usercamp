@@ -12,11 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function uc_get_account_endpoints() {
 	$endpoints = array(
-		'edit-account'				=> get_option( 'usercamp_myaccount_edit_account_endpoint', 'edit-account' ),
-		'edit-password'       		=> get_option( 'usercamp_myaccount_edit_password_endpoint', 'edit-password' ),
-		'privacy'              		=> get_option( 'usercamp_myaccount_privacy_endpoint', 'privacy' ),
-		'email-notifications'		=> get_option( 'usercamp_myaccount_email_notifications_endpoint', 'email-notifications' ),
-		'logout'					=> get_option( 'usercamp_myaccount_logout_endpoint', 'logout' ),
+		'edit-account'				=> get_option( 'usercamp_account_edit_account_endpoint', 'edit-account' ),
+		'edit-password'       		=> get_option( 'usercamp_account_edit_password_endpoint', 'edit-password' ),
+		'privacy'              		=> get_option( 'usercamp_account_privacy_endpoint', 'privacy' ),
+		'email-notifications'		=> get_option( 'usercamp_account_email_notifications_endpoint', 'email-notifications' ),
+		'logout'					=> get_option( 'usercamp_account_logout_endpoint', 'logout' ),
 	);
 
 	return apply_filters( 'usercamp_get_account_endpoints', $endpoints );
@@ -30,11 +30,22 @@ function uc_get_account_endpoint_url( $endpoint ) {
 		return uc_logout_url();
 	}
 
-	return uc_get_endpoint_url( $endpoint, '', uc_get_page_permalink( 'myaccount' ) );
+	return uc_get_endpoint_url( $endpoint, '', uc_get_page_permalink( 'account' ) );
 }
 
 /**
- * Get My Account menu items.
+ * Get account endpoint form.
+ */
+function uc_get_account_endpoint_form() {
+	$endpoint = uc()->query->get_current_endpoint();
+	if ( $endpoint ) {
+		return get_option( 'usercamp_account_' . str_replace( '-', '_', $endpoint ) . '_form' );
+	}
+	return get_option( 'usercamp_account_form', '' );
+}
+
+/**
+ * Get account menu items.
  */
 function uc_get_account_menu_items() {
 

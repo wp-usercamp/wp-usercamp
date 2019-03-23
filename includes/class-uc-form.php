@@ -33,6 +33,7 @@ class UC_Form extends UC_Abstract_Post {
 		'icons',
 		'font_size',
 		'max_width',
+		'endpoint',
 	);
 
 	/**
@@ -138,9 +139,19 @@ class UC_Form extends UC_Abstract_Post {
 	public function validate_toggle( $data ) {
 		extract( $data );
 
-		$value = isset( $_REQUEST[ $data['key'] ] );
+		$value = isset( $_REQUEST[ $data[ 'key' ] ] );
 
 		$this->postdata[ $key ] = $value;
+	}
+
+	/**
+	 * Custom save action.
+	 */
+	public function _save( $props ) {
+		// Save endpoint as an option.
+		if ( ! empty( $props[ 'endpoint' ] ) ) {
+			update_option( 'usercamp_account_' . $props[ 'endpoint' ] . '_form', $this->id );
+		}
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * My Account Shortcodes
+ * Account Shortcodes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * UC_Shortcode_My_Account class.
+ * UC_Shortcode_Account class.
  */
-class UC_Shortcode_My_Account {
+class UC_Shortcode_Account {
 
 	/**
 	 * Get the shortcode content.
@@ -34,7 +34,7 @@ class UC_Shortcode_My_Account {
 			$notices = uc_get_notices();
 
 			// Output the new account page.
-			self::my_account( $atts );
+			self::account( $atts );
 
 			// Send output buffer.
 			ob_end_flush();
@@ -42,15 +42,15 @@ class UC_Shortcode_My_Account {
 	}
 
 	/**
-	 * My account page.
+	 * Account page.
 	 */
-	private static function my_account( $atts ) {
+	private static function account( $atts ) {
 		$atts = array_merge( array(
 
 		), (array) $atts );
 
 		uc_get_template(
-			'myaccount/my-account.php', array(
+			'account/account.php', array(
 				'current_user' => get_user_by( 'id', get_current_user_id() ),
 			)
 		);

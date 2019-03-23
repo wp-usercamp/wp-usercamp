@@ -221,10 +221,6 @@ class UC_Admin_Setup_Wizard {
 			}
 		}
 
-		if ( ! empty( $_POST[ '_forms' ] ) && empty( $_POST[ '_fields' ] ) ) {
-			call_user_func( 'usercamp_create_default_fields' );
-		}
-
 		// Setup pages.
 		if ( ! empty( $_POST[ '_profile' ] ) ) {
 			$pages[ 'profile' ] = array(
@@ -235,11 +231,35 @@ class UC_Admin_Setup_Wizard {
 		}
 
 		if ( ! empty( $_POST[ '_account' ] ) ) {
-			$pages[ 'myaccount' ] = array(
-				'name'    => _x( 'my-account', 'Page slug', 'usercamp' ),
-				'title'   => _x( 'My Account', 'Page title', 'usercamp' ),
+			$pages[ 'account' ] = array(
+				'name'    => _x( 'account', 'Page slug', 'usercamp' ),
+				'title'   => _x( 'Account', 'Page title', 'usercamp' ),
 				'content' => '[usercamp_account]',
 			);
+		}
+
+		if ( ! empty( $_POST[ '_forms' ] ) ) {
+			if ( ! empty( $_POST[ '_register' ] ) ) {
+				$pages[ 'register' ] = array(
+					'name'    => _x( 'register', 'Page slug', 'usercamp' ),
+					'title'   => _x( 'Register', 'Page title', 'usercamp' ),
+					'content' => '[usercamp_form id=' . get_option( 'usercamp_register_form' ) . ']',
+				);
+			}
+			if ( ! empty( $_POST[ '_login' ] ) ) {
+				$pages[ 'login' ] = array(
+					'name'    => _x( 'login', 'Page slug', 'usercamp' ),
+					'title'   => _x( 'Login', 'Page title', 'usercamp' ),
+					'content' => '[usercamp_form id=' . get_option( 'usercamp_login_form' ) . ']',
+				);
+			}
+			if ( ! empty( $_POST[ '_lostpassword' ] ) ) {
+				$pages[ 'lostpassword' ] = array(
+					'name'    => _x( 'lost-password', 'Page slug', 'usercamp' ),
+					'title'   => _x( 'Lost password', 'Page title', 'usercamp' ),
+					'content' => '[usercamp_form id=' . get_option( 'usercamp_lostpassword_form' ) . ']',
+				);
+			}
 		}
 
 		foreach ( ( array ) $pages as $key => $page ) {

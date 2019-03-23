@@ -16,7 +16,7 @@ function uc_template_redirect() {
 	if ( isset( $wp->query_vars['logout'] ) ) {
 
 		// Logout.
-		wp_safe_redirect( str_replace( '&amp;', '&', wp_logout_url( uc_get_page_permalink( 'myaccount' ) ) ) );
+		wp_safe_redirect( str_replace( '&amp;', '&', wp_logout_url( uc_get_page_permalink( 'account' ) ) ) );
 		exit;
 
 	} elseif ( isset( $wp->query_vars['logout'] ) && 'true' === $wp->query_vars['logout'] ) {
@@ -32,9 +32,9 @@ function uc_template_redirect() {
  * Get logout endpoint.
  */
 function uc_logout_url( $redirect = '' ) {
-	$redirect = $redirect ? $redirect : uc_get_page_permalink( 'myaccount' );
+	$redirect = $redirect ? $redirect : uc_get_page_permalink( 'account' );
 
-	if ( get_option( 'usercamp_myaccount_logout_endpoint' ) ) {
+	if ( get_option( 'usercamp_account_logout_endpoint' ) ) {
 		return wp_nonce_url( uc_get_endpoint_url( 'logout', '', $redirect ), 'logout' );
 	}
 
@@ -42,14 +42,14 @@ function uc_logout_url( $redirect = '' ) {
 }
 
 /**
- * My Account navigation template.
+ * Account navigation template.
  */
 function usercamp_account_navigation() {
-	uc_get_template( 'myaccount/navigation.php' );
+	uc_get_template( 'account/navigation.php' );
 }
 
 /**
- * My Account content output.
+ * Account content output.
  */
 function usercamp_account_content() {
 	global $wp;
@@ -68,10 +68,14 @@ function usercamp_account_content() {
 		}
 	}
 
-	// No endpoint found? Load the default account page.
-	uc_get_template( 'myaccount/edit-account.php', array(
-		'current_user' => uc_get_user( get_current_user_id() ),
-	) );
+	$has_form = uc_get_account_endpoint_form();
+	if ( $has_form ) {
+		uc_get_template( 'forms/form.php', array(
+			'atts'			=> array(),
+			'the_form'		=> uc_get_form( $has_form ),
+			'current_user' 	=> uc_get_user( get_current_user_id() ),
+		) );
+	}
 }
 
 /**
@@ -165,6 +169,10 @@ function uc_checkmark() {
  */
 function uc_get_field( $array ) {
 	global $the_form;
+
+	if ( ! array_key_exists( 'type', ( array ) $array[ 'data' ] ) ) {
+		return;
+	}
 
 	$mode					= $the_form->type;
 	$field 					= $array['data'];

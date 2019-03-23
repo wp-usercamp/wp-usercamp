@@ -536,3 +536,12 @@ a.usercamp-button.disabled {
 	background: rgba(91, 157, 217, 0.03);
 	text-decoration: none !important;
 }
+
+/* Content */
+.usercamp-content {
+	float: left;
+	width: 70%;
+	box-sizing: border-box;
+	padding: 0 3em;
+	font-size: 0.85em;
+}

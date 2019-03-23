@@ -393,7 +393,12 @@ function uc_dragdrop_columns( $i ) {
 
 	<div class="uc-bld-col grid-<?php echo $the_form->cols[$i]['layout'][$c]; ?>">
 		<div class="uc-bld-elems">
-			<?php foreach( (array) $the_form->fields_in( $i, $c ) as $k => $field ) : $r = $field['data']; ?>
+			<?php foreach( (array) $the_form->fields_in( $i, $c ) as $k => $field ) : 
+				if ( ! isset( $field['data']['type'] ) ) {
+					continue;
+				}
+				$r = $field['data'];
+			?>
 			<div class="uc-bld-elem" <?php echo uc_get_data_attributes( $r ); ?>>
 				<div class="uc-bld-left">
 					<span class="uc-bld-action"><a href="#" class="uc-move-field"><i data-feather="move"></i></a></span>

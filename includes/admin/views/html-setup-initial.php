@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<p><?php esc_html_e( 'This setup wizard was designed to help you get started quickly with your online community.', 'usercamp' ); ?></p>
 
-	<h3><?php esc_html_e( 'Setup default content', 'usercamp' ); ?></h3>
+	<h3><?php esc_html_e( 'Setup community base', 'usercamp' ); ?></h3>
 	<?php
 	usercamp_wp_switch(
 		array(
@@ -62,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	);
 	?>
 
-	<h3><?php esc_html_e( 'Setup profile &amp; account pages', 'usercamp' ); ?></h3>
+	<h3><?php esc_html_e( 'Setup community pages', 'usercamp' ); ?></h3>
 	<?php
 	usercamp_wp_switch(
 		array(
@@ -82,6 +82,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'value'				=> 1,
 			'cbvalue'			=> 1,
 			'description'		=> __( 'Set up the community my account page', 'usercamp' ),
+			'desc_tip'			=> true,
+		)
+	);
+
+	usercamp_wp_switch(
+		array(
+			'id'        		=> '_register',
+			'label'				=> __( 'Registration page', 'usercamp' ),
+			'value'				=> 1,
+			'cbvalue'			=> 1,
+			'description'		=> __( 'Set up the community registration page', 'usercamp' ),
+			'desc_tip'			=> true,
+		)
+	);
+
+	usercamp_wp_switch(
+		array(
+			'id'        		=> '_login',
+			'label'				=> __( 'Login page', 'usercamp' ),
+			'value'				=> 1,
+			'cbvalue'			=> 1,
+			'description'		=> __( 'Set up the community login page', 'usercamp' ),
+			'desc_tip'			=> true,
+		)
+	);
+
+	usercamp_wp_switch(
+		array(
+			'id'        		=> '_lostpassword',
+			'label'				=> __( 'Lost password page', 'usercamp' ),
+			'value'				=> 1,
+			'cbvalue'			=> 1,
+			'description'		=> __( 'Set up the community lost password page', 'usercamp' ),
 			'desc_tip'			=> true,
 		)
 	);

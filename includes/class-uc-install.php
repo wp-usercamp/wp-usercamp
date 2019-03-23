@@ -234,9 +234,9 @@ class UC_Install {
 
 			// Delete posts.
 			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'uc_form', 'uc_field', 'uc_role', 'uc_memberlist' );" );
-			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type = 'revision' AND post_status = 'inherit' AND post_content LIKE '[usercamp_form id=%';" );
-			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type = 'page' AND post_status = 'publish' AND post_content LIKE '[usercamp_account]';" );
-			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type = 'page' AND post_status = 'publish' AND post_content LIKE '[usercamp_profile]';" );
+			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_content LIKE '[usercamp_form id=%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_content LIKE '[usercamp_account]';" );
+			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_content LIKE '[usercamp_profile]';" );
 			$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
 
 			// Roles + caps.

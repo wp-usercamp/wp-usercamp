@@ -177,7 +177,6 @@ class UC_AJAX {
 			wp_die( -1 );
 		}
 
-		usercamp_create_default_fields();
 		usercamp_create_default_forms();
 
 		wp_die();

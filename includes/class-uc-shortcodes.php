@@ -58,13 +58,13 @@ class UC_Shortcodes {
 	}
 
 	/**
-	 * My account page shortcode.
+	 * Account page shortcode.
 	 */
 	public static function account( $atts ) {
 		if ( is_admin() ) {
 			return;
 		}
-		return self::shortcode_wrapper( array( 'UC_Shortcode_My_Account', 'output' ), $atts );
+		return self::shortcode_wrapper( array( 'UC_Shortcode_Account', 'output' ), $atts );
 	}
 
 }

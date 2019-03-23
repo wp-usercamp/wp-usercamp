@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<?php if ( $top_note ) : ?>
+<?php if ( ! empty( $top_note ) ) : ?>
 
 	<div class="usercamp-text"><?php echo esc_html( $top_note ); ?></div>
 

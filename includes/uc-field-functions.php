@@ -282,6 +282,9 @@ function uc_get_field_opts() {
  */
 function uc_get_data_attributes( $data ) {
 	$output = '';
+	if ( empty( $data ) ) {
+		return;
+	}
 	foreach( $data as $key => $value ) {
 		if ( is_array( $value ) ) {
 			$value = implode( ',', $value );

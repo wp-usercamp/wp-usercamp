@@ -25,10 +25,12 @@ $type = esc_attr( $the_form->type );
 
 	<?php uc_form_loop_edit(); ?>
 
+	<?php if ( ! empty( $atts[ 'first_button' ] ) ) : ?>
 	<div class="usercamp-buttons">
 		<a href="#" class="usercamp-button main"><?php echo esc_html( $atts[ 'first_button' ] ); ?></a>
 		<a href="#" class="usercamp-button alt"><?php echo esc_html( $atts[ 'second_button' ] ); ?></a>
 	</div>
+	<?php endif; ?>
 
 	<?php wp_nonce_field( "usercamp-{$type}", "usercamp-{$type}-nonce" ); ?>
 

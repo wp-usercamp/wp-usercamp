@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Returns true when viewing an account page.
  */
 function is_uc_account_page() {
-	$page_id = uc_get_page_id( 'myaccount' );
+	$page_id = uc_get_page_id( 'account' );
 
 	return ( $page_id && is_page( $page_id ) ) || uc_post_content_has_shortcode( 'usercamp_account' );
 }
