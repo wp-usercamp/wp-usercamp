@@ -16,10 +16,20 @@ function uc_get_account_endpoints() {
 		'edit-password'       		=> get_option( 'usercamp_account_edit_password_endpoint', 'edit-password' ),
 		'privacy'              		=> get_option( 'usercamp_account_privacy_endpoint', 'privacy' ),
 		'email-notifications'		=> get_option( 'usercamp_account_email_notifications_endpoint', 'email-notifications' ),
-		'logout'					=> get_option( 'usercamp_account_logout_endpoint', 'logout' ),
 	);
 
-	return apply_filters( 'usercamp_get_account_endpoints', $endpoints );
+	$endpoints = apply_filters( 'usercamp_get_account_endpoints', ( array ) $endpoints );
+
+	// Ensure logout comes at the very bottom of list.
+	if ( ! array_key_exists( 'logout', $endpoints ) ) {
+		$endpoints[ 'logout' ] = get_option( 'usercamp_account_logout_endpoint', 'logout' );
+	} else {
+		$logout = $endpoints[ 'logout' ];
+		unset( $endpoints[ 'logout' ] );
+		$endpoints[ 'logout' ] = $logout;
+	}
+
+	return $endpoints;
 }
 
 /**
