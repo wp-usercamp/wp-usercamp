@@ -49,7 +49,7 @@ function uc_get_account_endpoint_url( $endpoint ) {
 function uc_get_account_endpoint_form() {
 	$endpoint = uc()->query->get_current_endpoint();
 	if ( $endpoint ) {
-		return get_option( 'usercamp_account_' . uc_sanitize_key( $endpoint ) . '_form' );
+		return get_option( 'usercamp_account_' . uc_sanitize_title( $endpoint ) . '_form' );
 	}
 	return get_option( 'usercamp_account_form', '' );
 }

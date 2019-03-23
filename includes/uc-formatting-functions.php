@@ -22,15 +22,8 @@ function uc_clean( $var ) {
 /**
  * Clean lowercase variables and use underscore instead of dash.
  */
-function uc_sanitize_key( $var ) {
-	return str_replace( '-', '_', sanitize_title_with_dashes( uc_clean( wp_unslash( $var ) ) ) );
-}
-
-/**
- * Format the endpoint slug, strip out anything not allowed in a url.
- */
-function uc_sanitize_endpoint_slug( $raw_value ) {
-	return sanitize_title( $raw_value );
+function uc_sanitize_title( $var ) {
+	return str_replace( '-', '_', sanitize_title( wp_unslash( $var ) ) );
 }
 
 /**

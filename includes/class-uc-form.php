@@ -148,7 +148,7 @@ class UC_Form extends UC_Abstract_Post {
 	public function _save( $props ) {
 		// Save endpoint as an option.
 		if ( ! empty( $props[ 'endpoint' ] ) ) {
-			update_option( 'usercamp_account_' . uc_sanitize_key( $props[ 'endpoint' ] ) . '_form', $this->id );
+			update_option( 'usercamp_account_' . uc_sanitize_title( $props[ 'endpoint' ] ) . '_form', $this->id );
 		}
 	}
 

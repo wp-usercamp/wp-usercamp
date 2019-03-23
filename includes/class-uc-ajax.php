@@ -104,7 +104,7 @@ class UC_AJAX {
 		$the_field = new UC_Field();
 
 		$props['label'] 				= isset( $_POST['label'] ) ? uc_clean( wp_unslash( $_POST['label'] ) ) : '';
-		$props['key']         			= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
+		$props['key']         			= isset( $_POST['key'] ) ? sanitize_title( wp_unslash( $_POST['key'] ) ) : '';
 
 		if ( ! $props['label'] ) {
 			$errors['label'] = __( 'You must provide a title for this custom field.', 'usercamp' );
@@ -124,7 +124,7 @@ class UC_AJAX {
 		}
 
 		// No errors? Setup all props now.
-		//$props['key']         		= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
+		//$props['key']         		= isset( $_POST['key'] ) ? sanitize_title( wp_unslash( $_POST['key'] ) ) : '';
 		$props['type']         			= isset( $_POST['type'] ) ? uc_clean( wp_unslash( $_POST['type'] ) ) : '';
 		$props['can_view']				= isset( $_POST['can_view'] ) ? uc_clean( wp_unslash( $_POST['can_view'] ) ) : '';
 		$props['is_private']			= ! empty( $_POST['is_private'] );

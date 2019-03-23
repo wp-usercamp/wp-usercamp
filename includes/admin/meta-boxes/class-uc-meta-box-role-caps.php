@@ -128,7 +128,7 @@ class UC_Meta_Box_Role_Caps {
 		$props = array();
 
 		$the_role = new UC_Role( $post_id );
-		$name = uc_sanitize_key( uc_clean( wp_unslash( $_POST['post_title'] ) ) );
+		$name = uc_sanitize_title( $_POST['post_title'] );
 
 		// New user role.
 		if ( ! $the_role->is_created ) {

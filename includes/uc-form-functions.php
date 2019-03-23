@@ -158,7 +158,7 @@ function usercamp_create_default_forms() {
 					'fields'	=> isset( $data['fields'] ) ? uc_clean( $data['fields'] ) : '',
 					'row_count'	=> 1,
 					'cols'		=> array( 0 => array( 'count' => 0, 'layout' => 0 ), 1 => array( 'count' => 1, 'layout' => array( 0 => '100' ) ) ),
-					'endpoint'	=> array_key_exists( 'endpoint', $data ) ? uc_sanitize_endpoint_slug( $data['endpoint'] ) : '',
+					'endpoint'	=> array_key_exists( 'endpoint', $data ) ? sanitize_title( $data['endpoint'] ) : '',
 			) );
 			$the_form->insert();
 			$the_form->save( $the_form->meta_input );

@@ -105,7 +105,7 @@ class UC_Meta_Box_Field_Data {
 
 		$the_field = new UC_Field( $post_id );
 
-		$props['key']         			= isset( $_POST['key'] ) ? uc_sanitize_endpoint_slug( wp_unslash( $_POST['key'] ) ) : '';
+		$props['key']         			= isset( $_POST['key'] ) ? sanitize_title( wp_unslash( $_POST['key'] ) ) : '';
 		$props['type']         			= isset( $_POST['type'] ) ? uc_clean( wp_unslash( $_POST['type'] ) ) : '';
 		$props['can_view']				= isset( $_POST['can_view'] ) ? uc_clean( wp_unslash( $_POST['can_view'] ) ) : '';
 		$props['is_private']			= ! empty( $_POST['is_private'] );

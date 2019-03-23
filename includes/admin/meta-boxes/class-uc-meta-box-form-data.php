@@ -95,7 +95,7 @@ class UC_Meta_Box_Form_Data {
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
 
 		if ( $props['endpoint'] !== $the_form->endpoint ) {
-			delete_option( 'usercamp_account_' . uc_sanitize_key( $the_form->endpoint ) . '_form' );
+			delete_option( 'usercamp_account_' . uc_sanitize_title( $the_form->endpoint ) . '_form' );
 		}
 
 		$the_form->save( $props );
