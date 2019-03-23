@@ -21,25 +21,40 @@ class UC_Form_Handler {
 	}
 
 	/**
+	 * Get valid handler.
+	 */
+	public static function handle( $mode ) {
+		if ( ! isset( $_REQUEST['usercamp-' . $mode . '-nonce'] ) 
+			|| ! wp_verify_nonce( $_REQUEST['usercamp-' . $mode. '-nonce'], 'usercamp-' . $mode )
+		) {
+			return false;
+		}
+		if ( ! empty( $_REQUEST[ '_' . $mode . '_id' ] ) ) {
+			return absint( $_REQUEST[ '_' . $mode . '_id' ] );
+		}
+		return false;
+	}
+
+	/**
 	 * User login.
 	 */
 	public static function user_login() {
-		if ( ! isset( $_REQUEST['usercamp-login-nonce'] ) || ! wp_verify_nonce( $_REQUEST['usercamp-login-nonce'], 'usercamp-login' ) ) {
+		if ( ! $id = self::handle( 'login' ) ) {
 			return;
 		}
 
-		UC_Shortcode_Form_Login::verify( new UC_Form( absint( $_REQUEST[ '_login_id' ] ) ) );
+		UC_Shortcode_Form_Login::verify( uc_get_form( $id ) );
 	}
 
 	/**
 	 * User password reset.
 	 */
 	public static function user_password_reset() {
-		if ( ! isset( $_REQUEST['usercamp-lostpassword-nonce'] ) || ! wp_verify_nonce( $_REQUEST['usercamp-lostpassword-nonce'], 'usercamp-lostpassword' ) ) {
+		if ( ! $id = self::handle( 'lostpassword' ) ) {
 			return;
 		}
 
-		UC_Shortcode_Form_Lostpassword::verify( new UC_Form( absint( $_REQUEST[ '_lostpassword_id' ] ) ) );
+		UC_Shortcode_Form_Lostpassword::verify( uc_get_form( $id ) );
 	}
 
 }

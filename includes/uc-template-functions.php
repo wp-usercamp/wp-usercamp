@@ -74,7 +74,7 @@ function usercamp_account_content() {
 	if ( $has_form ) {
 		uc_get_template( 'form/form.php', array(
 			'atts'			=> array(
-					'first_button' => __( 'Save changes', 'usercamp' ),
+				'first_button' => __( 'Save changes', 'usercamp' ),
 			),
 			'the_form'		=> uc_get_form( $has_form ),
 			'current_user' 	=> uc_get_user( get_current_user_id() ),
