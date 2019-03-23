@@ -130,8 +130,6 @@ function uc_form_buttons( $args = array() ) {
 function usercamp_add_form_inputs() {
 	global $the_form;
 
-	echo '<input type="hidden" name="_' . esc_attr( $the_form->type ) . '_id" id="_' . esc_attr( $the_form->type ) . '_id" value="' . absint( $the_form->id ) . '" />';
-
 	if ( ! empty( uc()->query->get_current_endpoint() ) ) {
 		$endpoint = uc()->query->get_current_endpoint();
 	} else {
@@ -144,6 +142,8 @@ function usercamp_add_form_inputs() {
 
 	// Allow the endpoint for this nonce to be filtered.
 	$endpoint = apply_filters( 'usercamp_get_nonce_endpoint', $endpoint, $the_form );
+
+	echo '<input type="hidden" name="_' . $endpoint . '_id" id="_' . $endpoint . '_id" value="' . absint( $the_form->id ) . '" />';
 
 	wp_nonce_field( 'usercamp-' . $endpoint, 'usercamp-' . $endpoint . '-nonce' );
 }
