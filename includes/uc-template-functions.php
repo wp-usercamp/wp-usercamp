@@ -61,6 +61,7 @@ function usercamp_account_content() {
 				continue;
 			}
 
+			// Action hooks has the first priority.
 			if ( has_action( 'usercamp_account_' . $key . '_endpoint' ) ) {
 				do_action( 'usercamp_account_' . $key . '_endpoint', $value );
 				return;
@@ -68,10 +69,13 @@ function usercamp_account_content() {
 		}
 	}
 
+	// If we do not have an action hook, load the respective form.
 	$has_form = uc_get_account_endpoint_form();
 	if ( $has_form ) {
 		uc_get_template( 'form/form.php', array(
-			'atts'			=> array(),
+			'atts'			=> array(
+					'first_button' => __( 'Save changes', 'usercamp' ),
+			),
 			'the_form'		=> uc_get_form( $has_form ),
 			'current_user' 	=> uc_get_user( get_current_user_id() ),
 		) );
@@ -79,38 +83,45 @@ function usercamp_account_content() {
 }
 
 /**
- * Get form loop editing part.
+ * Get form edit template.
  */
-function uc_form_loop_edit() {
-	uc_get_template( 'loop/loop-edit.php' );
+function uc_form_edit( $args = array() ) {
+	uc_get_template( 'form/form-edit.php', $args );
 }
 
 /**
- * Get form loop start part.
+ * Get form row start part.
  */
-function uc_form_loop_start() {
-	uc_get_template( 'loop/loop-start.php' );
+function uc_form_row_start( $args = array() ) {
+	uc_get_template( 'form/form-row-start.php', $args );
 }
 
 /**
- * Get form loop end part.
+ * Get form row end part.
  */
-function uc_form_loop_end() {
-	uc_get_template( 'loop/loop-end.php' );
+function uc_form_row_end( $args = array() ) {
+	uc_get_template( 'form/form-row-end.php', $args );
 }
 
 /**
- * Get form loop column part.
+ * Get form column part.
  */
-function uc_form_loop_column( $args = array() ) {
-	uc_get_template( 'loop/loop-column.php', $args );
+function uc_form_column( $args = array() ) {
+	uc_get_template( 'form/form-column.php', $args );
 }
 
 /**
  * Get form top note if available.
  */
-function uc_form_loop_note( $args = array() ) {
-	uc_get_template( 'loop/loop-note.php', $args );
+function uc_form_note( $args = array() ) {
+	uc_get_template( 'form/form-note.php', $args );
+}
+
+/**
+ * Get form buttons.
+ */
+function uc_form_buttons( $args = array() ) {
+	uc_get_template( 'form/form-buttons.php', $args );
 }
 
 /**
@@ -122,21 +133,25 @@ function usercamp_add_form_id() {
 }
 
 /**
+ * Display the endpoint title above account content.
+ */
+function usercamp_show_endpoint_title() {
+	$endpoint       = uc()->query->get_current_endpoint();
+	if ( ! $endpoint ) {
+		$endpoint = 'edit-account';
+	}
+	$endpoint_title = uc()->query->get_endpoint_title( $endpoint );
+	?>
+	<h3><?php esc_html_e( $endpoint_title ); ?></h3>
+	<?php
+}
+
+/**
  * Print inline style data.
  */
 function uc_get_inline_styles() {
 	global $the_form;
 	$inline = array();
-
-	// Add font-size.
-	if ( $the_form->font_size ) {
-		$inline[] = 'font-size: ' . esc_attr( $the_form->font_size );
-	}
-
-	// Add max-width.
-	if ( $the_form->max_width ) {
-		$inline[] = 'max-width: ' . esc_attr( $the_form->max_width );
-	}
 
 	return apply_filters( 'uc_get_inline_styles', $inline, $the_form );
 }
@@ -217,13 +232,11 @@ function uc_get_field( $array ) {
 	}
 
 	// Field attributes.
-	if ( $mode == 'register' ) {
-		if ( $field['key'] == 'user_login' ) {
-			$field['attributes'][] = 'autocomplete=off';
-		}
-		if ( $field['type'] == 'password' ) {
-			$field['attributes'][] = 'autocomplete=new-password';
-		}
+	if ( $field['key'] == 'user_login' && $mode != 'login' ) {
+		$field['attributes'][] = 'autocomplete=off';
+	}
+	if ( $field['type'] == 'password' && $mode != 'login' ) {
+		$field['attributes'][] = 'autocomplete=new-password';
 	}
 	if ( ! empty( $field['placeholder'] ) ) {
 		$field['attributes'][] = 'placeholder="' . esc_attr( $field['placeholder'] ) . '"';
@@ -233,5 +246,4 @@ function uc_get_field( $array ) {
 	 * Return the complete field and its attributes.
 	 */
 	return apply_filters( 'uc_get_field', $field, $the_form );
-
 }

@@ -92,8 +92,6 @@ class UC_Meta_Box_Form_Data {
 		$props['type']         			= isset( $_POST['_type'] ) ? uc_clean( wp_unslash( $_POST['_type'] ) ) : '';
 		$props['icons']         		= isset( $_POST['icons'] ) ? uc_clean( wp_unslash( $_POST['icons'] ) ) : '';
 		$props['use_ajax']				= isset( $_POST['use_ajax'] ) ? 'yes' : 'no';
-		$props['font_size']				= uc_clean( wp_unslash( $_POST['font_size'] ) );
-		$props['max_width']				= uc_clean( wp_unslash( $_POST['max_width'] ) );
 
 		$the_form->save( $props );
 	}

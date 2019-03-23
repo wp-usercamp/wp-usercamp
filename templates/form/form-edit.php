@@ -11,11 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php for ( $row = 1; $row <= $the_form->row_count; $row++ ) : ?>
 
-	<?php uc_form_loop_start(); ?>
+	<?php uc_form_row_start(); ?>
 
 		<?php for ( $col = 0; $col < $the_form->cols[$row]['count']; $col++ ) : ?>
 
-			<?php uc_form_loop_column( array(
+			<?php uc_form_column( array(
 				'row' 	=> $row,
 				'col'	=> $col,
 				'size'	=> $the_form->cols[$row]['layout'][$col]
@@ -23,6 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php endfor; ?>
 
-	<?php uc_form_loop_end(); ?>
+	<?php uc_form_row_end(); ?>
 
 <?php endfor; ?>

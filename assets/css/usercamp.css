@@ -224,6 +224,7 @@ div.disabled > .toggle-slide {
 
 .usercamp {
 	padding: 1.475em 0;
+	font-size: 0.85em;
 }
 
 .usercamp::after {
@@ -234,12 +235,10 @@ div.disabled > .toggle-slide {
 	visibility: hidden;
 }
 
-/* Forms */
 .usercamp-form {
-	margin: 0 auto;
+	max-width: 450px;
 }
 
-/* Elements */
 .usercamp-text {
 	line-height: 1.6em;
 	padding: 0 0 1em 0;
@@ -304,6 +303,12 @@ ul.usercamp-error li.usercamp-error-header {
 
 .usercamp-buttons a.usercamp-button:first-child {
 	margin-right: 4%;
+}
+
+.usercamp-buttons.usercamp-butttons-1 a.usercamp-button {
+	padding: 0.5em 0.8em;
+	width: auto;
+	margin: 0;
 }
 
 a.usercamp-button {
@@ -475,7 +480,7 @@ a.usercamp-button.disabled {
 .usercamp-nav {
 	float: left;
 	width: 30%;
-	font-size: 0.85em;
+	background: #fff;
 }
 
 .usercamp-nav li {
@@ -543,5 +548,11 @@ a.usercamp-button.disabled {
 	width: 70%;
 	box-sizing: border-box;
 	padding: 0 3em;
-	font-size: 0.85em;
+}
+
+.usercamp-content h3 {
+	margin: 0 0 1em;
+	padding: 0 0 .475em;
+	border-bottom: 1px solid #eee;
+	font-size: 1.4em;
 }

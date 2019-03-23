@@ -31,8 +31,6 @@ class UC_Form extends UC_Abstract_Post {
 		'cols',
 		'use_ajax',
 		'icons',
-		'font_size',
-		'max_width',
 		'endpoint',
 	);
 
