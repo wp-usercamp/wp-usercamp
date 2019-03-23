@@ -240,7 +240,7 @@ div.disabled > .toggle-slide {
 }
 
 .usercamp-text {
-	line-height: 1.6em;
+	line-height: 1.4em;
 	padding: 0 0 1em 0;
 	color: rgba(0, 0, 0, 0.4);
 }
@@ -249,7 +249,7 @@ div.disabled > .toggle-slide {
 .usercamp-message,
 .usercamp-error,
 .usercamp-info {
-	line-height: 1.6em;
+	line-height: 1.4em;
 	margin: 0 0 1em 0;
 	font-weight: 700;
 	text-align: center;
@@ -554,4 +554,12 @@ a.usercamp-button.disabled {
 	margin: 0 0 1em;
 	padding: 0 0 .475em;
 	border-bottom: 1px solid #eee;
+}
+
+.usercamp-content h3 span {
+	display: block;
+	font-size: 0.6em;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.4);
+	margin: 5px 0 0 0;
 }

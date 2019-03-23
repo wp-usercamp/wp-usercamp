@@ -129,7 +129,20 @@ function uc_form_buttons( $args = array() ) {
  */
 function usercamp_add_form_id() {
 	global $the_form;
+
 	echo '<input type="hidden" name="_' . esc_attr( $the_form->type ) . '_id" id="_' . esc_attr( $the_form->type ) . '_id" value="' . absint( $the_form->id ) . '" />';
+
+	if ( ! empty( uc()->query->get_current_endpoint() ) ) {
+		$endpoint = uc()->query->get_current_endpoint();
+	} else {
+		$endpoint = esc_attr( $the_form->type );
+	}
+
+	if ( $endpoint == 'account' ) {
+		$endpoint = uc_get_account_default_endpoint();
+	}
+
+	wp_nonce_field( 'usercamp-' . $endpoint, 'usercamp-' . $endpoint . '-nonce' );
 }
 
 /**
@@ -138,11 +151,17 @@ function usercamp_add_form_id() {
 function usercamp_show_endpoint_title() {
 	$endpoint       = uc()->query->get_current_endpoint();
 	if ( ! $endpoint ) {
-		$endpoint = 'edit-account';
+		$endpoint = uc_get_account_default_endpoint();
 	}
 	$endpoint_title = uc()->query->get_endpoint_title( $endpoint );
+	$endpoint_desc	= uc()->query->get_endpoint_desc( $endpoint );
 	?>
-	<h3><?php esc_html_e( $endpoint_title ); ?></h3>
+	<h3>
+		<?php esc_html_e( $endpoint_title ); ?>
+		<?php if ( ! empty( $endpoint_desc ) ) : ?>
+		<span><?php echo esc_html( $endpoint_desc ); ?></span>
+		<?php endif; ?>
+	</h3>
 	<?php
 }
 

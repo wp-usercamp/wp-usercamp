@@ -118,7 +118,7 @@ function usercamp_get_default_forms() {
 				0		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
 				1		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
 			),
-			'endpoint'	=> 'edit-account',
+			'endpoint'	=> uc_get_account_default_endpoint(),
 		)
 	);
 

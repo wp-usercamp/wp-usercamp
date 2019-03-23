@@ -80,6 +80,24 @@ class UC_Query {
 	}
 
 	/**
+	 * Get page description for an endpoint.
+	 */
+	public function get_endpoint_desc( $endpoint ) {
+		global $wp;
+
+		switch ( $endpoint ) {
+			case 'edit-password':
+				$title = __( 'Change your password or recover your current one.', 'usercamp' );
+				break;
+			default:
+				$title = '';
+				break;
+		}
+
+		return apply_filters( 'usercamp_endpoint_' . $endpoint . '_desc', $title, $endpoint );
+	}
+
+	/**
 	 * Endpoint mask describing the places the endpoint should be added.
 	 */
 	public function get_endpoints_mask() {

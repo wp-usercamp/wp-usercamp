@@ -20,16 +20,19 @@ function uc_get_account_endpoints() {
 
 	$endpoints = apply_filters( 'usercamp_get_account_endpoints', ( array ) $endpoints );
 
-	// Ensure logout comes at the very bottom of list.
+	// Make sure logout is added after every other filter.
 	if ( ! array_key_exists( 'logout', $endpoints ) ) {
 		$endpoints[ 'logout' ] = get_option( 'usercamp_account_logout_endpoint', 'logout' );
-	} else {
-		$logout = $endpoints[ 'logout' ];
-		unset( $endpoints[ 'logout' ] );
-		$endpoints[ 'logout' ] = $logout;
 	}
 
 	return $endpoints;
+}
+
+/**
+ * Get account default endpoint.
+ */
+function uc_get_account_default_endpoint() {
+	return apply_filters( 'uc_get_account_default_endpoint', 'edit-account' );
 }
 
 /**
@@ -60,6 +63,7 @@ function uc_get_account_endpoint_form() {
 function uc_get_account_menu_items() {
 
 	$endpoints = uc_get_account_endpoints();
+	$default = uc_get_account_default_endpoint();
 
 	// Remove missing endpoints.
 	foreach ( $endpoints as $endpoint_id => $endpoint ) {
@@ -68,6 +72,16 @@ function uc_get_account_menu_items() {
 		}
 		$items[ $endpoint_id ] = uc()->query->get_endpoint_title( $endpoint );
 	}
+
+	// Make sure that default endpoint comes on top.
+	$default_endpoint = $items[ $default ];
+	unset( $items[ $default ] );
+	$items = array_merge( array( $default => $default_endpoint ) , $items );
+
+	// Ensure logout comes at the very bottom of list.
+	$logout = $items[ 'logout' ];
+	unset( $items[ 'logout' ] );
+	$items[ 'logout' ] = $logout;
 
 	return apply_filters( 'usercamp_account_menu_items', $items, $endpoints );
 }
@@ -87,7 +101,7 @@ function uc_get_account_menu_item_classes( $endpoint ) {
 	$current = isset( $wp->query_vars[ $endpoint ] );
 
 	// Fallback to default content item.
-	if ( 'edit-account' === $endpoint && ( isset( $wp->query_vars['page'] ) || empty( $wp->query_vars ) ) ) {
+	if ( uc_get_account_default_endpoint() === $endpoint && ( isset( $wp->query_vars['page'] ) || empty( $wp->query_vars ) ) ) {
 		$current = true;
 	}
 
