@@ -58,46 +58,80 @@ function uc_get_form_type( $type ) {
  * Get default forms.
  */
 function usercamp_get_default_forms() {
+	$array = array();
 
-	$array = array(
-		'register'		=> array(
+	array_push(
+		$array,
+		array(
+			'type'		=> 'register',
 			'title'		=> __( 'Registration', 'usercamp' ),
 			'fields'	=> array(
 				0		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
 				1		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
 				2		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
-			),
-		),
-		'login'			=> array(
+			)
+		) 
+	);
+
+	array_push(
+		$array,
+		array(
+			'type'		=> 'login',
 			'title'		=> __( 'Login', 'usercamp' ),
 			'fields'	=> array(
 				0		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
 				1		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
-			),
-		),
-		'profile'		=> array(
+			)
+		) 
+	);
+
+	array_push(
+		$array,
+		array(
+			'type'		=> 'profile',
 			'title'		=> __( 'Profile', 'usercamp' ),
 			'fields'	=> array(
 				1		=> array( 'data' => usercamp_get_field( 'display_name' ), 	'row' => 1, 'col' => 1 ),
 				2		=> array( 'data' => usercamp_get_field( 'first_name' ), 	'row' => 1, 'col' => 1 ),
 				3		=> array( 'data' => usercamp_get_field( 'last_name' ), 		'row' => 1, 'col' => 1 ),
-			),
-		),
-		'account'		=> array(
-			'title'		=> __( 'Account', 'usercamp' ),
-			'fields'	=> array(
-				1		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
-				2		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
-				3		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
-			),
-			'endpoint'	=> 'edit_account',
-		),
-		'lostpassword'	=> array(
+			)
+		)
+	);
+
+	array_push(
+		$array,
+		array(
+			'type'		=> 'lostpassword',
 			'title'		=> __( 'Lost Password', 'usercamp' ),
 			'fields'	=> array(
 				0		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
+			)
+		)
+	);
+
+	array_push(
+		$array,
+		array(
+			'type'		=> 'account',
+			'title'		=> __( 'Account - Main', 'usercamp' ),
+			'fields'	=> array(
+				0		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
+				1		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
 			),
-		),
+			'endpoint'	=> 'edit_account',
+		)
+	);
+
+	array_push(
+		$array,
+		array(
+			'type'		=> 'account',
+			'title'		=> __( 'Account - Password', 'usercamp' ),
+			'fields'	=> array(
+				1		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
+			),
+			'endpoint'	=> 'edit_password',
+		)
 	);
 
 	return apply_filters( 'usercamp_get_default_forms', $array );
@@ -114,11 +148,11 @@ function usercamp_create_default_forms() {
 	if ( ! empty( $forms = usercamp_get_default_forms() ) ) {
 		foreach( $forms as $key => $data ) {
 
-			$type = uc_clean( wp_unslash( $key ) );
+			$type = uc_clean( wp_unslash( $data[ 'type' ] ) );
 
 			$the_form = new UC_Form();
 			$the_form->set( 'post_title', isset( $data['title'] ) ? uc_clean( $data['title'] ) : '' );
-			$the_form->set( 'post_name', $type );
+			$the_form->set( 'post_name', sanitize_title( $the_form->post_title ) );
 			$the_form->set( 'meta_input', array(
 					'type'		=> $type,
 					'fields'	=> isset( $data['fields'] ) ? uc_clean( $data['fields'] ) : '',
@@ -129,10 +163,20 @@ function usercamp_create_default_forms() {
 			$the_form->insert();
 			$the_form->save( $the_form->meta_input );
 
-			update_option( 'usercamp_' . $type . '_form', $the_form->id );
+			uc_save_default_form( $type, $the_form->id );
 		}
 	}
 
+}
+
+/**
+ * Saves default form for a specific type as option.
+ */
+function uc_save_default_form( $type = '', $id = '' ) {
+	$form_option = 'usercamp_' . $type . '_form';
+	if ( ! get_option( $form_option ) ) {
+		update_option( $form_option, $id );
+	}
 }
 
 /**
