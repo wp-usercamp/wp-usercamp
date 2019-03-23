@@ -15,10 +15,10 @@ add_action( 'template_redirect', 'uc_template_redirect' );
 /**
  * Add the ID to form.
  */
-add_action( 'usercamp_after_register_form_content', 	'usercamp_add_form_id' );
-add_action( 'usercamp_after_login_form_content', 		'usercamp_add_form_id' );
-add_action( 'usercamp_after_lostpassword_form_content', 'usercamp_add_form_id' );
-add_action( 'usercamp_after_account_form_content', 		'usercamp_add_form_id' );
+add_action( 'usercamp_after_register_form_content', 	'usercamp_add_form_inputs' );
+add_action( 'usercamp_after_login_form_content', 		'usercamp_add_form_inputs' );
+add_action( 'usercamp_after_lostpassword_form_content', 'usercamp_add_form_inputs' );
+add_action( 'usercamp_after_account_form_content', 		'usercamp_add_form_inputs' );
 
 /**
  * Account.

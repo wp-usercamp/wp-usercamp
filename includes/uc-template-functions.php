@@ -125,9 +125,9 @@ function uc_form_buttons( $args = array() ) {
 }
 
 /**
- * Add the form ID as hidden input.
+ * Add the hidden inputs including nonce.
  */
-function usercamp_add_form_id() {
+function usercamp_add_form_inputs() {
 	global $the_form;
 
 	echo '<input type="hidden" name="_' . esc_attr( $the_form->type ) . '_id" id="_' . esc_attr( $the_form->type ) . '_id" value="' . absint( $the_form->id ) . '" />';
@@ -141,6 +141,9 @@ function usercamp_add_form_id() {
 	if ( $endpoint == 'account' ) {
 		$endpoint = uc_get_account_default_endpoint();
 	}
+
+	// Allow the endpoint for this nonce to be filtered.
+	$endpoint = apply_filters( 'usercamp_get_nonce_endpoint', $endpoint, $the_form );
 
 	wp_nonce_field( 'usercamp-' . $endpoint, 'usercamp-' . $endpoint . '-nonce' );
 }
