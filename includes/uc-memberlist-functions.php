@@ -36,6 +36,11 @@ function usercamp_create_default_memberlists() {
 			) );
 			$the_memberlist->insert();
 			$the_memberlist->save( $the_memberlist->meta_input );
+
+			// Do this once only.
+			if ( ! get_option( 'usercamp_default_memberlist' ) ) {
+				update_option( 'usercamp_default_memberlist', $the_memberlist->id );
+			}
 		}
 	}
 

@@ -118,6 +118,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'desc_tip'			=> true,
 		)
 	);
+
+	usercamp_wp_switch(
+		array(
+			'id'        		=> '_members',
+			'label'				=> __( 'Members page', 'usercamp' ),
+			'value'				=> 1,
+			'cbvalue'			=> 1,
+			'description'		=> __( 'Set up the community default member directory', 'usercamp' ),
+			'desc_tip'			=> true,
+		)
+	);
 	?>
 
 	<?php wp_nonce_field( 'uc-setup' ); ?>

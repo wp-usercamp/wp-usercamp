@@ -19,6 +19,7 @@ require UC_ABSPATH . 'includes/uc-page-functions.php';
 require UC_ABSPATH . 'includes/uc-account-functions.php';
 require UC_ABSPATH . 'includes/uc-user-functions.php';
 require UC_ABSPATH . 'includes/uc-helper-functions.php';
+require UC_ABSPATH . 'includes/uc-core-hooks.php';
 
 /**
  * Return a list of plugin specific post types.

@@ -25,13 +25,7 @@ class UC_Form extends UC_Abstract_Post {
 	 * Meta keys.
 	 */
 	public $internal_meta_keys = array(
-		'type',
-		'fields',
-		'row_count',
-		'cols',
-		'use_ajax',
-		'icons',
-		'endpoint',
+
 	);
 
 	/**

@@ -262,6 +262,17 @@ class UC_Admin_Setup_Wizard {
 			}
 		}
 
+		// Create "Members" page.
+		if ( ! empty( $_POST[ '_memberlists' ] ) ) {
+			if ( ! empty( $_POST[ '_members' ] ) ) {
+				$pages[ 'members' ] = array(
+					'name'    => _x( 'members', 'Page slug', 'usercamp' ),
+					'title'   => _x( 'Members', 'Page title', 'usercamp' ),
+					'content' => '[usercamp_memberlist id=' . get_option( 'usercamp_default_memberlist' ) . ']',
+				);
+			}
+		}
+
 		foreach ( ( array ) $pages as $key => $page ) {
 			uc_create_page( esc_sql( $page['name'] ), 'usercamp_' . $key . '_page_id', $page['title'], $page['content'], '' );
 		}
