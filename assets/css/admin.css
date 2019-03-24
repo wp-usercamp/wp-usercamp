@@ -730,7 +730,7 @@ span.uc-bld-helper { width: auto; }
 	user-select: none;
 	direction: ltr;
 	text-align: center;
-	border-radius: 3px;
+	border-radius: 999px;
 }
 
 div.disabled > .toggle-slide {
@@ -750,36 +750,37 @@ div.disabled > .toggle-slide {
 	background: #fff;
 	border: 1px solid #aaa;
 	cursor: grab;
-	border-radius: 3px;
+	border-radius: 999px;
 	box-sizing: border-box;
 }
 
-.toggle-on {
-	border-radius: 3px 0 0 3px;
+.toggle-on,
+.toggle-off {
+	border-radius: 999px 0 0 999px;
 	background: rgb(91, 157, 217);
-}
-
-.toggle-on:after {
-	background: rgb(0, 115, 187);
-	height: 50%;
-	content: '';
-	margin-top: -19%;
-	display: block;
-	border-radius: 3px;
+	color: rgba(255, 255, 255, .65);
+	font-size: 0.7em;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .toggle-off {
-	border-radius: 0 3px 3px 0;
 	background: #eee;
+	color: rgba(0, 0, 0, .2);
+}
+
+.toggle-on:after,
+.toggle-off:after {
+	background: rgb(0, 115, 187);
+	height: 50%;
+	content: '';
+	margin-top: -57%;
+	display: block;
+	border-radius: 999px;
 }
 
 .toggle-off:after {
 	background: #ddd;
-	height: 50%;
-	content: '';
-	margin-top: -19%;
-	display: block;
-	border-radius: 3px;
 }
 
 /* jQuery modal */

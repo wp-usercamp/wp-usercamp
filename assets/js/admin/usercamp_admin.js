@@ -449,22 +449,19 @@ jQuery( function ( $ ) {
 
 	// Toggles
 	$( document.body ).on( 'uc-init-toggles', function() {
-		$( '.uc-toggle' ).toggles( {
-			width: 50,
-			height: 20,
-			text: {
-				on: '',
-				off: ''
-			}
-		} ).on( 'toggle', function( e, active ) {
-			if ( active ) {
-				$( this ).parents( '.form-field' ).find( ':checkbox' ).prop( 'checked', true );
-			} else {
-				$( this ).parents( '.form-field' ).find( ':checkbox' ).prop( 'checked', false );
-			}
-			$( document.body ).trigger( 'uc-init-fields' );
-		});
-	}).trigger( 'uc-init-toggles' );
+		$( '.uc-toggle' ).each( function() {
+			var cb = $( this ).parents( 'fieldset' ).find( 'input[type=checkbox]' );
+			$( this ).toggles( {
+				'width': 60,
+				'height': 20,
+				'text': {
+					on: usercamp_admin.yes,
+					off: usercamp_admin.no
+				},
+				'checkbox': cb
+			} );
+		} )
+	} ).trigger( 'uc-init-toggles' );
 
 	// Tooltips
 	$( document.body ).on( 'uc-init-tooltips', function() {
