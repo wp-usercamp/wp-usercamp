@@ -35,6 +35,20 @@ class UC_Form extends UC_Abstract_Post {
 	);
 
 	/**
+	 * Get form endpoint.
+	 */
+	public function get_endpoint() {
+		$endpoint = $this->endpoint;
+		if ( $endpoint == 'unassigned' ) {
+			$endpoint = null;
+		}
+		if ( null == $endpoint ) {
+			$endpoint = $this->type;
+		}
+		return wp_unslash( $endpoint );
+	}
+
+	/**
 	 * Does the form have fields?
 	 */
 	public function has_fields() {

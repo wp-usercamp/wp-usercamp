@@ -18,6 +18,7 @@ require UC_ABSPATH . 'includes/uc-memberlist-functions.php';
 require UC_ABSPATH . 'includes/uc-page-functions.php';
 require UC_ABSPATH . 'includes/uc-account-functions.php';
 require UC_ABSPATH . 'includes/uc-user-functions.php';
+require UC_ABSPATH . 'includes/uc-helper-functions.php';
 
 /**
  * Return a list of plugin specific post types.
@@ -59,66 +60,6 @@ function uc_help_tip( $tip, $allow_html = false ) {
 	}
 
 	return '<span class="usercamp-help-tip" data-tip="' . $tip . '"><i data-feather="help-circle"></i></span>';
-}
-
-/**
- * Get the date.
- */
-function uc_get_the_date() {
-	$format = apply_filters( 'uc_get_default_date_format', 'j/n/Y g:ia' );
-	return get_the_date( $format );
-}
-
-/**
- * Array insert before a key.
- */
-function uc_array_insert_before( $key, array &$array, $new_key, $new_value ) {
-	if ( array_key_exists( $key, $array ) ) {
-		$new = array();
-		foreach ( $array as $k => $value ) {
-			if ( $k === $key ) {
-				$new[$new_key] = $new_value;
-			}
-			$new[$k] = $value;
-		}
-		return $new;
-	}
-	return false;
-}
-
-/**
- * Array insert after a key.
- */
-function uc_array_insert_after( $key, array &$array, $new_key, $new_value ) {
-	if ( array_key_exists( $key, $array ) ) {
-		$new = array();
-		foreach ( $array as $k => $value ) {
-			$new[$k] = $value;
-			if ( $k === $key ) {
-				$new[$new_key] = $new_value;
-			}
-		}
-		return $new;
-	}
-	return false;
-}
-
-/**
- * Search array and get first matched.
- */
-function uc_array_search( $search, $array ){
-    foreach( $array as $item ){
-		foreach( $item as $key => $val ) {
-			if ( is_array( $val ) ) {
-				foreach( $val as $metakey => $metavalue ) {
-					if ( $metavalue == $search ) {
-						return $item;
-					}
-				}
-			}
-		}
-    }
-	return false;
 }
 
 /**

@@ -51,11 +51,17 @@ class UC_AJAX {
 	 * Send a form.
 	 */
 	public static function send_form() {
+		global $the_form;
 
-		$the_form = new UC_Form( absint( $_REQUEST['id'] ) );
-
-		$classname = 'UC_Shortcode_Form_' . ucfirst( uc_clean( wp_unslash( $the_form->type ) ) );
-		call_user_func( array( $classname, 'verify' ), $the_form );
+		/**
+		 * This will take care of security checks.
+		 */
+		call_user_func(
+			array(
+				'UC_Form_Handler',
+				uc_sanitize_title( wp_unslash( $_REQUEST[ '_endpoint' ] ) )
+			)
+		);
 
 		$response = array(
 			'html' 			=> uc_print_notices( true ),

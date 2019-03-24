@@ -26,7 +26,7 @@ jQuery( function( $ ) {
 			}
 			ev.preventDefault();
 			el.find( '.usercamp-error, .usercamp-message, .usercamp-info' ).remove();
-			$.post( usercamp_params.ajaxurl, el.serialize() + '&action=usercamp_send_form&id=' + el.attr( 'data-id' ), function(response) {
+			$.post( usercamp_params.ajaxurl, el.serialize() + '&action=usercamp_send_form', function(response) {
 				el.find( '.uc-error' ).removeClass( 'uc-error' );
 				el.prepend( response.html );
 				if ( response.error_fields ) {
@@ -39,7 +39,9 @@ jQuery( function( $ ) {
 						window.location.href = response.js_redirect;
 					} else {
 						el.find( '.usercamp-button.main' ).removeClass( 'disabled' );
-						el.find( ':input:not([type=hidden])' ).val( '' );
+						if ( response.cleardata ) {
+							el.find( ':input:not([type=hidden])' ).val( '' );
+						}
 					}
 				}
 			} ).fail( function(xhr, status, error) {
@@ -106,6 +108,14 @@ jQuery( function( $ ) {
 				$( this ).parents( 'fieldset' ).find( '.uc-toggle' ).toggles( true );
 			} else {
 				$( this ).parents( 'fieldset' ).find( '.uc-toggle' ).toggles( false );
+			}
+		} )
+
+		// Autotyping for username.
+		.on( 'keyup', '.user_login_field input[type=text]', function() {
+			var field = $( this ).parents( 'fieldset' );
+			if ( field.find( '.uc-ajax' ).length ) {
+				field.find( '.uc-ajax' ).html( $( this ).val() );
 			}
 		} )
 

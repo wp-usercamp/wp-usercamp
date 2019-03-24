@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'label'				=> __( 'Read Only', 'usercamp' ),
 				'value'				=> $the_field->is_readonly,
 				'cbvalue'			=> 1,
-				'description'		=> __( 'The user will be unable to edit the value of this field. e.g. for dynamic fields', 'usercamp' ),
+				'description'		=> __( 'Enable to prevent the user from editing this custom field', 'usercamp' ),
 				'desc_tip'			=> true,
 			)
 		);

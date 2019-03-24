@@ -143,7 +143,8 @@ function usercamp_add_form_inputs() {
 	// Allow the endpoint for this nonce to be filtered.
 	$endpoint = apply_filters( 'usercamp_get_nonce_endpoint', $endpoint, $the_form );
 
-	echo '<input type="hidden" name="_' . $endpoint . '_id" id="_' . $endpoint . '_id" value="' . absint( $the_form->id ) . '" />';
+	echo '<input type="hidden" id="_' . $endpoint . '_id" name="_' . $endpoint . '_id" value="' . absint( $the_form->id ) . '" />';
+	echo '<input type="hidden" id="_endpoint" name="_endpoint" value="' . $the_form->get_endpoint() . '" />';
 
 	wp_nonce_field( 'usercamp-' . $endpoint, 'usercamp-' . $endpoint . '-nonce' );
 }
@@ -231,17 +232,23 @@ function uc_get_field( $array ) {
 	}
 	$field['value'] = ( $the_form->is_request && isset( $the_form->postdata[ $field['key'] ] ) ) ? $the_form->postdata[ $field['key'] ] : $field['value'];
 
-	// Get default icon.
+	/**
+	 * Default icon.
+	 */
 	if ( empty( $field['icon'] ) ) {
 		$field['icon'] = $field_type['icon'];
 	}
 
-	// For fields without input.
+	/**
+	 * Non-input fields.
+	 */
 	if ( ! empty( $field_type['no_input'] ) ) {
 		$field['no_input'] = 1;
 	}
 
-	// Classes.
+	/**
+	 * Classes.
+	 */
 	$field['field_class'][] = esc_attr( $field['key'] ) . '_field';
 	if ( $the_form->has_error( $field['key'] ) ) {
 		$field['label_class'][] = 'uc-error';
@@ -254,12 +261,16 @@ function uc_get_field( $array ) {
 		$field['control_class'][] = 'has-icon';
 	}
 
-	// Change label in edit mode.
+	/**
+	 * Need to change label if possible.
+	 */
 	if ( ! empty( $field['edit_label'] ) ) {
 		$field['label'] = $field['edit_label'];
 	}
 
-	// Autocomplete.
+	/**
+	 * Auto complete attribute.
+	 */
 	if ( $field['key'] == 'user_login' && $mode != 'login' ) {
 		$field['attributes'][] = 'autocomplete=off';
 	}
@@ -277,7 +288,7 @@ function uc_get_field( $array ) {
 	/**
 	 * Disabled field.
 	 */
-	if ( $field['is_readonly'] == 1 ) {
+	if ( ! empty( $field['is_readonly'] ) ) {
 		$field['attributes'][] = 'disabled="disabled"';
 	}
 
@@ -289,7 +300,7 @@ function uc_get_field( $array ) {
 	}
 
 	/**
-	 * Add some filters to the field output.
+	 * Add some filters to the field before it is sent.
 	 */
 	$field = apply_filters( 'uc_get_field', $field, $the_form );
 	$field = apply_filters( 'uc_get_' . esc_attr( $field['key'] ) . '_field', $field, $the_form );
@@ -302,7 +313,7 @@ function uc_get_field( $array ) {
  * Edit password endpoint - create add password fields automatically.
  */
 function uc_add_new_password_fields( $fields, $the_form, $row, $col ) {
-	if ( $the_form->endpoint == 'edit-password' ) {
+	if ( $the_form->get_endpoint() == 'edit-password' ) {
 		$item = uc_array_search( 'user_pass', $fields );
 		if ( is_array( $item ) ) {
 			$item[ 'data' ][ 'key' ] = 'new_password';
@@ -318,7 +329,10 @@ function uc_add_new_password_fields( $fields, $the_form, $row, $col ) {
  * User login in Account page.
  */
 function uc_get_account_user_login_field( $field, $the_form ) {
-	$field['helper'] 		= usercamp_get_profile_url();
+	$field = array_merge( $field, array(
+		'helper'		=> usercamp_get_profile_url( '', $ajax = true )
+	) );
+
 	return $field;
 }
 
@@ -326,7 +340,10 @@ function uc_get_account_user_login_field( $field, $the_form ) {
  * User email in Account page.
  */
 function uc_get_account_user_email_field( $field, $the_form ) {
-	$field['helper'] 		= __( 'Email will not be publicly displayed.', 'usercamp' );
+	$field = array_merge( $field, array(
+		'helper'		=> __( 'Email will not be publicly displayed.', 'usercamp' )
+	) );
+
 	return $field;
 }
 
@@ -334,9 +351,12 @@ function uc_get_account_user_email_field( $field, $the_form ) {
  * Current user password.
  */
 function uc_get_account_user_pass_field( $field, $the_form ) {
-	$field['label'] 		= __( 'Current password', 'usercamp' );
-	$field['helper'] 		= '<a href="#">' . __( 'Forgot your password?', 'usercamp' ) . '</a>';
-	$field['hide_toggle'] 	= true;
+	$field = array_merge( $field, array(
+		'label'			=> __( 'Current password', 'usercamp' ),
+		'helper'		=> '<a href="#">' . __( 'Forgot your password?', 'usercamp' ) . '</a>',
+		'hide_toggle'	=> true,
+	) );
+
 	return $field;
 }
 
@@ -344,8 +364,11 @@ function uc_get_account_user_pass_field( $field, $the_form ) {
  * New user password.
  */
 function uc_get_account_new_password_field( $field, $the_form ) {
-	$field['label'] 		= __( 'New password', 'usercamp' );
-	$field['hide_toggle'] 	= true;
+	$field = array_merge( $field, array(
+		'label'			=> __( 'New password', 'usercamp' ),
+		'hide_toggle'	=> true,
+	) );
+
 	return $field;
 }
 
@@ -353,7 +376,10 @@ function uc_get_account_new_password_field( $field, $the_form ) {
  * Verify user password.
  */
 function uc_get_account_verify_new_password_field( $field, $the_form ) {
-	$field['label'] 		= __( 'Verify password', 'usercamp' );
-	$field['hide_toggle'] 	= true;
+	$field = array_merge( $field, array(
+		'label'			=> __( 'Verify password', 'usercamp' ),
+		'hide_toggle'	=> true,
+	) );
+
 	return $field;
 }

@@ -67,7 +67,7 @@ function uc_get_endpoint_url( $endpoint, $value = '', $permalink = '' ) {
 		} else {
 			$query_string = '';
 		}
-		$url = trailingslashit( $permalink ) . trailingslashit( $endpoint );
+		$url = trailingslashit( $permalink ) . untrailingslashit( $endpoint );
 
 		if ( $value ) {
 			$url .= trailingslashit( $value );

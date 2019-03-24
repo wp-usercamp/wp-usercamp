@@ -16,8 +16,9 @@ class UC_Form_Handler {
 	 * Hook in methods.
 	 */
 	public static function init() {
-		add_action( 'template_redirect', array( __CLASS__, 'user_login' ) );
-		add_action( 'template_redirect', array( __CLASS__, 'user_password_reset' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'login' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'lostpassword' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'edit_account' ) );
 	}
 
 	/**
@@ -36,25 +37,33 @@ class UC_Form_Handler {
 	}
 
 	/**
-	 * User login.
+	 * Login.
 	 */
-	public static function user_login() {
+	public static function login() {
 		if ( ! $id = self::handle( 'login' ) ) {
 			return;
 		}
-
-		UC_Shortcode_Form_Login::verify( uc_get_form( $id ) );
+		UC_Shortcode_Form_Login::save( uc_get_form( $id ) );
 	}
 
 	/**
-	 * User password reset.
+	 * Lost Password.
 	 */
-	public static function user_password_reset() {
+	public static function lostpassword() {
 		if ( ! $id = self::handle( 'lostpassword' ) ) {
 			return;
 		}
+		UC_Shortcode_Form_Lostpassword::save( uc_get_form( $id ) );
+	}
 
-		UC_Shortcode_Form_Lostpassword::verify( uc_get_form( $id ) );
+	/**
+	 * Account - Edit
+	 */
+	public static function edit_account() {
+		if ( ! $id = self::handle( 'edit-account' ) ) {
+			return;
+		}
+		UC_Shortcode_Form_Edit_Account::save( uc_get_form( $id ) );
 	}
 
 }

@@ -11,13 +11,14 @@ if ( ! $the_form->has_fields() ) {
 	return;
 }
 
-$type = esc_attr( $the_form->type );
+$type 		= esc_attr( $the_form->type );
+$endpoint 	= $the_form->get_endpoint();
 
 ?>
 
 <?php do_action( "usercamp_before_{$type}_form" ); ?>
 
-<form class="usercamp-form usercamp-<?php echo $type; ?>" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" data-id="<?php echo absint( $the_form->id ); ?>" <?php uc_print_inline_styles(); ?>>
+<form class="usercamp-form usercamp-<?php echo $type; ?>" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" <?php uc_print_inline_styles(); ?>>
 
 	<?php uc_print_notices(); ?>
 

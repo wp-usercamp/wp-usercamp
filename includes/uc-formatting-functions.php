@@ -65,3 +65,11 @@ function uc_implode_html_attributes( $raw_attributes ) {
 	}
 	return implode( ' ', $attributes );
 }
+
+/**
+ * Get the date.
+ */
+function uc_get_the_date() {
+	$format = apply_filters( 'uc_get_default_date_format', 'j/n/Y g:ia' );
+	return get_the_date( $format );
+}

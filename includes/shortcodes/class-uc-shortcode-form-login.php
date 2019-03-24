@@ -28,9 +28,9 @@ class UC_Shortcode_Form_Login {
 	}
 
 	/**
-	 * Verify.
+	 * Save.
 	 */
-	public static function verify( $object = null ) {
+	public static function save( $object = null ) {
 		global $the_form;
 
 		if ( $object ) {
