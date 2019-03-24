@@ -82,6 +82,11 @@ jQuery( function( $ ) {
 		} );
 	} ).trigger( 'uc-init-chevron' );
 
+	// Go to focus on first input.
+	$( document.body ).on( 'uc-init-focus', function() {
+		$( '.usercamp-content' ).find( ':input:enabled:visible:first' ).focus();
+	} ).trigger( 'uc-init-focus' );
+
 	// Body events
 	$( document.body )
 

@@ -125,7 +125,7 @@ function uc_array_search( $search, $array ){
  * Get template part.
  */
 function uc_get_template_part( $slug, $name = '' ) {
-	global $the_form;
+	global $the_form, $the_user;
 
 	$template = '';
 
@@ -156,7 +156,7 @@ function uc_get_template_part( $slug, $name = '' ) {
  * Get other templates (e.g. product attributes) passing attributes and including the file.
  */
 function uc_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
-	global $the_form;
+	global $the_form, $the_user;
 
 	if ( ! empty( $args ) && is_array( $args ) ) {
 		extract( $args );
@@ -183,7 +183,7 @@ function uc_get_template( $template_name, $args = array(), $template_path = '', 
  * Like uc_get_template, but returns the HTML instead of outputting.
  */
 function uc_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
-	global $the_form;
+	global $the_form, $the_user;
 
 	ob_start();
 	uc_get_template( $template_name, $args, $template_path, $default_path );
@@ -193,7 +193,7 @@ function uc_get_template_html( $template_name, $args = array(), $template_path =
  * Locate a template and return the path for inclusion.
  */
 function uc_locate_template( $template_name, $template_path = '', $default_path = '' ) {
-	global $the_form;
+	global $the_form, $the_user;
 
 	if ( ! $template_path ) {
 		$template_path = uc()->template_path();

@@ -40,4 +40,18 @@ class UC_User {
 		}
 	}
 
+	/**
+	 * Get a user data.
+	 */
+	public function get( $key, $scope = 'edit' ) {
+		if ( isset( $this->data->{$key} ) ) {
+			$output = $this->data->{$key};
+		}
+
+		if ( ! empty( $output ) ) {
+			$output = apply_filters( 'usercamp_get_user_' . $key, $output, $scope, $this );
+			return esc_attr( $output );
+		}
+	}
+
 }

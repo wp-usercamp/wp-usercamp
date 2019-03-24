@@ -224,7 +224,7 @@ div.disabled > .toggle-slide {
 
 .usercamp {
 	padding: 1.475em 0;
-	font-size: calc( 16px + .1vw );
+	font-size: calc( 14px + .08vw );
 }
 
 .usercamp a {
@@ -370,7 +370,8 @@ a.usercamp-button.disabled {
 /* Links and helpers */
 .usercamp-helper {
 	margin: 0.8em 0 0 0;
-	font-size: 0.8em;
+	font-size: 0.9em;
+	color: #999;
 }
 
 .usercamp-text {
@@ -381,11 +382,11 @@ a.usercamp-button.disabled {
 
 /* Fields */
 .usercamp-field {
-	padding: 0 0 1em 0;
+	padding: 0 0 1.6em 0;
 }
 
 .usercamp-label {
-	margin: 0 0 0.5em 0;
+	margin: 0 0 .375em 0;
 	position: relative;
 }
 
@@ -461,6 +462,13 @@ a.usercamp-button.disabled {
 .usercamp-input input.uc-error:-internal-autofill-selected {
 	box-shadow: 0 0 0 50px white inset !important;
 	-webkit-text-fill-color: rgb(187, 0, 0) !important;
+}
+
+.usercamp-input input:disabled {
+	cursor: default;
+	pointer-events: none;
+	color: #b3b3b3;
+	-webkit-text-fill-color: #b3b3b3;
 }
 
 /* Password visibility and icons */

@@ -51,7 +51,7 @@ class UC_Shortcode_Account {
 
 		uc_get_template(
 			'account/account.php', array(
-				'current_user' => get_user_by( 'id', get_current_user_id() ),
+				'the_user' 		=> uc_get_user( get_current_user_id() ),
 			)
 		);
 	}
