@@ -25,7 +25,10 @@ class UC_Role extends UC_Abstract_Post {
 	 * Meta keys.
 	 */
 	public $internal_meta_keys = array(
-
+		'name',
+		'is_created',
+		'caps',
+		'label',
 	);
 
 	/**

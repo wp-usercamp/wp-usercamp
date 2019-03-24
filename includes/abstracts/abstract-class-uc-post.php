@@ -50,8 +50,6 @@ abstract class UC_Abstract_Post {
 	public function __construct( $post_id = '' ) {
 		$this->id = absint( $post_id );
 
-		$this->internal_meta_keys = apply_filters( get_post_type( $this->id ) . '_meta_keys', $this->internal_meta_keys );
-
 		foreach( $this->internal_meta_keys as $key ) {
 			$this->{$key} = '';
 		}

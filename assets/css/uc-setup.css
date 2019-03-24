@@ -11,7 +11,7 @@
 	user-select: none;
 	direction: ltr;
 	text-align: center;
-	border-radius: 3px;
+	border-radius: 999px;
 }
 
 div.disabled > .toggle-slide {
@@ -31,15 +31,15 @@ div.disabled > .toggle-slide {
 	background: #fff;
 	border: 1px solid #aaa;
 	cursor: grab;
-	border-radius: 3px;
+	border-radius: 999px;
 	box-sizing: border-box;
 }
 
 .toggle-on,
 .toggle-off {
-	border-radius: 3px 0 0 3px;
+	border-radius: 999px 0 0 999px;
 	background: rgb(91, 157, 217);
-	color: #fff;
+	color: rgba(255, 255, 255, .65);
 	font-size: 0.7em;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -47,7 +47,7 @@ div.disabled > .toggle-slide {
 
 .toggle-off {
 	background: #eee;
-	color: #999;
+	color: rgba(0, 0, 0, .2);
 }
 
 .toggle-on:after,
@@ -55,9 +55,9 @@ div.disabled > .toggle-slide {
 	background: rgb(0, 115, 187);
 	height: 50%;
 	content: '';
-	margin-top: -56%;
+	margin-top: -57%;
 	display: block;
-	border-radius: 3px;
+	border-radius: 999px;
 }
 
 .toggle-off:after {
@@ -152,7 +152,7 @@ div.disabled > .toggle-slide {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	color: #888;
+	color: #bbb;
 }
 
 /* Setup Wizard */
