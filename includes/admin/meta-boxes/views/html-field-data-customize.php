@@ -50,8 +50,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		usercamp_wp_textarea(
 			array(
-				'id'          		=> 'help',
-				'value'       		=> $the_field->help,
+				'id'          		=> 'helper',
+				'value'       		=> $the_field->helper,
 				'label'       		=> __( 'Help / Instructions', 'usercamp' ),
 				'rows'				=> 3,
 				'description'		=> __( 'This appears below the field. Use this If you want to instruct the user how to fill the field.', 'usercamp' ),

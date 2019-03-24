@@ -104,6 +104,24 @@ function uc_array_insert_after( $key, array &$array, $new_key, $new_value ) {
 }
 
 /**
+ * Search array and get first matched.
+ */
+function uc_array_search( $search, $array ){
+    foreach( $array as $item ){
+		foreach( $item as $key => $val ) {
+			if ( is_array( $val ) ) {
+				foreach( $val as $metakey => $metavalue ) {
+					if ( $metavalue == $search ) {
+						return $item;
+					}
+				}
+			}
+		}
+    }
+	return false;
+}
+
+/**
  * Get template part.
  */
 function uc_get_template_part( $slug, $name = '' ) {

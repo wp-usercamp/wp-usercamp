@@ -252,7 +252,7 @@ function uc_get_field_opts() {
 		'edit_label',
 		'view_label',
 		'placeholder',
-		'help',
+		'helper',
 		'can_view',
 		'is_readonly',
 		'is_private',

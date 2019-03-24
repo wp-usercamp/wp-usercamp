@@ -265,7 +265,64 @@ function uc_get_field( $array ) {
 	}
 
 	/**
-	 * Return the complete field and its attributes.
+	 * Add some filters to the field output.
 	 */
-	return apply_filters( 'uc_get_field', $field, $the_form );
+	$field = apply_filters( 'uc_get_field', $field, $the_form );
+	$field = apply_filters( 'uc_get_' . esc_attr( $field['key'] ) . '_field', $field, $the_form );
+	$field = apply_filters( 'uc_get_' . esc_attr( $the_form->type ) . '_' . esc_attr( $field['key'] ) . '_field', $field, $the_form );
+
+	return $field;
+}
+
+/**
+ * Edit password endpoint - create add password fields automatically.
+ */
+function uc_add_new_password_fields( $fields, $the_form, $row, $col ) {
+	if ( $the_form->endpoint != 'edit-password' ) {
+		return;
+	}
+
+	$item = uc_array_search( 'user_pass', $fields );
+	if ( is_array( $item ) ) {
+		$item[ 'data' ][ 'key' ] = 'new_password';
+		array_push( $fields, $item );
+		$item[ 'data' ][ 'key' ] = 'verify_new_password';
+		array_push( $fields, $item );
+	}
+
+	return $fields;
+}
+
+/**
+ * Current user password.
+ */
+function uc_get_account_user_pass_field( $field, $the_form ) {
+
+	$field['label'] 		= __( 'Current password', 'usercamp' );
+	$field['helper'] 		= '<a href="#">' . __( 'Forgot your password?', 'usercamp' ) . '</a>';
+	$field['hide_toggle'] 	= true;
+
+	return $field;
+}
+
+/**
+ * New user password.
+ */
+function uc_get_account_new_password_field( $field, $the_form ) {
+
+	$field['label'] 		= __( 'New password', 'usercamp' );
+	$field['hide_toggle'] 	= true;
+
+	return $field;
+}
+
+/**
+ * Verify user password.
+ */
+function uc_get_account_verify_new_password_field( $field, $the_form ) {
+
+	$field['label'] 		= __( 'Verify password', 'usercamp' );
+	$field['hide_toggle'] 	= true;
+
+	return $field;
 }

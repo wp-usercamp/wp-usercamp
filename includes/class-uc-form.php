@@ -55,6 +55,9 @@ class UC_Form extends UC_Abstract_Post {
 		// Fix column start at zero.
 		$col = $col + 1;
 
+		// Allow output to be filtered.
+		$this->fields = apply_filters( 'uc_get_column_fields', $this->fields, $this, $row, $col );
+
 		return array_filter( $this->fields, function( $val ) use ($row, $col) {
 			return ( $val['row'] == absint( $row ) && $val['col'] == $col );
 		} );

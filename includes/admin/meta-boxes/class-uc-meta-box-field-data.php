@@ -119,7 +119,7 @@ class UC_Meta_Box_Field_Data {
 		$props['placeholder']			= uc_clean( wp_unslash( $_POST['placeholder'] ) );
 		$props['icon']					= uc_clean( wp_unslash( $_POST['icon'] ) );
 		$props['crop_ratio']			= uc_clean( wp_unslash( $_POST['crop_ratio'] ) );
-		$props['help']					= wp_kses_post( wp_unslash( $_POST['help'] ) );
+		$props['helper']				= wp_kses_post( wp_unslash( $_POST['helper'] ) );
 		$props['dropdown_options']		= wp_kses_post( wp_unslash( $_POST['dropdown_options'] ) );
 		$props['checkbox_options']		= wp_kses_post( wp_unslash( $_POST['checkbox_options'] ) );
 		$props['radio_options']			= wp_kses_post( wp_unslash( $_POST['radio_options'] ) );

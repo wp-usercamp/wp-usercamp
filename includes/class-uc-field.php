@@ -32,7 +32,7 @@ class UC_Field extends UC_Abstract_Post {
 		'edit_label',
 		'view_label',
 		'placeholder',
-		'help',
+		'helper',
 		'can_view',
 		'is_readonly',
 		'is_private',

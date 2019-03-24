@@ -224,7 +224,20 @@ div.disabled > .toggle-slide {
 
 .usercamp {
 	padding: 1.475em 0;
-	font-size: calc( 14px + .3vw );
+	font-size: calc( 16px + .1vw );
+}
+
+.usercamp a {
+	color: rgb(91, 157, 217);
+}
+
+.usercamp a:hover {
+	color: rgb(66, 133, 193);
+}
+
+.usercamp a:focus,
+.usercamp a:active {
+	color: rgb(0, 115, 187);
 }
 
 .usercamp::after {
@@ -237,12 +250,6 @@ div.disabled > .toggle-slide {
 
 .usercamp-form {
 	max-width: 450px;
-}
-
-.usercamp-text {
-	line-height: 1.4em;
-	padding: 0 0 1em 0;
-	color: rgba(0, 0, 0, 0.4);
 }
 
 /* Message box */
@@ -358,6 +365,18 @@ a.usercamp-button.alt:active {
 a.usercamp-button.disabled {
 	opacity: 0.3;
 	cursor: default;
+}
+
+/* Links and helpers */
+.usercamp-helper {
+	margin: 0.8em 0 0 0;
+	font-size: 0.8em;
+}
+
+.usercamp-text {
+	line-height: 1.4em;
+	padding: 0 0 1em 0;
+	color: rgba(0, 0, 0, 0.4);
 }
 
 /* Fields */
