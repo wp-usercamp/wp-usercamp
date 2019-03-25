@@ -52,7 +52,7 @@ function usercamp_account_navigation() {
  * Account content output.
  */
 function usercamp_account_content() {
-	global $wp, $the_user;
+	global $wp, $the_form, $the_user;
 
 	if ( ! empty( $wp->query_vars ) ) {
 		foreach ( $wp->query_vars as $key => $value ) {
@@ -70,13 +70,13 @@ function usercamp_account_content() {
 	}
 
 	// If we do not have an action hook, load the respective form.
-	$has_form = uc_get_account_endpoint_form();
-	if ( $has_form ) {
+	$form_id = uc_get_account_endpoint_form();
+	if ( ! empty( $form_id ) ) {
 		uc_get_template( 'form/form.php', array(
 			'atts'			=> array(
 				'first_button' => __( 'Save changes', 'usercamp' ),
 			),
-			'the_form'		=> uc_get_form( $has_form ),
+			'the_form'		=> ( isset( $the_form->id ) ) ? $the_form : uc_get_form( $form_id ),
 			'the_user' 		=> uc_get_user( get_current_user_id() ),
 		) );
 	}
@@ -249,6 +249,7 @@ function uc_get_field( $array ) {
 	/**
 	 * Classes.
 	 */
+	$field['field_class'][] = 'usercamp-' . esc_attr( $field['type'] );
 	$field['field_class'][] = esc_attr( $field['key'] ) . '_field';
 	if ( $the_form->has_error( $field['key'] ) ) {
 		$field['label_class'][] = 'uc-error';

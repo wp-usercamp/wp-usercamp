@@ -173,6 +173,12 @@ function usercamp_get_default_fields() {
 			'is_private'	=> 1,
 			'can_view'		=> array( '_none' ),
 		),
+		'private_profile'	=> array(
+			'label'			=> __( 'Profile privacy', 'usercamp' ),
+			'type'			=> 'toggle',
+			'is_private'	=> 1,
+			'can_view'		=> array( '_none' ),
+		),
 	);
 
 	return apply_filters( 'usercamp_get_default_fields', $array );

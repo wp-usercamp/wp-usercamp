@@ -91,9 +91,9 @@ function usercamp_get_default_forms() {
 			'type'		=> 'profile',
 			'title'		=> __( 'Profile', 'usercamp' ),
 			'fields'	=> array(
-				1		=> array( 'data' => usercamp_get_field( 'display_name' ), 	'row' => 1, 'col' => 1 ),
-				2		=> array( 'data' => usercamp_get_field( 'first_name' ), 	'row' => 1, 'col' => 1 ),
-				3		=> array( 'data' => usercamp_get_field( 'last_name' ), 		'row' => 1, 'col' => 1 ),
+				1		=> array( 'data' => usercamp_get_field( 'display_name' ), 'row' => 1, 'col' => 1 ),
+				2		=> array( 'data' => usercamp_get_field( 'first_name' ), 'row' => 1, 'col' => 1 ),
+				3		=> array( 'data' => usercamp_get_field( 'last_name' ), 'row' => 1, 'col' => 1 ),
 			)
 		)
 	);
@@ -104,7 +104,7 @@ function usercamp_get_default_forms() {
 			'type'		=> 'lostpassword',
 			'title'		=> __( 'Lost Password', 'usercamp' ),
 			'fields'	=> array(
-				0		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
+				0		=> array( 'data' => usercamp_get_field( 'user_email' ), 'row' => 1, 'col' => 1 ),
 			)
 		)
 	);
@@ -115,8 +115,8 @@ function usercamp_get_default_forms() {
 			'type'		=> 'account',
 			'title'		=> __( 'Account - Main', 'usercamp' ),
 			'fields'	=> array(
-				0		=> array( 'data' => usercamp_get_field( 'user_login' ), 	'row' => 1, 'col' => 1 ),
-				1		=> array( 'data' => usercamp_get_field( 'user_email' ), 	'row' => 1, 'col' => 1 ),
+				0		=> array( 'data' => usercamp_get_field( 'user_login' ), 'row' => 1, 'col' => 1 ),
+				1		=> array( 'data' => usercamp_get_field( 'user_email' ), 'row' => 1, 'col' => 1 ),
 			),
 			'endpoint'	=> uc_get_account_default_endpoint(),
 		)
@@ -128,9 +128,21 @@ function usercamp_get_default_forms() {
 			'type'		=> 'account',
 			'title'		=> __( 'Account - Password', 'usercamp' ),
 			'fields'	=> array(
-				1		=> array( 'data' => usercamp_get_field( 'user_pass' ), 		'row' => 1, 'col' => 1 ),
+				1		=> array( 'data' => usercamp_get_field( 'user_pass' ), 'row' => 1, 'col' => 1 ),
 			),
 			'endpoint'	=> 'edit-password',
+		)
+	);
+
+	array_push(
+		$array,
+		array(
+			'type'		=> 'account',
+			'title'		=> __( 'Account - Privacy', 'usercamp' ),
+			'fields'	=> array(
+				1		=> array( 'data' => usercamp_get_field( 'private_profile' ), 'row' => 1, 'col' => 1 ),
+			),
+			'endpoint'	=> 'privacy',
 		)
 	);
 

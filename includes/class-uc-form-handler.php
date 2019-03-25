@@ -19,6 +19,8 @@ class UC_Form_Handler {
 		add_action( 'template_redirect', array( __CLASS__, 'login' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'lostpassword' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'edit_account' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'edit_password' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'privacy' ) );
 	}
 
 	/**
@@ -63,7 +65,27 @@ class UC_Form_Handler {
 		if ( ! $id = self::handle( 'edit-account' ) ) {
 			return;
 		}
-		UC_Shortcode_Form_Edit_Account::save( uc_get_form( $id ) );
+		UC_Shortcode_Form_Account::save( uc_get_form( $id ) );
+	}
+
+	/**
+	 * Account - Edit password
+	 */
+	public static function edit_password() {
+		if ( ! $id = self::handle( 'edit-password' ) ) {
+			return;
+		}
+		UC_Shortcode_Form_Account::save( uc_get_form( $id ) );
+	}
+
+	/**
+	 * Account - Privacy
+	 */
+	public static function privacy() {
+		if ( ! $id = self::handle( 'privacy' ) ) {
+			return;
+		}
+		UC_Shortcode_Form_Account::save( uc_get_form( $id ) );
 	}
 
 }

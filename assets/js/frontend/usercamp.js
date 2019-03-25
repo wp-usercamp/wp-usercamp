@@ -68,9 +68,11 @@ jQuery( function( $ ) {
 		$( '.uc-toggle' ).each( function() {
 			var cb = $( this ).parents( 'fieldset' ).find( 'input:checkbox' ).attr( 'id' );
 			$( this ).toggles( {
+				'width': 60,
+				'height': 20,
 				'text': {
-					on: '',
-					off: ''
+					on: usercamp_params.yes,
+					off: usercamp_params.no
 				},
 				'checkbox' : $( '#' + cb )
 			} );
@@ -86,7 +88,7 @@ jQuery( function( $ ) {
 
 	// Go to focus on first input.
 	$( document.body ).on( 'uc-init-focus', function() {
-		$( '.usercamp-content' ).find( ':input:enabled:visible:first' ).focus();
+		$( '.usercamp-edit-password' ).find( ':input[value=""]:enabled:visible:first' ).focus();
 	} ).trigger( 'uc-init-focus' );
 
 	// Body events

@@ -47,11 +47,6 @@ class UC_Field extends UC_Abstract_Post {
 		'vertical_crop',
 		'max_image_size',
 		'max_file_size',
-		'error_hooks',
-		'display_hooks',
-		'filter_hooks',
-		'presave_hooks',
-		'postsave_hooks',
 	);
 
 	/**

@@ -78,6 +78,16 @@ class UC_Form extends UC_Abstract_Post {
 	}
 
 	/**
+	 * Custom save action.
+	 */
+	public function _save( $props ) {
+		// Save endpoint as an option.
+		if ( ! empty( $props[ 'endpoint' ] ) ) {
+			update_option( 'usercamp_account_' . uc_sanitize_title( $props[ 'endpoint' ] ) . '_form', $this->id );
+		}
+	}
+
+	/**
 	 * Check if form has errors.
 	 */
 	public function has_errors() {
@@ -121,13 +131,7 @@ class UC_Form extends UC_Abstract_Post {
 			return;
 		}
 		foreach( $this->fields as $key => $array ) {
-			$data = $array['data'];
-			$validate = 'validate_' . $data['type'];
-			if ( method_exists( $this, $validate ) ) {
-				$this->{$validate}( $data );
-			} else {
-				$this->validate_input( $data );
-			}
+			$this->validate_input(  $array['data'] );
 		}
 	}
 
@@ -140,33 +144,27 @@ class UC_Form extends UC_Abstract_Post {
 		$value = ! isset( $_REQUEST[ $key ] ) ? '' : uc_clean( wp_unslash( $_REQUEST[ $key ] ) );
 
 		// Check if required.
-		if ( ! $value && (bool) $is_required == 1 ) {
+		if ( ! $value && ! empty( $is_required ) ) {
 			$this->error( $key );
 			uc_add_notice( sprintf( __( '%s is required.', 'usercamp' ), $label ), 'error' );
 		}
 
-		$this->postdata[ $key ] = $value;
-	}
-
-	/**
-	 * Toggle validation.
-	 */
-	public function validate_toggle( $data ) {
-		extract( $data );
-
-		$value = isset( $_REQUEST[ $data[ 'key' ] ] );
-
-		$this->postdata[ $key ] = $value;
-	}
-
-	/**
-	 * Custom save action.
-	 */
-	public function _save( $props ) {
-		// Save endpoint as an option.
-		if ( ! empty( $props[ 'endpoint' ] ) ) {
-			update_option( 'usercamp_account_' . uc_sanitize_title( $props[ 'endpoint' ] ) . '_form', $this->id );
+		// Validate by field type.
+		switch( $type ) {
+			case 'email' :
+				if ( ! is_email( $value ) && ! empty( $value ) ) {
+					$this->error( $key );
+					uc_add_notice( __( 'Please type a valid email.', 'usercamp' ), 'error' );
+				}
+				$value = sanitize_email( $value );
+				break;
+			case 'toggle' :
+				$value = isset( $_REQUEST[ $key ] );
+				break;
 		}
+
+		// We have a safe value? Add it to final array.
+		$this->postdata[ $key ] = $value;
 	}
 
 }

@@ -109,12 +109,7 @@ class UC_AJAX {
 
 		$the_field = new UC_Field();
 
-		$props['label'] 				= isset( $_POST['label'] ) ? uc_clean( wp_unslash( $_POST['label'] ) ) : '';
 		$props['key']         			= isset( $_POST['key'] ) ? sanitize_title( wp_unslash( $_POST['key'] ) ) : '';
-
-		if ( ! $props['label'] ) {
-			$errors['label'] = __( 'You must provide a title for this custom field.', 'usercamp' );
-		}
 
 		if ( ! $props['key'] ) {
 			$errors['key'] = __( 'You must provide a unique key for this custom field.', 'usercamp' );
@@ -130,7 +125,6 @@ class UC_AJAX {
 		}
 
 		// No errors? Setup all props now.
-		//$props['key']         		= isset( $_POST['key'] ) ? sanitize_title( wp_unslash( $_POST['key'] ) ) : '';
 		$props['type']         			= isset( $_POST['type'] ) ? uc_clean( wp_unslash( $_POST['type'] ) ) : '';
 		$props['can_view']				= isset( $_POST['can_view'] ) ? uc_clean( wp_unslash( $_POST['can_view'] ) ) : '';
 		$props['is_private']			= ! empty( $_POST['is_private'] );
@@ -138,7 +132,7 @@ class UC_AJAX {
 		$props['is_required']			= ! empty( $_POST['is_required'] );
 		$props['is_crop']				= ! empty( $_POST['is_crop'] );
 		$props['vertical_crop']			= ! empty( $_POST['vertical_crop'] );
-		//$props['label']				= uc_clean( wp_unslash( $_POST['post_title'] ) );
+		$props['label']					= uc_clean( wp_unslash( $_POST['label'] ) );
 		$props['edit_label']			= uc_clean( wp_unslash( $_POST['edit_label'] ) );
 		$props['view_label']			= uc_clean( wp_unslash( $_POST['view_label'] ) );
 		$props['placeholder']			= uc_clean( wp_unslash( $_POST['placeholder'] ) );
@@ -150,11 +144,6 @@ class UC_AJAX {
 		$props['radio_options']			= wp_kses_post( wp_unslash( $_POST['radio_options'] ) );
 		$props['blocked_emails']		= wp_kses_post( wp_unslash( $_POST['blocked_emails'] ) );
 		$props['allowed_emails']		= wp_kses_post( wp_unslash( $_POST['allowed_emails'] ) );
-		$props['error_hooks']			= wp_kses_post( wp_unslash( $_POST['error_hooks'] ) );
-		$props['error_hooks']			= wp_kses_post( wp_unslash( $_POST['display_hooks'] ) );
-		$props['display_hooks']			= wp_kses_post( wp_unslash( $_POST['filter_hooks'] ) );
-		$props['presave_hooks']			= wp_kses_post( wp_unslash( $_POST['presave_hooks'] ) );
-		$props['postsave_hooks']		= wp_kses_post( wp_unslash( $_POST['postsave_hooks'] ) );
 		$props['max_image_size']		= ! empty( $_POST['max_image_size'] ) ? absint( wp_unslash( $_POST['max_image_size'] ) ) : '';
 		$props['max_file_size']			= ! empty( $_POST['max_file_size'] ) ? absint( wp_unslash( $_POST['max_file_size'] ) ) : '';
 

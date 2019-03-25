@@ -18,6 +18,15 @@ class UC_User {
 	public $user_id = 0;
 
 	/**
+	 * Meta keys that should not be sent through metadata.
+	 */
+	private $core_meta_keys = array(
+		'user_login',
+		'user_email',
+		'user_pass',
+	);
+
+	/**
 	 * Construct.
 	 */
 	public function __construct( $user_id ) {
@@ -44,13 +53,28 @@ class UC_User {
 	 * Get a user data.
 	 */
 	public function get( $key, $scope = 'edit' ) {
+		$output = null;
+
 		if ( isset( $this->data->{$key} ) ) {
 			$output = $this->data->{$key};
+		} elseif ( isset( $this->{$key} ) ) {
+			$output = $this->{$key};
+		} else {
+			$output = get_user_meta( $this->user_id, $key, true );
 		}
 
-		if ( ! empty( $output ) ) {
-			$output = apply_filters( 'usercamp_get_user_' . $key, $output, $scope, $this );
-			return esc_attr( $output );
+		return apply_filters( 'usercamp_get_user_' . $key, $output, $scope, $this );
+	}
+
+	/**
+	 * Update user details.
+	 */
+	public function update( $metadata ) {
+
+		foreach( $metadata as $key => $value ) {
+			if ( ! in_array( $key, $this->core_meta_keys ) ) {
+				update_user_meta( $this->user_id, $key, $value );
+			}
 		}
 	}
 

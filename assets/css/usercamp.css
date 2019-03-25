@@ -70,18 +70,13 @@
 }
 
 /* jQuery toggles */
-.uc-toggle {
-	width: 2.8em;
-	height: 1.2em;
-}
-
 .toggle-slide {
 	overflow: hidden;
 	cursor: pointer;
 	user-select: none;
 	direction: ltr;
 	text-align: center;
-	border-radius: 3px;
+	border-radius: 999px;
 }
 
 div.disabled > .toggle-slide {
@@ -101,27 +96,34 @@ div.disabled > .toggle-slide {
 	background: #fff;
 	border: 1px solid #aaa;
 	cursor: grab;
-	border-radius: 3px;
+	border-radius: 999px;
 	box-sizing: border-box;
 }
 
-.toggle-on {
-	border-radius: 3px 0 0 3px;
+.toggle-on,
+.toggle-off {
+	border-radius: 999px 0 0 999px;
 	background: rgb(91, 157, 217);
+	color: rgba(255, 255, 255, .65);
+	font-size: 11px;
+	line-height: 22px !important;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .toggle-off {
-	border-radius: 0 3px 3px 0;
 	background: #eee;
+	color: rgba(0, 0, 0, .2);
 }
 
 .toggle-on:after,
 .toggle-off:after {
 	background: rgb(0, 115, 187);
-	height: 10%;
+	height: 50%;
 	content: '';
+	margin-top: -62%;
 	display: block;
-	border-radius: 3px;
+	border-radius: 999px;
 }
 
 .toggle-off:after {
@@ -367,19 +369,6 @@ a.usercamp-button.disabled {
 	cursor: default;
 }
 
-/* Links and helpers */
-.usercamp-helper {
-	margin: 0.8em 0 0 0;
-	font-size: 0.9em;
-	color: #999;
-}
-
-.usercamp-text {
-	line-height: 1.4em;
-	padding: 0 0 1em 0;
-	color: rgba(0, 0, 0, 0.4);
-}
-
 /* Fields */
 .usercamp-field {
 	padding: 0 0 1.6em 0;
@@ -469,6 +458,39 @@ a.usercamp-button.disabled {
 	pointer-events: none;
 	color: #b3b3b3;
 	-webkit-text-fill-color: #b3b3b3;
+}
+
+/* Switch/toggle stylign */
+.usercamp-toggle .uc-toggle,
+.usercamp-toggle .usercamp-helper {
+	float: left;
+	display: block;
+	margin: 0;
+}
+
+.usercamp-toggle .usercamp-input {
+	padding: 1em 0;
+}
+
+.usercamp-toggle .uc-toggle {
+	margin: 0 1em 0 0;
+}
+
+.usercamp-toggle .usercamp-helper {
+	line-height: 1.4em;
+}
+
+/* Links and helpers */
+.usercamp-helper {
+	margin: 0.8em 0 0 0;
+	font-size: 0.9em;
+	color: #999;
+}
+
+.usercamp-text {
+	line-height: 1.4em;
+	padding: 0 0 1em 0;
+	color: rgba(0, 0, 0, 0.4);
 }
 
 /* Password visibility and icons */

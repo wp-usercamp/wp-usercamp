@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
+<?php if ( ! empty( $field['label'] ) ) : ?>
+
 <div class="usercamp-label <?php echo esc_attr( implode( ' ', $field['title_class'] ) ); ?>">
 
 	<?php if ( in_array( 'has-icon', $field['title_class'] ) ) : ?>
@@ -24,3 +26,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</label>
 
 </div>
+
+<?php endif; ?>

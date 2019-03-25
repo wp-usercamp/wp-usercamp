@@ -18,7 +18,7 @@ $endpoint 	= $the_form->get_endpoint();
 
 <?php do_action( "usercamp_before_{$type}_form" ); ?>
 
-<form class="usercamp-form usercamp-<?php echo $type; ?>" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" <?php uc_print_inline_styles(); ?>>
+<form class="usercamp-form usercamp-<?php echo $type; ?> usercamp-<?php echo $endpoint; ?>" action="" method="post" accept-charset="utf-8" data-ajax="<?php echo $the_form->use_ajax; ?>" <?php uc_print_inline_styles(); ?>>
 
 	<?php uc_print_notices(); ?>
 

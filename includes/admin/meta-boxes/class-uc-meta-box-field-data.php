@@ -53,13 +53,6 @@ class UC_Meta_Box_Field_Data {
 					'class'    => array(),
 					'priority' => 30,
 				),
-				'advanced'		=> array(
-					'icon'	   => 'code',
-					'label'    => __( 'Advanced', 'usercamp' ),
-					'target'   => 'advanced_field_data',
-					'class'    => array(),
-					'priority' => 40,
-				),
 			)
 		);
 
@@ -93,7 +86,6 @@ class UC_Meta_Box_Field_Data {
 		include 'views/html-field-data-general.php';
 		include 'views/html-field-data-properties.php';
 		include 'views/html-field-data-customize.php';
-		include 'views/html-field-data-advanced.php';
 	}
 
 	/**
@@ -125,11 +117,6 @@ class UC_Meta_Box_Field_Data {
 		$props['radio_options']			= wp_kses_post( wp_unslash( $_POST['radio_options'] ) );
 		$props['blocked_emails']		= wp_kses_post( wp_unslash( $_POST['blocked_emails'] ) );
 		$props['allowed_emails']		= wp_kses_post( wp_unslash( $_POST['allowed_emails'] ) );
-		$props['error_hooks']			= wp_kses_post( wp_unslash( $_POST['error_hooks'] ) );
-		$props['error_hooks']			= wp_kses_post( wp_unslash( $_POST['display_hooks'] ) );
-		$props['display_hooks']			= wp_kses_post( wp_unslash( $_POST['filter_hooks'] ) );
-		$props['presave_hooks']			= wp_kses_post( wp_unslash( $_POST['presave_hooks'] ) );
-		$props['postsave_hooks']		= wp_kses_post( wp_unslash( $_POST['postsave_hooks'] ) );
 		$props['max_image_size']		= ! empty( $_POST['max_image_size'] ) ? absint( wp_unslash( $_POST['max_image_size'] ) ) : '';
 		$props['max_file_size']			= ! empty( $_POST['max_file_size'] ) ? absint( wp_unslash( $_POST['max_file_size'] ) ) : '';
 

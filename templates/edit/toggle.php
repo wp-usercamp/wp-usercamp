@@ -27,6 +27,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="uc-toggle" data-toggle-on="<?php echo $field['value']; ?>"></div>
 
+		<?php if ( ! empty( $field['helper'] ) ) : ?>
+			<div class="usercamp-helper"><?php echo wp_kses_post( $field['helper'] ); ?></div>
+		<?php endif; ?>
+
 	</div>
 
 </fieldset>

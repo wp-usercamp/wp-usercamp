@@ -213,7 +213,9 @@ class UC_Frontend_Scripts {
 		switch ( $handle ) {
 			case 'usercamp':
 				$params = array(
-					'ajaxurl'    			=> uc()->ajax_url(),
+					'ajaxurl'    		=> uc()->ajax_url(),
+					'yes'				=> __( 'yes', 'usercamp' ),
+					'no'				=> __( 'no', 'usercamp' ),
 				);
 				break;
 			default:
