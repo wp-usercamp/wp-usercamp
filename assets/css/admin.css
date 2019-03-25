@@ -759,7 +759,7 @@ div.disabled > .toggle-slide {
 	border-radius: 999px 0 0 999px;
 	background: rgb(91, 157, 217);
 	color: rgba(255, 255, 255, .65);
-	font-size: 0.7em;
+	font-size: 11px;
 	text-transform: uppercase;
 	font-weight: bold;
 }
