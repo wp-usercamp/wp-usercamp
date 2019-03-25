@@ -104,6 +104,16 @@ jQuery( function( $ ) {
 			$( this ).parents( 'fieldset' ).find( 'label' ).trigger( 'click' );
 		} )
 
+		// When helper is used as label.
+		.on( 'click', '.usercamp-helper-label', function() {
+			var cb = $( this ).parents( 'fieldset' ).find( 'input[type=checkbox]' );
+			if ( cb.is( ':checked' ) ) {
+				cb.prop( 'checked', false ).change();
+			} else {
+				cb.prop( 'checked', true ).change();
+			}
+		} )
+
 		// Listen to checkbox change.
 		.on( 'change', '.usercamp-field input[type=checkbox]', function() {
 			if ( $(this).is( ':checked' ) ) {

@@ -397,6 +397,14 @@ a.usercamp-button.disabled {
 	position: relative;
 }
 
+.usercamp-input::after {
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
 .usercamp-input input[type=checkbox] {
 	position: absolute;
 	left: -9999px;
@@ -468,8 +476,8 @@ a.usercamp-button.disabled {
 	margin: 0;
 }
 
-.usercamp-toggle .usercamp-input {
-	padding: 1em 0;
+.usercamp-toggle .usercamp-label {
+	margin: 0 0 1.5em 0;
 }
 
 .usercamp-toggle .uc-toggle {
@@ -485,6 +493,10 @@ a.usercamp-button.disabled {
 	margin: 0.8em 0 0 0;
 	font-size: 0.9em;
 	color: #999;
+}
+
+.usercamp-helper-label {
+	cursor: pointer;
 }
 
 .usercamp-text {

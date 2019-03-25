@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <fieldset class="usercamp-field <?php echo implode( ' ', $field['field_class'] ); ?>">
 
-	<?php uc_get_template( 'field/label.php', array( 'field' => $field ) ); ?>
+	<?php uc_get_template( 'field/label.php', array( 'field' => $field, 'helper' => ! empty( $field['helper'] ) ) ); ?>
 
 	<div class="usercamp-input <?php echo implode( ' ', $field['control_class'] ); ?>">
 
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="uc-toggle" data-toggle-on="<?php echo $field['value']; ?>"></div>
 
 		<?php if ( ! empty( $field['helper'] ) ) : ?>
-			<div class="usercamp-helper"><?php echo wp_kses_post( $field['helper'] ); ?></div>
+			<div class="usercamp-helper usercamp-helper-label"><?php echo wp_kses_post( $field['helper'] ); ?></div>
 		<?php endif; ?>
 
 	</div>

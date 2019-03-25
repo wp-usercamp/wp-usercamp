@@ -21,7 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
-	<label for="<?php echo esc_attr( $field['key'] ); ?>" class="<?php echo esc_attr( implode( ' ', $field['label_class'] ) ); ?>">
+	<label 
+		<?php if ( empty( $helper ) ) : ?>
+		for="<?php echo esc_attr( $field['key'] ); ?>"
+		<?php endif; ?> 
+		class="<?php echo esc_attr( implode( ' ', $field['label_class'] ) ); ?>">
 		<?php echo esc_html( $field['label'] ); ?>
 	</label>
 

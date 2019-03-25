@@ -19,7 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			if ( ! empty( $fields = usercamp_get_custom_fields() ) ) {
 				foreach( $fields as $key => $data ) {
-					echo '<a href="#" class="button button-secondary insert_field" ' . uc_get_data_attributes( $data ) . '>' . esc_html__( $data['label'] ) . '</a>';
+					$label = empty( $data['label'] ) ? $key : $data['label'];
+					echo '<a href="#" class="button button-secondary insert_field" ' . uc_get_data_attributes( $data ) . '>' . esc_html( $label ) . '</a>';
 				}
 			} else {
 				echo '<a href="#uc-create-fields" class="button button-primary">' . __( 'Create default custom fields', 'usercamp' ) . '</a>';
@@ -31,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="uc-buttons alt"><p>
 			<?php
 			foreach( $new = usercamp_get_field_types() as $key => $data ) {
-				echo '<a href="#uc-add-field" class="button button-secondary new_field" data-type="' . esc_attr( $key ) . '" rel="modal:open"><i data-feather="' . esc_attr( $data['icon'] ) . '"></i>' . esc_html__( $data['label'] ) . '</a>';
+				echo '<a href="#uc-add-field" class="button button-primary new_field" data-type="' . esc_attr( $key ) . '" rel="modal:open"><i data-feather="' . esc_attr( $data['icon'] ) . '"></i>' . esc_html__( $data['label'] ) . '</a>';
 			}
 			?>
 		</p></div>

@@ -915,10 +915,7 @@ div.disabled > .toggle-slide {
 	margin: 1.33em 0 1em 0;
 }
 
-.modal .uc-buttons a.button-primary {
-	border-radius: 999px;
-}
-
+.modal .uc-buttons a.button-primary,
 .modal .uc-buttons a.button-secondary {
 	position: relative;
 	display: inline-block;
@@ -927,14 +924,13 @@ div.disabled > .toggle-slide {
 	box-shadow: none;
 	line-height: 25px;
 	border-radius: 999px;
-	background: #fff !important;
 }
 
-.modal .uc-buttons.alt a.button-secondary {
+.modal .uc-buttons a.button-primary {
 	padding-left: 28px;
 }
 
-.modal a.button svg {
+.modal .uc-buttons a.button-primary svg {
 	position: absolute;
 	width: 14px;
 	height: 14px;

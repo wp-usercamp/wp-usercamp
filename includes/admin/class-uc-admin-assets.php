@@ -63,11 +63,13 @@ class UC_Admin_Assets {
 
 		// Admin pages.
 		if ( in_array( $screen_id, uc_get_screen_ids() ) ) {
+			$dummy = new UC_Field();
+
 			wp_enqueue_script( 'usercamp_admin' );
 
 			$params = array(
 				'ajax_url'	=> admin_url( 'admin-ajax.php' ),
-				'fields'	=> apply_filters( 'uc_field_meta_keys', array() ),
+				'fields'	=> $dummy->internal_meta_keys,
 				'yes'		=> __( 'yes', 'usercamp' ),
 				'no'		=> __( 'no', 'usercamp' ),
 				'nonces'	=> array(
