@@ -11,6 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php if ( ! empty( $top_note ) ) : ?>
 
-	<div class="usercamp-text"><?php echo esc_html( $top_note ); ?></div>
+	<div class="usercamp-note"><?php echo esc_html( $top_note ); ?></div>
 
 <?php endif; ?>

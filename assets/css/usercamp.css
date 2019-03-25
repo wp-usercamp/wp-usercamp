@@ -499,7 +499,7 @@ a.usercamp-button.disabled {
 	cursor: pointer;
 }
 
-.usercamp-text {
+.usercamp-note {
 	line-height: 1.4em;
 	padding: 0 0 1em 0;
 	color: rgba(0, 0, 0, 0.4);
