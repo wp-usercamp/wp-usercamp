@@ -178,6 +178,7 @@ function usercamp_get_default_fields() {
 			'type'			=> 'toggle',
 			'is_private'	=> 1,
 			'can_view'		=> array( '_none' ),
+			'helper'		=> __( 'Prevent users from accessing your public profile', 'usercamp' ),
 		),
 	);
 
@@ -192,18 +193,15 @@ function usercamp_create_default_fields() {
 	if ( ! empty( $fields = usercamp_get_default_fields() ) ) {
 		foreach( $fields as $key => $data ) {
 			$the_field = new UC_Field();
-			$the_field->set( 'post_title', isset( $data['label'] ) ? $data['label'] : '' );
+			$the_field->set( 'post_title', isset( $data['label'] ) ? uc_clean( wp_unslash( $data['label'] ) ) : '' );
 			$the_field->set( 'post_name', uc_clean( wp_unslash( $key ) ) );
-			$the_field->set( 'meta_input', array(
-					'key'			=> uc_clean( wp_unslash( $key ) ),
-					'label'			=> isset( $data['label'] ) ? $data['label'] : '',
-					'type'			=> isset( $data['type'] ) ? $data['type'] : '',
-					'is_private'	=> isset( $data['is_private'] ) ? $data['is_private'] : '',
-					'is_readonly'	=> isset( $data['is_readonly'] ) ? $data['is_readonly'] : '',
-					'is_required'	=> isset( $data['is_required'] ) ? $data['is_required'] : '',
-					'can_view'		=> isset( $data['can_view'] ) ? $data['can_view'] : '',
-					'icon'			=> isset( $data['icon'] ) ? $data['icon'] : '',
-			) );
+			$the_field->set(
+				'meta_input',
+				array_merge(
+					array( 'key' => uc_clean( wp_unslash( $key ) ) ),
+					uc_clean( $data )
+				)
+			);
 			$the_field->insert();
 			$the_field->save( $the_field->meta_input );
 		}
