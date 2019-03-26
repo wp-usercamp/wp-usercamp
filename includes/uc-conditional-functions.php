@@ -17,6 +17,15 @@ function is_uc_account_page() {
 }
 
 /**
+ * Returns true when viewing a profile page.
+ */
+function is_uc_profile_page() {
+	$page_id = uc_get_page_id( 'profile' );
+
+	return ( $page_id && is_page( $page_id ) ) || uc_post_content_has_shortcode( 'usercamp_profile' );
+}
+
+/**
  * Checks whether the content passed contains a specific short code.
  */
 function uc_post_content_has_shortcode( $tag = '' ) {
