@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="modal-content">
 
-		<h4><?php _e( 'Choose from custom fields', 'usercamp' ); ?></h4>
+		<h4><?php _e( 'Custom Fields', 'usercamp' ); ?></h4>
 		<div class="uc-buttons"><p>
 			<?php
 			if ( ! empty( $fields = usercamp_get_custom_fields() ) ) {
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</p></div>
 
-		<h4><?php _e( 'Or create a new custom field', 'usercamp' ); ?></h4>
+		<h4><?php _e( 'New Custom Field', 'usercamp' ); ?></h4>
 		<div class="uc-buttons alt"><p>
 			<?php
 			foreach( $new = usercamp_get_field_types() as $key => $data ) {

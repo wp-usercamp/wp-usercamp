@@ -101,6 +101,15 @@ class UC_Query {
 	 * Endpoint mask describing the places the endpoint should be added.
 	 */
 	public function get_endpoints_mask() {
+		if ( 'page' === get_option( 'show_on_front' ) ) {
+			$page_on_front     = get_option( 'page_on_front' );
+			$myaccount_page_id = get_option( 'usercamp_account_page_id' );
+
+			if ( in_array( $page_on_front, array( $myaccount_page_id ), true ) ) {
+				return EP_ROOT | EP_PAGES;
+			}
+		}
+
 		return EP_PAGES;
 	}
 
