@@ -53,12 +53,12 @@ class UC_Admin_Assets {
 		$screen_id    = $screen ? $screen->id : '';
 
 		// Register scripts.
-		wp_register_script( 'jquery-helper', uc()->plugin_url() . '/assets/js/jquery-helper/jquery-helper.js', array( 'jquery' ), UC_VERSION, true );
-		wp_register_script( 'jquery-selectize', uc()->plugin_url() . '/assets/js/jquery-selectize/jquery-selectize.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-tiptip', uc()->plugin_url() . '/assets/js/jquery-tiptip/jquery-tiptip.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-toggles', uc()->plugin_url() . '/assets/js/jquery-toggles/jquery-toggles.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-modal', uc()->plugin_url() . '/assets/js/jquery-modal/jquery-modal.js', array( 'jquery' ), UC_VERSION, true );
-		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-helper', 'jquery-selectize', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal' ), UC_VERSION, true );
+		wp_register_script( 'jquery-selectize', uc()->plugin_url() . '/assets/js/jquery-selectize/jquery-selectize.js', array( 'jquery' ), UC_VERSION, true );
+		wp_register_script( 'jquery-helper', uc()->plugin_url() . '/assets/js/jquery-helper/jquery-helper.js', array( 'jquery' ), UC_VERSION, true );
+		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal', 'jquery-selectize', 'jquery-helper' ), UC_VERSION, true );
 
 		// Admin pages.
 		if ( in_array( $screen_id, uc_get_screen_ids() ) ) {

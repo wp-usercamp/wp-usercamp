@@ -45,7 +45,7 @@ class UC_Admin_Setup_Wizard {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'uc-setup', uc()->plugin_url() . '/assets/css/uc-setup.css', array( 'dashicons', 'install' ), UC_VERSION );
-		wp_register_script( 'uc-setup', uc()->plugin_url() . '/assets/js/admin/uc-setup.js', array( 'jquery', 'jquery-tiptip', 'jquery-toggles', 'jquery-tiptip' ), UC_VERSION );
+		wp_register_script( 'uc-setup', uc()->plugin_url() . '/assets/js/admin/uc-setup.js', array( 'jquery', 'jquery-tiptip', 'jquery-toggles' ), UC_VERSION );
 		wp_localize_script(
 			'uc-setup',
 			'uc_setup_params',
