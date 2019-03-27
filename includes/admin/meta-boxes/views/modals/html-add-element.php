@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="uc-buttons alt"><p>
 			<?php
 			foreach( $new = usercamp_get_field_types() as $key => $data ) {
-				echo '<a href="#uc-add-field" class="button button-primary new_field" data-type="' . esc_attr( $key ) . '" rel="modal:open"><i data-feather="' . esc_attr( $data['icon'] ) . '"></i>' . esc_html__( $data['label'] ) . '</a>';
+				echo '<a href="#uc-add-field" class="button button-primary new_field" data-type="' . esc_attr( $key ) . '" rel="modal:open">' . uc_svg_icon( esc_attr( $data['icon'] ) ) . esc_html__( $data['label'] ) . '</a>';
 			}
 			?>
 		</p></div>

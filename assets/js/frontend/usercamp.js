@@ -6,12 +6,13 @@ jQuery( function( $ ) {
 		// Toggle password visibility.
 		togglepw: function( el ) {
 			if ( el.hasClass( 'is-hidden' ) ) {
-				el.addClass( 'is-visible' ).removeClass( 'is-hidden' ).attr( 'data-tip', el.attr( 'data-hide') ).html( '<i data-feather=eye></i>' ).parents( '.usercamp-field' ).find( 'input[type=password]' ).attr( 'type', 'text' ).focus();
+				el.find( 'svg use' ).attr( 'xlink:href', usercamp_params.svg + 'eye' );
+				el.addClass( 'is-visible' ).removeClass( 'is-hidden' ).attr( 'data-tip', el.attr( 'data-hide') ).parents( '.usercamp-field' ).find( 'input[type=password]' ).attr( 'type', 'text' ).focus();
 			} else {
-				el.addClass( 'is-hidden' ).removeClass( 'is-visible' ).attr( 'data-tip', el.attr( 'data-show') ).html( '<i data-feather=eye-off></i>' ).parents( '.usercamp-field' ).find( 'input[type=text]' ).attr( 'type', 'password' ).focus();
+				el.find( 'svg use' ).attr( 'xlink:href', usercamp_params.svg + 'eye-off' );
+				el.addClass( 'is-hidden' ).removeClass( 'is-visible' ).attr( 'data-tip', el.attr( 'data-show') ).parents( '.usercamp-field' ).find( 'input[type=text]' ).attr( 'type', 'password' ).focus();
 			}
 			$( document.body ).trigger( 'uc-init-tooltips' );
-			feather.replace();
 		},
 
 		// Trigger form.
@@ -79,13 +80,6 @@ jQuery( function( $ ) {
 		} );
 	} ).trigger( 'uc-init-toggles' );
 
-	// Chevrons for list items.
-	$( document.body ).on( 'uc-init-chevron', function() {
-		$( '.usercamp-nav li a' ).each( function() {
-			$( this ).append( '<i data-feather=chevron-right />' );
-		} );
-	} ).trigger( 'uc-init-chevron' );
-
 	// Go to focus on first input.
 	$( document.body ).on( 'uc-init-focus', function() {
 		$( '.usercamp-edit-password' ).find( ':input[value=""]:enabled:visible:first' ).focus();
@@ -147,10 +141,3 @@ jQuery( function( $ ) {
 		} );
 
 });
-
-// This runs after everyhing is loaded.
-jQuery( window ).load( function() {
-
-	feather.replace();
-
-} );

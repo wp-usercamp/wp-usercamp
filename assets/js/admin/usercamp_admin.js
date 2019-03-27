@@ -25,7 +25,7 @@ jQuery( function ( $ ) {
 			$( '.uc-bld-col .uc-bld-elem:visible' ).each( function() {
 				var thisdata = {};
 				var that = $( this );
-				$.each( usercamp_admin.fields, function( index, key ) {
+				$.each( usercamp_admin.metakeys, function( index, key ) {
 					var attribute = that.attr( 'data-' + key );
 					if ( attribute ) {
 						thisdata[ key ] = attribute;
@@ -154,12 +154,21 @@ jQuery( function ( $ ) {
 
 		// Insert element
 		insert: function( el ) {
-			var $e = $( '.uc-bld-elem.hidden:first' ).clone().appendTo( this.active );
+
+			var placeholder = $( '.uc-bld-elem.hidden:first' );
+			var $e = placeholder.clone().appendTo( this.active );
+			var icon = el.attr( 'data-icon' ) ? el.attr( 'data-icon' ) : el.attr( 'data-noicon' );
+
 			$e.html( $e.html().replace( /{label}/i, el.html() ) );
 			$e.html( $e.html().replace( /{key}/i, el.attr( 'data-key' ) ) );
-			$e.html( $e.html().replace( /{icon}/i, el.attr( 'data-icon' ) ? '<i data-feather="' + el.attr( 'data-icon' ) + '"></i>' : '<i data-feather="' + el.attr( 'data-noicon' ) + '"></i>' ) );
-			$.each( el.data(), function (name, value) { $e.attr( 'data-' + name, value ); } );
+			$e.find( '.uc-bld-icon svg use' ).attr( 'xlink:href', usercamp_admin.svg + icon );
+
+			$.each( el.data(), function ( name, value ) {
+				$e.attr( 'data-' + name, value );
+			} );
+
 			$e.show().removeClass( 'hidden' );
+
 			this.sortables();
 			this.ready_save();
 		},
@@ -240,20 +249,17 @@ jQuery( function ( $ ) {
 			if ( el.attr( 'data-toggled' ) == 1 ) {
 				el.attr( 'data-toggled', 0 ).find( '.uc-bld-col, .uc-bld-add, .uc-bld-bar' ).show();
 				el.find( '.uc-bld-cols' ).height( 'auto' );
-				el.find( '.uc-toggle-row' ).html( '<i data-feather="chevron-up"></i>' );
-				feather.replace();
+				el.find( '.uc-toggle-row svg use' ).attr( 'xlink:href', usercamp_admin.svg + 'chevron-up' );
 			} else {
 				el.attr( 'data-toggled', 1 ).find( '.uc-bld-col, .uc-bld-add, .uc-bld-bar' ).hide();
 				el.find( '.uc-bld-cols' ).height( 20 );
-				el.find( '.uc-toggle-row' ).html( '<i data-feather="chevron-down"></i>' );
-				feather.replace();
+				el.find( '.uc-toggle-row svg use' ).attr( 'xlink:href', usercamp_admin.svg + 'chevron-down' );
 			}
 		},
 
 		// Ready to save
 		ready_save: function() {
 			$.modal.close();
-			feather.replace();
 			if ( this.autosave ) {
 				this.save();
 			} else {
@@ -364,7 +370,7 @@ jQuery( function ( $ ) {
 			m.find( '.button-secondary' ).attr( 'rel', 'modal:close' );
 
 			// loop through each data attribute and set the option in field settings modal.
-			$.each( usercamp_admin.fields, function( index, key ) {
+			$.each( usercamp_admin.metakeys, function( index, key ) {
 				var input = m.find( '#' + key );
 				var value = el.attr( 'data-' + key );
 				if ( input.length ) {
@@ -399,7 +405,7 @@ jQuery( function ( $ ) {
 		// Save settings from field modal.
 		save_modal_settings: function( el ) {
 			var m = $( '#uc-add-field' );
-			$.each( usercamp_admin.fields, function( index, key ) {
+			$.each( usercamp_admin.metakeys, function( index, key ) {
 				var input = m.find( '#' + key );
 				var value = '';
 				if ( input.length ) {
@@ -414,9 +420,9 @@ jQuery( function ( $ ) {
 					}
 					if ( key == 'icon' ) {
 						if ( value ) {
-							el.find( '.uc-bld-icon' ).html( '<i data-feather="' + value + '"></i>' );
+							el.find( '.uc-bld-icon svg use' ).attr( 'xlink:href', usercamp_admin.svg + value );
 						} else {
-							el.find( '.uc-bld-icon' ).html( '<i data-feather="' + el.attr( 'data-noicon' ) + '"></i>' );
+							el.find( '.uc-bld-icon svg use' ).attr( 'xlink:href', usercamp_admin.svg + el.attr( 'data-noicon' ) );
 						}
 					}
 					el.attr( 'data-' + key, value );
@@ -714,12 +720,5 @@ jQuery( function ( $ ) {
 			$newitem.html( $newitem.html().replace( '{value}', val ) );
 			$newitem.attr( 'data-pattern', pattern );
 		} );
-
-} );
-
-// This runs after everyhing is loaded.
-jQuery( window ).load( function() {
-
-	feather.replace();
 
 } );

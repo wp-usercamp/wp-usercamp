@@ -265,7 +265,7 @@ function usercamp_wp_rule( $field ) {
 						<strong>{key}</strong> {operator} {value}
 					</span>
 					<span class="rule_actions">
-						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
+						<a href="#" class="remove"><?php echo uc_svg_icon( 'trash-2' ); ?></a>
 					</span>
 				</div>
 				<?php foreach( (array) $rules as $rule ) { ?>
@@ -274,13 +274,13 @@ function usercamp_wp_rule( $field ) {
 						<strong><?php echo esc_html( $rule['key'] ); ?></strong> <?php echo esc_html( $rule['operator'] ); ?> <?php echo esc_html( $rule['value'] ); ?>
 					</span>
 					<span class="rule_actions">
-						<a href="#" class="remove"><i data-feather="trash-2"></i></a>
+						<a href="#" class="remove"><?php echo uc_svg_icon( 'trash-2' ); ?></a>
 					</span>
 				</div>
 				<?php } ?>
 			</div><div class="uc-clear"></div>
 
-			<span class="uc-tag-icon"><i data-feather="plus"></i><?php echo __( 'New rule', 'usercamp' ); ?></span><div class="uc-clear"></div>
+			<span class="uc-tag-icon"><?php echo uc_svg_icon( 'plus' ); ?><?php echo __( 'New rule', 'usercamp' ); ?></span><div class="uc-clear"></div>
 
 			<div class="uc-rule-new">
 				<span class="rule_key">
@@ -301,8 +301,8 @@ function usercamp_wp_rule( $field ) {
 					<input type="text" value="" name="rule_val" id="rule_val" />
 				</span>
 				<span class="rule_actions">
-					<a href="#" class="add"><i data-feather="plus"></i></a>
-					<a href="#" class="remove"><i data-feather="trash-2"></i></a>
+					<a href="#" class="add"><?php echo uc_svg_icon( 'plus' ); ?></a>
+					<a href="#" class="remove"><?php echo uc_svg_icon( 'trash-2' ); ?></a>
 				</span>
 			</div><div class="uc-clear"></div>
 
@@ -325,7 +325,7 @@ function uc_dragdrop_topbar() {
 	<div class="uc-bld-topbar">
 		<div class="uc-bld-left"><span class="description"></span></div>
 		<div class="uc-bld-right">
-			<a href="#" class="button button-primary disabled save_form" data-id="<?php echo absint( $the_form->id ); ?>"><i data-feather="upload-cloud"></i><span><?php echo __( 'Save changes', 'usercamp' ); ?></span></a>
+			<a href="#" class="button button-primary disabled save_form" data-id="<?php echo absint( $the_form->id ); ?>"><?php echo uc_svg_icon( 'upload-cloud' ); ?><span><?php echo __( 'Save changes', 'usercamp' ); ?></span></a>
 		</div><div class="clear"></div>
 	</div>
 	<?php
@@ -345,8 +345,8 @@ function uc_dragdrop_default() {
 				<div class="uc-bld-elems">
 					<div class="uc-bld-elem hidden">
 						<div class="uc-bld-left">
-							<span class="uc-bld-action"><a href="#" class="uc-move-field"><i data-feather="move"></i></a></span>
-							<span class="uc-bld-icon">{icon}</span>
+							<span class="uc-bld-action"><a href="#" class="uc-move-field"><?php echo uc_svg_icon( 'move' ); ?></a></span>
+							<span class="uc-bld-icon"><?php echo uc_svg_icon( 'default' ); ?></span>
 							<span class="uc-bld-label">{label}</span>
 							<span class="uc-bld-helper">{key}</span>
 						</div>
@@ -401,8 +401,8 @@ function uc_dragdrop_columns( $i ) {
 			?>
 			<div class="uc-bld-elem" <?php echo uc_get_data_attributes( $r ); ?>>
 				<div class="uc-bld-left">
-					<span class="uc-bld-action"><a href="#" class="uc-move-field"><i data-feather="move"></i></a></span>
-					<span class="uc-bld-icon"><i data-feather="<?php echo ! empty( $r['icon'] ) ? esc_attr( $r['icon'] ) : esc_attr( uc_get_field_type( $r['type'], 'icon' ) ); ?>"></i></span>
+					<span class="uc-bld-action"><a href="#" class="uc-move-field"><?php echo uc_svg_icon( 'move' ); ?></a></span>
+					<span class="uc-bld-icon"><?php echo uc_svg_icon( ! empty( $r['icon'] ) ? esc_attr( $r['icon'] ) : esc_attr( uc_get_field_type( $r['type'], 'icon' ) ) ); ?></span>
 					<span class="uc-bld-label"><?php echo ! empty( $r[ 'label' ] ) ? esc_html( $r['label'] ) : __( 'No label', 'usercamp' ); ?></span>
 					<span class="uc-bld-helper"><?php echo esc_attr( $r['key'] ); ?></span>
 				</div>
@@ -437,7 +437,7 @@ function uc_dragdrop_grid( $i = '' ) {
 			?>
 			<a href="#" class="grid grid_<?php echo $key; ?> <?php echo $active; ?>" data-layout="<?php echo implode(':', $grid['spans'] ); ?>">
 				<?php foreach( $grid['spans'] as $span ) { ?>
-				<span class="grid_<?php echo $span; ?>"><i data-feather="align-justify"></i></span>
+				<span class="grid_<?php echo $span; ?>"><?php echo uc_svg_icon( 'align-justify' ); ?></span>
 				<?php } ?>
 			</a>
 		<?php } ?>
@@ -451,7 +451,7 @@ function uc_dragdrop_grid( $i = '' ) {
 function uc_dragdrop_addrow() {
 	global $the_form;
 	?>
-	<div class="uc-bld-new"><a href="#" class="uc-add-row"><i data-feather="plus"></i></a></div>
+	<div class="uc-bld-new"><a href="#" class="uc-add-row"><?php echo uc_svg_icon( 'plus' ); ?></a></div>
 	<?php
 }
 
@@ -461,7 +461,7 @@ function uc_dragdrop_addrow() {
 function uc_dragdrop_add() {
 	global $the_form;
 	?>
-	<div class="uc-bld-add"><a href="#uc-add-element" class="uc-add-element" rel="modal:open"><i data-feather="plus"></i></a></div>
+	<div class="uc-bld-add"><a href="#uc-add-element" class="uc-add-element" rel="modal:open"><?php echo uc_svg_icon( 'plus' ); ?></a></div>
 	<?php
 }
 
@@ -473,14 +473,14 @@ function uc_dragdrop_row_head() {
 	?>
 	<div class="uc-bld-elem">
 		<div class="uc-bld-left">
-			<span class="uc-bld-action"><a href="#" class="uc-move-row"><i data-feather="move"></i></a></span>
-			<span class="uc-bld-icon"><a href="#" class="uc-toggle-row"><i data-feather="chevron-up"></i></a></span>
+			<span class="uc-bld-action"><a href="#" class="uc-move-row"><?php echo uc_svg_icon( 'move' ); ?></a></span>
+			<span class="uc-bld-icon"><a href="#" class="uc-toggle-row"><?php echo uc_svg_icon( 'chevron-up' ); ?></a></span>
 			<span class="uc-bld-label"><?php echo __( 'Untitled Row', 'usercamp' ); ?></span>
 		</div>
 		<div class="uc-bld-right">
-			<span class="uc-bld-action"><a href="#" class="uc-edit-row"><i data-feather="edit-2"></i></a></span>
-			<span class="uc-bld-action"><a href="#" class="uc-duplicate-row"><i data-feather="copy"></i></a></span>
-			<span class="uc-bld-action"><a href="#" class="uc-delete-row"><i data-feather="trash-2"></i></a></span>
+			<span class="uc-bld-action"><a href="#" class="uc-edit-row"><?php echo uc_svg_icon( 'edit-2' ); ?></a></span>
+			<span class="uc-bld-action"><a href="#" class="uc-duplicate-row"><?php echo uc_svg_icon( 'copy' ); ?></a></span>
+			<span class="uc-bld-action"><a href="#" class="uc-delete-row"><?php echo uc_svg_icon( 'trash-2' ); ?></a></span>
 		</div><div class="clear"></div>
 	</div>
 	<?php
@@ -493,9 +493,9 @@ function uc_dragdrop_field_actions() {
 	global $the_form;
 	?>
 	<div class="uc-bld-right">
-		<span class="uc-bld-action"><a href="#uc-add-field" class="uc-edit-field" rel="modal:open"><i data-feather="edit-2"></i></a></span>
-		<span class="uc-bld-action"><a href="#" class="uc-duplicate-field"><i data-feather="copy"></i></a></span>
-		<span class="uc-bld-action"><a href="#" class="uc-delete-field"><i data-feather="trash-2"></i></a></span>
+		<span class="uc-bld-action"><a href="#uc-add-field" class="uc-edit-field" rel="modal:open"><?php echo uc_svg_icon( 'edit-2' ); ?></a></span>
+		<span class="uc-bld-action"><a href="#" class="uc-duplicate-field"><?php echo uc_svg_icon( 'copy' ); ?></a></span>
+		<span class="uc-bld-action"><a href="#" class="uc-delete-field"><?php echo uc_svg_icon( 'trash-2' ); ?></a></span>
 	</div>
 	<div class="clear"></div>
 	<?php

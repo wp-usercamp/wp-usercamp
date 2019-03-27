@@ -58,8 +58,7 @@ class UC_Admin_Assets {
 		wp_register_script( 'jquery-tiptip', uc()->plugin_url() . '/assets/js/jquery-tiptip/jquery-tiptip.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-toggles', uc()->plugin_url() . '/assets/js/jquery-toggles/jquery-toggles.js', array( 'jquery' ), UC_VERSION, true );
 		wp_register_script( 'jquery-modal', uc()->plugin_url() . '/assets/js/jquery-modal/jquery-modal.js', array( 'jquery' ), UC_VERSION, true );
-		wp_register_script( 'jquery-feather', uc()->plugin_url() . '/assets/js/jquery-feather/jquery-feather.js', array( 'jquery' ), UC_VERSION, true );
-		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-helper', 'jquery-selectize', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal', 'jquery-feather' ), UC_VERSION, true );
+		wp_register_script( 'usercamp_admin', uc()->plugin_url() . '/assets/js/admin/usercamp_admin.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-helper', 'jquery-selectize', 'jquery-tiptip', 'jquery-toggles', 'jquery-modal' ), UC_VERSION, true );
 
 		// Admin pages.
 		if ( in_array( $screen_id, uc_get_screen_ids() ) ) {
@@ -69,9 +68,10 @@ class UC_Admin_Assets {
 
 			$params = array(
 				'ajax_url'	=> admin_url( 'admin-ajax.php' ),
-				'fields'	=> $dummy->internal_meta_keys,
+				'metakeys'	=> $dummy->internal_meta_keys,
 				'yes'		=> __( 'yes', 'usercamp' ),
 				'no'		=> __( 'no', 'usercamp' ),
+				'svg'		=> uc()->plugin_url() . '/assets/images/feather-sprite.svg#',
 				'nonces'	=> array(
 					'save_form'				=> wp_create_nonce( 'usercamp-save-form' ),
 					'create_forms' 			=> wp_create_nonce( 'usercamp-create-forms' ),

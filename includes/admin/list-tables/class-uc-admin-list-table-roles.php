@@ -34,7 +34,7 @@ class UC_Admin_List_Table_Roles extends UC_Admin_List_Table {
 	 * Render blank state.
 	 */
 	protected function render_blank_state() {
-		echo '<div class="usercamp-BlankState"><i data-feather="user-check"></i>';
+		echo '<div class="usercamp-BlankState">' . uc_svg_icon( 'user-check' );
 		echo '<h2 class="usercamp-BlankState-message">' . esc_html__( 'Create custom user roles and groups and have full control over users access and what they can do.', 'usercamp' ) . '</h2>';
 		echo '<a class="usercamp-BlankState-cta button-primary button" href="' . esc_url( admin_url( 'post-new.php?post_type=uc_role' ) ) . '">' . esc_html__( 'Create a new user role', 'usercamp' ) . '</a>';
 		echo '<a class="usercamp-BlankState-cta button" target="_blank" href="">' . esc_html__( 'Learn more about user roles', 'usercamp' ) . '</a>';

@@ -34,7 +34,7 @@ class UC_Admin_List_Table_Forms extends UC_Admin_List_Table {
 	 * Render blank state.
 	 */
 	protected function render_blank_state() {
-		echo '<div class="usercamp-BlankState"><i data-feather="file-text"></i>';
+		echo '<div class="usercamp-BlankState">' . uc_svg_icon( 'file-text' );
 		echo '<h2 class="usercamp-BlankState-message">' . esc_html__( 'Create registration, login and profile forms using a robust and easy-to-use drag and drop form builder.', 'usercamp' ) . '</h2>';
 		echo '<a class="usercamp-BlankState-cta button-primary button" href="' . esc_url( admin_url( 'post-new.php?post_type=uc_form' ) ) . '">' . esc_html__( 'Create your first form', 'usercamp' ) . '</a>';
 		echo '<a class="usercamp-BlankState-cta button" target="_blank" href="">' . esc_html__( 'Learn more about forms', 'usercamp' ) . '</a>';
@@ -128,7 +128,7 @@ class UC_Admin_List_Table_Forms extends UC_Admin_List_Table {
 	protected function render_type_column() {
 		if ( $this->object->type ) {
 			echo uc_get_form_type( $this->object->type );
-			if ( $this->object->endpoint ) {
+			if ( $this->object->endpoint && in_array( $this->object->type, array( 'account' ) ) ) {
 				$endpoint = uc()->query->get_endpoint_title( $this->object->endpoint );
 				$endpoint = ! empty( $endpoint ) ? $endpoint : __( 'Unassigned', 'usercamp' );
 				echo '/ ' . $endpoint;

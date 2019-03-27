@@ -97,7 +97,7 @@ function uc_get_field_type( $type, $return = false ) {
 	}
 
 	if ( $return == 'html' ) {
-		return '<span class="uc-tag-icon"><i data-feather="' . $types[ $type ][ 'icon' ] . '"></i>' . $types[ $type ][ 'label' ] . '</span>';
+		return '<span class="uc-tag-icon">' . uc_svg_icon( $types[ $type ][ 'icon' ] ) . $types[ $type ][ 'label' ] . '</span>';
 	}
 
 	return $types[ $type ];

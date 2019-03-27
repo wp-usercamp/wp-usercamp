@@ -12,9 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php if ( in_array( 'has-icon', $field['control_class'] ) ) : ?>
 
 	<span class="uc-icon">
-
-		<i data-feather="<?php echo esc_attr( $field[ 'icon' ] ); ?>"></i>
-
+		<?php echo uc_svg_icon( esc_attr( $field[ 'icon' ] ) ); ?>
 	</span>
 
 <?php endif; ?>

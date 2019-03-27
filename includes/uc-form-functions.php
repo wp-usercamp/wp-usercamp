@@ -51,7 +51,7 @@ function uc_get_form_type( $type ) {
 	if ( ! isset( $types[ $type ] ) )
 		return;
 
-	return '<span class="uc-tag-icon"><i data-feather="' . $types[ $type ][ 'icon' ] . '"></i>' . $types[ $type ][ 'label' ] . '</span>';
+	return '<span class="uc-tag-icon">' . uc_svg_icon( $types[ $type ][ 'icon' ] ) . $types[ $type ][ 'label' ] . '</span>';
 }
 
 /**

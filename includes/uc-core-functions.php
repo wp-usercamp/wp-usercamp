@@ -50,6 +50,13 @@ function uc_selected( $value, $options ) {
 }
 
 /**
+ * Display a SVG icon from the sprite.
+ */
+function uc_svg_icon( $icon ) {
+	return '<svg class="feather"><use xlink:href="'. uc()->plugin_url() . '/assets/images/feather-sprite.svg#' . $icon . '" /></svg>';
+}
+
+/**
  * Display a help tip.
  */
 function uc_help_tip( $tip, $allow_html = false ) {
@@ -59,7 +66,7 @@ function uc_help_tip( $tip, $allow_html = false ) {
 		$tip = esc_attr( $tip );
 	}
 
-	return '<span class="usercamp-help-tip" data-tip="' . $tip . '"><i data-feather="help-circle"></i></span>';
+	return '<span class="usercamp-help-tip" data-tip="' . $tip . '">' . uc_svg_icon( 'help-circle' ) . '</span>';
 }
 
 /**

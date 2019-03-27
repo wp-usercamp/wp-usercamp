@@ -34,7 +34,7 @@ class UC_Admin_List_Table_Fields extends UC_Admin_List_Table {
 	 * Render blank state.
 	 */
 	protected function render_blank_state() {
-		echo '<div class="usercamp-BlankState"><i data-feather="database"></i>';
+		echo '<div class="usercamp-BlankState">' . uc_svg_icon( 'database' );
 		echo '<h2 class="usercamp-BlankState-message">' . esc_html__( 'Create unlimited custom fields to fully customize the content of login, registration and profile forms.', 'usercamp' ) . '</h2>';
 		echo '<a class="usercamp-BlankState-cta button-primary button" href="' . esc_url( admin_url( 'post-new.php?post_type=uc_field' ) ) . '">' . esc_html__( 'Create a custom field', 'usercamp' ) . '</a>';
 		echo '<a class="usercamp-BlankState-cta button" target="_blank" href="">' . esc_html__( 'Learn more about custom fields', 'usercamp' ) . '</a>';
@@ -150,23 +150,23 @@ class UC_Admin_List_Table_Fields extends UC_Admin_List_Table {
 
 		// Required
 		if ( $this->object->is_required ) {
-			echo '<span class="uc-icon yes tips" data-tip="' . __( 'Required', 'usercamp' ) . '"><i data-feather="star"></i></span>';
+			echo '<span class="uc-icon yes tips" data-tip="' . __( 'Required', 'usercamp' ) . '">' . uc_svg_icon( 'star' ) . '</span>';
 		} else {
-			echo '<span class="uc-icon no tips" data-tip="' . __( 'Optional', 'usercamp' ) . '"><i data-feather="star"></i></span>';
+			echo '<span class="uc-icon no tips" data-tip="' . __( 'Optional', 'usercamp' ) . '">' . uc_svg_icon( 'star' ) . '</span>';
 		}
 
 		// Private
 		if ( $this->object->is_private ) {
-			echo '<span class="uc-icon yes tips" data-tip="' . __( 'Private', 'usercamp' ) . '"><i data-feather="shield"></i></span>';
+			echo '<span class="uc-icon yes tips" data-tip="' . __( 'Private', 'usercamp' ) . '">' . uc_svg_icon( 'shield' ) . '</span>';
 		} else {
-			echo '<span class="uc-icon no tips" data-tip="' . __( 'Public', 'usercamp' ) . '"><i data-feather="shield-off"></i></span>';
+			echo '<span class="uc-icon no tips" data-tip="' . __( 'Public', 'usercamp' ) . '">' . uc_svg_icon( 'shield-off' ) . '</span>';
 		}
 
 		// Read only
 		if ( $this->object->is_readonly ) {
-			echo '<span class="uc-icon yes tips" data-tip="' . __( 'Read Only', 'usercamp' ) . '"><i data-feather="lock"></i></span>';
+			echo '<span class="uc-icon yes tips" data-tip="' . __( 'Read Only', 'usercamp' ) . '">' . uc_svg_icon( 'lock' ) . '</span>';
 		} else {
-			echo '<span class="uc-icon no tips" data-tip="' . __( 'Editable', 'usercamp' ) . '"><i data-feather="lock"></i></span>';
+			echo '<span class="uc-icon no tips" data-tip="' . __( 'Editable', 'usercamp' ) . '">' . uc_svg_icon( 'lock' ) . '</span>';
 		}
 
 	}

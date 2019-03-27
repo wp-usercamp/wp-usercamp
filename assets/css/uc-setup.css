@@ -1,70 +1,17 @@
 @charset "UTF-8";
 
-/* jQuery toggles */
-.uc-toggle {
-	display: inline-block;
+/* Feather */
+.feather {
+	width: 24px;
+	height: 24px;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
 }
 
-.toggle-slide {
-	overflow: hidden;
-	cursor: pointer;
-	user-select: none;
-	direction: ltr;
-	text-align: center;
-	border-radius: 999px;
-}
-
-div.disabled > .toggle-slide {
-	opacity: 0.7;
-	pointer-events: none;
-}
-
-.toggle-slide .toggle-on,
-.toggle-slide .toggle-off,
-.toggle-slide .toggle-blob {
-	float: left;
-}
-
-.toggle-slide .toggle-blob {
-	position: relative;
-	z-index: 99;
-	background: #fff;
-	border: 1px solid #aaa;
-	cursor: grab;
-	border-radius: 999px;
-	box-sizing: border-box;
-}
-
-.toggle-on,
-.toggle-off {
-	border-radius: 999px 0 0 999px;
-	background: rgb(91, 157, 217);
-	color: rgba(255, 255, 255, .65);
-	font-size: 11px;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-
-.toggle-off {
-	background: #eee;
-	color: rgba(0, 0, 0, .2);
-}
-
-.toggle-on:after,
-.toggle-off:after {
-	background: rgb(0, 115, 187);
-	height: 50%;
-	content: '';
-	margin-top: -57%;
-	display: block;
-	border-radius: 999px;
-}
-
-.toggle-off:after {
-	background: #ddd;
-}
-
-/* jQuey tiptip */
+/* jQuery tiptip */
 #tiptip_holder {
 	display: none;
 	z-index: 8675309;
@@ -153,6 +100,70 @@ div.disabled > .toggle-slide {
 	width: 16px;
 	height: 16px;
 	color: #bbb;
+}
+
+/* jQuery toggles */
+.uc-toggle {
+	display: inline-block;
+}
+
+.toggle-slide {
+	overflow: hidden;
+	cursor: pointer;
+	user-select: none;
+	direction: ltr;
+	text-align: center;
+	border-radius: 999px;
+}
+
+div.disabled > .toggle-slide {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.toggle-slide .toggle-on,
+.toggle-slide .toggle-off,
+.toggle-slide .toggle-blob {
+	float: left;
+}
+
+.toggle-slide .toggle-blob {
+	position: relative;
+	z-index: 99;
+	background: #fff;
+	border: 1px solid #aaa;
+	cursor: grab;
+	border-radius: 999px;
+	box-sizing: border-box;
+}
+
+.toggle-on,
+.toggle-off {
+	border-radius: 999px 0 0 999px;
+	background: rgb(91, 157, 217);
+	color: rgba(255, 255, 255, .65);
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.toggle-off {
+	background: #eee;
+	color: rgba(0, 0, 0, .2);
+}
+
+.toggle-on:after,
+.toggle-off:after {
+	background: rgb(0, 115, 187);
+	height: 50%;
+	content: '';
+	margin-top: -57%;
+	display: block;
+	border-radius: 999px;
+}
+
+.toggle-off:after {
+	background: #ddd;
 }
 
 /* Setup Wizard */

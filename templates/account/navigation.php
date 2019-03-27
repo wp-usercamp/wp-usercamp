@@ -14,7 +14,10 @@ do_action( 'usercamp_before_account_navigation' );
 	<ul>
 		<?php foreach ( uc_get_account_menu_items() as $endpoint => $label ) : ?>
 			<li class="<?php echo uc_get_account_menu_item_classes( $endpoint ); ?>">
-				<a href="<?php echo esc_url( uc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
+				<a href="<?php echo esc_url( uc_get_account_endpoint_url( $endpoint ) ); ?>">
+					<?php echo esc_html( $label ); ?>
+					<?php echo uc_svg_icon( 'chevron-right' ); ?>
+				</a>
 			</li>
 		<?php endforeach; ?>
 	</ul>

@@ -130,14 +130,9 @@ class UC_Frontend_Scripts {
 				'deps'    => array( 'jquery' ),
 				'version' => UC_VERSION,
 			),
-			'jquery-feather'				=> array(
-				'src'     => self::get_asset_url( 'assets/js/jquery-feather/jquery-feather.js' ),
-				'deps'    => array( 'jquery' ),
-				'version' => UC_VERSION,
-			),
 			'usercamp'						=> array(
 				'src'     => self::get_asset_url( 'assets/js/frontend/usercamp.js' ),
-				'deps'    => array( 'jquery', 'jquery-tiptip', 'jquery-toggles', 'jquery-feather' ),
+				'deps'    => array( 'jquery', 'jquery-tiptip', 'jquery-toggles' ),
 				'version' => UC_VERSION,
 			),
 		);
@@ -216,6 +211,7 @@ class UC_Frontend_Scripts {
 					'ajaxurl'    		=> uc()->ajax_url(),
 					'yes'				=> __( 'yes', 'usercamp' ),
 					'no'				=> __( 'no', 'usercamp' ),
+					'svg'				=> uc()->plugin_url() . '/assets/images/feather-sprite.svg#',
 				);
 				break;
 			default:

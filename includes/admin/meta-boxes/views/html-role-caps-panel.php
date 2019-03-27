@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<ul class="role_caps_tabs uc-tabs">
 		<?php foreach ( self::get_tabs() as $key => $tab ) : ?>
 			<li class="<?php echo esc_attr( $key ); ?>_options <?php echo esc_attr( $key ); ?>_tab <?php echo esc_attr( isset( $tab['class'] ) ? implode( ' ', (array) $tab['class'] ) : '' ); ?>">
-				<a href="#<?php echo esc_attr( $tab['target'] ); ?>"><i data-feather="<?php echo esc_html( $tab['icon'] ); ?>"></i><span><?php echo esc_html( $tab['label'] ); ?></span></a>
+				<a href="#<?php echo esc_attr( $tab['target'] ); ?>"><?php echo uc_svg_icon( esc_attr( $tab['icon'] ) ); ?><span><?php echo esc_html( $tab['label'] ); ?></span></a>
 			</li>
 		<?php endforeach; ?>
 		<?php do_action( 'usercamp_role_write_caps_tabs' ); ?>
