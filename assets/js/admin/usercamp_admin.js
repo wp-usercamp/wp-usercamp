@@ -675,7 +675,7 @@ jQuery( function ( $ ) {
 		} )
 
 		// New rule.
-		.on( 'click', '.uc-rule .uc-tag-icon', function( e ) {
+		.on( 'click', '.uc-rule .button', function( e ) {
 			var el = $( this ).parents( '.uc-rule' );
 			el.find( '.uc-rule-new' ).show().animate( { 'padding-top' : '15px', 'opacity' : 1 }, 250 );
 		} )

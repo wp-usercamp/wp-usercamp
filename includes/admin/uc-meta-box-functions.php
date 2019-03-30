@@ -280,7 +280,7 @@ function usercamp_wp_rule( $field ) {
 				<?php } ?>
 			</div><div class="uc-clear"></div>
 
-			<span class="uc-tag-icon"><?php echo uc_svg_icon( 'plus' ); ?><?php echo __( 'New rule', 'usercamp' ); ?></span><div class="uc-clear"></div>
+			<a href="#" class="button button-secondary"><?php echo __( 'Add new rule', 'usercamp' ); ?></a><div class="uc-clear"></div>
 
 			<div class="uc-rule-new">
 				<span class="rule_key">
@@ -309,7 +309,8 @@ function usercamp_wp_rule( $field ) {
 			<textarea 	class="<?php echo esc_attr( $field['class'] ); ?> hidden" 
 						style="<?php echo esc_attr( $field['style'] ); ?>" 
 						id="<?php echo esc_attr( $field['id'] ); ?>" 
-						name="<?php echo esc_attr( $field['name'] ); ?>"><?php echo esc_textarea( $field['value'] ); ?></textarea>
+						name="<?php echo esc_attr( $field['name'] ); ?>"><?php echo esc_textarea( $field['value'] ); ?>
+			</textarea>
 
 		</div>
 	</fieldset>

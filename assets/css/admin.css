@@ -1173,8 +1173,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 /* Custom rules */
-.usercamp_options_panel .options_group .uc-rule span.uc-tag-icon {
-	cursor: pointer;
+.usercamp_options_panel .options_group .uc-rule .button-secondary {
+	position: relative;
+	border-radius: 999px;
+	height: 26px;
+	line-height: 24px;
 }
 
 .usercamp_options_panel .options_group .uc-rule,
