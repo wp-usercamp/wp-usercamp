@@ -890,21 +890,15 @@ body.post-type-uc_field .column-options {
 	padding: 1px 8px 2px 8px;
 	margin: 5px 5px 5px 0;
 	border-radius: 999px;
-	cursor: default;
 }
 
 a.uc-tag-icon {
-	cursor: pointer;
 	text-decoration: none;
 	margin: 0 0 0 5px;
 }
 
 a.uc-tag-icon:hover {
 	color: #666;
-}
-
-.uc-tag:hover,
-.uc-tag-icon:hover {
 	background: #e5e5e5;
 }
 
@@ -929,15 +923,12 @@ a.uc-tag-icon:hover {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
 	margin: 5px;
 	border-radius: 999px;
-	cursor: default;
 	width: 24px;
 	height: 24px;
 }
 
 .uc-icon.yes { background-color: rgb(91, 157, 217); color: #fff; }
 .uc-icon.no { opacity: 0.35; }
-
-.uc-icon:hover { opacity: 0.8; }
 
 .uc-icon svg {
 	width: 16px;
