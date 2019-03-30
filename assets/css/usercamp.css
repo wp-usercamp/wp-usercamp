@@ -576,7 +576,7 @@ a.usercamp-button.disabled {
 .usercamp-nav li a {
     position: relative;
     display: block;
-    padding: 8px 1.6em 8px 12px;
+    padding: 0.5em 1.6em 0.5em 0.8em;
     color: rgb(102, 117, 127);
 	border: 1px solid rgba(91, 157, 217, 0.16);
     border-top: 0;
