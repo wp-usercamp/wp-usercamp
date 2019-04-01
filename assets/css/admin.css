@@ -274,6 +274,7 @@ div.disabled > .toggle-slide {
 
 .modal h4 {
 	font-size: 1.2em;
+	font-weight: 400;
 	margin: 1.33em 0 1em 0;
 }
 
@@ -288,11 +289,11 @@ div.disabled > .toggle-slide {
 	border-radius: 999px;
 }
 
-.modal .uc-buttons a.button-primary {
+.modal .uc-buttons.alt a.button-primary {
 	padding-left: 28px;
 }
 
-.modal .uc-buttons a.button-primary svg {
+.modal .uc-buttons.alt a.button-primary svg {
 	position: absolute;
 	width: 14px;
 	height: 14px;
