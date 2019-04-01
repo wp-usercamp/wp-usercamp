@@ -219,18 +219,28 @@ class UC_Install {
 	public static function uninstall() {
 		global $wpdb;
 
+		/*
+		 * Only remove ALL plugin and page data if UC_REMOVE_ALL_DATA constant is set to true in user's
+		 * wp-config.php. This is to prevent data loss when deleting the plugin from the backend
+		 * and to ensure only the site owner can perform this action.
+		 */
 		if ( defined( 'UC_REMOVE_ALL_DATA' ) && true === UC_REMOVE_ALL_DATA ) {
+
+			// Check for needed files.
+			if ( ! function_exists( 'uc_maybe_define_constant' ) ) {
+				include_once dirname( __FILE__ ) . '/uc-core-functions.php';
+			}
 
 			// Delete options.
 			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'usercamp\_%';" );
 			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'widget\_usercamp\_%';" );
 			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'uc\_%';" );
-			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '%\_uc_\%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '%\_uc\_%';" );
 
 			// Delete usermeta.
 			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'usercamp\_%';" );
 			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE 'uc\_%';" );
-			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE '%\_uc_\%';" );
+			$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key LIKE '%\_uc\_%';" );
 
 			// Delete posts.
 			$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'uc_form', 'uc_field', 'uc_role', 'uc_memberlist' );" );
