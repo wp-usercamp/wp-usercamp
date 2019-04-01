@@ -427,17 +427,18 @@ function uc_dragdrop_grid( $i = '' ) {
 	global $the_form;
 	?>
 	<div class="uc-bld-bar">
-		<?php foreach( (array) uc_get_form_grid() as $key => $grid ) {
-			if ( $i && ( $grid['spans'] == $the_form->cols[$i]['layout'] ) ) {
+		<?php foreach( ( array ) uc_get_form_grid() as $key => $grid ) {
+			$spans = uc_clean( $grid[ 'spans' ] );
+			if ( $i && ( $spans == $the_form->cols[$i]['layout'] ) ) {
 				$active = 'active';
-			} else if ( $i && $the_form->cols[$i]['layout'][0] == 100 && ( $grid['spans'][0] == $the_form->cols[$i]['layout'][0] ) ) {
+			} else if ( $i && $the_form->cols[$i]['layout'][0] == 100 && ( $spans[0] == $the_form->cols[$i]['layout'][0] ) ) {
 				$active = 'active';
 			} else {
 				$active = '';
 			}
 			?>
-			<a href="#" class="grid grid_<?php echo $key; ?> <?php echo $active; ?>" data-layout="<?php echo implode(':', $grid['spans'] ); ?>">
-				<?php foreach( $grid['spans'] as $span ) { ?>
+			<a href="#" class="grid grid_<?php echo $key; ?> <?php echo $active; ?>" data-layout="<?php echo implode( ':', $spans ); ?>">
+				<?php foreach( $spans as $span ) { ?>
 				<span class="grid_<?php echo $span; ?>"><?php echo uc_svg_icon( 'align-justify' ); ?></span>
 				<?php } ?>
 			</a>
@@ -452,7 +453,11 @@ function uc_dragdrop_grid( $i = '' ) {
 function uc_dragdrop_addrow() {
 	global $the_form;
 	?>
-	<div class="uc-bld-new"><a href="#" class="uc-add-row"><?php echo uc_svg_icon( 'plus' ); ?></a></div>
+	<div class="uc-bld-new">
+		<a href="#" class="uc-add-row">
+			<?php echo uc_svg_icon( 'plus' ); ?>
+		</a>
+	</div>
 	<?php
 }
 
@@ -462,7 +467,11 @@ function uc_dragdrop_addrow() {
 function uc_dragdrop_add() {
 	global $the_form;
 	?>
-	<div class="uc-bld-add"><a href="#uc-add-element" class="uc-add-element" rel="modal:open"><?php echo uc_svg_icon( 'plus' ); ?></a></div>
+	<div class="uc-bld-add">
+		<a href="#uc-add-element" class="uc-add-element" rel="modal:open">
+			<?php echo uc_svg_icon( 'plus' ); ?>
+		</a>
+	</div>
 	<?php
 }
 
