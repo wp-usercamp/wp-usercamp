@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Get supported field types.
  */
-function usercamp_get_field_types() {
+function usercamp_get_field_types( $type = 'default' ) {
 
 	$array = array(
 		'text'			=>	array(
@@ -76,7 +76,25 @@ function usercamp_get_field_types() {
 		),
 	);
 
-	return apply_filters( 'usercamp_get_field_types', $array );
+	// Probably field types without metakey requirement.
+	if ( $type == 'html' ) {
+		$array = array(
+			'heading'		=>	array(
+				'label'			=> __( 'Heading', 'usercamp' ),
+			),
+			'html'			=>	array(
+				'label'			=> __( 'HTML', 'usercamp' ),
+			),
+			'divider'		=>	array(
+				'label'			=> __( 'Divider', 'usercamp' ),
+			),
+			'spacing'		=>	array(
+				'label'			=> __( 'Spacing', 'usercamp' ),
+			),
+		);
+	}
+
+	return apply_filters( 'usercamp_get_field_types', $array, $type );
 }
 
 /**

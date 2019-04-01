@@ -179,17 +179,18 @@ div.disabled > .toggle-slide {
 
 .modal {
 	display: none;
-	vertical-align: middle;
 	position: relative;
 	z-index: 120001;
-	max-width: 700px;
 	box-sizing: border-box;
-	width: 90%;
 	background: #fff;
-	padding: 15px 30px;
 	border-radius: 8px;
 	box-shadow: 0 0 10px #000;
 	text-align: left;
+	padding: 0;
+	vertical-align: top;
+	margin-top: 10%;
+	max-width: 1000px;
+	width: 90%;
 }
 
 .modal a.close-modal {
@@ -259,27 +260,20 @@ div.disabled > .toggle-slide {
 	}
 }
 
-.modal {
-	padding: 0;
-	/* this will change modal position */
-	margin-top: 10%;
-	vertical-align: top;
-}
-
 .modal-content {
 	padding: 0 20px 20px 20px;
 }
 
 .modal h3 {
 	background: #f5f5f5;
+	font-size: 1.4em;
 	padding: 15px 20px;
 	margin: 0;
 	border-radius: 8px 8px 0 0;
 }
 
 .modal h4 {
-	font-weight: 400;
-	font-size: 16px;
+	font-size: 1.2em;
 	margin: 1.33em 0 1em 0;
 }
 
@@ -287,7 +281,7 @@ div.disabled > .toggle-slide {
 .modal .uc-buttons a.button-secondary {
 	position: relative;
 	display: inline-block;
-	margin: 4px 8px 4px 0;
+	margin: 4px 4px 4px 0;
 	font-size: 11px;
 	box-shadow: none;
 	line-height: 25px;
