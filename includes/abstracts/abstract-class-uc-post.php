@@ -73,7 +73,7 @@ abstract class UC_Abstract_Post {
 			post_status = 'publish'", 
 			ARRAY_A );
 
-		return (array) $results;
+		return ( array ) $results;
 	}
 
 	/**

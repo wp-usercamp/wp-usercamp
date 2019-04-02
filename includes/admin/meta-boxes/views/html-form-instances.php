@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <ul class="uc_list">
 
-	<?php if ( empty( $the_form->get_instances() ) ) : ?>
+	<?php if ( empty( $instances = $the_form->get_instances() ) ) : ?>
 	<li>
 
 		<?php _e( 'This form has not been integrated to any of the pages yet.', 'usercamp' ); ?>
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</li>
 	<?php endif; ?>
 
-	<?php foreach( $the_form->get_instances() as $instance ) : ?>
+	<?php foreach( $instances as $instance ) : ?>
 	<li>
 
 		<a href="<?php echo get_permalink( $instance['ID'] ); ?>">

@@ -446,12 +446,12 @@ jQuery( function ( $ ) {
 		$( 'div.panel-wrap' ).each( function() {
 			$( this ).find( 'ul.uc-tabs li' ).eq( 0 ).find( 'a' ).click();
 		});
-	}).trigger( 'uc-init-tabbed-panels' );
+	} ).trigger( 'uc-init-tabbed-panels' );
 
 	// Conditional fields
 	$( document.body ).on( 'uc-init-fields', function() {
 		$( '.usercamp_options_panel:visible fieldset[class*=show_if_]' ).conditional();
-	}).trigger( 'uc-init-fields' );
+	} ).trigger( 'uc-init-fields' );
 
 	// Toggles
 	$( document.body ).on( 'uc-init-toggles', function() {
@@ -479,7 +479,7 @@ jQuery( function ( $ ) {
 			'fadeOut': 50,
 			'delay': 200
 		} );
-	}).trigger( 'uc-init-tooltips' );
+	} ).trigger( 'uc-init-tooltips' );
 
 	// Selectize
 	$( document.body ).on( 'uc-init-selects', function() {
@@ -502,13 +502,13 @@ jQuery( function ( $ ) {
 		var el = $( '.uc-page-title-action' );
 		$( '.page-title-action' ).after( el );
 		el.show();
-	}).trigger( 'uc-init-action-button' );
+	} ).trigger( 'uc-init-action-button' );
 
 	// Init builder
 	$( document.body ).on( 'uc-init-builder', function() {
 		uc_builder.freshstart();
 		uc_builder.sortables();
-	}).trigger( 'uc-init-builder' );
+	} ).trigger( 'uc-init-builder' );
 
 	// Document triggers.
 	$( document.body )
