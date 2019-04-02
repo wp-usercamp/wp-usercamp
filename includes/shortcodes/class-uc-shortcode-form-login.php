@@ -83,10 +83,14 @@ class UC_Shortcode_Form_Login {
 			uc_add_notice( __( 'Please enter your password.', 'usercamp' ), 'error' );
 		}
 
+		// Custom error validation can be added here.
+		do_action( 'usercamp_login_auth', $user );
+
 		if ( $the_form->has_errors() ) {
 			return;
 		}
 
+		// Get user if we do not have user yet.
 		if ( ! isset( $user->user_login ) ) {
 			$user = get_user_by( 'login', $username );
 		}
@@ -97,8 +101,11 @@ class UC_Shortcode_Form_Login {
 			$the_form->error( 'global' );
 			uc_add_notice( __( 'Username or password is not correct.', 'usercamp' ), 'error' );
 
+			do_action( 'usercamp_invalid_login_credentials', $user );
+
 		} else {
 
+			// At this point there is no any error. Log in user
 			if ( is_user_logged_in() ) {
 				wp_logout();
 			}

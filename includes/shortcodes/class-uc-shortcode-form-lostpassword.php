@@ -55,15 +55,27 @@ class UC_Shortcode_Form_Lostpassword {
 			uc_add_notice( __( 'Invalid email format.', 'usercamp' ), 'error' );
 		}
 
+		/**
+		 * Validates the input.
+		 */
 		$the_form->validate();
 
-		// Fired before the actual password reset email and notice.
-		do_action( 'usercamp_pre_password_reset' );
+		// Allow errors to be extended and custom hooks.
+		do_action( 'usercamp_password_reset_validate' );
 
+		/**
+		 * Show success message.
+		 */
 		if ( ! $the_form->has_errors() ) {
 			$the_form->is_request = false;
-			uc_add_notice( __( 'Instructions to reset your password will be sent to you shortly. Please check your email.', 'usercamp' ), 'success' );
+
+			do_action( 'usercamp_pre_password_reset' );
+
 			self::password_reset( $email );
+
+			do_action( 'usercamp_password_reset' );
+
+			uc_add_notice( __( 'Instructions to reset your password will be sent to you shortly. Please check your email.', 'usercamp' ), 'success' );
 		}
 
 	}
