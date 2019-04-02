@@ -465,6 +465,8 @@ jQuery( function ( $ ) {
 					off: usercamp_admin.no
 				},
 				'checkbox': cb
+			} ).on( 'toggle', function(e, active) {
+				$( document.body ).trigger( 'uc-init-fields' );
 			} );
 		} )
 	} ).trigger( 'uc-init-toggles' );
@@ -619,7 +621,7 @@ jQuery( function ( $ ) {
 
 		// Listen to checkbox change.
 		.on( 'change', '.options_group input[type=checkbox]', function() {
-			if ( $(this).is( ':checked' ) ) {
+			if ( $( this ).is( ':checked' ) ) {
 				$( this ).parents( '.form-field' ).find( '.uc-toggle' ).toggles( true );
 			} else {
 				$( this ).parents( '.form-field' ).find( '.uc-toggle' ).toggles( false );
