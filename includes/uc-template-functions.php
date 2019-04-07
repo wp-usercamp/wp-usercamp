@@ -289,7 +289,7 @@ function uc_get_field( $array ) {
 	/**
 	 * Disabled field.
 	 */
-	if ( ! empty( $field['is_readonly'] ) ) {
+	if ( ! empty( $field['is_readonly'] ) && ! empty( $the_user->user_id ) ) {
 		$field['attributes'][] = 'disabled="disabled"';
 	}
 
