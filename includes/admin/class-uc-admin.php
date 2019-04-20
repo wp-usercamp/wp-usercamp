@@ -26,6 +26,7 @@ class UC_Admin {
 		include_once dirname( __FILE__ ) . '/uc-admin-functions.php';
 		include_once dirname( __FILE__ ) . '/uc-meta-box-functions.php';
 		include_once dirname( __FILE__ ) . '/class-uc-admin-post-types.php';
+		include_once dirname( __FILE__ ) . '/class-uc-admin-users.php';
 		include_once dirname( __FILE__ ) . '/class-uc-admin-menus.php';
 		include_once dirname( __FILE__ ) . '/class-uc-admin-notices.php';
 		include_once dirname( __FILE__ ) . '/class-uc-admin-assets.php';
