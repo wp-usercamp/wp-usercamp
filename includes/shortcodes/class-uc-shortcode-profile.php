@@ -41,7 +41,7 @@ class UC_Shortcode_Profile {
 
 		uc_get_template(
 			'profile/profile.php', array(
-				'the_user' 		=> uc_get_user( get_current_user_id() ),
+				'the_user' 		=> uc_get_user( uc_get_active_profile_id() ),
 			)
 		);
 	}

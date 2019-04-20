@@ -19,3 +19,10 @@ function uc_get_profile_endpoints() {
 
 	return $endpoints;
 }
+
+/**
+ * Get active profile ID.
+ */
+function uc_get_active_profile_id() {
+	return apply_filters( 'uc_get_active_profile_id', username_exists( esc_attr( get_query_var( 'uc_user' ) ) ) );
+}

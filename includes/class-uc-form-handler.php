@@ -21,6 +21,7 @@ class UC_Form_Handler {
 		add_action( 'template_redirect', array( __CLASS__, 'edit_account' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'edit_password' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'privacy' ) );
+		add_action( 'template_redirect', array( __CLASS__, 'profile_redirect' ) );
 	}
 
 	/**
@@ -86,6 +87,30 @@ class UC_Form_Handler {
 			return;
 		}
 		UC_Shortcode_Form_Account::save( uc_get_form( $id ) );
+	}
+
+	/**
+	 * Profile redirect.
+	 */
+	public static function profile_redirect() {
+		global $current_user;
+		if ( ! is_uc_profile_page() ) {
+			return;
+		}
+
+		$username = esc_attr( get_query_var( 'uc_user' ) );
+
+		if ( empty( $username ) ) {
+			if ( ! is_user_logged_in() ) {
+				exit( wp_redirect( home_url() ) );
+			} else {
+				exit( wp_redirect( usercamp_get_profile_url( $current_user->user_login ) ) );
+			}
+		} else {
+			if ( ! username_exists( $username ) ) {
+				exit( wp_redirect( home_url() ) );
+			}
+		}
 	}
 
 }
