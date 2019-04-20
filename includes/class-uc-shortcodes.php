@@ -19,6 +19,7 @@ class UC_Shortcodes {
 		$shortcodes = array(
 			'form'			=> __CLASS__ . '::form',
 			'account'		=> __CLASS__ . '::account',
+			'profile'		=> __CLASS__ . '::profile',
 		);
 
 		foreach ( $shortcodes as $shortcode => $function ) {
@@ -65,6 +66,16 @@ class UC_Shortcodes {
 			return;
 		}
 		return self::shortcode_wrapper( array( 'UC_Shortcode_Account', 'output' ), $atts );
+	}
+
+	/**
+	 * Profile page shortcode.
+	 */
+	public static function profile( $atts ) {
+		if ( is_admin() ) {
+			return;
+		}
+		return self::shortcode_wrapper( array( 'UC_Shortcode_Profile', 'output' ), $atts );
 	}
 
 }

@@ -46,7 +46,7 @@ class UC_Query {
 	 */
 	public function init_query_vars() {
 		// Query vars to add to WP.
-		$this->query_vars = array_merge( $this->query_vars, uc_get_account_endpoints() );
+		$this->query_vars = array_merge( $this->query_vars, uc_get_account_endpoints(), uc_get_profile_endpoints() );
 	}
 
 	/**
@@ -120,7 +120,12 @@ class UC_Query {
 		$mask = $this->get_endpoints_mask();
 
 		foreach ( $this->get_query_vars() as $key => $var ) {
-			if ( ! empty( $var ) ) {
+			if ( $key == 'uc_user' ) {
+				$profile_page_id 	= get_option( 'usercamp_profile_page_id' );
+				$profile			= get_post( $profile_page_id );
+				add_rewrite_tag( '%uc_user%', '([^/]+)' );
+				add_rewrite_rule( $profile->post_name . '/([^/]+)/?', 'index.php?pagename=' . $profile->post_name . '&uc_user=$matches[1]', 'top' );
+			} elseif ( ! empty( $var ) ) {
 				add_rewrite_endpoint( $var, $mask );
 			}
 		}
