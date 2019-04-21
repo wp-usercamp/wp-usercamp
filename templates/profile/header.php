@@ -40,7 +40,7 @@ do_action( 'usercamp_before_profile_header' );
 		<div class="usercamp-profile-meta">
 			<div class="usercamp-profile-metadata"><?php echo uc_svg_icon( 'map-pin' ); ?><span>Michigan, USA</span></div>
 			<div class="usercamp-profile-metadata"><?php echo uc_svg_icon( 'gift' ); ?><span>Born on March, 1979</span></div>
-			<div class="usercamp-profile-metadata"><?php echo uc_svg_icon( 'calendar' ); ?><span>Joined </span></div>
+			<div class="usercamp-profile-metadata"><?php echo uc_svg_icon( 'calendar' ); ?><span>Joined July 2018</span></div>
 		</div>
 
 	</div>
