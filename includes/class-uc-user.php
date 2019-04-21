@@ -52,7 +52,7 @@ class UC_User {
 	/**
 	 * Get a user data.
 	 */
-	public function get( $key, $scope = 'edit' ) {
+	public function get( $key ) {
 		$output = null;
 
 		if ( isset( $this->data->{$key} ) ) {
@@ -63,7 +63,7 @@ class UC_User {
 			$output = get_user_meta( $this->user_id, $key, true );
 		}
 
-		return apply_filters( 'usercamp_get_user_' . $key, $output, $scope, $this );
+		return apply_filters( "usercamp_getmeta_{$key}", $output, $key, $this->user_id );
 	}
 
 	/**
@@ -76,6 +76,16 @@ class UC_User {
 				update_user_meta( $this->user_id, $key, $value );
 			}
 		}
+	}
+
+	/**
+	 * Check if user has a cover photo.
+	 */
+	public function has_cover_photo() {
+		if ( $this->get( '_uc_cover_photo' ) != '' ) {
+			return true;
+		}
+		return false;
 	}
 
 }

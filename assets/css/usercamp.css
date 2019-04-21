@@ -121,7 +121,7 @@ div.disabled > .toggle-slide {
 	font-size: 11px;
 	line-height: 22px !important;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 .toggle-off {
@@ -636,4 +636,113 @@ a.usercamp-button.disabled {
 	font-weight: 400;
 	color: rgba(0, 0, 0, 0.4);
 	margin: 5px 0 0 0;
+}
+
+/* Profile cover */
+.usercamp-profile-cover {
+	background-color: #eee;
+	width: 100%;
+	padding-top: 37.018%;
+	position: relative;
+}
+
+.usercamp-profile-cover.empty-cover {
+	padding-top: 22%;
+}
+
+/* Profile navigation */
+.usercamp-profile-nav {
+	position: relative;
+}
+
+/* Profile photo */
+.usercamp-profile-photo {
+	position: absolute;
+	left: 3em;
+	top: -6em;
+	height: 12em;
+	width: 12em;
+	background: #fff;
+	border: 5px solid #fff;
+	border-radius: 50%;
+}
+
+.usercamp-profile-photo a,
+.usercamp-profile-photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 50%;
+}
+
+/* Profile about section */
+.usercamp-profile-about {
+	float: left;
+	width: 30%;
+	border-right: 1px solid #f5f5f5;
+	box-sizing: border-box;
+	margin-top: 7em;
+}
+
+/* Profile username */
+.usercamp-profile-user {
+	margin: 0 0 1.5em;
+}
+
+.usercamp-profile-name a {
+	font-size: 1.2em;
+	line-height: 1.4em;
+	text-decoration: none;
+	color: #555;
+	font-weight: 700;
+	text-decoration: none !important;
+}
+
+.usercamp-profile-name a:hover,
+.usercamp-profile-name a:focus,
+.usercamp-profile-name a:active {
+	color: #555;
+	text-decoration: underline !important;
+}
+
+.usercamp-profile-hash a {
+	font-weight: 300;
+	color: rgba(102, 117, 127, .75);
+	text-decoration: none !important;
+}
+
+.usercamp-profile-hash a:hover,
+.usercamp-profile-hash a:focus,
+.usercamp-profile-hash a:active {
+	color: rgb(91, 157, 217);
+	text-decoration: none !important;
+}
+
+.usercamp-profile-hash a:hover b,
+.usercamp-profile-hash a:focus b,
+.usercamp-profile-hash a:active b {
+	text-decoration: underline !important;
+}
+
+/* Profile bio */
+.usercamp-profile-bio {
+	margin: 0 0 1.5em;
+	line-height: 1.5em;
+}
+
+/* Profile metadata */
+.usercamp-profile-metadata {
+	position: relative;
+	padding: .5em 0 .5em 2em;
+	color: rgba(102, 117, 127, .75);
+}
+
+.usercamp-profile-metadata svg {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 1.2em;
+	height: 1.2em;
+	margin-top: -.6em;
 }

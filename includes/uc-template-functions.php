@@ -42,6 +42,13 @@ function uc_logout_url( $redirect = '' ) {
 }
 
 /**
+ * Profile header template.
+ */
+function usercamp_profile_header() {
+	uc_get_template( 'profile/header.php' );
+}
+
+/**
  * Account navigation template.
  */
 function usercamp_account_navigation() {
@@ -228,7 +235,7 @@ function uc_get_field( $array ) {
 	 * Field Value.
 	 */
 	if ( in_array( $the_form->type, array( 'account', 'profile' ) ) ) {
-		$field['value'] = $the_user->get( $field['key'], 'edit' );
+		$field['value'] = $the_user->get( $field['key'] );
 	}
 	$field['value'] = ( $the_form->is_request && isset( $the_form->postdata[ $field['key'] ] ) ) ? $the_form->postdata[ $field['key'] ] : $field['value'];
 

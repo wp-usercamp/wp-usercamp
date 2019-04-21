@@ -21,6 +21,11 @@ add_action( 'usercamp_after_lostpassword_form_content', 'usercamp_add_form_input
 add_action( 'usercamp_after_account_form_content', 'usercamp_add_form_inputs' );
 
 /**
+ * Profile.
+ */
+add_action( 'usercamp_profile_header', 'usercamp_profile_header' );
+
+/**
  * Account.
  */
 add_action( 'usercamp_account_navigation', 'usercamp_account_navigation' );

@@ -33,7 +33,7 @@ function uc_get_active_profile_id() {
 function usercamp_get_profile_url( $username = '', $ajax = false ) {
 	global $the_user;
 	if ( empty( $username ) ) {
-		$username = $the_user->get( 'user_login', 'edit' );
+		$username = $the_user->get( 'user_login' );
 	}
 	$permalink = uc_get_page_permalink( 'profile' );
 
@@ -42,4 +42,22 @@ function usercamp_get_profile_url( $username = '', $ajax = false ) {
 	}
 
 	return apply_filters( 'usercamp_get_profile_url', uc_get_endpoint_url( $username, '', $permalink ), $username, $the_user );
+}
+
+
+/**
+ * Get profile cover div classes.
+ */
+function uc_get_profile_cover_classes() {
+	global $the_user;
+
+	$classes = array();
+
+	if ( ! $the_user->has_cover_photo() ) {
+		$classes[] = 'empty-cover';
+	}
+
+	$classes = apply_filters( 'uc_get_profile_cover_classes', $classes );
+
+	return implode( ' ', array_map( 'sanitize_html_class', $classes ) );
 }

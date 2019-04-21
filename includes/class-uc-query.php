@@ -125,11 +125,12 @@ class UC_Query {
 				$profile_page_id 	= get_option( 'usercamp_profile_page_id' );
 				$profile			= get_post( $profile_page_id );
 
-				add_rewrite_tag( '%uc_user%', '([^/]+)' );
-				add_rewrite_tag( '%uc_tab%', '([^/]+)' );
-
-				add_rewrite_rule( $profile->post_name . '/([^/]+)/?$', 'index.php?pagename=' . $profile->post_name . '&uc_user=$matches[1]', 'top' );
-				add_rewrite_rule( $profile->post_name . '/([^/]+)/([^/]+)/?$', 'index.php?pagename=' . $profile->post_name . '&uc_user=$matches[1]&uc_tab=$matches[2]', 'top' );
+				if ( isset( $profile->post_name ) ) {
+					add_rewrite_tag( '%uc_user%', '([^/]+)' );
+					add_rewrite_tag( '%uc_tab%', '([^/]+)' );
+					add_rewrite_rule( $profile->post_name . '/([^/]+)/?$', 'index.php?pagename=' . $profile->post_name . '&uc_user=$matches[1]', 'top' );
+					add_rewrite_rule( $profile->post_name . '/([^/]+)/([^/]+)/?$', 'index.php?pagename=' . $profile->post_name . '&uc_user=$matches[1]&uc_tab=$matches[2]', 'top' );
+				}
 
 			} elseif ( ! empty( $var ) ) {
 				add_rewrite_endpoint( $var, $mask );
